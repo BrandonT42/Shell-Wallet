@@ -1,0 +1,118 @@
+﻿using Newtonsoft.Json.Linq;
+using System;
+using System.IO;
+using WalletWrapper;
+
+namespace Shell_Wallet
+{
+    /// <summary>
+    /// Config file helper class
+    /// </summary>
+    internal class Config
+    {
+        #region Variables
+        internal const String ConfigFile = "Config.json";
+        internal const String AddressBookFile = "Addresses.json";
+        internal static String ServerPath = "";
+        internal static String ServerPort = "11911";
+        internal static String OriginalServerPassword = "";
+        internal static String ServerPassword = "";
+        internal static String NodeHost = "";
+        internal static String NodePort = "";
+        internal static bool LocalDaemon = true;
+        internal static bool GeneratePassword = true;
+        internal static bool AllowBlankPasswords = false;
+        internal static String DefaultWalletPath = "";
+        internal static String DefaultFee = "0.1";
+        internal static String DefaultUnlockTime = "0";
+        internal static String DefaultMixin = "6";
+        internal static int RefreshRate = 1000;
+        internal static int NetworkRefreshRate = 1000;
+        internal static int GUIRefreshRate = 1000;
+        #endregion
+
+        /// <summary>
+        /// Loads configuration from config file
+        /// </summary>
+        internal static void Load()
+        {
+            // Check that the data folder exists
+            string DataPath = Path.Combine(
+                Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),
+                "Shell Wallet");
+            if (!Directory.Exists(DataPath)) Directory.CreateDirectory(DataPath);
+
+            // Check if configuration files exist and create if they don't
+            Console.WriteLine("Loading configuration");
+            String c = Path.Combine(DataPath, ConfigFile);
+            String a = Path.Combine(DataPath, AddressBookFile);
+            if (!File.Exists(c))
+            {
+                Console.WriteLine("Config file not found, creating it now");
+                File.Create(c).Dispose();
+                Save();
+            }
+            if (!File.Exists(a))
+            {
+                Console.WriteLine("Address book not found, creating it now");
+                File.Create(a).Dispose();
+                File.WriteAllText(a, "[]");
+            }
+
+            // Load configuration from file
+            using (StreamReader r = new StreamReader(c))
+            {
+                JObject conf = JObject.Parse(r.ReadToEnd());
+                ServerPath = (String)conf["serverPath"];
+                ServerPort = (String)conf["serverPort"];
+                GeneratePassword = (Boolean)conf["generatePassword"];
+                AllowBlankPasswords = (Boolean)conf["allowBlankPasswords"];
+                if (GeneratePassword)
+                {
+                    OriginalServerPassword = (String)conf["serverPassword"];
+                    ServerPassword = Server.Hash;
+                    Console.WriteLine("Generated server password: " + Server.Hash);
+                }
+                else ServerPassword = (String)conf["serverPassword"];
+                LocalDaemon = (Boolean)conf["localDaemon"];
+                NodeHost = (String)conf["nodeAddress"];
+                NodePort = (String)conf["nodePort"];
+                DefaultWalletPath = (String)conf["defaultWalletPath"];
+                DefaultFee = (String)conf["defaultFee"];
+                DefaultMixin = (String)conf["defaultMixin"];
+                RefreshRate = (int)conf["refreshRate"];
+                NetworkRefreshRate = (int)conf["networkRefreshRate"];
+                GUIRefreshRate = (int)conf["guiRefreshRate"];
+                r.Close();
+            }
+        }
+
+        /// <summary>
+        /// Saves configuration to config file
+        /// </summary>
+        internal static void Save()
+        {
+            // Create file path
+            String c = Path.Combine(Path.Combine(
+                Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),
+                "Shell Wallet"), ConfigFile);
+            JObject conf = new JObject();
+            conf["serverPath"] = ServerPath;
+            conf["serverPort"] = ServerPort;
+            if (GeneratePassword) conf["serverPassword"] = OriginalServerPassword;
+            else conf["serverPassword"] = ServerPassword;
+            conf["generatePassword"] = GeneratePassword;
+            conf["allowBlankPasswords"] = AllowBlankPasswords;
+            conf["localDaemon"] = LocalDaemon;
+            conf["nodeAddress"] = NodeHost;
+            conf["nodePort"] = NodePort;
+            conf["defaultWalletPath"] = DefaultWalletPath;
+            conf["defaultFee"] = DefaultFee;
+            conf["defaultMixin"] = DefaultMixin;
+            conf["refreshRate"] = RefreshRate;
+            conf["networkRefreshRate"] = NetworkRefreshRate;
+            conf["guiRefreshRate"] = GUIRefreshRate;
+            File.WriteAllText(c, conf.ToString());
+        }
+    }
+}
