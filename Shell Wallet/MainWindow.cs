@@ -172,12 +172,8 @@ namespace Shell_Wallet
             if (l.ShowDialog() == DialogResult.OK)
             {
                 // Start the server
-#if DEBUG
-                Server.StartWallet(Config.ServerPath, Path, Password, Config.ServerPassword, Config.ServerPort, Config.LocalDaemon, Config.NodeHost, Config.NodePort, true);
-#else
-            Server.StartWallet(Config.ServerPath, Path, Password, Config.ServerPassword,
-                Config.ServerPort, Config.LocalDaemon, Config.NodeHost, Config.NodePort);
-#endif
+                Server.StartWallet(Config.ServerPath, Path, Password, Config.ServerPassword, Config.ServerPort,
+                    Config.LocalDaemon, Config.NodeHost, Config.NodePort, false);
             }
 
             // Password incorrect

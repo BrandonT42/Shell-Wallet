@@ -16,6 +16,7 @@
             if (disposing && (components != null))
             {
                 components.Dispose();
+                writer.Dispose();
             }
             base.Dispose(disposing);
         }

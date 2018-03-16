@@ -95,7 +95,7 @@ namespace Shell_Wallet
                 RefreshRate = (int)conf["refreshRate"];
                 NetworkRefreshRate = (int)conf["networkRefreshRate"];
                 GUIRefreshRate = (int)conf["guiRefreshRate"];
-                r.Close();
+                //r.Close();
             }
         }
 

@@ -878,15 +878,11 @@ namespace WalletWrapper
                     var encryptor = symmetricKey.CreateEncryptor(keyBytes, Encoding.ASCII.GetBytes("@1B2c3D4e5F6g7H8"));
                     byte[] cipherTextBytes;
                     using (var memoryStream = new MemoryStream())
+                    using (var cryptoStream = new CryptoStream(memoryStream, encryptor, CryptoStreamMode.Write))
                     {
-                        using (var cryptoStream = new CryptoStream(memoryStream, encryptor, CryptoStreamMode.Write))
-                        {
-                            cryptoStream.Write(plainTextBytes, 0, plainTextBytes.Length);
-                            cryptoStream.FlushFinalBlock();
-                            cipherTextBytes = memoryStream.ToArray();
-                            cryptoStream.Close();
-                        }
-                        memoryStream.Close();
+                        cryptoStream.Write(plainTextBytes, 0, plainTextBytes.Length);
+                        cryptoStream.FlushFinalBlock();
+                        cipherTextBytes = memoryStream.ToArray();
                     }
                     InternalHash = Convert.ToBase64String(cipherTextBytes);
                 }
@@ -906,12 +902,9 @@ namespace WalletWrapper
                 encryptor.Key = pdb.GetBytes(32);
                 encryptor.IV = pdb.GetBytes(16);
                 using (MemoryStream ms = new MemoryStream())
+                using (CryptoStream cs = new CryptoStream(ms, encryptor.CreateEncryptor(), CryptoStreamMode.Write))
                 {
-                    using (CryptoStream cs = new CryptoStream(ms, encryptor.CreateEncryptor(), CryptoStreamMode.Write))
-                    {
-                        cs.Write(clearBytes, 0, clearBytes.Length);
-                        cs.Close();
-                    }
+                    cs.Write(clearBytes, 0, clearBytes.Length);
                     s = Convert.ToBase64String(ms.ToArray());
                 }
             }

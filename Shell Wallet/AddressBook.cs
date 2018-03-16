@@ -55,7 +55,6 @@ namespace Shell_Wallet
             using (StreamReader r = new StreamReader(p))
             {
                 s = r.ReadToEnd();
-                r.Dispose();
             }
             DataSource = JsonConvert.DeserializeObject<BindingList<Contact>>(s);
         }
