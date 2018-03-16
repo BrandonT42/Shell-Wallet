@@ -5,6 +5,6 @@
     Renaming the file extension or editing the content of this file may   
     cause the file to be unrecognizable by the program.
 -->
-<GenericObjectDataSource DisplayName="TransactionPool1" Version="1.0" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
-   <TypeInfo>WalletWrapper.TransactionPool, Shell Wallet, Version=0.0.6648.30967, Culture=neutral, PublicKeyToken=null</TypeInfo>
+<GenericObjectDataSource DisplayName="RecentBlocks" Version="1.0" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+   <TypeInfo>WalletWrapper.RecentBlocks, Shell Wallet, Version=0.0.6649.3309, Culture=neutral, PublicKeyToken=null</TypeInfo>
 </GenericObjectDataSource>

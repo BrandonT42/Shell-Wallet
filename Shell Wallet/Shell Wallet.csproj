@@ -101,7 +101,6 @@
     <Compile Include="MainWindow.Designer.cs">
       <DependentUpon>MainWindow.cs</DependentUpon>
     </Compile>
-    <Compile Include="NativeMethods.cs" />
     <Compile Include="OptionsWindow.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -132,6 +131,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MainWindow.resx">
       <DependentUpon>MainWindow.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="OptionsWindow.resx">
       <DependentUpon>OptionsWindow.cs</DependentUpon>
@@ -150,12 +150,9 @@
       <DesignTime>True</DesignTime>
     </Compile>
     <None Include="packages.config" />
-    <None Include="Properties\DataSources\AddressBook.datasource" />
     <None Include="Properties\DataSources\Contact.datasource" />
-    <None Include="Properties\DataSources\Contact1.datasource" />
-    <None Include="Properties\DataSources\Contact2.datasource" />
+    <None Include="Properties\DataSources\WalletWrapper.RecentBlocks.datasource" />
     <None Include="Properties\DataSources\WalletWrapper.TransactionPool.datasource" />
-    <None Include="Properties\DataSources\WalletWrapper.TransactionPool1.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

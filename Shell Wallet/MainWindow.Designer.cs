@@ -31,22 +31,23 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainWindow));
             this.MenuStrip = new System.Windows.Forms.MenuStrip();
-            this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.openWalletToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.openDefaultWalletToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.WalletMenu = new System.Windows.Forms.ToolStripMenuItem();
+            this.OpenWalletMenuOption = new System.Windows.Forms.ToolStripMenuItem();
+            this.OpenDefaultMenuOption = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripSeparator();
-            this.createWalletToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.importWalletToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.CreateWalletMenuOption = new System.Windows.Forms.ToolStripMenuItem();
+            this.ImportWalletMenuOption = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
-            this.ExportWalletKeys = new System.Windows.Forms.ToolStripMenuItem();
+            this.ExportPrivateKeysMenuOption = new System.Windows.Forms.ToolStripMenuItem();
+            this.ResyncMenuOption = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem6 = new System.Windows.Forms.ToolStripSeparator();
-            this.CloseWalletMenu = new System.Windows.Forms.ToolStripMenuItem();
-            this.networkToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.CloseWalletMenuOption = new System.Windows.Forms.ToolStripMenuItem();
+            this.NetworkMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.StartNetworkMenuOption = new System.Windows.Forms.ToolStripMenuItem();
-            this.CloseNetworkConnection = new System.Windows.Forms.ToolStripMenuItem();
-            this.optionsToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.aboutToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.optionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.CloseNetworkMenuOption = new System.Windows.Forms.ToolStripMenuItem();
+            this.OptionsMenu = new System.Windows.Forms.ToolStripMenuItem();
+            this.AboutMenuOption = new System.Windows.Forms.ToolStripMenuItem();
+            this.OptionsMenuOption = new System.Windows.Forms.ToolStripMenuItem();
             this.OpenWalletDialog = new System.Windows.Forms.OpenFileDialog();
             this.NewWalletDialog = new System.Windows.Forms.SaveFileDialog();
             this.OpenServerPath = new System.Windows.Forms.OpenFileDialog();
@@ -134,7 +135,7 @@
             this.hashDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.difficultyDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.transactionsDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.transactionPoolBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.recentBlocksBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.label24 = new System.Windows.Forms.Label();
             this.TransactionPool = new System.Windows.Forms.DataGridView();
@@ -142,7 +143,7 @@
             this.FeeColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.transactionPoolBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.transactionPoolBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.HeightStatus = new System.Windows.Forms.Label();
             this.ServerStatus = new System.Windows.Forms.Label();
             this.TrayIcon = new System.Windows.Forms.NotifyIcon(this.components);
@@ -151,6 +152,7 @@
             this.toolStripMenuItem5 = new System.Windows.Forms.ToolStripMenuItem();
             this.SavePrivateKeys = new System.Windows.Forms.SaveFileDialog();
             this.ToolTip = new System.Windows.Forms.ToolTip(this.components);
+            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
             this.MenuStrip.SuspendLayout();
             this.SendTab.SuspendLayout();
             this.WalletTab.SuspendLayout();
@@ -165,107 +167,115 @@
             this.groupBox6.SuspendLayout();
             this.groupBox5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.RecentBlocks)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.transactionPoolBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.recentBlocksBindingSource)).BeginInit();
             this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.TransactionPool)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.transactionPoolBindingSource1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.transactionPoolBindingSource)).BeginInit();
             this.TrayIconContextMenu.SuspendLayout();
             this.SuspendLayout();
             // 
             // MenuStrip
             // 
             this.MenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.fileToolStripMenuItem,
-            this.networkToolStripMenuItem,
-            this.optionsToolStripMenuItem1});
+            this.WalletMenu,
+            this.NetworkMenu,
+            this.OptionsMenu});
             this.MenuStrip.Location = new System.Drawing.Point(0, 0);
             this.MenuStrip.Name = "MenuStrip";
             this.MenuStrip.Size = new System.Drawing.Size(784, 24);
             this.MenuStrip.TabIndex = 0;
             this.MenuStrip.Text = "Main Menu";
             // 
-            // fileToolStripMenuItem
+            // WalletMenu
             // 
-            this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.openWalletToolStripMenuItem,
-            this.openDefaultWalletToolStripMenuItem,
+            this.WalletMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.OpenWalletMenuOption,
+            this.OpenDefaultMenuOption,
             this.toolStripMenuItem3,
-            this.createWalletToolStripMenuItem,
-            this.importWalletToolStripMenuItem,
+            this.CreateWalletMenuOption,
+            this.ImportWalletMenuOption,
             this.toolStripMenuItem1,
-            this.ExportWalletKeys,
+            this.ExportPrivateKeysMenuOption,
+            this.ResyncMenuOption,
             this.toolStripMenuItem6,
-            this.CloseWalletMenu});
-            this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            this.fileToolStripMenuItem.Size = new System.Drawing.Size(52, 20);
-            this.fileToolStripMenuItem.Text = "Wallet";
+            this.CloseWalletMenuOption});
+            this.WalletMenu.Name = "WalletMenu";
+            this.WalletMenu.Size = new System.Drawing.Size(52, 20);
+            this.WalletMenu.Text = "Wallet";
             // 
-            // openWalletToolStripMenuItem
+            // OpenWalletMenuOption
             // 
-            this.openWalletToolStripMenuItem.Name = "openWalletToolStripMenuItem";
-            this.openWalletToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
-            this.openWalletToolStripMenuItem.Text = "Open Wallet";
-            this.openWalletToolStripMenuItem.Click += new System.EventHandler(this.openWalletToolStripMenuItem_Click);
+            this.OpenWalletMenuOption.Name = "OpenWalletMenuOption";
+            this.OpenWalletMenuOption.Size = new System.Drawing.Size(180, 22);
+            this.OpenWalletMenuOption.Text = "Open Wallet";
+            this.OpenWalletMenuOption.Click += new System.EventHandler(this.openWalletToolStripMenuItem_Click);
             // 
-            // openDefaultWalletToolStripMenuItem
+            // OpenDefaultMenuOption
             // 
-            this.openDefaultWalletToolStripMenuItem.Name = "openDefaultWalletToolStripMenuItem";
-            this.openDefaultWalletToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
-            this.openDefaultWalletToolStripMenuItem.Text = "Open Default";
-            this.openDefaultWalletToolStripMenuItem.Click += new System.EventHandler(this.openDefaultWalletToolStripMenuItem_Click);
+            this.OpenDefaultMenuOption.Name = "OpenDefaultMenuOption";
+            this.OpenDefaultMenuOption.Size = new System.Drawing.Size(180, 22);
+            this.OpenDefaultMenuOption.Text = "Open Default";
+            this.OpenDefaultMenuOption.Click += new System.EventHandler(this.openDefaultWalletToolStripMenuItem_Click);
             // 
             // toolStripMenuItem3
             // 
             this.toolStripMenuItem3.Name = "toolStripMenuItem3";
-            this.toolStripMenuItem3.Size = new System.Drawing.Size(170, 6);
+            this.toolStripMenuItem3.Size = new System.Drawing.Size(177, 6);
             // 
-            // createWalletToolStripMenuItem
+            // CreateWalletMenuOption
             // 
-            this.createWalletToolStripMenuItem.Name = "createWalletToolStripMenuItem";
-            this.createWalletToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
-            this.createWalletToolStripMenuItem.Text = "Create Wallet";
-            this.createWalletToolStripMenuItem.Click += new System.EventHandler(this.createWalletToolStripMenuItem_Click);
+            this.CreateWalletMenuOption.Name = "CreateWalletMenuOption";
+            this.CreateWalletMenuOption.Size = new System.Drawing.Size(180, 22);
+            this.CreateWalletMenuOption.Text = "Create Wallet";
+            this.CreateWalletMenuOption.Click += new System.EventHandler(this.createWalletToolStripMenuItem_Click);
             // 
-            // importWalletToolStripMenuItem
+            // ImportWalletMenuOption
             // 
-            this.importWalletToolStripMenuItem.Name = "importWalletToolStripMenuItem";
-            this.importWalletToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
-            this.importWalletToolStripMenuItem.Text = "Import Wallet";
-            this.importWalletToolStripMenuItem.Click += new System.EventHandler(this.importWalletToolStripMenuItem_Click);
+            this.ImportWalletMenuOption.Name = "ImportWalletMenuOption";
+            this.ImportWalletMenuOption.Size = new System.Drawing.Size(180, 22);
+            this.ImportWalletMenuOption.Text = "Import Wallet";
+            this.ImportWalletMenuOption.Click += new System.EventHandler(this.importWalletToolStripMenuItem_Click);
             // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(170, 6);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(177, 6);
             // 
-            // ExportWalletKeys
+            // ExportPrivateKeysMenuOption
             // 
-            this.ExportWalletKeys.Name = "ExportWalletKeys";
-            this.ExportWalletKeys.Size = new System.Drawing.Size(173, 22);
-            this.ExportWalletKeys.Text = "Export Private Keys";
-            this.ExportWalletKeys.Click += new System.EventHandler(this.viewWalletKeysToolStripMenuItem_Click);
+            this.ExportPrivateKeysMenuOption.Name = "ExportPrivateKeysMenuOption";
+            this.ExportPrivateKeysMenuOption.Size = new System.Drawing.Size(180, 22);
+            this.ExportPrivateKeysMenuOption.Text = "Export Private Keys";
+            this.ExportPrivateKeysMenuOption.Click += new System.EventHandler(this.viewWalletKeysToolStripMenuItem_Click);
+            // 
+            // ResyncMenuOption
+            // 
+            this.ResyncMenuOption.Name = "ResyncMenuOption";
+            this.ResyncMenuOption.Size = new System.Drawing.Size(180, 22);
+            this.ResyncMenuOption.Text = "Resync";
+            this.ResyncMenuOption.Click += new System.EventHandler(this.resyncToolStripMenuItem_Click);
             // 
             // toolStripMenuItem6
             // 
             this.toolStripMenuItem6.Name = "toolStripMenuItem6";
-            this.toolStripMenuItem6.Size = new System.Drawing.Size(170, 6);
+            this.toolStripMenuItem6.Size = new System.Drawing.Size(177, 6);
             // 
-            // CloseWalletMenu
+            // CloseWalletMenuOption
             // 
-            this.CloseWalletMenu.Enabled = false;
-            this.CloseWalletMenu.Name = "CloseWalletMenu";
-            this.CloseWalletMenu.Size = new System.Drawing.Size(173, 22);
-            this.CloseWalletMenu.Text = "Close Wallet";
-            this.CloseWalletMenu.Click += new System.EventHandler(this.closeWalletToolStripMenuItem_Click);
+            this.CloseWalletMenuOption.Enabled = false;
+            this.CloseWalletMenuOption.Name = "CloseWalletMenuOption";
+            this.CloseWalletMenuOption.Size = new System.Drawing.Size(180, 22);
+            this.CloseWalletMenuOption.Text = "Close Wallet";
+            this.CloseWalletMenuOption.Click += new System.EventHandler(this.closeWalletToolStripMenuItem_Click);
             // 
-            // networkToolStripMenuItem
+            // NetworkMenu
             // 
-            this.networkToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.NetworkMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.StartNetworkMenuOption,
-            this.CloseNetworkConnection});
-            this.networkToolStripMenuItem.Name = "networkToolStripMenuItem";
-            this.networkToolStripMenuItem.Size = new System.Drawing.Size(64, 20);
-            this.networkToolStripMenuItem.Text = "Network";
+            this.CloseNetworkMenuOption});
+            this.NetworkMenu.Name = "NetworkMenu";
+            this.NetworkMenu.Size = new System.Drawing.Size(64, 20);
+            this.NetworkMenu.Text = "Network";
             // 
             // StartNetworkMenuOption
             // 
@@ -274,36 +284,37 @@
             this.StartNetworkMenuOption.Text = "Start Network Connection";
             this.StartNetworkMenuOption.Click += new System.EventHandler(this.startNetworkConnectionToolStripMenuItem_Click);
             // 
-            // CloseNetworkConnection
+            // CloseNetworkMenuOption
             // 
-            this.CloseNetworkConnection.Enabled = false;
-            this.CloseNetworkConnection.Name = "CloseNetworkConnection";
-            this.CloseNetworkConnection.Size = new System.Drawing.Size(216, 22);
-            this.CloseNetworkConnection.Text = "Close Network Connection";
-            this.CloseNetworkConnection.Click += new System.EventHandler(this.CloseNetworkConnection_Click);
+            this.CloseNetworkMenuOption.Enabled = false;
+            this.CloseNetworkMenuOption.Name = "CloseNetworkMenuOption";
+            this.CloseNetworkMenuOption.Size = new System.Drawing.Size(216, 22);
+            this.CloseNetworkMenuOption.Text = "Close Network Connection";
+            this.CloseNetworkMenuOption.Click += new System.EventHandler(this.CloseNetworkConnection_Click);
             // 
-            // optionsToolStripMenuItem1
+            // OptionsMenu
             // 
-            this.optionsToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.aboutToolStripMenuItem1,
-            this.optionsToolStripMenuItem});
-            this.optionsToolStripMenuItem1.Name = "optionsToolStripMenuItem1";
-            this.optionsToolStripMenuItem1.Size = new System.Drawing.Size(61, 20);
-            this.optionsToolStripMenuItem1.Text = "Options";
+            this.OptionsMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.OptionsMenuOption,
+            this.toolStripMenuItem2,
+            this.AboutMenuOption});
+            this.OptionsMenu.Name = "OptionsMenu";
+            this.OptionsMenu.Size = new System.Drawing.Size(61, 20);
+            this.OptionsMenu.Text = "Options";
             // 
-            // aboutToolStripMenuItem1
+            // AboutMenuOption
             // 
-            this.aboutToolStripMenuItem1.Name = "aboutToolStripMenuItem1";
-            this.aboutToolStripMenuItem1.Size = new System.Drawing.Size(116, 22);
-            this.aboutToolStripMenuItem1.Text = "About";
-            this.aboutToolStripMenuItem1.Click += new System.EventHandler(this.aboutShellWalletToolStripMenuItem_Click);
+            this.AboutMenuOption.Name = "AboutMenuOption";
+            this.AboutMenuOption.Size = new System.Drawing.Size(180, 22);
+            this.AboutMenuOption.Text = "About";
+            this.AboutMenuOption.Click += new System.EventHandler(this.aboutShellWalletToolStripMenuItem_Click);
             // 
-            // optionsToolStripMenuItem
+            // OptionsMenuOption
             // 
-            this.optionsToolStripMenuItem.Name = "optionsToolStripMenuItem";
-            this.optionsToolStripMenuItem.Size = new System.Drawing.Size(116, 22);
-            this.optionsToolStripMenuItem.Text = "Options";
-            this.optionsToolStripMenuItem.Click += new System.EventHandler(this.optionsToolStripMenuItem_Click);
+            this.OptionsMenuOption.Name = "OptionsMenuOption";
+            this.OptionsMenuOption.Size = new System.Drawing.Size(180, 22);
+            this.OptionsMenuOption.Text = "Options";
+            this.OptionsMenuOption.Click += new System.EventHandler(this.optionsToolStripMenuItem_Click);
             // 
             // OpenWalletDialog
             // 
@@ -1157,7 +1168,7 @@
             this.hashDataGridViewTextBoxColumn,
             this.difficultyDataGridViewTextBoxColumn,
             this.transactionsDataGridViewTextBoxColumn});
-            this.RecentBlocks.DataSource = this.transactionPoolBindingSource;
+            this.RecentBlocks.DataSource = this.recentBlocksBindingSource;
             this.RecentBlocks.Dock = System.Windows.Forms.DockStyle.Fill;
             this.RecentBlocks.GridColor = System.Drawing.SystemColors.ActiveCaption;
             this.RecentBlocks.Location = new System.Drawing.Point(3, 16);
@@ -1222,9 +1233,9 @@
             this.transactionsDataGridViewTextBoxColumn.Name = "transactionsDataGridViewTextBoxColumn";
             this.transactionsDataGridViewTextBoxColumn.ReadOnly = true;
             // 
-            // transactionPoolBindingSource
+            // recentBlocksBindingSource
             // 
-            this.transactionPoolBindingSource.DataSource = typeof(WalletWrapper.RecentBlocks);
+            this.recentBlocksBindingSource.DataSource = typeof(WalletWrapper.RecentBlocks);
             // 
             // groupBox4
             // 
@@ -1264,7 +1275,7 @@
             this.FeeColumn,
             this.dataGridViewTextBoxColumn3,
             this.dataGridViewTextBoxColumn4});
-            this.TransactionPool.DataSource = this.transactionPoolBindingSource1;
+            this.TransactionPool.DataSource = this.transactionPoolBindingSource;
             this.TransactionPool.Dock = System.Windows.Forms.DockStyle.Fill;
             this.TransactionPool.GridColor = System.Drawing.SystemColors.ActiveCaption;
             this.TransactionPool.Location = new System.Drawing.Point(3, 16);
@@ -1313,9 +1324,9 @@
             this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
             this.dataGridViewTextBoxColumn4.ReadOnly = true;
             // 
-            // transactionPoolBindingSource1
+            // transactionPoolBindingSource
             // 
-            this.transactionPoolBindingSource1.DataSource = typeof(WalletWrapper.TransactionPool);
+            this.transactionPoolBindingSource.DataSource = typeof(WalletWrapper.RecentBlocks);
             // 
             // HeightStatus
             // 
@@ -1372,6 +1383,11 @@
             this.SavePrivateKeys.FileName = "Keys.txt";
             this.SavePrivateKeys.Filter = "Text Files|*txt";
             // 
+            // toolStripMenuItem2
+            // 
+            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(177, 6);
+            // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1412,10 +1428,10 @@
             this.groupBox6.PerformLayout();
             this.groupBox5.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.RecentBlocks)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.transactionPoolBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.recentBlocksBindingSource)).EndInit();
             this.groupBox4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.TransactionPool)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.transactionPoolBindingSource1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.transactionPoolBindingSource)).EndInit();
             this.TrayIconContextMenu.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -1424,13 +1440,13 @@
 
         #endregion
         private System.Windows.Forms.MenuStrip MenuStrip;
-        private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem openWalletToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem importWalletToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem WalletMenu;
+        private System.Windows.Forms.ToolStripMenuItem OpenWalletMenuOption;
+        private System.Windows.Forms.ToolStripMenuItem ImportWalletMenuOption;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem CloseWalletMenu;
+        private System.Windows.Forms.ToolStripMenuItem CloseWalletMenuOption;
         private System.Windows.Forms.OpenFileDialog OpenWalletDialog;
-        private System.Windows.Forms.ToolStripMenuItem createWalletToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem CreateWalletMenuOption;
         private System.Windows.Forms.SaveFileDialog NewWalletDialog;
         private System.Windows.Forms.OpenFileDialog OpenServerPath;
         private System.Windows.Forms.TabPage SendTab;
@@ -1472,11 +1488,11 @@
         private System.Windows.Forms.ProgressBar SyncProgress;
         private System.Windows.Forms.Label SyncPercent;
         private System.Windows.Forms.DataGridView AddressGrid;
-        private System.Windows.Forms.ToolStripMenuItem optionsToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem OptionsMenu;
         private System.Windows.Forms.Button SendToContact;
         private System.Windows.Forms.Button RemoveContact;
         private System.Windows.Forms.Button AddContact;
-        private System.Windows.Forms.ToolStripMenuItem optionsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem OptionsMenuOption;
         private System.Windows.Forms.Button EditContact;
         private System.Windows.Forms.ComboBox WalletAddresses;
         private System.Windows.Forms.Label label17;
@@ -1494,7 +1510,7 @@
         private System.Windows.Forms.Button CreateNewAddress;
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.ComboBox SendFromAddress;
-        private System.Windows.Forms.ToolStripMenuItem openDefaultWalletToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem OpenDefaultMenuOption;
         private System.Windows.Forms.SaveFileDialog SavePrivateKeys;
         private System.Windows.Forms.ContextMenuStrip AddressBookMenu;
         private System.Windows.Forms.ToolStripMenuItem AddressMenuCopyAddress;
@@ -1531,19 +1547,21 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn difficultyDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn transactionsDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridView TransactionPool;
-        private System.Windows.Forms.BindingSource transactionPoolBindingSource1;
         private System.Windows.Forms.DataGridViewTextBoxColumn AmountColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn FeeColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
-        private System.Windows.Forms.ToolStripMenuItem networkToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem NetworkMenu;
         private System.Windows.Forms.ToolStripMenuItem StartNetworkMenuOption;
-        private System.Windows.Forms.ToolStripMenuItem ExportWalletKeys;
+        private System.Windows.Forms.ToolStripMenuItem ExportPrivateKeysMenuOption;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem6;
-        private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem CloseNetworkConnection;
+        private System.Windows.Forms.ToolStripMenuItem AboutMenuOption;
+        private System.Windows.Forms.ToolStripMenuItem CloseNetworkMenuOption;
         private System.Windows.Forms.Label label25;
         private System.Windows.Forms.Label label24;
+        private System.Windows.Forms.BindingSource recentBlocksBindingSource;
+        private System.Windows.Forms.ToolStripMenuItem ResyncMenuOption;
+        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem2;
     }
 }
 

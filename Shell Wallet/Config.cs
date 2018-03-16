@@ -11,21 +11,33 @@ namespace Shell_Wallet
     internal class Config
     {
         #region Variables
+        // File names and paths
         internal const String ConfigFile = "Config.json";
         internal const String AddressBookFile = "Addresses.json";
+        internal static String CurrentDirectory = Directory.GetCurrentDirectory();
+
+        // Local server
         internal static String ServerPath = "";
         internal static String ServerPort = "11911";
         internal static String OriginalServerPassword = "";
         internal static String ServerPassword = "";
+
+        // Daemon server
         internal static String NodeHost = "";
         internal static String NodePort = "";
         internal static bool LocalDaemon = true;
+
+        // Security
         internal static bool GeneratePassword = true;
         internal static bool AllowBlankPasswords = false;
+
+        // Defaults
         internal static String DefaultWalletPath = "";
         internal static String DefaultFee = "0.1";
         internal static String DefaultUnlockTime = "0";
         internal static String DefaultMixin = "6";
+
+        // Refresh rates
         internal static int RefreshRate = 1000;
         internal static int NetworkRefreshRate = 1000;
         internal static int GUIRefreshRate = 1000;
@@ -67,11 +79,11 @@ namespace Shell_Wallet
                 ServerPort = (String)conf["serverPort"];
                 GeneratePassword = (Boolean)conf["generatePassword"];
                 AllowBlankPasswords = (Boolean)conf["allowBlankPasswords"];
+                OriginalServerPassword = (String)conf["serverPassword"];
                 if (GeneratePassword)
                 {
-                    OriginalServerPassword = (String)conf["serverPassword"];
                     ServerPassword = Server.Hash;
-                    Console.WriteLine("Generated server password: " + Server.Hash);
+                    //Console.WriteLine("Generated server password: " + Server.Hash);
                 }
                 else ServerPassword = (String)conf["serverPassword"];
                 LocalDaemon = (Boolean)conf["localDaemon"];
@@ -99,8 +111,7 @@ namespace Shell_Wallet
             JObject conf = new JObject();
             conf["serverPath"] = ServerPath;
             conf["serverPort"] = ServerPort;
-            if (GeneratePassword) conf["serverPassword"] = OriginalServerPassword;
-            else conf["serverPassword"] = ServerPassword;
+            conf["serverPassword"] = OriginalServerPassword;
             conf["generatePassword"] = GeneratePassword;
             conf["allowBlankPasswords"] = AllowBlankPasswords;
             conf["localDaemon"] = LocalDaemon;

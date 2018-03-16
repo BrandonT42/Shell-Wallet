@@ -55,7 +55,6 @@ namespace Shell_Wallet
             {
                 MessageBox.Show("walletd.exe path not found! Please select server location.", "Error");
                 OpenServerPath.ShowDialog();
-                Console.WriteLine("User chose simplewallet.exe path: \"{0}\"", OpenServerPath.FileName);
                 if (!File.Exists(OpenServerPath.FileName)) Application.Exit();
                 Config.ServerPath = OpenServerPath.FileName;
                 Config.Save();
@@ -76,7 +75,7 @@ namespace Shell_Wallet
             Server.OnStart += OnStart;
             Server.OnStop += OnStop;
 
-            // Assign server refresh rate
+            // Assign server variables
             Server.RefreshRate = Config.RefreshRate;
             Server.NetworkRefreshRate = Config.NetworkRefreshRate;
 
@@ -158,11 +157,11 @@ namespace Shell_Wallet
             }
 
             // Change menu elements before running server
-            this.openWalletToolStripMenuItem.Enabled = false;
-            this.openDefaultWalletToolStripMenuItem.Enabled = false;
-            this.importWalletToolStripMenuItem.Enabled = false;
-            this.createWalletToolStripMenuItem.Enabled = false;
-            this.CloseWalletMenu.Enabled = true;
+            this.OpenWalletMenuOption.Enabled = false;
+            this.OpenDefaultMenuOption.Enabled = false;
+            this.ImportWalletMenuOption.Enabled = false;
+            this.CreateWalletMenuOption.Enabled = false;
+            this.CloseWalletMenuOption.Enabled = true;
 
             Console.WriteLine("Loading '{0}'", Path);
 
@@ -182,17 +181,10 @@ namespace Shell_Wallet
             }
 
             // Password incorrect
-            else
-            {
-                // Close loading dialog
-                l.Close();
-                l.Dispose();
+            else MessageBox.Show("Password is incorrect!", "Error");
 
-                // Throw incorrect password error
-                MessageBox.Show("Password is incorrect!", "Error");
-            }
-
-            // Change design elements
+            // Dispose of loading prompt
+            l.Dispose();
         }
 
         // Wallet Loaded
@@ -205,8 +197,8 @@ namespace Shell_Wallet
                 // Enable and disable elements
                 if (this.StartNetworkMenuOption.Enabled)
                     this.StartNetworkMenuOption.Enabled = false;
-                if (!this.CloseNetworkConnection.Enabled && !Server.Alive)
-                    this.CloseNetworkConnection.Enabled = true;
+                if (!this.CloseNetworkMenuOption.Enabled && !Server.Alive)
+                    this.CloseNetworkMenuOption.Enabled = true;
 
                 // Only do these updates if network tab is selected
                 if (this.WalletTabs.SelectedTab.Text == "Network" || this.TotalBlocks.Text == "0")
@@ -225,7 +217,7 @@ namespace Shell_Wallet
             {
                 // Enable and disable elements
                 if (!this.StartNetworkMenuOption.Enabled) this.StartNetworkMenuOption.Enabled = true;
-                if (this.CloseNetworkConnection.Enabled) this.CloseNetworkConnection.Enabled = false;
+                if (this.CloseNetworkMenuOption.Enabled) this.CloseNetworkMenuOption.Enabled = false;
 
                 // Only do these updates if network tab is selected
                 if (this.TotalBlocks.Text != "0") this.TotalBlocks.Text = "0";
@@ -245,31 +237,33 @@ namespace Shell_Wallet
                 if (this.Text == "Shell Wallet")
                     this.Text = "Shell Wallet - \"" + Wallet.FileName + "\"";
 
-                // Enable select elements
-                if (!this.CloseWalletMenu.Enabled)
-                    this.CloseWalletMenu.Enabled = true;
+                // Enable wallet controls
                 if (!this.CopyAddress.Enabled)
                     this.CopyAddress.Enabled = true;
                 if (!this.CreateNewAddress.Enabled)
                     this.CreateNewAddress.Enabled = true;
-                if (!this.ExportWalletKeys.Enabled)
-                    this.ExportWalletKeys.Enabled = true;
                 if (!this.DeleteSelectedAddress.Enabled)
                     this.DeleteSelectedAddress.Enabled = true;
                 if (!this.WalletAddresses.Enabled)
                     this.WalletAddresses.Enabled = true;
 
                 // Update menu options
-                if (this.openWalletToolStripMenuItem.Enabled)
-                    this.openWalletToolStripMenuItem.Enabled = false;
-                if (this.createWalletToolStripMenuItem.Enabled)
-                    this.createWalletToolStripMenuItem.Enabled = false;
-                if (this.importWalletToolStripMenuItem.Enabled)
-                    this.importWalletToolStripMenuItem.Enabled = false;
-                if (this.openDefaultWalletToolStripMenuItem.Enabled)
-                    this.openDefaultWalletToolStripMenuItem.Enabled = false;
-                if (this.CloseNetworkConnection.Enabled)
-                    this.CloseNetworkConnection.Enabled = false;
+                if (this.OpenWalletMenuOption.Enabled)
+                    this.OpenWalletMenuOption.Enabled = false;
+                if (this.OpenDefaultMenuOption.Enabled)
+                    this.OpenDefaultMenuOption.Enabled = false;
+                if (this.CreateWalletMenuOption.Enabled)
+                    this.CreateWalletMenuOption.Enabled = false;
+                if (this.ImportWalletMenuOption.Enabled)
+                    this.ImportWalletMenuOption.Enabled = false;
+                if (!this.ExportPrivateKeysMenuOption.Enabled)
+                    this.ExportPrivateKeysMenuOption.Enabled = true;
+                if (!this.ResyncMenuOption.Enabled)
+                    this.ResyncMenuOption.Enabled = true;
+                if (!this.CloseWalletMenuOption.Enabled)
+                    this.CloseWalletMenuOption.Enabled = true;
+                if (this.CloseNetworkMenuOption.Enabled)
+                    this.CloseNetworkMenuOption.Enabled = false;
 
                 // Change address selection
                 if (this.WalletAddresses.DataSource == null &&
@@ -321,15 +315,11 @@ namespace Shell_Wallet
                 if (this.Text != "Shell Wallet")
                     this.Text = "Shell Wallet";
 
-                // Disable select elements
-                if (this.CloseWalletMenu.Enabled)
-                    this.CloseWalletMenu.Enabled = false;
+                // Disable wallet controls
                 if (this.CopyAddress.Enabled)
                     this.CopyAddress.Enabled = false;
                 if (this.CreateNewAddress.Enabled)
                     this.CreateNewAddress.Enabled = false;
-                if (this.ExportWalletKeys.Enabled)
-                    this.ExportWalletKeys.Enabled = false;
                 if (this.DeleteSelectedAddress.Enabled)
                     this.DeleteSelectedAddress.Enabled = false;
                 if (this.WalletAddresses.Enabled)
@@ -342,18 +332,24 @@ namespace Shell_Wallet
                 this.SyncProgress.Value = 0;
 
                 // Update menu options
-                if (!this.openWalletToolStripMenuItem.Enabled)
-                    this.openWalletToolStripMenuItem.Enabled = true;
-                if (!this.createWalletToolStripMenuItem.Enabled)
-                    this.createWalletToolStripMenuItem.Enabled = true;
-                if (!this.importWalletToolStripMenuItem.Enabled)
-                    this.importWalletToolStripMenuItem.Enabled = true;
-                if (!this.openDefaultWalletToolStripMenuItem.Enabled &&
+                if (!this.OpenWalletMenuOption.Enabled)
+                    this.OpenWalletMenuOption.Enabled = true;
+                if (!this.OpenDefaultMenuOption.Enabled &&
                     Config.DefaultWalletPath != "")
-                    this.openDefaultWalletToolStripMenuItem.Enabled = true;
-                else if (this.openDefaultWalletToolStripMenuItem.Enabled &&
+                    this.OpenDefaultMenuOption.Enabled = true;
+                else if (this.OpenDefaultMenuOption.Enabled &&
                     Config.DefaultWalletPath == "")
-                    this.openDefaultWalletToolStripMenuItem.Enabled = false;
+                    this.OpenDefaultMenuOption.Enabled = false;
+                if (!this.CreateWalletMenuOption.Enabled)
+                    this.CreateWalletMenuOption.Enabled = true;
+                if (!this.ImportWalletMenuOption.Enabled)
+                    this.ImportWalletMenuOption.Enabled = true;
+                if (this.ExportPrivateKeysMenuOption.Enabled)
+                    this.ExportPrivateKeysMenuOption.Enabled = false;
+                if (this.ResyncMenuOption.Enabled)
+                    this.ResyncMenuOption.Enabled = false;
+                if (this.CloseWalletMenuOption.Enabled)
+                    this.CloseWalletMenuOption.Enabled = false;
 
                 // Reset wallet data
                 this.BalanceBox.Text = "";
@@ -535,6 +531,18 @@ namespace Shell_Wallet
             }
         }
 
+        // Resync was selected in the menu
+        private void resyncToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            // Ask if they really want to resync the wallet from zero
+            if (MessageBox.Show("Are you sure you would like to resync the wallet from zero? " +
+                "This resets the block height information and could take a while to re-sync.",
+                "Are you sure?", MessageBoxButtons.OKCancel, MessageBoxIcon.Exclamation) == DialogResult.OK)
+            {
+                Wallet.Resync();
+            }
+        }
+
         // Close wallet selected in menu
         private void closeWalletToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -624,9 +632,10 @@ namespace Shell_Wallet
         // Seleted address changed
         private void WalletAddresses_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (Wallet.Addresses.Count > this.WalletAddresses.SelectedIndex)
+            if (Wallet.Addresses.Count > this.WalletAddresses.SelectedIndex &&
+                this.WalletAddresses.SelectedIndex >= 0)
                 Wallet.SelectedAddress = Wallet.Addresses[this.WalletAddresses.SelectedIndex];
-            Console.WriteLine("Selected address changed to: {0}", Wallet.SelectedAddress);
+            //Console.WriteLine("Selected address changed to: {0}", Wallet.SelectedAddress);
         }
 
         // Copy wallet address to clipboard

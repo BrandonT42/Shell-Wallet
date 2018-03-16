@@ -109,7 +109,7 @@ namespace WalletWrapper
 
 #if DEBUG
             // Show what we're sending
-            //Console.WriteLine("Sending request type {0}", Method);
+            //Console.WriteLine("Sending request type {0}\n{1}", Method, s);
 #endif
 
             try
@@ -135,7 +135,7 @@ namespace WalletWrapper
                 // Return the server response
                 return response;
             }
-            catch (Exception e)
+            catch (WebException e)
             {
                 InternalError = "Error sending request to server: " + e.Message;
                 return ThrowError(InternalError);
@@ -305,11 +305,6 @@ namespace WalletWrapper
             WalletProcess.StartInfo.RedirectStandardOutput = true;
             WalletProcess.StartInfo.RedirectStandardInput = true;
             WalletProcess.StartInfo.RedirectStandardError = true;
-            WalletProcess.OutputDataReceived += (s, e) => {
-                //if (e.Data != null && !e.Data.Contains("WARNING"))
-                    Console.WriteLine("Data received: {0}", e.Data);
-                };
-            WalletProcess.ErrorDataReceived += (s, e) => Console.WriteLine("Server error: {0}", e.Data);
 
             // Whether console should be displayed
             if (!ShowConsoleWindow)
@@ -332,9 +327,6 @@ namespace WalletWrapper
                 WalletPassword = "";
             }
 
-            // DEBUG - print flags
-            Console.WriteLine("{0} {1}", ServerPath, WalletProcess.StartInfo.Arguments);
-
             // Begin the process
             InternalAlive = WalletProcess.Start();
 
@@ -346,6 +338,7 @@ namespace WalletWrapper
             if (!InternalAlive)
             {
                 InternalError = "Could not start server process, check system credentials";
+                WalletProcess = null;
                 return;
             }
 
@@ -355,6 +348,9 @@ namespace WalletWrapper
             // Main loop
             while (Alive)
             {
+                // Check if process as ended
+                if (WalletProcess.HasExited) break;
+
                 // Update wallet
                 Wallet.Update();
 
@@ -368,8 +364,8 @@ namespace WalletWrapper
                 Thread.Sleep(RefreshRate);
             }
 
-            // Wait for process to exit
-            WalletProcess.Kill();
+            // Force kill wallet process
+            if (!WalletProcess.HasExited) WalletProcess.Kill();
             WalletProcess = null;
 
             // Reset wallet data
@@ -495,7 +491,7 @@ namespace WalletWrapper
                 p.StartInfo.Arguments += " -p " + WalletPassword;
                 WalletPassword = "";
             }
-            Console.WriteLine(p.StartInfo.Arguments);
+            //Console.WriteLine(p.StartInfo.Arguments);
 
             // Run server
             p.Start();
@@ -543,7 +539,7 @@ namespace WalletWrapper
             }
             p.StartInfo.Arguments += " --view-key " + ViewKey;
             p.StartInfo.Arguments += " --spend-key " + SpendKey;
-            Console.WriteLine(p.StartInfo.Arguments);
+            //Console.WriteLine(p.StartInfo.Arguments);
 
             // Run server
             p.Start();
@@ -582,7 +578,7 @@ namespace WalletWrapper
             }
 
             // Add flags according to supplied arguments
-            p.StartInfo.Arguments = "--log-level 0 --rpc-legacy-security";
+            p.StartInfo.Arguments = "--log-level 1 --rpc-legacy-security";
             p.StartInfo.Arguments += " --address";
             p.StartInfo.Arguments += " -w \"" + Wallet.Path + "\"";
             if (WalletPassword != "")
@@ -590,16 +586,17 @@ namespace WalletWrapper
                 p.StartInfo.Arguments += " -p " + WalletPassword;
                 WalletPassword = "";
             }
-            Console.WriteLine(p.StartInfo.Arguments);
+            //Console.WriteLine(p.StartInfo.Arguments);
 
             // Run server
             p.Start();
             p.WaitForExit();
 
+            // Get result
             String Output = p.StandardOutput.ReadToEnd();
 
             // Check if successful
-            if (!Output.ToLower().Contains("failed to load container")) return true;
+            if (!Output.ToLower().Contains("password")) return true;
             else return false;
         }
 
@@ -1292,6 +1289,14 @@ namespace WalletWrapper
                 JObject r = Server.DeleteAddress(SelectedAddress);
                 Update();
             }
+        }
+
+        /// <summary>
+        /// Resyncs the wallet from zero
+        /// </summary>
+        public static void Resync()
+        {
+            JObject result = Server.Reset();
         }
         #endregion
     }
