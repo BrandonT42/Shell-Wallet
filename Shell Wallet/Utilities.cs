@@ -11,23 +11,33 @@ namespace Shell_Wallet
     internal class ConsoleWriter : TextWriter
     {
         /// <summary>
-        /// Holds a list of all lines from the console
-        /// </summary>
-        private static List<string> lines = new List<string>();
-
-        /// <summary>
         /// Holds original console writer
         /// </summary>
-        private TextWriter original;
+        private static TextWriter OriginalConsoleWriter;
+
+        /// <summary>
+        /// Creates a debug console window
+        /// </summary>
+        private static DebugWindow Debug;
+
+        /// <summary>
+        /// Holds the console output in a single string
+        /// </summary>
+        internal static String Output;
 
         /// <summary>
         /// Init
         /// </summary>
-        /// <param name="original"></param>
-        internal ConsoleWriter(TextWriter original)
+        internal ConsoleWriter(TextWriter OriginalWriter)
         {
             // Store original console writer
-            this.original = original;
+            OriginalConsoleWriter = OriginalWriter;
+            
+            // Create a debug console
+            Debug = new DebugWindow();
+
+            // Sow debug console
+            if (Config.Debug) Debug.Show();
         }
 
         /// <summary>
@@ -44,41 +54,31 @@ namespace Shell_Wallet
         /// <param name="value"></param>
         public override void WriteLine(string value)
         {
-            // Add line to log
-            lines.Add(value);
-
-            // Add line to console
-            original.WriteLine(value);
-        }
-
-        /// <summary>
-        /// Returns all lines written to console as a single string
-        /// </summary>
-        /// <returns></returns>
-        internal string GetLines()
-        {
-            string output = "";
-            foreach (string s in lines.ToArray())
-            {
-                output += s + "\r\n";
-            }
-            return output;
+            // Add line to debug console
+            if (Debug != null)
+                Output += DateTime.Now.ToShortDateString() + " " +
+                    DateTime.Now.ToLongTimeString() + " : " + value + "\r\n";
         }
 
         /// <summary>
         /// Flush output to log file
         /// </summary>
-        internal void FlushOutput()
+        internal static void FlushOutput()
         {
             // Set to original writer
-            Console.SetOut(original);
-            
-            /*
+            Console.SetOut(OriginalConsoleWriter);
+
+            // Close debug console
+            if (Debug != null) Debug.Close();
+
             // Flush log to text file
-            Console.WriteLine("Flushing output to log file");
-            if (!File.Exists("./Log.txt")) File.Create("./Log.txt");
-            File.WriteAllText("./Log.txt", GetLines());
-            */
+            if (Config.Log)
+            {
+                Console.WriteLine("Outputing console data to log file");
+                String p = Path.Combine(Config.DataPath, Config.LogFile);
+                if (!File.Exists(p)) File.Create(p).Dispose();
+                File.WriteAllText(p, Output);
+            }
         }
     }
 }

@@ -18,12 +18,28 @@ namespace Shell_Wallet
     internal partial class MainWindow : Form
     {
         // Initialize window
-        internal MainWindow()
+        internal MainWindow(String[] args)
         {
+            // Initialize form window
             InitializeComponent();
+
+            // Check for arguments
+            for (int i = 0; i < args.Length; i++)
+            {
+                if (args[i].ToLower().IndexOf("testnet") > -1)
+                    Config.Testnet = true;
+                else if (args[i].ToLower().IndexOf("debug") > -1)
+                    Config.Debug = true;
+                else if (args[i].ToLower().IndexOf("log") > -1)
+                    Config.Log = true;
+            }
+
+            // Setup console output
+            writer = new ConsoleWriter(Console.Out);
+            Console.SetOut(writer);
+
+            // Add load event
             Load += OnLoad;
-            this.RecentBlocks.Font = this.AddressGrid.Font;
-            this.TransactionPool.Font = this.AddressGrid.Font;
         }
 
         #region Variables
@@ -35,16 +51,16 @@ namespace Shell_Wallet
         // Runs when application is first loaded
         private void OnLoad(object sender, EventArgs e)
         {
-            // Setup console output
-            writer = new ConsoleWriter(Console.Out);
-            Console.SetOut(writer);
-
             // Load configuration
             Config.Load();
 
             // Load address book
             AddressBook.Load();
             this.AddressGrid.DataSource = AddressBook.DataSource;
+
+            // Set internal font (because designer is stupid and doesn't show fonts on datagridviews
+            this.RecentBlocks.Font = this.AddressGrid.Font;
+            this.TransactionPool.Font = this.AddressGrid.Font;
 
             // Set a few element defaults
             this.SendFromAddress.SelectedIndex = 0;
@@ -71,9 +87,12 @@ namespace Shell_Wallet
             // Assign event handlers
             Application.ThreadExit += OnExit;
             this.Resize += new System.EventHandler(this.MainWindow_Resize);
-            Server.OnTick += OnTick;
             Server.OnStart += OnStart;
             Server.OnStop += OnStop;
+            Server.OnTick += OnTick;
+            Server.OnNetworkStart += OnNetworkStart;
+            Server.OnNetworkStop += OnNetworkStop;
+            Server.OnNetworkTick += OnNetworkTick;
 
             // Assign server variables
             Server.RefreshRate = Config.RefreshRate;
@@ -91,8 +110,8 @@ namespace Shell_Wallet
         {
             // Exit
             Server.Stop();
+            Config.Save();
             AddressBook.Save();
-            writer.FlushOutput();
         }
 
         // Form closing
@@ -104,24 +123,40 @@ namespace Shell_Wallet
                 e.Cancel = true;
         }
 
-        // Triggers when the server is started
+        // Triggers when the rpc server is started
         private void OnStart(object sender, EventArgs e)
         {
-            Console.WriteLine("Server started!");
+            Console.WriteLine("RPC server started");
         }
 
-        // Triggers when the server is stopped
+        // Triggers when the rpc server is stopped
         private void OnStop(object sender, EventArgs e)
         {
-            Console.WriteLine("Server stopped!");
-            //ResetElements();
+            Console.WriteLine("RPC server stopped");
         }
 
-        // Triggers whenever the server update thread runs
+        // Triggers whenever the server makes an update
         private void OnTick(object sender, EventArgs e)
         {
-            //Wallet.Save();
-            //Thread.Sleep(Config.RefreshRate);
+            //
+        }
+
+        // Triggers when the network connection is made
+        private void OnNetworkStart (object sender, EventArgs e)
+        {
+            Console.WriteLine("Network connection made");
+        }
+
+        // Triggers when the network connection is closed
+        private void OnNetworkStop(object sender, EventArgs e)
+        {
+            Console.WriteLine("Network connection closed");
+        }
+
+        // Triggers when the network makes an update
+        private void OnNetworkTick(object sender, EventArgs e)
+        {
+            //
         }
 
         //Triggers in main timer loop

@@ -83,6 +83,12 @@
     <Compile Include="ContactPrompt.Designer.cs">
       <DependentUpon>ContactPrompt.cs</DependentUpon>
     </Compile>
+    <Compile Include="Debug Window.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Debug Window.Designer.cs">
+      <DependentUpon>Debug Window.cs</DependentUpon>
+    </Compile>
     <Compile Include="ImportKeys.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -122,6 +128,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ContactPrompt.resx">
       <DependentUpon>ContactPrompt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Debug Window.resx">
+      <DependentUpon>Debug Window.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ImportKeys.resx">
       <DependentUpon>ImportKeys.cs</DependentUpon>

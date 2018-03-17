@@ -10,11 +10,15 @@ namespace Shell_Wallet
         /// The main entry point for the application.
         /// </summary>
         [STAThread]
-        static void Main()
+        static void Main(String[] args)
         {
+            // Set up application
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MainWindow());
+            Application.Run(new MainWindow(args));
+
+            // Log output
+            ConsoleWriter.FlushOutput();
         }
     }
 }

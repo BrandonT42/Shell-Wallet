@@ -37,6 +37,9 @@ namespace WalletWrapper
         public static EventHandler OnStart;
         public static EventHandler OnStop;
         public static EventHandler OnTick;
+        public static EventHandler OnNetworkStart;
+        public static EventHandler OnNetworkStop;
+        public static EventHandler OnNetworkTick;
         public static int RefreshRate = 1000;
         public static int NetworkRefreshRate = 1000;
 
@@ -106,11 +109,6 @@ namespace WalletWrapper
 
             // Serialize JObject into a string
             String s = JsonConvert.SerializeObject(j);
-
-#if DEBUG
-            // Show what we're sending
-            //Console.WriteLine("Sending request type {0}\n{1}", Method, s);
-#endif
 
             try
             {
@@ -185,11 +183,6 @@ namespace WalletWrapper
                 // Serialize JObject into a string
                 String s = JsonConvert.SerializeObject(j);
 
-#if DEBUG
-                // Show what we're sending
-                //Console.WriteLine("Sending daemon request type {0}:\r\n{1}", Method, j.ToString(Formatting.None));
-#endif
-
                 try
                 {
                     // Send bytes to server
@@ -227,11 +220,6 @@ namespace WalletWrapper
                 HttpWebRequest r = (HttpWebRequest)WebRequest.Create("http://" + HostAddress + ":" + HostPort + "/json_rpc");
                 r.ContentType = "application/json-rpc";
                 r.Method = "POST";
-
-#if DEBUG
-                // Show what we're sending
-                //Console.WriteLine("Sending daemon request type {0}:\r\n{1}", Method, Request);
-#endif
 
                 try
                 {
@@ -368,11 +356,11 @@ namespace WalletWrapper
             if (!WalletProcess.HasExited) WalletProcess.Kill();
             WalletProcess = null;
 
-            // Reset wallet data
-            Wallet.Reset();
-
             // Trigger stop event
             OnStop.Invoke(new Server(), EventArgs.Empty);
+
+            // Reset wallet data
+            Wallet.Reset();
         }
         #endregion
 
@@ -397,14 +385,23 @@ namespace WalletWrapper
                 // Begin new thread for updates
                 Thread s = new Thread(delegate ()
                 {
+                    // Invoke start event
+                    OnNetworkStart.Invoke(new Server(), null);
+
                     while (DaemonVerified)
                     {
                         // Update network
                         Network.Update();
 
+                        // Invoke update event
+                        OnNetworkTick.Invoke(new Server(), null);
+
                         // Sleep for the desired refresh rate
                         Thread.Sleep(NetworkRefreshRate);
                     }
+
+                    // Invoke stop event
+                    OnNetworkStop.Invoke(new Server(), null);
                 });
                 s.Name = "Network Thread";
                 s.Start();
@@ -429,7 +426,7 @@ namespace WalletWrapper
         /// Starts the RPC server thread
         /// </summary>
         public static void StartWallet(String Path, String WalletPath, String Password, String ServerPassword = "", String ServerPort = "11911",
-            bool Local = false, String NodeHost = "daemon.turtle.link", String NodePort = "11898", Boolean ShowWindow = false)
+            bool Local = false, String NodeHost = "daemon.turtle.link", String NodePort = "11898", Boolean ShowWindow = false, Boolean Testnet = false)
         {
             // Check if server is already alive
             if (Alive)
@@ -460,7 +457,7 @@ namespace WalletWrapper
         /// Creates a new wallet container
         /// Returns true if successful
         /// </summary>
-        public static bool CreateWallet(String Path, String WalletPath, String Password)
+        public static bool CreateWallet(String Path, String WalletPath, String Password, Boolean Testnet = false)
         {
             // Assign local variables
             ServerPath = Path;
@@ -506,7 +503,7 @@ namespace WalletWrapper
         /// Imports keys to new wallet
         /// Returns true if successful
         /// </summary>
-        public static bool ImportWallet(String Path, String WalletPath, String Password, String ViewKey, String SpendKey)
+        public static bool ImportWallet(String Path, String WalletPath, String Password, String ViewKey, String SpendKey, Boolean Testnet = false)
         {
             // Assign local variables
             ServerPath = Path;
@@ -553,7 +550,7 @@ namespace WalletWrapper
         /// <summary>
         /// Checks to see if a password is correct (TODO - fix this, it's slow)
         /// </summary>
-        public static bool CheckPassword(String Path, String WalletPath, String Password)
+        public static bool CheckPassword(String Path, String WalletPath, String Password, Boolean Testnet = false)
         {
             // Assign local variables
             ServerPath = Path;
@@ -608,6 +605,11 @@ namespace WalletWrapper
             if (Alive)
             {
                 Wallet.Save();
+                OnStop.Invoke(new Server(), null);
+            }
+            if (DaemonVerified)
+            {
+                OnNetworkStop.Invoke(new Server(), null);
             }
             Wallet.Reset();
             InternalAlive = false;
@@ -791,10 +793,12 @@ namespace WalletWrapper
             // Output response
             if (result["error"] == null)
             {
+                Console.WriteLine("Send transaction hash: {0}", result["result"]["hash"]);
                 return (JObject)result["result"];
             }
             else
             {
+                Console.WriteLine("Error sending transaction: {0}", result["error"]["message"]);
                 result["error"] = result["error"]["message"];
                 return (JObject)result;
             }
@@ -1232,6 +1236,7 @@ namespace WalletWrapper
         public static void Save()
         {
             Server.Save();
+            Console.WriteLine("Saving wallet");
         }
 
         /// <summary>
@@ -1254,8 +1259,11 @@ namespace WalletWrapper
 
             // Update selected address
             if (SelectedAddress == "" && Addresses.Count > 0)
+            {
                 SelectedAddress = Addresses[0];
-            
+                Console.WriteLine("Selected address changed to {0}", SelectedAddress);
+            }
+
             // Update overall balance
             Balances = Server.GetBalance();
 
@@ -1290,6 +1298,7 @@ namespace WalletWrapper
         public static void Resync()
         {
             JObject result = Server.Reset();
+            Console.WriteLine("Resyncing wallet");
         }
         #endregion
     }

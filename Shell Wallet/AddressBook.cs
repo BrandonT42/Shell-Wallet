@@ -48,14 +48,28 @@ namespace Shell_Wallet
         /// </summary>
         internal static void Load()
         {
+            Console.WriteLine("Loading address book");
+
+            // Check that the data folder exists
+            if (!Directory.Exists(Config.DataPath)) Directory.CreateDirectory(Config.DataPath);
+            String p = Path.Combine(Config.DataPath, Config.AddressBookFile);
+
+            // Check that address book file exists and create it if it doesn't
+            if (!File.Exists(p))
+            {
+                Console.WriteLine("Address book not found, creating it now");
+                File.Create(p).Dispose();
+                File.WriteAllText(p, "[]");
+            }
+
+            // Load information from the address book
             String s = "[]";
-            String p = Path.Combine(Path.Combine(
-                Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),
-                "Shell Wallet"), Config.AddressBookFile);
             using (StreamReader r = new StreamReader(p))
             {
                 s = r.ReadToEnd();
             }
+
+            // Set up our datasource
             DataSource = JsonConvert.DeserializeObject<BindingList<Contact>>(s);
         }
 
