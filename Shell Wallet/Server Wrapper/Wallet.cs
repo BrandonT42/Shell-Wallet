@@ -119,10 +119,7 @@ namespace RPCWrapper
                 return System.IO.Path.GetFileNameWithoutExtension(Path);
             }
         }
-        #endregion
-        #endregion
-
-        #region Wallet Access Functions
+        
         /// <summary>
         /// Returns total balance in correct decimal format
         /// </summary>
@@ -134,8 +131,8 @@ namespace RPCWrapper
                 if (Balances != null && Balances["availableBalance"] != null)
                 {
                     String s = (String)Balances["availableBalance"];
-                    if (s.Length < 3) return "0." + s;
-                    else return s.Insert(s.Length - 2, ".");
+                    if (s.Length < Server.CurrencyDecimals + 1) return "0." + s;
+                    else return s.Insert(s.Length - Server.CurrencyDecimals, ".");
                 }
                 else return "0";
             }
@@ -151,8 +148,8 @@ namespace RPCWrapper
                 if (Balances != null && Balances["lockedAmount"] != null)
                 {
                     String s = (String)Balances["lockedAmount"];
-                    if (s.Length < 3) return "0." + s;
-                    else return s.Insert(s.Length - 2, ".");
+                    if (s.Length < Server.CurrencyDecimals + 1) return "0." + s;
+                    else return s.Insert(s.Length - Server.CurrencyDecimals, ".");
                 }
                 else return "0";
             }
@@ -170,8 +167,8 @@ namespace RPCWrapper
                 {
                     String s = (String)SelectedBalances["availableBalance"];
                     if (s == null) return "0";
-                    if (s.Length < 3) return "0." + s;
-                    else return s.Insert(s.Length - 2, ".");
+                    if (s.Length < Server.CurrencyDecimals + 1) return "0." + s;
+                    else return s.Insert(s.Length - Server.CurrencyDecimals, ".");
                 }
                 else return "0";
             }
@@ -188,8 +185,8 @@ namespace RPCWrapper
                 {
                     String s = (String)SelectedBalances["lockedAmount"];
                     if (s == null) return "0";
-                    if (s.Length < 3) return "0." + s;
-                    else return s.Insert(s.Length - 2, ".");
+                    if (s.Length < Server.CurrencyDecimals + 1) return "0." + s;
+                    else return s.Insert(s.Length - Server.CurrencyDecimals, ".");
                 }
                 else return "0";
             }
@@ -259,6 +256,7 @@ namespace RPCWrapper
                 return "0";
             }
         }
+        #endregion
         #endregion
 
         #region Utilities

@@ -127,6 +127,11 @@ namespace RPCWrapper
                 return s;
             }
         }
+
+        /// <summary>
+        /// Defines how many decimal places are in the currency
+        /// </summary>
+        public static int CurrencyDecimals = 2;
         #endregion
         #endregion
 

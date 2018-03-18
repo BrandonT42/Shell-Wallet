@@ -118,12 +118,12 @@ namespace RPCWrapper
         /// <summary>
         /// Gets the current block reward
         /// </summary>
-        public static int Reward
+        public static double Reward
         {
             get
             {
                 if (LastBlockHeader != null && LastBlockHeader["block_header"] != null)
-                    return (int)LastBlockHeader["block_header"]["reward"];
+                    return (double)LastBlockHeader["block_header"]["reward"] / Math.Pow(10, Server.CurrencyDecimals);
                 else return 0;
             }
         }
@@ -150,7 +150,7 @@ namespace RPCWrapper
             {
                 if (LastBlock != null && LastBlock["block"] != null)
                 {
-                    return (double)(LastBlock["block"]["alreadyGeneratedCoins"]) / 100;
+                    return (double)LastBlock["block"]["alreadyGeneratedCoins"] / Math.Pow(10, Server.CurrencyDecimals);
                 }
                 else return 0;
             }
