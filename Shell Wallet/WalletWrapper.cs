@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Net;
-using System.Net.NetworkInformation;
+using System.Linq;
 using System.Net.Sockets;
 using System.Security.Cryptography;
 using System.Text;
@@ -29,7 +29,7 @@ namespace WalletWrapper
         private static Process WalletProcess;
         private static String ServerPath, RPCPort, RPCPassword, HostAddress,
             HostPort, WalletPassword, InternalError, InternalHash;
-        private static Boolean LocalServer, ShowConsoleWindow, InternalAlive;
+        private static Boolean LocalServer, InternalAlive;
         internal static Boolean CanUpdate = false;
         internal static Boolean DaemonVerified = false;
         #endregion
@@ -42,6 +42,7 @@ namespace WalletWrapper
         public static EventHandler OnNetworkTick;
         public static int RefreshRate = 1000;
         public static int NetworkRefreshRate = 1000;
+        public static Boolean Testnet = false;
 
         /// <summary>
         /// Returns true if server is running
@@ -294,18 +295,16 @@ namespace WalletWrapper
             WalletProcess.StartInfo.RedirectStandardInput = true;
             WalletProcess.StartInfo.RedirectStandardError = true;
 
-            // Whether console should be displayed
-            if (!ShowConsoleWindow)
-            {
-                WalletProcess.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
-                WalletProcess.StartInfo.CreateNoWindow = true;
-            }
+            // Don't show console
+            WalletProcess.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
+            WalletProcess.StartInfo.CreateNoWindow = true;
 
             // Add flags according to supplied arguments
             if (LocalServer) WalletProcess.StartInfo.Arguments = "--local";
             else WalletProcess.StartInfo.Arguments = "--daemon-address " + HostAddress + " --daemon-port " + HostPort;
             if (RPCPassword != "") WalletProcess.StartInfo.Arguments += " --rpc-password " + RPCPassword;
             else WalletProcess.StartInfo.Arguments += " --rpc-legacy-security";
+            if (Testnet) WalletProcess.StartInfo.Arguments += " --testnet";
             WalletProcess.StartInfo.Arguments += " --bind-port " + RPCPort;
             WalletProcess.StartInfo.Arguments += " --log-level 0 --allow-local-ip";
             WalletProcess.StartInfo.Arguments += " -w \"" + Wallet.Path + "\"";
@@ -426,7 +425,7 @@ namespace WalletWrapper
         /// Starts the RPC server thread
         /// </summary>
         public static void StartWallet(String Path, String WalletPath, String Password, String ServerPassword = "", String ServerPort = "11911",
-            bool Local = false, String NodeHost = "daemon.turtle.link", String NodePort = "11898", Boolean ShowWindow = false, Boolean Testnet = false)
+            bool Local = false, String NodeHost = "daemon.turtle.link", String NodePort = "11898")
         {
             // Check if server is already alive
             if (Alive)
@@ -445,7 +444,6 @@ namespace WalletWrapper
             if (!LocalServer) HostAddress = NodeHost;
             else HostAddress = "127.0.0.1";
             HostPort = NodePort;
-            ShowConsoleWindow = ShowWindow;
 
             // Create a thread to run the server in
             Thread s = new Thread(RunWallet);
@@ -457,7 +455,7 @@ namespace WalletWrapper
         /// Creates a new wallet container
         /// Returns true if successful
         /// </summary>
-        public static bool CreateWallet(String Path, String WalletPath, String Password, Boolean Testnet = false)
+        public static bool CreateWallet(String Path, String WalletPath, String Password)
         {
             // Assign local variables
             ServerPath = Path;
@@ -474,11 +472,8 @@ namespace WalletWrapper
             p.StartInfo.UseShellExecute = false;
             p.StartInfo.RedirectStandardOutput = true;
             p.OutputDataReceived += (s, e) => Console.WriteLine(e.Data);
-            if (!ShowConsoleWindow)
-            {
-                p.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
-                p.StartInfo.CreateNoWindow = true;
-            }
+            p.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
+            p.StartInfo.CreateNoWindow = true;
 
             // Add flags according to supplied arguments
             p.StartInfo.Arguments = "--log-level 0 -g";
@@ -503,7 +498,7 @@ namespace WalletWrapper
         /// Imports keys to new wallet
         /// Returns true if successful
         /// </summary>
-        public static bool ImportWallet(String Path, String WalletPath, String Password, String ViewKey, String SpendKey, Boolean Testnet = false)
+        public static bool ImportWallet(String Path, String WalletPath, String Password, String ViewKey, String SpendKey)
         {
             // Assign local variables
             ServerPath = Path;
@@ -520,11 +515,8 @@ namespace WalletWrapper
             p.StartInfo.UseShellExecute = false;
             p.StartInfo.RedirectStandardOutput = true;
             p.OutputDataReceived += (s, e) => Console.WriteLine(e.Data);
-            if (!ShowConsoleWindow)
-            {
-                p.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
-                p.StartInfo.CreateNoWindow = true;
-            }
+            p.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
+            p.StartInfo.CreateNoWindow = true;
 
             // Add flags according to supplied arguments
             p.StartInfo.Arguments = "--log-level 0 -g";
@@ -550,7 +542,7 @@ namespace WalletWrapper
         /// <summary>
         /// Checks to see if a password is correct (TODO - fix this, it's slow)
         /// </summary>
-        public static bool CheckPassword(String Path, String WalletPath, String Password, Boolean Testnet = false)
+        public static bool CheckPassword(String Path, String WalletPath, String Password)
         {
             // Assign local variables
             ServerPath = Path;
@@ -568,11 +560,8 @@ namespace WalletWrapper
             p.StartInfo.RedirectStandardOutput = true;
             String output = "";
             p.OutputDataReceived += (s, e) => output += e.Data;
-            if (!ShowConsoleWindow)
-            {
-                p.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
-                p.StartInfo.CreateNoWindow = true;
-            }
+            p.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
+            p.StartInfo.CreateNoWindow = true;
 
             // Add flags according to supplied arguments
             p.StartInfo.Arguments = "--log-level 1 --rpc-legacy-security";
@@ -897,22 +886,23 @@ namespace WalletWrapper
         /// <summary>
         /// Safely encrypts a string using the generated server hash
         /// </summary>
-        public static String SafeEncrypt(String s)
+        public static string SafeEncrypt(String Entry)
         {
-            byte[] clearBytes = Encoding.Unicode.GetBytes(s);
-            using (Aes encryptor = Aes.Create())
+            HashAlgorithm algorithm = new SHA256Managed();
+            byte[] b = Encoding.ASCII.GetBytes(Entry);
+            byte[] salt = Encoding.ASCII.GetBytes(Hash);
+            byte[] plainTextWithSaltBytes =
+              new byte[b.Length + salt.Length];
+
+            for (int i = 0; i < b.Length; i++)
             {
-                Rfc2898DeriveBytes pdb = new Rfc2898DeriveBytes(Hash, new byte[] { 0x49, 0x76, 0x61, 0x6e, 0x20, 0x4d, 0x65, 0x64, 0x76, 0x65, 0x64, 0x65, 0x76 });
-                encryptor.Key = pdb.GetBytes(32);
-                encryptor.IV = pdb.GetBytes(16);
-                using (MemoryStream ms = new MemoryStream())
-                using (CryptoStream cs = new CryptoStream(ms, encryptor.CreateEncryptor(), CryptoStreamMode.Write))
-                {
-                    cs.Write(clearBytes, 0, clearBytes.Length);
-                    s = Convert.ToBase64String(ms.ToArray());
-                }
+                plainTextWithSaltBytes[i] = b[i];
             }
-            return s;
+            for (int i = 0; i < salt.Length; i++)
+            {
+                plainTextWithSaltBytes[b.Length + i] = salt[i];
+            }
+            return Convert.ToBase64String(algorithm.ComputeHash(plainTextWithSaltBytes));
         }
 
         /// <summary>
@@ -1072,6 +1062,9 @@ namespace WalletWrapper
             }
         }
 
+        /// <summary>
+        /// Returns the file name of the wallet, without extensions
+        /// </summary>
         public static String FileName
         {
             get

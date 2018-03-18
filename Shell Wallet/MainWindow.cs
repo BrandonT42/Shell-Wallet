@@ -98,6 +98,13 @@ namespace Shell_Wallet
             Server.RefreshRate = Config.RefreshRate;
             Server.NetworkRefreshRate = Config.NetworkRefreshRate;
 
+            // Testnet mode
+            if (Config.Testnet)
+            {
+                Server.Testnet = Config.Testnet;
+                this.Text = "Shell Wallet (TESTNET)";
+            }
+
             // Assign update timer
             System.Windows.Forms.Timer t = new System.Windows.Forms.Timer();
             t.Tick += OnTimerTick;
@@ -208,7 +215,7 @@ namespace Shell_Wallet
             {
                 // Start the server
                 Server.StartWallet(Config.ServerPath, Path, Password, Config.ServerPassword, Config.ServerPort,
-                    Config.LocalDaemon, Config.NodeHost, Config.NodePort, false);
+                    Config.LocalDaemon, Config.NodeHost, Config.NodePort);
             }
 
             // Password incorrect
@@ -265,8 +272,10 @@ namespace Shell_Wallet
             if (Server.Alive)
             {
                 // Set window name
-                if (this.Text == "Shell Wallet")
+                if (this.Text == "Shell Wallet" && !Config.Testnet)
                     this.Text = "Shell Wallet - \"" + Wallet.FileName + "\"";
+                else if (this.Text == "Shell Wallet (TESTNET)" && Config.Testnet)
+                    this.Text = "Shell Wallet (TESTNET) - \"" + Wallet.FileName + "\"";
 
                 // Enable wallet controls
                 if (!this.CopyAddress.Enabled)
@@ -343,8 +352,10 @@ namespace Shell_Wallet
             else
             {
                 // Set window name
-                if (this.Text != "Shell Wallet")
+                if (this.Text != "Shell Wallet" && !Config.Testnet)
                     this.Text = "Shell Wallet";
+                else if (this.Text != "Shell Wallet (TESTNET)" && Config.Testnet)
+                    this.Text = "Shell Wallet (TESTNET)";
 
                 // Disable wallet controls
                 if (this.CopyAddress.Enabled)
@@ -501,30 +512,47 @@ namespace Shell_Wallet
         {
             // Only open if server isn't running
             if (Server.Alive) return;
-            
+
             // Get new file location
-            if (this.NewWalletDialog.ShowDialog() == DialogResult.OK)
+            if (this.NewWalletDialog.ShowDialog() != DialogResult.OK) return;
+
+
+            // Get path
+            String i = this.NewWalletDialog.FileName;
+
+            // Make sure file doesn't exist
+            if (File.Exists(i))
             {
-                // Get path
-                String i = this.NewWalletDialog.FileName;
+                MessageBox.Show("Cannot overwrite existing fies when creating a new wallet", "Error");
+                return;
+            }
 
-                // Make sure file doesn't exist
-                if (File.Exists(i)) return;
+            // Get password
+            EnterPassword:
+            PasswordPrompt p = new PasswordPrompt();
+            if (p.ShowDialog() != DialogResult.OK) return;
 
-                // Get password
-                PasswordPrompt p = new PasswordPrompt();
-                if (p.ShowDialog() == DialogResult.OK)
-                {
-                    // Get password
-                    String s = p.GetResult();
+            // Get password
+            String s = p.GetResult();
 
-                    // Create wallet
-                    if (Server.CreateWallet(Config.ServerPath, i, s) == true)
-                    {
-                        // Open wallet if successful
-                        OpenWallet(i, s);
-                    }
-                }
+            // Check if password is blank
+            if (s.Length < 1 && !Config.AllowBlankPasswords)
+            {
+                MessageBox.Show("Please enter a password or choose to allow creation of " +
+                    "wallets without passwords under the security tab in the options menu", "Error");
+                goto EnterPassword;
+            }
+
+            // Create wallet
+            if (Server.CreateWallet(Config.ServerPath, i, s) == true)
+            {
+                // Open wallet if successful
+                OpenWallet(i, s);
+            }
+
+            else
+            {
+                MessageBox.Show("Failed to create wallet", "Error");
             }
         }
 
@@ -545,8 +573,13 @@ namespace Shell_Wallet
             String i = this.NewWalletDialog.FileName;
 
             // Make sure file doesn't exist
-            if (File.Exists(i)) return;
+            if (File.Exists(i))
+            {
+                MessageBox.Show("Cannot overwrite existing fies when importing a wallet", "Error");
+                return;
+            }
 
+            EnterPassword:
             // Get password
             PasswordPrompt p = new PasswordPrompt();
             if (p.ShowDialog() != DialogResult.OK) return;
@@ -554,11 +587,57 @@ namespace Shell_Wallet
             // Get password
             String s = p.GetResult();
 
+            // Check if password is blank
+            if (s.Length < 1 && !Config.AllowBlankPasswords)
+            {
+                MessageBox.Show("Please enter a password or choose to allow creation of " +
+                    "wallets without passwords under the security tab in the options menu", "Error");
+                goto EnterPassword;
+            }
+
             // Create wallet
             if (Server.ImportWallet(Config.ServerPath, i, s, k.ViewKey, k.SpendKey) == true)
             {
                 // Open wallet if successful
                 OpenWallet(i, s);
+            }
+
+            // Wallet creationg failed
+            else
+            {
+                MessageBox.Show("Failed to import wallet, te entered keys may be incorrect");
+            }
+        }
+
+        // Export private keys selected in menu
+        private void viewWalletKeysToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            // Make sure server is running
+            if (!Server.Alive) return;
+
+            // Prompt for password
+            PasswordPrompt p = new PasswordPrompt();
+            if (p.ShowDialog() != DialogResult.OK) return;
+
+            // Check if password is correct
+            String s = Server.SafeEncrypt(p.GetResult());
+            if (s == Wallet.Password)
+            {
+                if (SavePrivateKeys.ShowDialog() == DialogResult.OK)
+                {
+                    if (!File.Exists(SavePrivateKeys.FileName))
+                        File.Create(SavePrivateKeys.FileName).Dispose();
+                    File.WriteAllText(SavePrivateKeys.FileName,
+                        "Keep these keys private, anyone who has access to them has access to your wallet!\r\n\r\n" +
+                        "View Key: " + Wallet.ViewKey + "\r\npublic Spend Key: " + Wallet.PublicSpendKey +
+                        "\r\nPrivate Spend Key: " + Wallet.PrivateSpendKey);
+                    Process.Start(SavePrivateKeys.FileName);
+                }
+            }
+            else
+            {
+                // Password incorrect
+                MessageBox.Show("Password incorrect", "Error");
             }
         }
 
@@ -568,7 +647,7 @@ namespace Shell_Wallet
             // Ask if they really want to resync the wallet from zero
             if (MessageBox.Show("Are you sure you would like to resync the wallet from zero? " +
                 "This resets the block height information and could take a while to re-sync.",
-                "Are you sure?", MessageBoxButtons.OKCancel, MessageBoxIcon.Exclamation) == DialogResult.OK)
+                "Are you sure?", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation) == DialogResult.Yes)
             {
                 Wallet.Resync();
             }
@@ -609,38 +688,6 @@ namespace Shell_Wallet
         #endregion
 
         #region Options
-        // Export private keys selected in menu
-        private void viewWalletKeysToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            // Make sure server is running
-            if (!Server.Alive) return;
-
-            // Prompt for password
-            PasswordPrompt p = new PasswordPrompt();
-            if (p.ShowDialog() == DialogResult.OK)
-            {
-                String s = Server.SafeEncrypt(p.GetResult());
-                if (s == Wallet.Password)
-                {
-                    if (SavePrivateKeys.ShowDialog() == DialogResult.OK)
-                    {
-                        if (!File.Exists(SavePrivateKeys.FileName))
-                            File.Create(SavePrivateKeys.FileName).Dispose();
-                        File.WriteAllText(SavePrivateKeys.FileName,
-                            "Keep these keys private, anyone who has access to them has access to your wallet!\r\n\r\n" +
-                            "View Key: " + Wallet.ViewKey + "\r\npublic Spend Key: " + Wallet.PublicSpendKey +
-                            "\r\nPrivate Spend Key: " + Wallet.PrivateSpendKey);
-                        Process.Start(SavePrivateKeys.FileName);
-                    }
-                }
-                else
-                {
-                    // Password incorrect
-                    MessageBox.Show("Password incorrect", "Error");
-                }
-            }
-        }
-
         // Options selected in menu
         private void optionsToolStripMenuItem_Click(object sender, EventArgs e)
         {

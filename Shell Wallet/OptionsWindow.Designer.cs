@@ -201,8 +201,8 @@
             // 
             // OpenWalletPath
             // 
-            this.OpenWalletPath.FileName = "Select Default Wallet File";
-            this.OpenWalletPath.Filter = "Wallet files|*.wallet|All files|*.*";
+            this.OpenWalletPath.FileName = "Default Wallet";
+            this.OpenWalletPath.Filter = "Wallet Files|*.wallet|All files|*.*";
             // 
             // ServerPassword
             // 
@@ -268,8 +268,8 @@
             // 
             // OpenServerPath
             // 
-            this.OpenServerPath.FileName = "Select Server Executable";
-            this.OpenServerPath.Filter = "RPC Server|walletd.exe";
+            this.OpenServerPath.FileName = "walletd.exe";
+            this.OpenServerPath.Filter = "Wallet Server|walletd.exe";
             // 
             // groupBox4
             // 

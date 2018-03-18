@@ -47,8 +47,9 @@
             this.StartNetworkMenuOption = new System.Windows.Forms.ToolStripMenuItem();
             this.CloseNetworkMenuOption = new System.Windows.Forms.ToolStripMenuItem();
             this.OptionsMenu = new System.Windows.Forms.ToolStripMenuItem();
-            this.AboutMenuOption = new System.Windows.Forms.ToolStripMenuItem();
             this.OptionsMenuOption = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
+            this.AboutMenuOption = new System.Windows.Forms.ToolStripMenuItem();
             this.OpenWalletDialog = new System.Windows.Forms.OpenFileDialog();
             this.NewWalletDialog = new System.Windows.Forms.SaveFileDialog();
             this.OpenServerPath = new System.Windows.Forms.OpenFileDialog();
@@ -153,7 +154,6 @@
             this.toolStripMenuItem5 = new System.Windows.Forms.ToolStripMenuItem();
             this.SavePrivateKeys = new System.Windows.Forms.SaveFileDialog();
             this.ToolTip = new System.Windows.Forms.ToolTip(this.components);
-            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
             this.MenuStrip.SuspendLayout();
             this.SendTab.SuspendLayout();
             this.WalletTab.SuspendLayout();
@@ -207,65 +207,65 @@
             // OpenWalletMenuOption
             // 
             this.OpenWalletMenuOption.Name = "OpenWalletMenuOption";
-            this.OpenWalletMenuOption.Size = new System.Drawing.Size(180, 22);
+            this.OpenWalletMenuOption.Size = new System.Drawing.Size(173, 22);
             this.OpenWalletMenuOption.Text = "Open Wallet";
             this.OpenWalletMenuOption.Click += new System.EventHandler(this.openWalletToolStripMenuItem_Click);
             // 
             // OpenDefaultMenuOption
             // 
             this.OpenDefaultMenuOption.Name = "OpenDefaultMenuOption";
-            this.OpenDefaultMenuOption.Size = new System.Drawing.Size(180, 22);
+            this.OpenDefaultMenuOption.Size = new System.Drawing.Size(173, 22);
             this.OpenDefaultMenuOption.Text = "Open Default";
             this.OpenDefaultMenuOption.Click += new System.EventHandler(this.openDefaultWalletToolStripMenuItem_Click);
             // 
             // toolStripMenuItem3
             // 
             this.toolStripMenuItem3.Name = "toolStripMenuItem3";
-            this.toolStripMenuItem3.Size = new System.Drawing.Size(177, 6);
+            this.toolStripMenuItem3.Size = new System.Drawing.Size(170, 6);
             // 
             // CreateWalletMenuOption
             // 
             this.CreateWalletMenuOption.Name = "CreateWalletMenuOption";
-            this.CreateWalletMenuOption.Size = new System.Drawing.Size(180, 22);
+            this.CreateWalletMenuOption.Size = new System.Drawing.Size(173, 22);
             this.CreateWalletMenuOption.Text = "Create Wallet";
             this.CreateWalletMenuOption.Click += new System.EventHandler(this.createWalletToolStripMenuItem_Click);
             // 
             // ImportWalletMenuOption
             // 
             this.ImportWalletMenuOption.Name = "ImportWalletMenuOption";
-            this.ImportWalletMenuOption.Size = new System.Drawing.Size(180, 22);
+            this.ImportWalletMenuOption.Size = new System.Drawing.Size(173, 22);
             this.ImportWalletMenuOption.Text = "Import Wallet";
             this.ImportWalletMenuOption.Click += new System.EventHandler(this.importWalletToolStripMenuItem_Click);
             // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(177, 6);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(170, 6);
             // 
             // ExportPrivateKeysMenuOption
             // 
             this.ExportPrivateKeysMenuOption.Name = "ExportPrivateKeysMenuOption";
-            this.ExportPrivateKeysMenuOption.Size = new System.Drawing.Size(180, 22);
+            this.ExportPrivateKeysMenuOption.Size = new System.Drawing.Size(173, 22);
             this.ExportPrivateKeysMenuOption.Text = "Export Private Keys";
             this.ExportPrivateKeysMenuOption.Click += new System.EventHandler(this.viewWalletKeysToolStripMenuItem_Click);
             // 
             // ResyncMenuOption
             // 
             this.ResyncMenuOption.Name = "ResyncMenuOption";
-            this.ResyncMenuOption.Size = new System.Drawing.Size(180, 22);
+            this.ResyncMenuOption.Size = new System.Drawing.Size(173, 22);
             this.ResyncMenuOption.Text = "Resync";
             this.ResyncMenuOption.Click += new System.EventHandler(this.resyncToolStripMenuItem_Click);
             // 
             // toolStripMenuItem6
             // 
             this.toolStripMenuItem6.Name = "toolStripMenuItem6";
-            this.toolStripMenuItem6.Size = new System.Drawing.Size(177, 6);
+            this.toolStripMenuItem6.Size = new System.Drawing.Size(170, 6);
             // 
             // CloseWalletMenuOption
             // 
             this.CloseWalletMenuOption.Enabled = false;
             this.CloseWalletMenuOption.Name = "CloseWalletMenuOption";
-            this.CloseWalletMenuOption.Size = new System.Drawing.Size(180, 22);
+            this.CloseWalletMenuOption.Size = new System.Drawing.Size(173, 22);
             this.CloseWalletMenuOption.Text = "Close Wallet";
             this.CloseWalletMenuOption.Click += new System.EventHandler(this.closeWalletToolStripMenuItem_Click);
             // 
@@ -303,29 +303,36 @@
             this.OptionsMenu.Size = new System.Drawing.Size(61, 20);
             this.OptionsMenu.Text = "Options";
             // 
-            // AboutMenuOption
-            // 
-            this.AboutMenuOption.Name = "AboutMenuOption";
-            this.AboutMenuOption.Size = new System.Drawing.Size(180, 22);
-            this.AboutMenuOption.Text = "About";
-            this.AboutMenuOption.Click += new System.EventHandler(this.aboutShellWalletToolStripMenuItem_Click);
-            // 
             // OptionsMenuOption
             // 
             this.OptionsMenuOption.Name = "OptionsMenuOption";
-            this.OptionsMenuOption.Size = new System.Drawing.Size(180, 22);
+            this.OptionsMenuOption.Size = new System.Drawing.Size(116, 22);
             this.OptionsMenuOption.Text = "Options";
             this.OptionsMenuOption.Click += new System.EventHandler(this.optionsToolStripMenuItem_Click);
             // 
+            // toolStripMenuItem2
+            // 
+            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(113, 6);
+            // 
+            // AboutMenuOption
+            // 
+            this.AboutMenuOption.Name = "AboutMenuOption";
+            this.AboutMenuOption.Size = new System.Drawing.Size(116, 22);
+            this.AboutMenuOption.Text = "About";
+            this.AboutMenuOption.Click += new System.EventHandler(this.aboutShellWalletToolStripMenuItem_Click);
+            // 
             // OpenWalletDialog
             // 
-            this.OpenWalletDialog.FileName = "wallet";
-            this.OpenWalletDialog.Filter = "Wallet files|*.wallet|All files|*.*";
+            this.OpenWalletDialog.FileName = "Wallet";
+            this.OpenWalletDialog.Filter = "Wallet Files|*.wallet|All files|*.*";
             // 
             // NewWalletDialog
             // 
             this.NewWalletDialog.DefaultExt = "wallet";
-            this.NewWalletDialog.Filter = "Wallet files|*.wallet|All files|*.*";
+            this.NewWalletDialog.FileName = "New Wallet";
+            this.NewWalletDialog.Filter = "Wallet Files|*.wallet|All files|*.*";
+            this.NewWalletDialog.OverwritePrompt = false;
             // 
             // OpenServerPath
             // 
@@ -1383,11 +1390,6 @@
             this.SavePrivateKeys.DefaultExt = "txt";
             this.SavePrivateKeys.FileName = "Keys.txt";
             this.SavePrivateKeys.Filter = "Text Files|*txt";
-            // 
-            // toolStripMenuItem2
-            // 
-            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(177, 6);
             // 
             // MainWindow
             // 
