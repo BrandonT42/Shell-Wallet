@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json.Linq;
 using System;
 using System.IO;
-using WalletWrapper;
+using RPCWrapper;
 
 namespace Shell_Wallet
 {

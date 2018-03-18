@@ -121,8 +121,10 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Server Wrapper\Network.cs" />
+    <Compile Include="Server Wrapper\Wallet.cs" />
     <Compile Include="Utilities.cs" />
-    <Compile Include="WalletWrapper.cs" />
+    <Compile Include="Server Wrapper\Server.cs" />
     <EmbeddedResource Include="AboutWindow.resx">
       <DependentUpon>AboutWindow.cs</DependentUpon>
     </EmbeddedResource>
@@ -191,5 +193,6 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

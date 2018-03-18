@@ -1,14 +1,11 @@
-﻿using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
+﻿using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Diagnostics;
 using System.Drawing;
 using System.IO;
-using System.Threading;
 using System.Windows.Forms;
-using WalletWrapper;
+using RPCWrapper;
 
 namespace Shell_Wallet
 {
@@ -214,8 +211,9 @@ namespace Shell_Wallet
             if (l.ShowDialog() == DialogResult.OK)
             {
                 // Start the server
-                Server.StartWallet(Config.ServerPath, Path, Password, Config.ServerPassword, Config.ServerPort,
-                    Config.LocalDaemon, Config.NodeHost, Config.NodePort);
+                if (!Server.OpenWallet(Config.ServerPath, Path, Password, Config.ServerPassword, Config.ServerPort,
+                    Config.LocalDaemon, Config.NodeHost, Config.NodePort))
+                    MessageBox.Show("Could not open wallet, error response from server:\r\n" + Server.Error, "Error");
             }
 
             // Password incorrect

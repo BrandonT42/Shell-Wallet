@@ -1243,7 +1243,7 @@
             // 
             // recentBlocksBindingSource
             // 
-            this.recentBlocksBindingSource.DataSource = typeof(WalletWrapper.RecentBlocks);
+            this.recentBlocksBindingSource.DataSource = typeof(RPCWrapper.RecentBlocks);
             // 
             // groupBox4
             // 
@@ -1334,7 +1334,7 @@
             // 
             // transactionPoolBindingSource
             // 
-            this.transactionPoolBindingSource.DataSource = typeof(WalletWrapper.RecentBlocks);
+            this.transactionPoolBindingSource.DataSource = typeof(RPCWrapper.RecentBlocks);
             // 
             // HeightStatus
             // 
