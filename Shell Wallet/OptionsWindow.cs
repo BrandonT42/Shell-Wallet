@@ -31,6 +31,9 @@ namespace Shell_Wallet
             else this.ServerPassword.Text = Config.ServerPassword;
             this.DefaultFee.Text = Config.DefaultFee;
             this.DefaultMixin.Text = Config.DefaultMixin;
+            this.MobileWalletCheckbox.Checked = Config.EnableMobile;
+            this.MobileWalletPassword.Text = Config.MobilePassword;
+            this.MobileWalletPort.Text = Config.MobilePort;
 
         }
 
@@ -93,6 +96,9 @@ namespace Shell_Wallet
             Config.LocalDaemon = this.LocalDaemonCheckbox.Checked;
             Config.DefaultFee = this.DefaultFee.Text;
             Config.DefaultMixin = this.DefaultMixin.Text;
+            Config.EnableMobile = this.MobileWalletCheckbox.Checked;
+            Config.MobilePassword = this.MobileWalletPassword.Text;
+            Config.MobilePort = this.MobileWalletPort.Text;
             Config.Save();
 
             // Close Dialog
@@ -163,6 +169,20 @@ namespace Shell_Wallet
         private void ServerPassword_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == ' ') e.Handled = true;
+        }
+
+        private void MobileWalletCheckbox_CheckedChanged(object sender, EventArgs e)
+        {
+            if (MobileWalletCheckbox.Checked)
+            {
+                MobileWalletPort.Enabled = true;
+                MobileWalletPassword.Enabled = true;
+            }
+            else if (!MobileWalletCheckbox.Checked)
+            {
+                MobileWalletPort.Enabled = false;
+                MobileWalletPassword.Enabled = false;
+            }
         }
     }
 }

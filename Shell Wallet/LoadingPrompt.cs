@@ -42,7 +42,7 @@ namespace Shell_Wallet
 
         private void CheckPassword()
         {
-            if (Server.CheckPassword(Config.ServerPath, this.Path, this.Password))
+            if (Wallet.CheckPassword(Config.ServerPath, this.Path, this.Password))
             {
                 Result = DialogResult.OK;
             }

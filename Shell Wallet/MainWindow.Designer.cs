@@ -46,6 +46,9 @@
             this.NetworkMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.StartNetworkMenuOption = new System.Windows.Forms.ToolStripMenuItem();
             this.CloseNetworkMenuOption = new System.Windows.Forms.ToolStripMenuItem();
+            this.mobileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.startMobileServerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.stopMobileServerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.OptionsMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.OptionsMenuOption = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
@@ -99,6 +102,14 @@
             this.CopyAddress = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.WalletTabs = new System.Windows.Forms.TabControl();
+            this.TransactonLogTab = new System.Windows.Forms.TabPage();
+            this.TransactionLog = new System.Windows.Forms.DataGridView();
+            this.TypeColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.timeStampDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.amountDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.feeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.hashDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.transactionBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.ContactBookTab = new System.Windows.Forms.TabPage();
             this.EditContact = new System.Windows.Forms.Button();
             this.SendToContact = new System.Windows.Forms.Button();
@@ -129,7 +140,6 @@
             this.label23 = new System.Windows.Forms.Label();
             this.label22 = new System.Windows.Forms.Label();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.label25 = new System.Windows.Forms.Label();
             this.RecentBlocks = new System.Windows.Forms.DataGridView();
             this.heightDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -139,7 +149,6 @@
             this.transactionsDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.recentBlocksBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.label24 = new System.Windows.Forms.Label();
             this.TransactionPool = new System.Windows.Forms.DataGridView();
             this.AmountColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FeeColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -160,6 +169,9 @@
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.WalletTabs.SuspendLayout();
+            this.TransactonLogTab.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.TransactionLog)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.transactionBindingSource)).BeginInit();
             this.ContactBookTab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.AddressGrid)).BeginInit();
             this.AddressBookMenu.SuspendLayout();
@@ -180,6 +192,7 @@
             this.MenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.WalletMenu,
             this.NetworkMenu,
+            this.mobileToolStripMenuItem,
             this.OptionsMenu});
             this.MenuStrip.Location = new System.Drawing.Point(0, 0);
             this.MenuStrip.Name = "MenuStrip";
@@ -292,6 +305,32 @@
             this.CloseNetworkMenuOption.Size = new System.Drawing.Size(216, 22);
             this.CloseNetworkMenuOption.Text = "Close Network Connection";
             this.CloseNetworkMenuOption.Click += new System.EventHandler(this.CloseNetworkConnection_Click);
+            // 
+            // mobileToolStripMenuItem
+            // 
+            this.mobileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.startMobileServerToolStripMenuItem,
+            this.stopMobileServerToolStripMenuItem});
+            this.mobileToolStripMenuItem.Enabled = false;
+            this.mobileToolStripMenuItem.Name = "mobileToolStripMenuItem";
+            this.mobileToolStripMenuItem.Size = new System.Drawing.Size(56, 20);
+            this.mobileToolStripMenuItem.Text = "Mobile";
+            // 
+            // startMobileServerToolStripMenuItem
+            // 
+            this.startMobileServerToolStripMenuItem.Enabled = false;
+            this.startMobileServerToolStripMenuItem.Name = "startMobileServerToolStripMenuItem";
+            this.startMobileServerToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
+            this.startMobileServerToolStripMenuItem.Text = "Start Mobile Server";
+            this.startMobileServerToolStripMenuItem.Click += new System.EventHandler(this.startMobileServerToolStripMenuItem_Click);
+            // 
+            // stopMobileServerToolStripMenuItem
+            // 
+            this.stopMobileServerToolStripMenuItem.Enabled = false;
+            this.stopMobileServerToolStripMenuItem.Name = "stopMobileServerToolStripMenuItem";
+            this.stopMobileServerToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
+            this.stopMobileServerToolStripMenuItem.Text = "Stop Mobile Server";
+            this.stopMobileServerToolStripMenuItem.Click += new System.EventHandler(this.stopMobileServerToolStripMenuItem_Click);
             // 
             // OptionsMenu
             // 
@@ -814,15 +853,100 @@
             // 
             this.WalletTabs.Controls.Add(this.WalletTab);
             this.WalletTabs.Controls.Add(this.SendTab);
+            this.WalletTabs.Controls.Add(this.TransactonLogTab);
             this.WalletTabs.Controls.Add(this.ContactBookTab);
             this.WalletTabs.Controls.Add(this.NetworkTab);
             this.WalletTabs.Location = new System.Drawing.Point(12, 27);
-            this.WalletTabs.Multiline = true;
             this.WalletTabs.Name = "WalletTabs";
             this.WalletTabs.SelectedIndex = 0;
             this.WalletTabs.Size = new System.Drawing.Size(760, 430);
             this.WalletTabs.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.WalletTabs.TabIndex = 1;
+            // 
+            // TransactonLogTab
+            // 
+            this.TransactonLogTab.Controls.Add(this.TransactionLog);
+            this.TransactonLogTab.Location = new System.Drawing.Point(4, 22);
+            this.TransactonLogTab.Name = "TransactonLogTab";
+            this.TransactonLogTab.Padding = new System.Windows.Forms.Padding(3);
+            this.TransactonLogTab.Size = new System.Drawing.Size(752, 404);
+            this.TransactonLogTab.TabIndex = 6;
+            this.TransactonLogTab.Text = "Transaction Log";
+            this.TransactonLogTab.UseVisualStyleBackColor = true;
+            // 
+            // TransactionLog
+            // 
+            this.TransactionLog.AllowUserToAddRows = false;
+            this.TransactionLog.AllowUserToDeleteRows = false;
+            this.TransactionLog.AllowUserToResizeRows = false;
+            this.TransactionLog.AutoGenerateColumns = false;
+            this.TransactionLog.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.TransactionLog.BackgroundColor = System.Drawing.SystemColors.Control;
+            this.TransactionLog.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.TransactionLog.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.TypeColumn,
+            this.timeStampDataGridViewTextBoxColumn,
+            this.amountDataGridViewTextBoxColumn,
+            this.feeDataGridViewTextBoxColumn,
+            this.hashDataGridViewTextBoxColumn1});
+            this.TransactionLog.DataSource = this.transactionBindingSource;
+            this.TransactionLog.Location = new System.Drawing.Point(6, 6);
+            this.TransactionLog.MultiSelect = false;
+            this.TransactionLog.Name = "TransactionLog";
+            this.TransactionLog.ReadOnly = true;
+            this.TransactionLog.RowHeadersVisible = false;
+            this.TransactionLog.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.TransactionLog.ShowCellErrors = false;
+            this.TransactionLog.ShowCellToolTips = false;
+            this.TransactionLog.ShowEditingIcon = false;
+            this.TransactionLog.ShowRowErrors = false;
+            this.TransactionLog.Size = new System.Drawing.Size(740, 392);
+            this.TransactionLog.TabIndex = 0;
+            this.TransactionLog.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.TransactionLog_CellDoubleClick);
+            // 
+            // TypeColumn
+            // 
+            this.TypeColumn.DataPropertyName = "Type";
+            this.TypeColumn.FillWeight = 25F;
+            this.TypeColumn.HeaderText = "Type";
+            this.TypeColumn.Name = "TypeColumn";
+            this.TypeColumn.ReadOnly = true;
+            // 
+            // timeStampDataGridViewTextBoxColumn
+            // 
+            this.timeStampDataGridViewTextBoxColumn.DataPropertyName = "TimeStamp";
+            this.timeStampDataGridViewTextBoxColumn.FillWeight = 80F;
+            this.timeStampDataGridViewTextBoxColumn.HeaderText = "Date";
+            this.timeStampDataGridViewTextBoxColumn.Name = "timeStampDataGridViewTextBoxColumn";
+            this.timeStampDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // amountDataGridViewTextBoxColumn
+            // 
+            this.amountDataGridViewTextBoxColumn.DataPropertyName = "Amount";
+            this.amountDataGridViewTextBoxColumn.FillWeight = 50F;
+            this.amountDataGridViewTextBoxColumn.HeaderText = "Amount";
+            this.amountDataGridViewTextBoxColumn.Name = "amountDataGridViewTextBoxColumn";
+            this.amountDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // feeDataGridViewTextBoxColumn
+            // 
+            this.feeDataGridViewTextBoxColumn.DataPropertyName = "Fee";
+            this.feeDataGridViewTextBoxColumn.FillWeight = 50F;
+            this.feeDataGridViewTextBoxColumn.HeaderText = "Fee";
+            this.feeDataGridViewTextBoxColumn.Name = "feeDataGridViewTextBoxColumn";
+            this.feeDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // hashDataGridViewTextBoxColumn1
+            // 
+            this.hashDataGridViewTextBoxColumn1.DataPropertyName = "Hash";
+            this.hashDataGridViewTextBoxColumn1.FillWeight = 200F;
+            this.hashDataGridViewTextBoxColumn1.HeaderText = "Hash";
+            this.hashDataGridViewTextBoxColumn1.Name = "hashDataGridViewTextBoxColumn1";
+            this.hashDataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // transactionBindingSource
+            // 
+            this.transactionBindingSource.DataSource = typeof(RPCWrapper.Transaction);
             // 
             // ContactBookTab
             // 
@@ -883,7 +1007,6 @@
             // 
             this.AddressGrid.AllowUserToAddRows = false;
             this.AddressGrid.AllowUserToDeleteRows = false;
-            this.AddressGrid.AllowUserToResizeColumns = false;
             this.AddressGrid.AllowUserToResizeRows = false;
             this.AddressGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.AddressGrid.BackgroundColor = System.Drawing.SystemColors.Control;
@@ -1139,7 +1262,6 @@
             // 
             // groupBox5
             // 
-            this.groupBox5.Controls.Add(this.label25);
             this.groupBox5.Controls.Add(this.RecentBlocks);
             this.groupBox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox5.Location = new System.Drawing.Point(6, 191);
@@ -1148,16 +1270,6 @@
             this.groupBox5.TabIndex = 2;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Recent Blocks";
-            // 
-            // label25
-            // 
-            this.label25.BackColor = System.Drawing.SystemColors.Control;
-            this.label25.Location = new System.Drawing.Point(9, 38);
-            this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(725, 158);
-            this.label25.TabIndex = 3;
-            this.label25.Text = "Not Added Yet";
-            this.label25.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // RecentBlocks
             // 
@@ -1247,7 +1359,6 @@
             // 
             // groupBox4
             // 
-            this.groupBox4.Controls.Add(this.label24);
             this.groupBox4.Controls.Add(this.TransactionPool);
             this.groupBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox4.Location = new System.Drawing.Point(6, 77);
@@ -1256,17 +1367,6 @@
             this.groupBox4.TabIndex = 1;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Transaction Pool";
-            // 
-            // label24
-            // 
-            this.label24.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.label24.BackColor = System.Drawing.SystemColors.Control;
-            this.label24.Location = new System.Drawing.Point(6, 39);
-            this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(728, 53);
-            this.label24.TabIndex = 2;
-            this.label24.Text = "Not Added Yet";
-            this.label24.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // TransactionPool
             // 
@@ -1421,6 +1521,9 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.WalletTabs.ResumeLayout(false);
+            this.TransactonLogTab.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.TransactionLog)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.transactionBindingSource)).EndInit();
             this.ContactBookTab.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.AddressGrid)).EndInit();
             this.AddressBookMenu.ResumeLayout(false);
@@ -1560,11 +1663,20 @@
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem6;
         private System.Windows.Forms.ToolStripMenuItem AboutMenuOption;
         private System.Windows.Forms.ToolStripMenuItem CloseNetworkMenuOption;
-        private System.Windows.Forms.Label label25;
-        private System.Windows.Forms.Label label24;
         private System.Windows.Forms.BindingSource recentBlocksBindingSource;
         private System.Windows.Forms.ToolStripMenuItem ResyncMenuOption;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem2;
+        private System.Windows.Forms.ToolStripMenuItem mobileToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem startMobileServerToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem stopMobileServerToolStripMenuItem;
+        private System.Windows.Forms.TabPage TransactonLogTab;
+        private System.Windows.Forms.DataGridView TransactionLog;
+        private System.Windows.Forms.BindingSource transactionBindingSource;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TypeColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn timeStampDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn amountDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn feeDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn hashDataGridViewTextBoxColumn1;
     }
 }
 

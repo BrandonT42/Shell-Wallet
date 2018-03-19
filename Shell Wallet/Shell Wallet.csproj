@@ -121,8 +121,16 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Server Wrapper\Mobile.cs" />
     <Compile Include="Server Wrapper\Network.cs" />
+    <Compile Include="Server Wrapper\Utilities.cs" />
     <Compile Include="Server Wrapper\Wallet.cs" />
+    <Compile Include="TransactionInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TransactionInfo.Designer.cs">
+      <DependentUpon>TransactionInfo.cs</DependentUpon>
+    </Compile>
     <Compile Include="Utilities.cs" />
     <Compile Include="Server Wrapper\Server.cs" />
     <EmbeddedResource Include="AboutWindow.resx">
@@ -160,8 +168,13 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="TransactionInfo.resx">
+      <DependentUpon>TransactionInfo.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\DataSources\Contact.datasource" />
+    <None Include="Properties\DataSources\RPCWrapper.Transaction.datasource" />
+    <None Include="Properties\DataSources\RPCWrapper.Transfer.datasource" />
     <None Include="Properties\DataSources\WalletWrapper.RecentBlocks.datasource" />
     <None Include="Properties\DataSources\WalletWrapper.TransactionPool.datasource" />
     <None Include="Properties\Settings.settings">

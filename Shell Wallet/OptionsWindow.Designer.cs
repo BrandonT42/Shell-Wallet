@@ -61,6 +61,13 @@
             this.SecurityTab = new System.Windows.Forms.TabPage();
             this.DefaultsTab = new System.Windows.Forms.TabPage();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.MobileTab = new System.Windows.Forms.TabPage();
+            this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.MobileWalletCheckbox = new System.Windows.Forms.CheckBox();
+            this.MobileWalletPassword = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.MobileWalletPort = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox4.SuspendLayout();
@@ -70,6 +77,8 @@
             this.SecurityTab.SuspendLayout();
             this.DefaultsTab.SuspendLayout();
             this.groupBox5.SuspendLayout();
+            this.MobileTab.SuspendLayout();
+            this.groupBox6.SuspendLayout();
             this.SuspendLayout();
             // 
             // ApplyButton
@@ -323,6 +332,7 @@
             this.OptionsTabs.Controls.Add(this.ConnectivityTab);
             this.OptionsTabs.Controls.Add(this.SecurityTab);
             this.OptionsTabs.Controls.Add(this.DefaultsTab);
+            this.OptionsTabs.Controls.Add(this.MobileTab);
             this.OptionsTabs.Location = new System.Drawing.Point(9, 9);
             this.OptionsTabs.Name = "OptionsTabs";
             this.OptionsTabs.SelectedIndex = 0;
@@ -393,6 +403,81 @@
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Wallet";
             // 
+            // MobileTab
+            // 
+            this.MobileTab.Controls.Add(this.groupBox6);
+            this.MobileTab.Location = new System.Drawing.Point(4, 22);
+            this.MobileTab.Name = "MobileTab";
+            this.MobileTab.Padding = new System.Windows.Forms.Padding(3);
+            this.MobileTab.Size = new System.Drawing.Size(312, 234);
+            this.MobileTab.TabIndex = 3;
+            this.MobileTab.Text = "Mobile";
+            this.MobileTab.UseVisualStyleBackColor = true;
+            // 
+            // groupBox6
+            // 
+            this.groupBox6.Controls.Add(this.MobileWalletCheckbox);
+            this.groupBox6.Controls.Add(this.MobileWalletPassword);
+            this.groupBox6.Controls.Add(this.label9);
+            this.groupBox6.Controls.Add(this.MobileWalletPort);
+            this.groupBox6.Controls.Add(this.label8);
+            this.groupBox6.Enabled = false;
+            this.groupBox6.Location = new System.Drawing.Point(6, 6);
+            this.groupBox6.Name = "groupBox6";
+            this.groupBox6.Size = new System.Drawing.Size(300, 108);
+            this.groupBox6.TabIndex = 0;
+            this.groupBox6.TabStop = false;
+            this.groupBox6.Text = "Connectivity";
+            // 
+            // MobileWalletCheckbox
+            // 
+            this.MobileWalletCheckbox.AutoSize = true;
+            this.MobileWalletCheckbox.Location = new System.Drawing.Point(9, 80);
+            this.MobileWalletCheckbox.Name = "MobileWalletCheckbox";
+            this.MobileWalletCheckbox.Size = new System.Drawing.Size(126, 17);
+            this.MobileWalletCheckbox.TabIndex = 4;
+            this.MobileWalletCheckbox.Text = "Enable Mobile Wallet";
+            this.MobileWalletCheckbox.UseVisualStyleBackColor = true;
+            this.MobileWalletCheckbox.CheckedChanged += new System.EventHandler(this.MobileWalletCheckbox_CheckedChanged);
+            // 
+            // MobileWalletPassword
+            // 
+            this.MobileWalletPassword.Enabled = false;
+            this.MobileWalletPassword.Location = new System.Drawing.Point(65, 48);
+            this.MobileWalletPassword.Name = "MobileWalletPassword";
+            this.MobileWalletPassword.PasswordChar = '*';
+            this.MobileWalletPassword.Size = new System.Drawing.Size(223, 20);
+            this.MobileWalletPassword.TabIndex = 3;
+            this.MobileWalletPassword.TextChanged += new System.EventHandler(this.ServerPassword_TextChanged);
+            this.MobileWalletPassword.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.ServerPassword_KeyPress);
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(6, 51);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(53, 13);
+            this.label9.TabIndex = 2;
+            this.label9.Text = "Password";
+            // 
+            // MobileWalletPort
+            // 
+            this.MobileWalletPort.Enabled = false;
+            this.MobileWalletPort.Location = new System.Drawing.Point(65, 21);
+            this.MobileWalletPort.Name = "MobileWalletPort";
+            this.MobileWalletPort.Size = new System.Drawing.Size(223, 20);
+            this.MobileWalletPort.TabIndex = 1;
+            this.MobileWalletPort.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.NumberOnly);
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(6, 24);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(26, 13);
+            this.label8.TabIndex = 0;
+            this.label8.Text = "Port";
+            // 
             // OptionsWindow
             // 
             this.AcceptButton = this.ApplyButton;
@@ -422,6 +507,9 @@
             this.DefaultsTab.ResumeLayout(false);
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
+            this.MobileTab.ResumeLayout(false);
+            this.groupBox6.ResumeLayout(false);
+            this.groupBox6.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -460,5 +548,12 @@
         private System.Windows.Forms.TabPage SecurityTab;
         private System.Windows.Forms.TabPage DefaultsTab;
         private System.Windows.Forms.GroupBox groupBox5;
+        private System.Windows.Forms.TabPage MobileTab;
+        private System.Windows.Forms.GroupBox groupBox6;
+        private System.Windows.Forms.CheckBox MobileWalletCheckbox;
+        private System.Windows.Forms.TextBox MobileWalletPassword;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.TextBox MobileWalletPort;
+        private System.Windows.Forms.Label label8;
     }
 }

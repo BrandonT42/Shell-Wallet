@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using RPCWrapper;
 using System;
 using System.ComponentModel;
 using System.Data;
@@ -40,7 +41,7 @@ namespace Shell_Wallet
     internal class AddressBook
     {
         #region Variables
-        internal static BindingList<Contact> DataSource = new BindingList<Contact>();
+        internal static SortableBindingList<Contact> DataSource = new SortableBindingList<Contact>();
         #endregion
 
         /// <summary>
@@ -70,7 +71,7 @@ namespace Shell_Wallet
             }
 
             // Set up our datasource
-            DataSource = JsonConvert.DeserializeObject<BindingList<Contact>>(s);
+            DataSource = JsonConvert.DeserializeObject < SortableBindingList<Contact>>(s);
         }
 
         /// <summary>

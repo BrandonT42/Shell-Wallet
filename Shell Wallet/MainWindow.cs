@@ -6,6 +6,8 @@ using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
 using RPCWrapper;
+using System.Threading;
+using System.ComponentModel;
 
 namespace Shell_Wallet
 {
@@ -83,13 +85,7 @@ namespace Shell_Wallet
 
             // Assign event handlers
             Application.ThreadExit += OnExit;
-            this.Resize += new System.EventHandler(this.MainWindow_Resize);
-            Server.OnStart += OnStart;
-            Server.OnStop += OnStop;
-            Server.OnTick += OnTick;
-            Server.OnNetworkStart += OnNetworkStart;
-            Server.OnNetworkStop += OnNetworkStop;
-            Server.OnNetworkTick += OnNetworkTick;
+            this.Resize += new EventHandler(this.MainWindow_Resize);
 
             // Assign server variables
             Server.RefreshRate = Config.RefreshRate;
@@ -101,6 +97,14 @@ namespace Shell_Wallet
                 Server.Testnet = Config.Testnet;
                 this.Text = "Shell Wallet (TESTNET)";
             }
+
+            // Connect datasources
+            Network.TransactionPool.SynchronizationContext = SynchronizationContext.Current;
+            this.TransactionPool.DataSource = Network.TransactionPool;
+            Network.RecentBlocks.SynchronizationContext = SynchronizationContext.Current;
+            this.RecentBlocks.DataSource = Network.RecentBlocks;
+            Wallet.Transactions.SynchronizationContext = SynchronizationContext.Current;
+            this.TransactionLog.DataSource = Wallet.Transactions;
 
             // Assign update timer
             System.Windows.Forms.Timer t = new System.Windows.Forms.Timer();
@@ -114,6 +118,7 @@ namespace Shell_Wallet
         {
             // Exit
             Server.Stop();
+            Mobile.Stop();
             Config.Save();
             AddressBook.Save();
         }
@@ -136,6 +141,7 @@ namespace Shell_Wallet
         // Triggers when the rpc server is stopped
         private void OnStop(object sender, EventArgs e)
         {
+            Mobile.Stop();
             Console.WriteLine("RPC server stopped");
         }
 
@@ -168,7 +174,7 @@ namespace Shell_Wallet
         {
             // Output any errors
             String error = Server.Error;
-            if (Server.Alive && error != "")
+            if (Wallet.Alive && error != "")
             {
                 Server.Stop();
                 MessageBox.Show("Server error:\r\n" + error, "Error");
@@ -184,7 +190,7 @@ namespace Shell_Wallet
         internal void OpenWallet(String Path, String Password = null)
         {
             // Make sure server isn't open
-            if (Server.Alive) return;
+            if (Wallet.Alive) return;
 
             // Open password prompt if password isn't provided
             if (Password == null)
@@ -211,7 +217,7 @@ namespace Shell_Wallet
             if (l.ShowDialog() == DialogResult.OK)
             {
                 // Start the server
-                if (!Server.OpenWallet(Config.ServerPath, Path, Password, Config.ServerPassword, Config.ServerPort,
+                if (!Wallet.Open(Config.ServerPath, Path, Password, Config.ServerPassword, Config.ServerPort,
                     Config.LocalDaemon, Config.NodeHost, Config.NodePort))
                     MessageBox.Show("Could not open wallet, error response from server:\r\n" + Server.Error, "Error");
             }
@@ -233,7 +239,7 @@ namespace Shell_Wallet
                 // Enable and disable elements
                 if (this.StartNetworkMenuOption.Enabled)
                     this.StartNetworkMenuOption.Enabled = false;
-                if (!this.CloseNetworkMenuOption.Enabled && !Server.Alive)
+                if (!this.CloseNetworkMenuOption.Enabled && !Wallet.Alive)
                     this.CloseNetworkMenuOption.Enabled = true;
 
                 // Only do these updates if network tab is selected
@@ -267,7 +273,7 @@ namespace Shell_Wallet
 
             #region Update Wallet
             // Server online
-            if (Server.Alive)
+            if (Wallet.Alive)
             {
                 // Set window name
                 if (this.Text == "Shell Wallet" && !Config.Testnet)
@@ -315,11 +321,10 @@ namespace Shell_Wallet
                 if (this.WalletTabs.SelectedTab.Text == "Wallet")
                 {
                     // Update progress bar information if block height sync is behind
-                    if (Wallet.BlockCount != null && Wallet.KnownBlockCount != null &&
-                        Wallet.BlockCount != "0" && Wallet.KnownBlockCount != "0")
+                    if (Wallet.BlockCount != 0 && Wallet.KnownBlockCount != 0)
                     {
-                        int s = Convert.ToInt32(Wallet.BlockCount) + 1;
-                        int k = Convert.ToInt32(Wallet.KnownBlockCount);
+                        int s = Wallet.BlockCount + 1;
+                        int k = Wallet.KnownBlockCount;
                         var p = (double)s / (double)k * 100;
                         if ((int)p <= 100 && (int)p >= 0)
                         {
@@ -341,7 +346,7 @@ namespace Shell_Wallet
                 }
 
                 // Update wallet status
-                this.HeightStatus.Text = "Height: " + (Convert.ToUInt32(Wallet.BlockCount) + 1) +
+                this.HeightStatus.Text = "Height: " + (Wallet.BlockCount + 1) +
                     " / " + Wallet.KnownBlockCount + " | Peer Count: " +
                     Wallet.PeerCount;
             }
@@ -400,8 +405,55 @@ namespace Shell_Wallet
             }
             #endregion
 
+            #region Update Transactions
+            if (this.TransactionLog.DataSource != Wallet.Transactions)
+            {
+                this.TransactionLog.DataSource = Wallet.Transactions;
+            }
+            #endregion
+
+            #region Update Mobile
+            // Mobile Disabled
+            if (Config.EnableMobile && !this.mobileToolStripMenuItem.Enabled)
+                this.mobileToolStripMenuItem.Enabled = true;
+
+            // Mobile Enabled
+            else if (!Config.EnableMobile && this.mobileToolStripMenuItem.Enabled)
+                this.mobileToolStripMenuItem.Enabled = false;
+
+            // Server online and mobile connected
+            if (Mobile.Alive && Wallet.Alive)
+            {
+                // Update menu
+                if (this.startMobileServerToolStripMenuItem.Enabled)
+                    this.startMobileServerToolStripMenuItem.Enabled = false;
+                if (!this.stopMobileServerToolStripMenuItem.Enabled)
+                    this.stopMobileServerToolStripMenuItem.Enabled = true;
+            }
+
+            // Server online and mobile not connected
+            else if (!Mobile.Alive && Wallet.Alive)
+            {
+                // Update menu
+                if (!this.startMobileServerToolStripMenuItem.Enabled)
+                    this.startMobileServerToolStripMenuItem.Enabled = true;
+                if (this.stopMobileServerToolStripMenuItem.Enabled)
+                    this.stopMobileServerToolStripMenuItem.Enabled = false;
+            }
+
+            // Server offline
+            else
+            {
+                // Update menu
+                if (this.startMobileServerToolStripMenuItem.Enabled)
+                    this.startMobileServerToolStripMenuItem.Enabled = false;
+                if (this.stopMobileServerToolStripMenuItem.Enabled)
+                    this.stopMobileServerToolStripMenuItem.Enabled = false;
+            }
+            #endregion
+    
             #region Other Updates
-            if (Server.Alive)
+            if (Wallet.Alive)
             {
                 // Update server status
                 if (this.ServerStatus.ForeColor == Color.Red ||
@@ -481,7 +533,7 @@ namespace Shell_Wallet
         private void openWalletToolStripMenuItem_Click(object sender, EventArgs e)
         {
             // Only open if server isn't running
-            if (Server.Alive) return;
+            if (Wallet.Alive) return;
 
             // Prompt file loading dialog
             if (OpenWalletDialog.ShowDialog() == DialogResult.OK)
@@ -497,7 +549,7 @@ namespace Shell_Wallet
         private void openDefaultWalletToolStripMenuItem_Click(object sender, EventArgs e)
         {
             // Only open if server isn't running
-            if (Server.Alive) return;
+            if (Wallet.Alive) return;
 
             if (File.Exists(Config.DefaultWalletPath))
             {
@@ -509,7 +561,7 @@ namespace Shell_Wallet
         private void createWalletToolStripMenuItem_Click(object sender, EventArgs e)
         {
             // Only open if server isn't running
-            if (Server.Alive) return;
+            if (Wallet.Alive) return;
 
             // Get new file location
             if (this.NewWalletDialog.ShowDialog() != DialogResult.OK) return;
@@ -542,7 +594,7 @@ namespace Shell_Wallet
             }
 
             // Create wallet
-            if (Server.CreateWallet(Config.ServerPath, i, s) == true)
+            if (Wallet.Create(Config.ServerPath, i, s) == true)
             {
                 // Open wallet if successful
                 OpenWallet(i, s);
@@ -558,7 +610,7 @@ namespace Shell_Wallet
         private void importWalletToolStripMenuItem_Click(object sender, EventArgs e)
         {
             // Only open if server isn't running
-            if (Server.Alive) return;
+            if (Wallet.Alive) return;
 
             // Get keys
             ImportKeys k = new ImportKeys();
@@ -594,7 +646,7 @@ namespace Shell_Wallet
             }
 
             // Create wallet
-            if (Server.ImportWallet(Config.ServerPath, i, s, k.ViewKey, k.SpendKey) == true)
+            if (Wallet.Import(Config.ServerPath, i, s, k.ViewKey, k.SpendKey) == true)
             {
                 // Open wallet if successful
                 OpenWallet(i, s);
@@ -611,7 +663,7 @@ namespace Shell_Wallet
         private void viewWalletKeysToolStripMenuItem_Click(object sender, EventArgs e)
         {
             // Make sure server is running
-            if (!Server.Alive) return;
+            if (!Wallet.Alive) return;
 
             // Prompt for password
             PasswordPrompt p = new PasswordPrompt();
@@ -674,14 +726,29 @@ namespace Shell_Wallet
         // Connect to network selected in menu
         private void startNetworkConnectionToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (!Server.StartNetwork(Config.LocalDaemon, Config.NodeHost, Config.NodePort))
+            if (!Network.Start(Config.LocalDaemon, Config.NodeHost, Config.NodePort))
                 MessageBox.Show("Unable to connect to daemon", "Error");
         }
 
         // Close connection with network
         private void CloseNetworkConnection_Click(object sender, EventArgs e)
         {
-            Server.CloseNetwork();
+            Network.Stop();
+        }
+        #endregion
+
+        #region Mobile
+        // Start mobile server selected
+        private void startMobileServerToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (!Mobile.Start(Config.MobilePort, Config.MobilePassword))
+                MessageBox.Show("Failed to start the mobile server:\r\n" + Server.Error, "Error");
+        }
+
+        // Stop mobile server selected
+        private void stopMobileServerToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Mobile.Stop();
         }
         #endregion
 
@@ -754,7 +821,7 @@ namespace Shell_Wallet
         private void SendTransaction_Click(object sender, EventArgs e)
         {
             // Check that the server is running
-            if (!Server.Alive) return;
+            if (!Wallet.Alive) return;
 
             // Get transaction variables
             String Address = this.SendToAddress.Text;
@@ -774,7 +841,7 @@ namespace Shell_Wallet
             TransferList.Add(Transfer);
 
             // Send transaction
-            JObject result = Server.SendTransaction(AddressList, TransferList, Fee, Convert.ToInt32(Mixin.Text), "", PaymentID,
+            JObject result = Wallet.Send(AddressList, TransferList, Fee, Convert.ToInt32(Mixin.Text), "", PaymentID,
                 Convert.ToInt32(UnlockTime.Text), ChangeAddress.Text, Mixin.Text);
 
             // Print result to output
@@ -848,7 +915,7 @@ namespace Shell_Wallet
         private void SendToContact_Click(object sender, EventArgs e)
         {
             // Make sure an address is selected
-            if (this.AddressGrid.CurrentCell != null)
+            if (this.AddressGrid.CurrentCell != null && this.AddressGrid.SelectedRows.Count > 0)
             {
                 // Get selected address from address book
                 Contact c = AddressBook.DataSource[this.AddressGrid.SelectedRows[0].Index];
@@ -896,5 +963,13 @@ namespace Shell_Wallet
             }
         }
         #endregion
+
+        private void TransactionLog_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            using (TransactionInfo t = new TransactionInfo(Wallet.Transactions[TransactionLog.SelectedRows[0].Index]))
+            {
+                t.ShowDialog();
+            }
+        }
     }
 }

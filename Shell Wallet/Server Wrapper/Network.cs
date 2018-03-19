@@ -1,4 +1,9 @@
 ﻿using System;
+using System.ComponentModel;
+using System.IO;
+using System.Net;
+using System.Text;
+using System.Threading;
 using Newtonsoft.Json.Linq;
 
 namespace RPCWrapper
@@ -8,19 +13,40 @@ namespace RPCWrapper
     /// </summary>
     public class Network
     {
-        #region Variables
-        #region Private and Internal
+        #region Private and Internal Variables
+        private static String HostAddress, HostPort;
+        private static Boolean LocalServer, InternalAlive;
         private static JObject Status = new JObject(), LastBlockHeader = new JObject(), LastBlock = new JObject();
         #endregion
-        #region Public
+
+        #region Public Variables
         public static Boolean Alive
         {
             get
             {
-                return Server.DaemonVerified;
+                return InternalAlive;
             }
         }
+
+        public static ThreadedBindingList<TransactionPool> TransactionPool = new ThreadedBindingList<TransactionPool>();
+        public static ThreadedBindingList<RecentBlocks> RecentBlocks = new ThreadedBindingList<RecentBlocks>();
         #endregion
+
+        #region Event Handlers
+        /// <summary>
+        /// Event handler that runs within the network thread when it successfully starts
+        /// </summary>
+        public static EventHandler OnStart;
+
+        /// <summary>
+        /// Event handler that runs within the network thread when it stops
+        /// </summary>
+        public static EventHandler OnStop;
+
+        /// <summary>
+        /// Event handler that runs within the network thread on each update tick, as defined by the NetworkRefreshRate variable
+        /// </summary>
+        public static EventHandler OnTick;
         #endregion
 
         #region Network Access Functions
@@ -157,15 +183,15 @@ namespace RPCWrapper
         }
         #endregion
 
-        #region Utilities
+        #region Public Utilities
         /// <summary>
         /// Updates the network information
         /// </summary>
         internal static void Update()
         {
-            Status = Server.GetNetworkInfo();
-            LastBlockHeader = Server.GetLastBlockHeader();
-            LastBlock = Server.GetBlockInfo(LastBlockHash);
+            Status = GetNetworkInfo();
+            LastBlockHeader = GetLastBlockHeader();
+            LastBlock = GetBlockInfo(LastBlockHash);
         }
 
         /// <summary>
@@ -173,7 +199,238 @@ namespace RPCWrapper
         /// </summary>
         public static void Reset()
         {
+            HostAddress = "";
+            HostPort = "";
+            LocalServer = true;
+            Status = new JObject();
+            LastBlockHeader = new JObject();
+            LastBlock = new JObject();
+        }
 
+        /// <summary>
+        /// Verifies and connects to a daemon independantly from the local RPC server
+        /// </summary>
+        /// <param name="Local">Whether or not the daemon is running locally (true) or through a node (false)</param>
+        /// <param name="NodeHost">The address of the remote daemon node, set to null to ignore</param>
+        /// <param name="NodePort">The port in which the server should try to connect to the daemon</param>
+        /// <returns>Returns true if successful</returns>
+        public static Boolean Start(Boolean Local = true, String NodeHost = "daemon.turtle.link", String NodePort = "11898")
+        {
+            // Set variables
+            LocalServer = Local;
+            if (!LocalServer) HostAddress = NodeHost;
+            else HostAddress = "127.0.0.1";
+            HostPort = NodePort;
+
+            // Check if server is valid
+            Console.WriteLine("Attempting to connect to daemon at {0}:{1}", HostAddress, HostPort);
+            if (Server.Ping(HostAddress, Convert.ToInt32(HostPort)))
+            {
+                // Set internal daemon connection
+                Console.WriteLine("Daemon connection successful");
+                InternalAlive = true;
+
+                // Begin new thread for updates
+                Thread s = new Thread(delegate ()
+                {
+                    // Invoke start event
+                    if (OnStart != null)
+                        OnStart.Invoke(new Network(), null);
+
+                    while (Alive)
+                    {
+                        // Update network
+                        Update();
+
+                        // Invoke update event
+                        if (OnTick != null)
+                            OnTick.Invoke(new Network(), null);
+
+                        // Sleep for the desired refresh rate
+                        Thread.Sleep(Server.NetworkRefreshRate);
+                    }
+
+                    // Invoke stop event
+                    if (OnStop != null)
+                        OnStop.Invoke(new Network(), null);
+                })
+                {
+                    Name = "Network Thread"
+                };
+                s.Start();
+                return true;
+            }
+            else
+            {
+                Console.WriteLine("Daemon connection failed");
+                return false;
+            }
+        }
+
+        /// <summary>
+        /// Closes the daemon connection (only if a wallet is not opened)
+        /// </summary>
+        public static void Stop()
+        {
+            InternalAlive = false;
+            Reset();
+        }
+        #endregion
+
+        #region Internal Utilities
+        /// <summary>
+        /// Sends a request to the daemon server
+        /// </summary>
+        internal static JObject SendRequest(String Method, JObject Params = null, String Request = "")
+        {
+            // Check if daemon is verified
+            if (!Alive) return Server.ThrowError("Daemon not connected");
+
+            // Not an RPC request
+            if (Method != "" && Params == null)
+            {
+                // Send request to server
+                using (WebClient client = new WebClient())
+                {
+                    String result = client.DownloadString("http://" + HostAddress + ":" + HostPort + "/" + Method);
+                    return JObject.Parse(result);
+                }
+            }
+
+            // RPC request
+            else if (Method != "" && Params != null)
+            {
+                // Create a POST request
+                HttpWebRequest r = (HttpWebRequest)WebRequest.Create("http://" + HostAddress + ":" + HostPort + "/json_rpc");
+                r.ContentType = "application/json-rpc";
+                r.Method = "POST";
+
+                // Create a JSON object
+                JObject j = new JObject();
+
+                // Add parameters
+                if (Params.Count > 0) j["params"] = JObject.FromObject(Params);
+
+                // Assign request variables
+                j.Add(new JProperty("jsonrpc", "2.0"));
+                j.Add(new JProperty("id", "0"));
+
+                // Define request method
+                j.Add(new JProperty("method", Method));
+
+                // Serialize JObject into a string
+                String s = j.ToString();
+
+                try
+                {
+                    // Send bytes to server
+                    byte[] byteArray = Encoding.UTF8.GetBytes(s);
+                    r.ContentLength = byteArray.Length;
+                    Stream d = r.GetRequestStream();
+                    d.Write(byteArray, 0, byteArray.Length);
+                    d.Close();
+
+                    // Receive reply from server
+                    WebResponse webResponse = r.GetResponse();
+                    StreamReader reader = new StreamReader(webResponse.GetResponseStream(), Encoding.UTF8);
+
+                    // Get response
+                    JObject response = JObject.Parse(reader.ReadToEnd());
+
+                    // Dispose of pieces
+                    reader.Dispose();
+                    webResponse.Dispose();
+
+                    // Return the server response
+                    return response;
+                }
+                catch (Exception e)
+                {
+                    Server.InternalError = "Error sending request to server: " + e.Message;
+                    return Server.ThrowError(Server.InternalError);
+                }
+            }
+
+            // RPC request but hard data is given to send
+            else
+            {
+                // Create a POST request
+                HttpWebRequest r = (HttpWebRequest)WebRequest.Create("http://" + HostAddress + ":" + HostPort + "/json_rpc");
+                r.ContentType = "application/json-rpc";
+                r.Method = "POST";
+
+                try
+                {
+                    // Send bytes to server
+                    byte[] byteArray = Encoding.UTF8.GetBytes(Request);
+                    r.ContentLength = byteArray.Length;
+                    Stream d = r.GetRequestStream();
+                    d.Write(byteArray, 0, byteArray.Length);
+                    d.Close();
+
+                    // Receive reply from server
+                    WebResponse webResponse = r.GetResponse();
+                    StreamReader reader = new StreamReader(webResponse.GetResponseStream(), Encoding.UTF8);
+
+                    // Get response
+                    JObject response = JObject.Parse(reader.ReadToEnd());
+
+                    // DEBUG
+                    //Console.WriteLine(response.ToString());
+
+                    // Dispose of pieces
+                    reader.Dispose();
+                    webResponse.Dispose();
+
+                    // Return the server response
+                    return response;
+                }
+                catch (Exception e)
+                {
+                    Server.InternalError = "Error sending request to server: " + e.Message;
+                    return Server.ThrowError(Server.InternalError);
+                }
+            }
+        }
+        #endregion
+
+        #region Server Queries
+        ///<summary>
+        ///Retrieves the wallet's view key
+        ///Returns viewSecretKey
+        ///</summary>
+        public static JObject GetNetworkInfo()
+        {
+            return SendRequest("getinfo");
+        }
+
+        /// <summary>
+        /// Retrieves the last block header on the network
+        /// </summary>
+        /// <returns></returns>
+        public static JObject GetLastBlockHeader()
+        {
+            // Send request to server
+            JObject result = SendRequest("getlastblockheader", new JObject());
+
+            // Output response
+            if (result["error"] == null) return (JObject)result["result"];
+            else return Server.ThrowError(Server.InternalError);
+        }
+
+        /// <summary>
+        /// Gets information about a specific block
+        /// </summary>
+        public static JObject GetBlockInfo(String BlockHash)
+        {
+            // Send request to server
+            String j = "{ \"jsonrpc\":\"2.0\", \"id\":\"0\", \"method\":\"f_block_json\", " +
+                "\"params\":{\"hash\":\"" + BlockHash + "\"}}";
+            JObject result = SendRequest("", null, j);
+
+            // Output response
+            if (result["error"] == null) return (JObject)result["result"];
+            else return Server.ThrowError(Server.InternalError);
         }
         #endregion
     }

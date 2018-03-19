@@ -50,6 +50,11 @@ namespace Shell_Wallet
         internal static bool Debug = false;
         internal static bool Testnet = false;
         internal static bool Log = false;
+
+        //Mobile
+        internal static String MobilePort = "11999";
+        internal static String MobilePassword = "";
+        internal static bool EnableMobile = false;
         #endregion
 
         /// <summary>
@@ -80,10 +85,7 @@ namespace Shell_Wallet
                 AllowBlankPasswords = (Boolean)conf["allowBlankPasswords"];
                 OriginalServerPassword = (String)conf["serverPassword"];
                 if (GeneratePassword)
-                {
                     ServerPassword = Server.Hash;
-                    //Console.WriteLine("Generated server password: " + Server.Hash);
-                }
                 else ServerPassword = (String)conf["serverPassword"];
                 LocalDaemon = (Boolean)conf["localDaemon"];
                 NodeHost = (String)conf["nodeAddress"];
@@ -94,6 +96,9 @@ namespace Shell_Wallet
                 RefreshRate = (int)conf["refreshRate"];
                 NetworkRefreshRate = (int)conf["networkRefreshRate"];
                 GUIRefreshRate = (int)conf["guiRefreshRate"];
+                MobilePort = (String)conf["mobilePort"];
+                MobilePassword = (String)conf["mobilePassword"];
+                EnableMobile = (Boolean)conf["enableMobile"];
             }
         }
 
@@ -121,6 +126,9 @@ namespace Shell_Wallet
             conf["refreshRate"] = RefreshRate;
             conf["networkRefreshRate"] = NetworkRefreshRate;
             conf["guiRefreshRate"] = GUIRefreshRate;
+            conf["enableMobile"] = EnableMobile;
+            conf["mobilePassword"] = MobilePassword;
+            conf["mobilePort"] = MobilePort;
             File.WriteAllText(c, conf.ToString());
         }
     }
