@@ -951,7 +951,7 @@ namespace Shell_Wallet
         private void AddressMenuCopyAddress_Click(object sender, EventArgs e)
         {
             // Make sure an address is selected
-            if (this.AddressGrid.CurrentCell != null)
+            if (this.AddressGrid.CurrentCell != null && this.AddressGrid.SelectedRows.Count > 0)
             {
                 // Get selected address from address book
                 Contact c = AddressBook.DataSource[this.AddressGrid.SelectedRows[0].Index];
@@ -966,9 +966,12 @@ namespace Shell_Wallet
 
         private void TransactionLog_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            using (TransactionInfo t = new TransactionInfo(Wallet.Transactions[TransactionLog.SelectedRows[0].Index]))
+            if (this.TransactionLog.CurrentCell != null && this.TransactionLog.SelectedRows.Count > 0)
             {
-                t.ShowDialog();
+                using (TransactionInfo t = new TransactionInfo(Wallet.Transactions[TransactionLog.SelectedRows[0].Index]))
+                {
+                    t.ShowDialog();
+                }
             }
         }
     }
