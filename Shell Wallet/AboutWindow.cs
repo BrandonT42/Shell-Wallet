@@ -39,7 +39,6 @@ namespace Shell_Wallet
         {
             InitializeComponent();
             this.VersionLabel.Text = this.AssemblyVersion;
-            this.CoprightLabel.Text = this.AssemblyCopyright;
             this.BuildRevisionLabel.Text = Assembly.GetExecutingAssembly().GetName().Version.Revision.ToString();
             Version version = Assembly.GetExecutingAssembly().GetName().Version;
             DateTime buildDate = new DateTime(2000, 1, 1).AddDays(version.Build).AddSeconds(version.Revision * 2);

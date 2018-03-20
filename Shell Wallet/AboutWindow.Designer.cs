@@ -37,8 +37,6 @@
             this.label5 = new System.Windows.Forms.Label();
             this.VersionLabel = new System.Windows.Forms.Label();
             this.BuildRevisionLabel = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.CoprightLabel = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.DescriptionBox = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
@@ -131,24 +129,6 @@
             this.BuildRevisionLabel.TabIndex = 11;
             this.BuildRevisionLabel.Text = "0";
             // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(82, 64);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(49, 13);
-            this.label7.TabIndex = 12;
-            this.label7.Text = "Copright:";
-            // 
-            // CoprightLabel
-            // 
-            this.CoprightLabel.AutoSize = true;
-            this.CoprightLabel.Location = new System.Drawing.Point(289, 64);
-            this.CoprightLabel.Name = "CoprightLabel";
-            this.CoprightLabel.Size = new System.Drawing.Size(34, 13);
-            this.CoprightLabel.TabIndex = 13;
-            this.CoprightLabel.Text = "never";
-            // 
             // label8
             // 
             this.label8.AutoSize = true;
@@ -198,8 +178,6 @@
             this.Controls.Add(this.label9);
             this.Controls.Add(this.DescriptionBox);
             this.Controls.Add(this.label8);
-            this.Controls.Add(this.CoprightLabel);
-            this.Controls.Add(this.label7);
             this.Controls.Add(this.BuildRevisionLabel);
             this.Controls.Add(this.VersionLabel);
             this.Controls.Add(this.label5);
@@ -234,8 +212,6 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label VersionLabel;
         private System.Windows.Forms.Label BuildRevisionLabel;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label CoprightLabel;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox DescriptionBox;
         private System.Windows.Forms.Label label9;
