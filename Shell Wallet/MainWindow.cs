@@ -318,7 +318,7 @@ namespace Shell_Wallet
                 }
 
                 // Update wallet status
-                this.HeightStatus.Text = "Height: " + Wallet.BlockCount +
+                this.HeightStatus.Text = "Height: " + (Wallet.BlockCount + 1) +
                     " / " + Wallet.KnownBlockCount + " | Peer Count: " +
                     Wallet.PeerCount;
 
@@ -824,9 +824,9 @@ namespace Shell_Wallet
             if (!Wallet.Alive) return;
 
             // Get transaction variables
-            String Address = this.SendToAddress.Text;
+            String Address = SendToAddress.Text;
             double Amount = 0;
-            if (this.AmountToSend.Text.Length > 0) Amount = Convert.ToDouble(this.AmountToSend.Text);
+            if (AmountToSend.Text.Length > 0) Amount = Convert.ToDouble(AmountToSend.Text);
             double Fee = 0;
             if (this.Fee.Text.Length > 0) Fee = Convert.ToDouble(this.Fee.Text);
             String PaymentID = this.PaymentID.Text;
@@ -835,14 +835,16 @@ namespace Shell_Wallet
 
             // Create transaction
             List<String> AddressList = new List<String>();
-            if ((String)this.SendFromAddress.SelectedItem == "Selected Address") AddressList.Add(Wallet.SelectedAddress);
-            Transfer Transfer = new Transfer(Address, Amount);
+            if ((String)SendFromAddress.SelectedItem == "Selected Address") AddressList.Add(Wallet.SelectedAddress);
+            
+            // Create transfer
             List<Transfer> TransferList = new List<Transfer>();
+            Transfer Transfer = new Transfer(Address, Amount * 100);
             TransferList.Add(Transfer);
 
             // Send transaction
             JObject result = Wallet.Send(AddressList, TransferList, Fee, Convert.ToInt32(Mixin.Text), "", PaymentID,
-                Convert.ToInt32(UnlockTime.Text), ChangeAddress.Text, Mixin.Text);
+                Convert.ToInt32(UnlockTime.Text), ChangeAddress.Text);
 
             // Print result to output
             if (result.Count > 0)
@@ -862,7 +864,7 @@ namespace Shell_Wallet
                 // Print transaction information
                 this.TransactionOutput.Text += "Transaction Information:\r\n";
                 if ((String)this.SendFromAddress.SelectedItem == "Selected Address")
-                    this.TransactionOutput.Text += "Sent From: " + Address + "\r\n";
+                    this.TransactionOutput.Text += "Sent From: " + Wallet.SelectedAddress + "\r\n";
                 else this.TransactionOutput.Text += "Sent From: Entire Balance\r\n";
                 this.TransactionOutput.Text += "Sent To: " + Address + "\r\n";
                 this.TransactionOutput.Text += "Amount: " + Amount + "\r\n";
@@ -874,6 +876,19 @@ namespace Shell_Wallet
                 this.TransactionOutput.Text += "Extra: " + ExtraBox.Text + "\r\n\r\n";
             }
             else this.TransactionOutput.Text = Server.Error;
+        }
+        #endregion
+
+        #region Transaction Log Tab
+        private void TransactionLog_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (this.TransactionLog.CurrentCell != null && this.TransactionLog.SelectedRows.Count > 0)
+            {
+                using (TransactionInfo t = new TransactionInfo(Wallet.Transactions[TransactionLog.SelectedRows[0].Index]))
+                {
+                    t.ShowDialog();
+                }
+            }
         }
         #endregion
 
@@ -963,16 +978,5 @@ namespace Shell_Wallet
             }
         }
         #endregion
-
-        private void TransactionLog_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (this.TransactionLog.CurrentCell != null && this.TransactionLog.SelectedRows.Count > 0)
-            {
-                using (TransactionInfo t = new TransactionInfo(Wallet.Transactions[TransactionLog.SelectedRows[0].Index]))
-                {
-                    t.ShowDialog();
-                }
-            }
-        }
     }
 }

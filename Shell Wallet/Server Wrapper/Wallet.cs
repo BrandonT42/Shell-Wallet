@@ -313,6 +313,7 @@ namespace RPCWrapper
         {
             Path = "";
             SelectedAddress = "";
+            Transactions.Clear();
             LastBlockCount = 0;
         }
 
@@ -637,7 +638,6 @@ namespace RPCWrapper
                 p.StartInfo.Arguments += " -p " + WalletPassword;
                 WalletPassword = "";
             }
-            //Console.WriteLine(p.StartInfo.Arguments);
 
             // Run server
             p.Start();
@@ -654,10 +654,10 @@ namespace RPCWrapper
         /// <summary>
         /// Sends a transaction
         /// </summary>
-        public static JObject Send(List<String> Addresses, List<Transfer> Transfers, double Fee, int Anonymity = 6, String Extra = "",
-            String PaymentID = "", int UnlockTime = 0, String ChangeAddress = "", String Mixin = "")
+        public static JObject Send(List<String> Addresses, List<Transfer> Transfers, double Fee, int Mixin = 6, String Extra = "",
+            String PaymentID = "", int UnlockTime = 0, String ChangeAddress = "")
         {
-            return SendTransaction(Addresses, Transfers, Fee, Anonymity, Extra, PaymentID, UnlockTime, ChangeAddress, Mixin);
+            return SendTransaction(Addresses, Transfers, Fee, Mixin, Extra, PaymentID, UnlockTime, ChangeAddress);
         }
 
         /// <summary>
@@ -951,31 +951,30 @@ namespace RPCWrapper
         ///Returns transactionHash
         ///</summary>
         private static JObject SendTransaction(List<String> Addresses, List<Transfer> Transfers, double Fee,
-            int Anonymity = 6, String Extra = "", String PaymentID = "", int UnlockTime = 0,
-            String ChangeAddress = "", String Mixin = "")
+            int Mixin = 10, String Extra = "", String PaymentID = "", int UnlockTime = 0,
+            String ChangeAddress = "")
         {
+
             // Send request to server
             JObject Params = new JObject();
-            Params["anonymity"] = Anonymity;
+            Params["anonymity"] = Mixin;
             Params["fee"] = (int)(Fee * 100);
-            if (UnlockTime != 0) Params["unlockTime"] = UnlockTime;
+            Params["unlockTime"] = UnlockTime;
             if (PaymentID != "") Params["paymentId"] = PaymentID;
             if (Addresses.Count > 0) Params["addresses"] = JArray.FromObject(Addresses);
             Params["transfers"] = JArray.FromObject(Transfers);
             if (ChangeAddress != "") Params["changeAddress"] = ChangeAddress;
             if (Extra != "") Params["extra"] = Extra;
-            if (Mixin != "") Params["mixin"] = Mixin;
             JObject result = SendRequest("sendTransaction", Params);
 
             // Output response
             if (result["error"] == null)
             {
-                Console.WriteLine("Send transaction hash: {0}", result["result"]["hash"]);
+                Console.WriteLine("Sent a transaction");
                 return (JObject)result["result"];
             }
             else
             {
-                Console.WriteLine("Error sending transaction: {0}", result["error"]["message"]);
                 result["error"] = result["error"]["message"];
                 return (JObject)result;
             }
@@ -1046,14 +1045,13 @@ namespace RPCWrapper
     public class Transfer
     {
         #region Variables
-        public String Address { get; set; }
-        public int Amount;
-        public String ConvertedAmount
+        public String address { get; set; }
+        public int amount;
+        public double Amount
         {
             get
             {
-                double x = Amount / Math.Pow(10, Server.CurrencyDecimals);
-                return x.ToString();
+                return amount / Math.Pow(10, Server.CurrencyDecimals);
             }
         }
         #endregion
@@ -1061,8 +1059,8 @@ namespace RPCWrapper
         #region Init
         public Transfer(String Address, double Amount)
         {
-            this.Address = Address;
-            this.Amount = (int)(Amount * 100);
+            this.address = Address;
+            this.amount = (int)Amount;
         }
         public Transfer() { }
         #endregion

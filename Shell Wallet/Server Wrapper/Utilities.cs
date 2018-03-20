@@ -17,17 +17,21 @@ namespace RPCWrapper
         SynchronizationContext _ctx;
         protected override void OnAddingNew(AddingNewEventArgs e)
         {
-            if (_ctx == null)
+            try
             {
-                BaseAddingNew(e);
-            }
-            else
-            {
-                SynchronizationContext.Current.Send(delegate
+                if (_ctx == null)
                 {
                     BaseAddingNew(e);
-                }, null);
+                }
+                else
+                {
+                    SynchronizationContext.Current.Send(delegate
+                    {
+                        BaseAddingNew(e);
+                    }, null);
+                }
             }
+            catch (Exception) { }
         }
         void BaseAddingNew(AddingNewEventArgs e)
         {
@@ -35,14 +39,18 @@ namespace RPCWrapper
         }
         protected override void OnListChanged(ListChangedEventArgs e)
         {
-            if (_ctx == null)
+            try
             {
-                BaseListChanged(e);
+                if (_ctx == null)
+                {
+                    BaseListChanged(e);
+                }
+                else
+                {
+                    _ctx.Send(delegate { BaseListChanged(e); }, null);
+                }
             }
-            else
-            {
-                _ctx.Send(delegate { BaseListChanged(e); }, null);
-            }
+            catch (Exception) { }
         }
         void BaseListChanged(ListChangedEventArgs e)
         {

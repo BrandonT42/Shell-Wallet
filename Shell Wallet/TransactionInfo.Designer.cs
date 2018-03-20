@@ -41,19 +41,19 @@
             this.PaymentID = new System.Windows.Forms.TextBox();
             this.Extra = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.Transfers = new System.Windows.Forms.DataGridView();
-            this.Fee = new System.Windows.Forms.TextBox();
-            this.BlockIndex = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
+            this.BlockIndex = new System.Windows.Forms.TextBox();
+            this.Fee = new System.Windows.Forms.TextBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.Transfers = new System.Windows.Forms.DataGridView();
+            this.transferBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.AmountColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.AddressColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.transferBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.Transfers)).BeginInit();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Transfers)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.transferBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
@@ -187,6 +187,35 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Transaction";
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(6, 55);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(74, 13);
+            this.label3.TabIndex = 15;
+            this.label3.Text = "Block Index";
+            // 
+            // BlockIndex
+            // 
+            this.BlockIndex.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BlockIndex.Location = new System.Drawing.Point(6, 71);
+            this.BlockIndex.Margin = new System.Windows.Forms.Padding(3, 3, 9, 3);
+            this.BlockIndex.Name = "BlockIndex";
+            this.BlockIndex.ReadOnly = true;
+            this.BlockIndex.Size = new System.Drawing.Size(368, 20);
+            this.BlockIndex.TabIndex = 14;
+            // 
+            // Fee
+            // 
+            this.Fee.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Fee.Location = new System.Drawing.Point(386, 71);
+            this.Fee.Name = "Fee";
+            this.Fee.ReadOnly = true;
+            this.Fee.Size = new System.Drawing.Size(368, 20);
+            this.Fee.TabIndex = 13;
+            // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.panel1);
@@ -197,6 +226,15 @@
             this.groupBox2.TabIndex = 14;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Transfers";
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.Transfers);
+            this.panel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.panel1.Location = new System.Drawing.Point(9, 19);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(739, 203);
+            this.panel1.TabIndex = 1;
             // 
             // Transfers
             // 
@@ -223,47 +261,13 @@
             this.Transfers.Size = new System.Drawing.Size(739, 203);
             this.Transfers.TabIndex = 0;
             // 
-            // Fee
+            // transferBindingSource
             // 
-            this.Fee.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Fee.Location = new System.Drawing.Point(386, 71);
-            this.Fee.Name = "Fee";
-            this.Fee.ReadOnly = true;
-            this.Fee.Size = new System.Drawing.Size(368, 20);
-            this.Fee.TabIndex = 13;
-            // 
-            // BlockIndex
-            // 
-            this.BlockIndex.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BlockIndex.Location = new System.Drawing.Point(6, 71);
-            this.BlockIndex.Margin = new System.Windows.Forms.Padding(3, 3, 9, 3);
-            this.BlockIndex.Name = "BlockIndex";
-            this.BlockIndex.ReadOnly = true;
-            this.BlockIndex.Size = new System.Drawing.Size(368, 20);
-            this.BlockIndex.TabIndex = 14;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(6, 55);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(74, 13);
-            this.label3.TabIndex = 15;
-            this.label3.Text = "Block Index";
-            // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.Transfers);
-            this.panel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.panel1.Location = new System.Drawing.Point(9, 19);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(739, 203);
-            this.panel1.TabIndex = 1;
+            this.transferBindingSource.DataSource = typeof(RPCWrapper.Transfer);
             // 
             // AmountColumn
             // 
-            this.AmountColumn.DataPropertyName = "ConvertedAmount";
+            this.AmountColumn.DataPropertyName = "Amount";
             this.AmountColumn.FillWeight = 15F;
             this.AmountColumn.HeaderText = "Amount";
             this.AmountColumn.Name = "AmountColumn";
@@ -271,14 +275,10 @@
             // 
             // AddressColumn
             // 
-            this.AddressColumn.DataPropertyName = "Address";
+            this.AddressColumn.DataPropertyName = "address";
             this.AddressColumn.HeaderText = "Address";
             this.AddressColumn.Name = "AddressColumn";
             this.AddressColumn.ReadOnly = true;
-            // 
-            // transferBindingSource
-            // 
-            this.transferBindingSource.DataSource = typeof(RPCWrapper.Transfer);
             // 
             // TransactionInfo
             // 
@@ -298,8 +298,8 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.Transfers)).EndInit();
             this.panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.Transfers)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.transferBindingSource)).EndInit();
             this.ResumeLayout(false);
 
