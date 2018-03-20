@@ -85,7 +85,6 @@ namespace Shell_Wallet
 
             // Assign event handlers
             Application.ThreadExit += OnExit;
-            this.Resize += new EventHandler(this.MainWindow_Resize);
 
             // Assign server variables
             Server.RefreshRate = Config.RefreshRate;
@@ -494,36 +493,6 @@ namespace Shell_Wallet
         {
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.')) e.Handled = true;
             if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1)) e.Handled = true;
-        }
-        #endregion
-        
-        #region Tray Icon
-        private void MainWindow_Resize(object sender, EventArgs e)
-        {
-            if (this.WindowState == FormWindowState.Minimized)
-            {
-                Hide();
-                TrayIcon.Visible = true;
-            }
-        }
-
-        private void toolStripMenuItem4_Click(object sender, EventArgs e)
-        {
-            Show();
-            this.WindowState = FormWindowState.Normal;
-            TrayIcon.Visible = false;
-        }
-
-        private void toolStripMenuItem5_Click(object sender, EventArgs e)
-        {
-            Application.Exit();
-        }
-
-        private void TrayIcon_MouseDoubleClick(object sender, MouseEventArgs e)
-        {
-            Show();
-            this.WindowState = FormWindowState.Normal;
-            TrayIcon.Visible = false;
         }
         #endregion
 

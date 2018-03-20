@@ -43,9 +43,9 @@ namespace Shell_Wallet
         internal static String DefaultMixin = "6";
 
         // Refresh rates
-        internal static int RefreshRate = 1000;
-        internal static int NetworkRefreshRate = 1000;
-        internal static int GUIRefreshRate = 1000;
+        internal static int RefreshRate = 5000; // 5 seconds
+        internal static int NetworkRefreshRate = 20000; // 10 seconds
+        internal static int GUIRefreshRate = 100; // 100 milliseconds
 
         // Environment
         internal static bool Debug = false;

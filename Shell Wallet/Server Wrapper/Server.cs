@@ -27,12 +27,12 @@ namespace RPCWrapper
         /// <summary>
         /// Defines how often the wallet should check for updates from the server (in milliseconds)
         /// </summary>
-        public static int RefreshRate = 1000;
+        public static int RefreshRate = 5000; // 5 seconds
 
         /// <summary>
         /// Defines how often the server should check for updates from the network (in milliseconds)
         /// </summary>
-        public static int NetworkRefreshRate = 1000;
+        public static int NetworkRefreshRate = 20000; // 20 seconds
 
         /// <summary>
         /// Defines whether or not the server should connect as a testnet connection

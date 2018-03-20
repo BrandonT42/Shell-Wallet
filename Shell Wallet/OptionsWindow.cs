@@ -152,6 +152,9 @@ namespace Shell_Wallet
             if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1)) e.Handled = true;
         }
 
+        /// <summary>
+        /// Mobile wallet enabled or disabled
+        /// </summary>
         private void MobileWalletCheckbox_CheckedChanged(object sender, EventArgs e)
         {
             if (MobileWalletCheckbox.Checked)

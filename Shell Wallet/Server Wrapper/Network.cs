@@ -17,6 +17,7 @@ namespace RPCWrapper
         private static String HostAddress, HostPort;
         private static Boolean LocalServer, InternalAlive;
         private static JObject Status = new JObject(), LastBlockHeader = new JObject(), LastBlock = new JObject();
+        private static Thread WorkerThread;
         #endregion
 
         #region Public Variables
@@ -231,7 +232,7 @@ namespace RPCWrapper
                 InternalAlive = true;
 
                 // Begin new thread for updates
-                Thread s = new Thread(delegate ()
+                WorkerThread = new Thread(delegate ()
                 {
                     // Invoke start event
                     if (OnStart != null)
@@ -247,7 +248,9 @@ namespace RPCWrapper
                             OnTick.Invoke(new Network(), null);
 
                         // Sleep for the desired refresh rate
-                        Thread.Sleep(Server.NetworkRefreshRate);
+                        try { Thread.Sleep(Server.NetworkRefreshRate); }
+                        // Hacky but works to waking a thread
+                        catch (Exception) { }
                     }
 
                     // Invoke stop event
@@ -257,7 +260,7 @@ namespace RPCWrapper
                 {
                     Name = "Network Thread"
                 };
-                s.Start();
+                WorkerThread.Start();
                 return true;
             }
             else
@@ -273,6 +276,9 @@ namespace RPCWrapper
         public static void Stop()
         {
             InternalAlive = false;
+            // Hacky wake up call
+            if (WorkerThread != null && WorkerThread.IsAlive)
+                WorkerThread.Interrupt();
             Reset();
         }
         #endregion

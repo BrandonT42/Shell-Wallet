@@ -373,7 +373,7 @@
             this.SecurityTab.Location = new System.Drawing.Point(4, 22);
             this.SecurityTab.Name = "SecurityTab";
             this.SecurityTab.Padding = new System.Windows.Forms.Padding(3);
-            this.SecurityTab.Size = new System.Drawing.Size(312, 234);
+            this.SecurityTab.Size = new System.Drawing.Size(312, 317);
             this.SecurityTab.TabIndex = 1;
             this.SecurityTab.Text = "Security";
             // 
@@ -385,7 +385,7 @@
             this.DefaultsTab.Location = new System.Drawing.Point(4, 22);
             this.DefaultsTab.Name = "DefaultsTab";
             this.DefaultsTab.Padding = new System.Windows.Forms.Padding(3);
-            this.DefaultsTab.Size = new System.Drawing.Size(312, 234);
+            this.DefaultsTab.Size = new System.Drawing.Size(312, 317);
             this.DefaultsTab.TabIndex = 2;
             this.DefaultsTab.Text = "Defaults";
             // 

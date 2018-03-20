@@ -23,6 +23,7 @@ namespace RPCWrapper
         private static String InternalPassword, InternalSelectedAddress;
         private static int LastBlockCount = 0;
         private static Boolean UpdatingTransactions = false;
+        private static Thread WorkerThread;
 
         internal static String Path = "";
         #endregion
@@ -311,6 +312,7 @@ namespace RPCWrapper
         /// </summary>
         public static void Reset()
         {
+            Addresses.Clear();
             SelectedAddress = "";
             Transactions.Clear();
             LastBlockCount = 0;
@@ -388,9 +390,6 @@ namespace RPCWrapper
             else HostAddress = "127.0.0.1";
             HostPort = NodePort;
 
-            Console.WriteLine("Entered passwork: {0}\r\nEncoded password: {1}\r\nServer password: {2}\r\nEncoded server password: {3}",
-                Password, WalletPassword, ServerPassword, RPCPassword);
-
             // First check if RPC server port is available
             if (Server.Ping("127.0.0.1", Convert.ToInt32(RPCPort)))
             {
@@ -404,8 +403,6 @@ namespace RPCWrapper
                 Server.InternalError = "Could not connect to daemon";
                 return false;
             }
-
-            // Set up a fail check
 
             // Create a thread to run the server in
             Thread s = new Thread(delegate ()
@@ -482,7 +479,9 @@ namespace RPCWrapper
                             OnTick.Invoke(new Wallet(), EventArgs.Empty);
 
                         // Sleep for the desired refresh rate
-                        Thread.Sleep(Server.RefreshRate);
+                        try { Thread.Sleep(Server.RefreshRate); }
+                        // Hacky but works to waking a thread
+                        catch (Exception) { }
                     }
 
                     // Force kill wallet process
@@ -625,9 +624,6 @@ namespace RPCWrapper
 
             Console.WriteLine("Checking wallet password");
 
-            Console.WriteLine("Entered passwork: {0}\r\nEncoded password: {1}",
-                Password, WalletPassword);
-
             // Create a process object to hold server instance
             Process p = new Process();
             p.StartInfo.FileName = ServerPath;
@@ -677,6 +673,9 @@ namespace RPCWrapper
         {
             Save();
             InternalAlive = false;
+            // Hacky wake up call
+            if (WorkerThread != null && WorkerThread.IsAlive)
+                WorkerThread.Interrupt();
             Reset();
         }
         #endregion
