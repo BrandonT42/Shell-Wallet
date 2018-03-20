@@ -23,7 +23,7 @@ namespace Shell_Wallet
         /// </summary>
         private void button1_Click(object sender, EventArgs e)
         {
-            this.Close();
+            this.DialogResult = DialogResult.OK;
         }
 
         /// <summary>
@@ -45,6 +45,15 @@ namespace Shell_Wallet
         private void PasswordBox_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == ' ') e.Handled = true;
+        }
+
+        private void PasswordPrompt_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (PasswordBox.Text != ConfirmPasswordBox.Text && this.DialogResult == DialogResult.OK)
+            {
+                MessageBox.Show("Passwords don't match!", "Error");
+                e.Cancel = true;
+            }
         }
     }
 }

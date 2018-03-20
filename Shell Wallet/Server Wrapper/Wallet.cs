@@ -423,7 +423,8 @@ namespace RPCWrapper
                     WalletProcess.StartInfo.CreateNoWindow = true;
 
                     // Add flags according to supplied arguments
-                    if (LocalServer) WalletProcess.StartInfo.Arguments = "--local";
+                    WalletProcess.StartInfo.Arguments = "--server-root " + System.IO.Path.GetDirectoryName(ServerPath);
+                    if (LocalServer) WalletProcess.StartInfo.Arguments += " --local";
                     else WalletProcess.StartInfo.Arguments = "--daemon-address " + HostAddress + " --daemon-port " + HostPort;
                     if (RPCPassword != "") WalletProcess.StartInfo.Arguments += " --rpc-password " + RPCPassword;
                     else WalletProcess.StartInfo.Arguments += " --rpc-legacy-security";
@@ -533,7 +534,8 @@ namespace RPCWrapper
             p.StartInfo.CreateNoWindow = true;
 
             // Add flags according to supplied arguments
-            p.StartInfo.Arguments = "--log-level 0 -g";
+            p.StartInfo.Arguments = "--server-root " + System.IO.Path.GetDirectoryName(ServerPath);
+            p.StartInfo.Arguments += " --log-level 0 -g";
             p.StartInfo.Arguments += " -w \"" + Wallet.Path + "\"";
             if (WalletPassword != "")
             {
@@ -579,7 +581,8 @@ namespace RPCWrapper
             p.StartInfo.CreateNoWindow = true;
 
             // Add flags according to supplied arguments
-            p.StartInfo.Arguments = "--log-level 0 -g";
+            p.StartInfo.Arguments = "--server-root " + System.IO.Path.GetDirectoryName(ServerPath);
+            p.StartInfo.Arguments += " --log-level 0 -g";
             p.StartInfo.Arguments += " -w \"" + Wallet.Path + "\"";
             if (WalletPassword != "")
             {
@@ -630,7 +633,8 @@ namespace RPCWrapper
             p.StartInfo.CreateNoWindow = true;
 
             // Add flags according to supplied arguments
-            p.StartInfo.Arguments = "--log-level 1 --rpc-legacy-security";
+            p.StartInfo.Arguments = "--server-root " + System.IO.Path.GetDirectoryName(ServerPath);
+            p.StartInfo.Arguments += " --log-level 1 --rpc-legacy-security";
             p.StartInfo.Arguments += " --address";
             p.StartInfo.Arguments += " -w \"" + Wallet.Path + "\"";
             if (WalletPassword != "")
@@ -1005,6 +1009,7 @@ namespace RPCWrapper
 
     public class Transaction
     {
+        #region Public Variables
         public String Type { get; set; }
         public String Hash { get; set; }
         public String State { get; set; }
@@ -1016,7 +1021,9 @@ namespace RPCWrapper
         public String PaymentID { get; set; }
         public String BlockIndex;
         public List<Transfer> Transfers;
+        #endregion
 
+        #region Init
         public Transaction(String BlockIndex, String Hash, String State, int TimeStamp, int UnlockTime, int Amount,
             int Fee, String Extra, String PaymentID, List<Transfer> Transfers)
         {
@@ -1037,6 +1044,7 @@ namespace RPCWrapper
             else this.Type = "OUT";
         }
         public Transaction() { }
+        #endregion
     }
 
     /// <summary>
