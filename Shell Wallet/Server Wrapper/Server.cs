@@ -159,6 +159,41 @@ namespace RPCWrapper
                 p[b.Length + i] = s[i];
             return Convert.ToBase64String(algorithm.ComputeHash(p));
         }
+
+        /// <summary>
+        /// Encodes an escape string for shell arguments
+        /// Credit to ZedPea on this one
+        /// </summary>
+        internal static String EncodeString(String Input)
+        {
+            string result = "";
+            bool enclosedInApo, wasApo;
+            string subResult;
+            enclosedInApo = Input.LastIndexOfAny(
+                new char[] { ' ', '\t', '|', '@', '^', '<', '>', '&' }) >= 0;
+            wasApo = enclosedInApo;
+            subResult = "";
+            for (int i = Input.Length - 1; i >= 0; i--)
+            {
+                switch (Input[i])
+                {
+                    case '"':
+                        subResult = @"\""" + subResult;
+                        wasApo = true;
+                        break;
+                    case '\\':
+                        subResult = (wasApo ? @"\\" : @"\") + subResult;
+                        break;
+                    default:
+                        subResult = Input[i] + subResult;
+                        wasApo = false;
+                        break;
+                }
+            }
+            result += (result.Length > 0 ? " " : "")
+                + (enclosedInApo ? "\"" + subResult + "\"" : subResult);
+            return result;
+        }
         #endregion
     }
 }

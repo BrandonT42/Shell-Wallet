@@ -30,7 +30,7 @@
         {
             this.PasswordBox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.Submit = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.ConfirmPasswordBox = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
@@ -42,8 +42,6 @@
             this.PasswordBox.PasswordChar = '*';
             this.PasswordBox.Size = new System.Drawing.Size(266, 20);
             this.PasswordBox.TabIndex = 0;
-            this.PasswordBox.TextChanged += new System.EventHandler(this.PasswordBox_TextChanged);
-            this.PasswordBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.PasswordBox_KeyPress);
             // 
             // label1
             // 
@@ -54,17 +52,17 @@
             this.label1.TabIndex = 1;
             this.label1.Text = "Enter Password:";
             // 
-            // button1
+            // Submit
             // 
-            this.button1.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.button1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.button1.Location = new System.Drawing.Point(9, 93);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(266, 23);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "Submit";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.Submit.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.Submit.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.Submit.Location = new System.Drawing.Point(9, 93);
+            this.Submit.Name = "Submit";
+            this.Submit.Size = new System.Drawing.Size(266, 23);
+            this.Submit.TabIndex = 2;
+            this.Submit.Text = "Submit";
+            this.Submit.UseVisualStyleBackColor = true;
+            this.Submit.Click += new System.EventHandler(this.button1_Click);
             // 
             // label2
             // 
@@ -82,18 +80,16 @@
             this.ConfirmPasswordBox.PasswordChar = '*';
             this.ConfirmPasswordBox.Size = new System.Drawing.Size(266, 20);
             this.ConfirmPasswordBox.TabIndex = 1;
-            this.ConfirmPasswordBox.TextChanged += new System.EventHandler(this.PasswordBox_TextChanged);
-            this.ConfirmPasswordBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.PasswordBox_KeyPress);
             // 
             // PasswordPrompt
             // 
-            this.AcceptButton = this.button1;
+            this.AcceptButton = this.Submit;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(284, 125);
             this.Controls.Add(this.ConfirmPasswordBox);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.Submit);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.PasswordBox);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
@@ -115,7 +111,7 @@
 
         private System.Windows.Forms.TextBox PasswordBox;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button Submit;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox ConfirmPasswordBox;
     }

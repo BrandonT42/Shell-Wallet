@@ -311,7 +311,6 @@ namespace RPCWrapper
         /// </summary>
         public static void Reset()
         {
-            Path = "";
             SelectedAddress = "";
             Transactions.Clear();
             LastBlockCount = 0;
@@ -353,6 +352,7 @@ namespace RPCWrapper
         public static void Resync()
         {
             SendRequest("reset");
+            Reset();
             Console.WriteLine("Resyncing wallet");
         }
 
@@ -379,14 +379,17 @@ namespace RPCWrapper
 
             // Assign local variables
             ServerPath = Path;
-            Wallet.Password = Password;
-            WalletPassword = Password;
-            RPCPassword = ServerPassword;
+            Wallet.Password = Server.EncodeString(Password);
+            WalletPassword = Server.EncodeString(Password);
+            RPCPassword = Server.EncodeString(ServerPassword);
             RPCPort = ServerPort;
             LocalServer = Local;
             if (!LocalServer) HostAddress = NodeHost;
             else HostAddress = "127.0.0.1";
             HostPort = NodePort;
+
+            Console.WriteLine("Entered passwork: {0}\r\nEncoded password: {1}\r\nServer password: {2}\r\nEncoded server password: {3}",
+                Password, WalletPassword, ServerPassword, RPCPassword);
 
             // First check if RPC server port is available
             if (Server.Ping("127.0.0.1", Convert.ToInt32(RPCPort)))
@@ -423,10 +426,10 @@ namespace RPCWrapper
                     WalletProcess.StartInfo.CreateNoWindow = true;
 
                     // Add flags according to supplied arguments
-                    WalletProcess.StartInfo.Arguments = "--server-root " + System.IO.Path.GetDirectoryName(ServerPath);
+                    WalletProcess.StartInfo.Arguments = "--server-root \"" + System.IO.Path.GetDirectoryName(ServerPath) + "\"";
                     if (LocalServer) WalletProcess.StartInfo.Arguments += " --local";
-                    else WalletProcess.StartInfo.Arguments = "--daemon-address " + HostAddress + " --daemon-port " + HostPort;
-                    if (RPCPassword != "") WalletProcess.StartInfo.Arguments += " --rpc-password " + RPCPassword;
+                    else WalletProcess.StartInfo.Arguments = " --daemon-address " + HostAddress + " --daemon-port " + HostPort;
+                    if (RPCPassword != "") WalletProcess.StartInfo.Arguments += " --rpc-password \"" + RPCPassword + "\"";
                     else WalletProcess.StartInfo.Arguments += " --rpc-legacy-security";
                     if (Server.Testnet) WalletProcess.StartInfo.Arguments += " --testnet";
                     WalletProcess.StartInfo.Arguments += " --bind-port " + RPCPort;
@@ -434,7 +437,7 @@ namespace RPCWrapper
                     WalletProcess.StartInfo.Arguments += " -w \"" + Wallet.Path + "\"";
                     if (WalletPassword != "")
                     {
-                        WalletProcess.StartInfo.Arguments += " -p " + WalletPassword;
+                        WalletProcess.StartInfo.Arguments += " -p \"" + WalletPassword + "\"";
                         WalletPassword = "";
                     }
 
@@ -518,8 +521,8 @@ namespace RPCWrapper
             // Assign local variables
             ServerPath = Path;
             Wallet.Path = WalletPath;
-            if (Password.Length > 0) Wallet.Password = Password;
-            WalletPassword = Password;
+            if (Password.Length > 0) Wallet.Password = Server.EncodeString(Password);
+            WalletPassword = Server.EncodeString(Password);
 
             // Check if file already exists
             if (File.Exists(WalletPath)) return false;
@@ -534,12 +537,12 @@ namespace RPCWrapper
             p.StartInfo.CreateNoWindow = true;
 
             // Add flags according to supplied arguments
-            p.StartInfo.Arguments = "--server-root " + System.IO.Path.GetDirectoryName(ServerPath);
+            p.StartInfo.Arguments = "--server-root \"" + System.IO.Path.GetDirectoryName(ServerPath) + "\"";
             p.StartInfo.Arguments += " --log-level 0 -g";
             p.StartInfo.Arguments += " -w \"" + Wallet.Path + "\"";
             if (WalletPassword != "")
             {
-                p.StartInfo.Arguments += " -p " + WalletPassword;
+                p.StartInfo.Arguments += " -p \"" + WalletPassword + "\"";
                 WalletPassword = "";
             }
             //Console.WriteLine(p.StartInfo.Arguments);
@@ -565,8 +568,8 @@ namespace RPCWrapper
             // Assign local variables
             ServerPath = Path;
             Wallet.Path = WalletPath;
-            if (Password.Length > 0) Wallet.Password = Password;
-            WalletPassword = Password;
+            if (Password.Length > 0) Wallet.Password = Server.EncodeString(Password);
+            WalletPassword = Server.EncodeString(Password);
 
             // Check if file already exists
             if (File.Exists(WalletPath)) return false;
@@ -581,12 +584,12 @@ namespace RPCWrapper
             p.StartInfo.CreateNoWindow = true;
 
             // Add flags according to supplied arguments
-            p.StartInfo.Arguments = "--server-root " + System.IO.Path.GetDirectoryName(ServerPath);
+            p.StartInfo.Arguments = "--server-root \"" + System.IO.Path.GetDirectoryName(ServerPath) + "\"";
             p.StartInfo.Arguments += " --log-level 0 -g";
             p.StartInfo.Arguments += " -w \"" + Wallet.Path + "\"";
             if (WalletPassword != "")
             {
-                p.StartInfo.Arguments += " -p " + WalletPassword;
+                p.StartInfo.Arguments += " -p \"" + WalletPassword + "\"";
                 WalletPassword = "";
             }
             p.StartInfo.Arguments += " --view-key " + ViewKey;
@@ -614,13 +617,16 @@ namespace RPCWrapper
             // Assign local variables
             ServerPath = Path;
             Wallet.Path = WalletPath;
-            if (Password.Length > 0) Wallet.Password = Password;
-            WalletPassword = Password;
+            if (Password.Length > 0) Wallet.Password = Server.EncodeString(Password);
+            WalletPassword = Server.EncodeString(Password);
 
             // Check if file exists
             if (!File.Exists(WalletPath)) return false;
 
             Console.WriteLine("Checking wallet password");
+
+            Console.WriteLine("Entered passwork: {0}\r\nEncoded password: {1}",
+                Password, WalletPassword);
 
             // Create a process object to hold server instance
             Process p = new Process();
@@ -633,13 +639,13 @@ namespace RPCWrapper
             p.StartInfo.CreateNoWindow = true;
 
             // Add flags according to supplied arguments
-            p.StartInfo.Arguments = "--server-root " + System.IO.Path.GetDirectoryName(ServerPath);
+            p.StartInfo.Arguments = "--server-root \"" + System.IO.Path.GetDirectoryName(ServerPath) + "\"";
             p.StartInfo.Arguments += " --log-level 1 --rpc-legacy-security";
             p.StartInfo.Arguments += " --address";
             p.StartInfo.Arguments += " -w \"" + Wallet.Path + "\"";
             if (WalletPassword != "")
             {
-                p.StartInfo.Arguments += " -p " + WalletPassword;
+                p.StartInfo.Arguments += " -p \"" + WalletPassword + "\"";
                 WalletPassword = "";
             }
 

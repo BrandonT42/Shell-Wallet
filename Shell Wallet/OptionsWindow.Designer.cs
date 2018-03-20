@@ -220,8 +220,6 @@
             this.ServerPassword.PasswordChar = '*';
             this.ServerPassword.Size = new System.Drawing.Size(223, 20);
             this.ServerPassword.TabIndex = 3;
-            this.ServerPassword.TextChanged += new System.EventHandler(this.ServerPassword_TextChanged);
-            this.ServerPassword.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.ServerPassword_KeyPress);
             // 
             // label6
             // 
@@ -448,8 +446,6 @@
             this.MobileWalletPassword.PasswordChar = '*';
             this.MobileWalletPassword.Size = new System.Drawing.Size(223, 20);
             this.MobileWalletPassword.TabIndex = 3;
-            this.MobileWalletPassword.TextChanged += new System.EventHandler(this.ServerPassword_TextChanged);
-            this.MobileWalletPassword.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.ServerPassword_KeyPress);
             // 
             // label9
             // 

@@ -15,6 +15,7 @@ namespace Shell_Wallet
         internal const String ConfigFile = "Config.json";
         internal const String AddressBookFile = "Addresses.json";
         internal const String LogFile = "Log.log";
+        internal const String PasswordRegex = "[^x21-x7ExA2-xA7xBF-xFF~!#$%&*()\\-+{}|,./]";
         internal static String CurrentDirectory = Directory.GetCurrentDirectory();
         internal static String DataPath = Path.Combine(
                 Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),

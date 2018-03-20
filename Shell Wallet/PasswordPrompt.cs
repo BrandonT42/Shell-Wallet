@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RPCWrapper;
+using System;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
@@ -15,7 +16,7 @@ namespace Shell_Wallet
         internal PasswordPrompt()
         {
             InitializeComponent();
-            this.AcceptButton = this.button1;
+            this.AcceptButton = this.Submit;
         }
 
         /// <summary>
@@ -31,28 +32,15 @@ namespace Shell_Wallet
         /// </summary>
         internal String GetResult()
         {
-            return this.PasswordBox.Text;
-        }
-
-        private void PasswordBox_TextChanged(object sender, EventArgs e)
-        {
-            var textboxSender = (TextBox)sender;
-            var cursorPosition = textboxSender.SelectionStart;
-            textboxSender.Text = Regex.Replace(textboxSender.Text, "[^0-9a-zA-Z ]", "");
-            textboxSender.SelectionStart = cursorPosition;
-        }
-
-        private void PasswordBox_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (e.KeyChar == ' ') e.Handled = true;
+            return PasswordBox.Text;
         }
 
         private void PasswordPrompt_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (PasswordBox.Text != ConfirmPasswordBox.Text && this.DialogResult == DialogResult.OK)
-            {
-                MessageBox.Show("Passwords don't match!", "Error");
-                e.Cancel = true;
+            if (this.DialogResult == DialogResult.OK && PasswordBox.Text != ConfirmPasswordBox.Text)
+                {
+                    MessageBox.Show("Passwords don't match!", "Error");
+                    e.Cancel = true;
             }
         }
     }

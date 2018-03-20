@@ -152,25 +152,6 @@ namespace Shell_Wallet
             if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1)) e.Handled = true;
         }
 
-        /// <summary>
-        /// Server password changes
-        /// </summary>
-        private void ServerPassword_TextChanged(object sender, EventArgs e)
-        {
-            var textboxSender = (TextBox)sender;
-            var cursorPosition = textboxSender.SelectionStart;
-            textboxSender.Text = Regex.Replace(textboxSender.Text, "[^0-9a-zA-Z ]", "");
-            textboxSender.SelectionStart = cursorPosition;
-        }
-
-        /// <summary>
-        /// Disables spaces in password input
-        /// </summary>
-        private void ServerPassword_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (e.KeyChar == ' ') e.Handled = true;
-        }
-
         private void MobileWalletCheckbox_CheckedChanged(object sender, EventArgs e)
         {
             if (MobileWalletCheckbox.Checked)
