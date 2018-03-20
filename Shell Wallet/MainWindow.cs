@@ -317,6 +317,11 @@ namespace Shell_Wallet
                     this.WalletAddresses.SelectedIndex = 0;
                 }
 
+                // Update wallet status
+                this.HeightStatus.Text = "Height: " + Wallet.BlockCount +
+                    " / " + Wallet.KnownBlockCount + " | Peer Count: " +
+                    Wallet.PeerCount;
+
                 // Only do these updates if the wallet tab is selected
                 if (this.WalletTabs.SelectedTab.Text == "Wallet")
                 {
@@ -344,11 +349,6 @@ namespace Shell_Wallet
                     this.SelectedBalanceBox.Text = Wallet.SelectedBalance;
                     this.SelectedLockedBalanceBox.Text = Wallet.SelectedLockedBalance;
                 }
-
-                // Update wallet status
-                this.HeightStatus.Text = "Height: " + (Wallet.BlockCount + 1) +
-                    " / " + Wallet.KnownBlockCount + " | Peer Count: " +
-                    Wallet.PeerCount;
             }
 
             // Server offline
