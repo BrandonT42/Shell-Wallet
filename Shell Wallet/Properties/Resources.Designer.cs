@@ -63,9 +63,9 @@ namespace Shell_Wallet.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap _2 {
+        internal static System.Drawing.Bitmap LoadingIcon {
             get {
-                object obj = ResourceManager.GetObject("2", resourceCulture);
+                object obj = ResourceManager.GetObject("LoadingIcon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

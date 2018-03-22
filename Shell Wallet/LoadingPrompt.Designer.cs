@@ -44,7 +44,7 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Image = global::Shell_Wallet.Properties.Resources._2;
+            this.pictureBox1.Image = global::Shell_Wallet.Properties.Resources.LoadingIcon;
             this.pictureBox1.Location = new System.Drawing.Point(12, 34);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(138, 25);

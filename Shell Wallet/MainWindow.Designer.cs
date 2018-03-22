@@ -166,6 +166,7 @@
             this.ServerStatus = new System.Windows.Forms.Label();
             this.SavePrivateKeys = new System.Windows.Forms.SaveFileDialog();
             this.ToolTip = new System.Windows.Forms.ToolTip(this.components);
+            this.OpenImportFile = new System.Windows.Forms.OpenFileDialog();
             this.MenuStrip.SuspendLayout();
             this.SendTab.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
@@ -1130,7 +1131,7 @@
             // EditContact
             // 
             this.EditContact.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.EditContact.Location = new System.Drawing.Point(112, 375);
+            this.EditContact.Location = new System.Drawing.Point(218, 375);
             this.EditContact.Name = "EditContact";
             this.EditContact.Size = new System.Drawing.Size(100, 23);
             this.EditContact.TabIndex = 5;
@@ -1152,7 +1153,7 @@
             // RemoveContact
             // 
             this.RemoveContact.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.RemoveContact.Location = new System.Drawing.Point(6, 375);
+            this.RemoveContact.Location = new System.Drawing.Point(112, 375);
             this.RemoveContact.Name = "RemoveContact";
             this.RemoveContact.Size = new System.Drawing.Size(100, 23);
             this.RemoveContact.TabIndex = 2;
@@ -1163,7 +1164,7 @@
             // AddContact
             // 
             this.AddContact.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.AddContact.Location = new System.Drawing.Point(6, 607);
+            this.AddContact.Location = new System.Drawing.Point(6, 375);
             this.AddContact.Name = "AddContact";
             this.AddContact.Size = new System.Drawing.Size(100, 23);
             this.AddContact.TabIndex = 1;
@@ -1858,6 +1859,7 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
         private System.Windows.Forms.ToolStripMenuItem ConnectRemoteRPC;
+        private System.Windows.Forms.OpenFileDialog OpenImportFile;
     }
 }
 

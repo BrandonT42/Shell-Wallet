@@ -331,7 +331,7 @@ namespace RPCWrapper
         /// <summary>
         /// Creates a new address within the wallet
         /// </summary>
-        public static void CreateAddress()
+        public static void CreateAddress(String SpendKey = "")
         {
             JObject result = CreateNewAddress();
             if (result["address"] != null) Update();
@@ -648,7 +648,11 @@ namespace RPCWrapper
             WalletPassword = Server.EncodeString(Password);
 
             // Check if file already exists
-            if (File.Exists(WalletPath)) return false;
+            if (File.Exists(WalletPath))
+            {
+                Server.InternalError = "Wallet file already exists";
+                return false;
+            }
 
             // Create a process object to hold server instance
             Process p = new Process();
@@ -721,7 +725,11 @@ namespace RPCWrapper
             WalletPassword = Server.EncodeString(Password);
 
             // Check if file already exists
-            if (File.Exists(WalletPath)) return false;
+            if (File.Exists(WalletPath))
+            {
+                Server.InternalError = "Wallet file already exists";
+                return false;
+            }
 
             // Create a process object to hold server instance
             Process p = new Process();
@@ -743,7 +751,6 @@ namespace RPCWrapper
             }
             p.StartInfo.Arguments += " --view-key " + ViewKey;
             p.StartInfo.Arguments += " --spend-key " + SpendKey;
-            //Console.WriteLine(p.StartInfo.Arguments);
 
             // Run server
             p.Start();
@@ -1099,10 +1106,18 @@ namespace RPCWrapper
         ///Creates a new address in your wallet
         ///Returns new address
         ///</summary>
-        private static JObject CreateNewAddress()
+        private static JObject CreateNewAddress(String SpendKey = "")
         {
             // Send request to server
-            JObject result = SendRequest("createAddress");
+            JObject result = new JObject();
+            if (SpendKey == "") result = SendRequest("createAddress");
+            else
+            {
+
+                JObject Params = new JObject();
+                Params["secretSpendKey"] = SpendKey;
+                result = SendRequest("createAddress", Params);
+            }
 
             // Output response
             if (result["error"] == null) return (JObject)result["result"];
