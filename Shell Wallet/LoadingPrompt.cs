@@ -7,7 +7,6 @@ namespace Shell_Wallet
 {
     public partial class LoadingPrompt : Form
     {
-        private static DialogResult Result;
         private String Path, Password;
 
         public LoadingPrompt(String Path, String Password)
@@ -15,14 +14,15 @@ namespace Shell_Wallet
             InitializeComponent();
             this.Path = Path;
             this.Password = Password;
-            this.label1.Text = "Opening wallet...";
-            Result = DialogResult.None;
+            DialogResult = DialogResult.None;
         }
 
         private void LoadingPrompt_Shown(object sender, EventArgs e)
         {
-            System.Windows.Forms.Timer t = new System.Windows.Forms.Timer();
-            t.Interval = 500;
+            System.Windows.Forms.Timer t = new System.Windows.Forms.Timer
+            {
+                Interval = 100
+            };
             t.Tick += Update;
             t.Start();
 
@@ -33,20 +33,15 @@ namespace Shell_Wallet
         private void Update(object sender, EventArgs e)
         {
             // Check if result has been found
-            if (Result != DialogResult.None)
-            {
-                this.DialogResult = Result;
+            if (DialogResult != DialogResult.None)
                 this.Close();
-            }
         }
 
         private void CheckPassword()
         {
             if (Wallet.CheckPassword(Config.ServerPath, this.Path, this.Password))
-            {
-                Result = DialogResult.OK;
-            }
-            else Result = DialogResult.Cancel;
+                DialogResult = DialogResult.OK;
+            else DialogResult = DialogResult.Cancel;
         }
     }
 }

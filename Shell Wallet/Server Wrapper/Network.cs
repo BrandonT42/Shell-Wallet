@@ -14,8 +14,9 @@ namespace RPCWrapper
     public class Network
     {
         #region Private and Internal Variables
-        private static String HostAddress, HostPort;
-        private static Boolean LocalServer, InternalAlive;
+        private static String HostAddress;
+        private static int HostPort;
+        private static Boolean InternalAlive;
         private static JObject Status = new JObject(), LastBlockHeader = new JObject(), LastBlock = new JObject();
         private static Thread WorkerThread;
         #endregion
@@ -190,9 +191,12 @@ namespace RPCWrapper
         /// </summary>
         internal static void Update()
         {
-            Status = GetNetworkInfo();
-            LastBlockHeader = GetLastBlockHeader();
-            LastBlock = GetBlockInfo(LastBlockHash);
+            if (Server.NetworkMonitor)
+            {
+                Status = GetNetworkInfo();
+                LastBlockHeader = GetLastBlockHeader();
+                LastBlock = GetBlockInfo(LastBlockHash);
+            }
         }
 
         /// <summary>
@@ -200,9 +204,8 @@ namespace RPCWrapper
         /// </summary>
         public static void Reset()
         {
-            HostAddress = "";
-            HostPort = "";
-            LocalServer = true;
+            HostAddress = "127.0.0.1";
+            HostPort = 11911;
             Status = new JObject();
             LastBlockHeader = new JObject();
             LastBlock = new JObject();
@@ -212,16 +215,14 @@ namespace RPCWrapper
         /// Verifies and connects to a daemon independantly from the local RPC server
         /// </summary>
         /// <param name="Local">Whether or not the daemon is running locally (true) or through a node (false)</param>
-        /// <param name="NodeHost">The address of the remote daemon node, set to null to ignore</param>
-        /// <param name="NodePort">The port in which the server should try to connect to the daemon</param>
+        /// <param name="DaemonPath">The address of the remote daemon node, set to null to ignore</param>
+        /// <param name="DaemonPort">The port in which the server should try to connect to the daemon</param>
         /// <returns>Returns true if successful</returns>
-        public static Boolean Start(Boolean Local = true, String NodeHost = "daemon.turtle.link", String NodePort = "11898")
+        public static Boolean Start(String DaemonPath = "daemon.turtle.link", int DaemonPort = 11898)
         {
             // Set variables
-            LocalServer = Local;
-            if (!LocalServer) HostAddress = NodeHost;
-            else HostAddress = "127.0.0.1";
-            HostPort = NodePort;
+            HostAddress = DaemonPath;
+            HostPort = DaemonPort;
 
             // Check if server is valid
             Console.WriteLine("Attempting to connect to daemon at {0}:{1}", HostAddress, HostPort);

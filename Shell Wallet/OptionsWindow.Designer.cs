@@ -58,7 +58,7 @@
             this.OptionsTabs = new System.Windows.Forms.TabControl();
             this.ConnectivityTab = new System.Windows.Forms.TabPage();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.SecurityTab = new System.Windows.Forms.TabPage();
+            this.MiscTab = new System.Windows.Forms.TabPage();
             this.DefaultsTab = new System.Windows.Forms.TabPage();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.MobileTab = new System.Windows.Forms.TabPage();
@@ -68,23 +68,37 @@
             this.label9 = new System.Windows.Forms.Label();
             this.MobileWalletPort = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
+            this.ConfirmPassword = new System.Windows.Forms.CheckBox();
+            this.RemoteTab = new System.Windows.Forms.TabPage();
+            this.groupBox7 = new System.Windows.Forms.GroupBox();
+            this.RemotePassword = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.RemoteAddress = new System.Windows.Forms.TextBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.RemotePort = new System.Windows.Forms.TextBox();
+            this.groupBox8 = new System.Windows.Forms.GroupBox();
+            this.NetworkMonitor = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.OptionsTabs.SuspendLayout();
             this.ConnectivityTab.SuspendLayout();
             this.groupBox3.SuspendLayout();
-            this.SecurityTab.SuspendLayout();
+            this.MiscTab.SuspendLayout();
             this.DefaultsTab.SuspendLayout();
             this.groupBox5.SuspendLayout();
             this.MobileTab.SuspendLayout();
             this.groupBox6.SuspendLayout();
+            this.RemoteTab.SuspendLayout();
+            this.groupBox7.SuspendLayout();
+            this.groupBox8.SuspendLayout();
             this.SuspendLayout();
             // 
             // ApplyButton
             // 
             this.ApplyButton.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.ApplyButton.Location = new System.Drawing.Point(9, 275);
+            this.ApplyButton.Location = new System.Drawing.Point(9, 306);
             this.ApplyButton.Name = "ApplyButton";
             this.ApplyButton.Size = new System.Drawing.Size(320, 23);
             this.ApplyButton.TabIndex = 7;
@@ -135,7 +149,7 @@
             this.groupBox1.Controls.Add(this.LocalDaemonCheckbox);
             this.groupBox1.Controls.Add(this.NodePort);
             this.groupBox1.Controls.Add(this.NodeHost);
-            this.groupBox1.Location = new System.Drawing.Point(6, 120);
+            this.groupBox1.Location = new System.Drawing.Point(6, 151);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(300, 108);
             this.groupBox1.TabIndex = 7;
@@ -156,9 +170,9 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(6, 24);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(29, 13);
+            this.label2.Size = new System.Drawing.Size(45, 13);
             this.label2.TabIndex = 3;
-            this.label2.Text = "Host";
+            this.label2.Text = "Address";
             // 
             // LocalDaemonCheckbox
             // 
@@ -188,7 +202,7 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.GeneratePassword);
+            this.groupBox2.Controls.Add(this.ConfirmPassword);
             this.groupBox2.Controls.Add(this.AllowBlankPasswords);
             this.groupBox2.Location = new System.Drawing.Point(6, 6);
             this.groupBox2.Name = "groupBox2";
@@ -200,11 +214,11 @@
             // GeneratePassword
             // 
             this.GeneratePassword.AutoSize = true;
-            this.GeneratePassword.Location = new System.Drawing.Point(9, 47);
+            this.GeneratePassword.Location = new System.Drawing.Point(9, 111);
             this.GeneratePassword.Name = "GeneratePassword";
-            this.GeneratePassword.Size = new System.Drawing.Size(207, 17);
+            this.GeneratePassword.Size = new System.Drawing.Size(160, 17);
             this.GeneratePassword.TabIndex = 1;
-            this.GeneratePassword.Text = "Generate server password dynamically";
+            this.GeneratePassword.Text = "Generate dynamic password";
             this.GeneratePassword.UseVisualStyleBackColor = true;
             this.GeneratePassword.CheckedChanged += new System.EventHandler(this.GeneratePassword_CheckedChanged);
             // 
@@ -328,13 +342,14 @@
             // OptionsTabs
             // 
             this.OptionsTabs.Controls.Add(this.ConnectivityTab);
-            this.OptionsTabs.Controls.Add(this.SecurityTab);
             this.OptionsTabs.Controls.Add(this.DefaultsTab);
+            this.OptionsTabs.Controls.Add(this.RemoteTab);
             this.OptionsTabs.Controls.Add(this.MobileTab);
+            this.OptionsTabs.Controls.Add(this.MiscTab);
             this.OptionsTabs.Location = new System.Drawing.Point(9, 9);
             this.OptionsTabs.Name = "OptionsTabs";
             this.OptionsTabs.SelectedIndex = 0;
-            this.OptionsTabs.Size = new System.Drawing.Size(320, 260);
+            this.OptionsTabs.Size = new System.Drawing.Size(320, 291);
             this.OptionsTabs.SizeMode = System.Windows.Forms.TabSizeMode.FillToRight;
             this.OptionsTabs.TabIndex = 11;
             // 
@@ -346,12 +361,13 @@
             this.ConnectivityTab.Location = new System.Drawing.Point(4, 22);
             this.ConnectivityTab.Name = "ConnectivityTab";
             this.ConnectivityTab.Padding = new System.Windows.Forms.Padding(3);
-            this.ConnectivityTab.Size = new System.Drawing.Size(312, 234);
+            this.ConnectivityTab.Size = new System.Drawing.Size(312, 265);
             this.ConnectivityTab.TabIndex = 0;
-            this.ConnectivityTab.Text = "Connectivity";
+            this.ConnectivityTab.Text = "General";
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.GeneratePassword);
             this.groupBox3.Controls.Add(this.ServerPassword);
             this.groupBox3.Controls.Add(this.label6);
             this.groupBox3.Controls.Add(this.OpenServer);
@@ -361,21 +377,22 @@
             this.groupBox3.Controls.Add(this.ServerPort);
             this.groupBox3.Location = new System.Drawing.Point(6, 6);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(300, 108);
+            this.groupBox3.Size = new System.Drawing.Size(300, 139);
             this.groupBox3.TabIndex = 9;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "RPC Wallet Server";
             // 
-            // SecurityTab
+            // MiscTab
             // 
-            this.SecurityTab.BackColor = System.Drawing.Color.White;
-            this.SecurityTab.Controls.Add(this.groupBox2);
-            this.SecurityTab.Location = new System.Drawing.Point(4, 22);
-            this.SecurityTab.Name = "SecurityTab";
-            this.SecurityTab.Padding = new System.Windows.Forms.Padding(3);
-            this.SecurityTab.Size = new System.Drawing.Size(312, 317);
-            this.SecurityTab.TabIndex = 1;
-            this.SecurityTab.Text = "Security";
+            this.MiscTab.BackColor = System.Drawing.Color.White;
+            this.MiscTab.Controls.Add(this.groupBox8);
+            this.MiscTab.Controls.Add(this.groupBox2);
+            this.MiscTab.Location = new System.Drawing.Point(4, 22);
+            this.MiscTab.Name = "MiscTab";
+            this.MiscTab.Padding = new System.Windows.Forms.Padding(3);
+            this.MiscTab.Size = new System.Drawing.Size(312, 265);
+            this.MiscTab.TabIndex = 1;
+            this.MiscTab.Text = "Miscellaneous";
             // 
             // DefaultsTab
             // 
@@ -385,7 +402,7 @@
             this.DefaultsTab.Location = new System.Drawing.Point(4, 22);
             this.DefaultsTab.Name = "DefaultsTab";
             this.DefaultsTab.Padding = new System.Windows.Forms.Padding(3);
-            this.DefaultsTab.Size = new System.Drawing.Size(312, 317);
+            this.DefaultsTab.Size = new System.Drawing.Size(312, 265);
             this.DefaultsTab.TabIndex = 2;
             this.DefaultsTab.Text = "Defaults";
             // 
@@ -407,7 +424,7 @@
             this.MobileTab.Location = new System.Drawing.Point(4, 22);
             this.MobileTab.Name = "MobileTab";
             this.MobileTab.Padding = new System.Windows.Forms.Padding(3);
-            this.MobileTab.Size = new System.Drawing.Size(312, 234);
+            this.MobileTab.Size = new System.Drawing.Size(312, 265);
             this.MobileTab.TabIndex = 3;
             this.MobileTab.Text = "Mobile";
             this.MobileTab.UseVisualStyleBackColor = true;
@@ -474,12 +491,118 @@
             this.label8.TabIndex = 0;
             this.label8.Text = "Port";
             // 
+            // ConfirmPassword
+            // 
+            this.ConfirmPassword.AutoSize = true;
+            this.ConfirmPassword.Location = new System.Drawing.Point(9, 47);
+            this.ConfirmPassword.Name = "ConfirmPassword";
+            this.ConfirmPassword.Size = new System.Drawing.Size(152, 17);
+            this.ConfirmPassword.TabIndex = 1;
+            this.ConfirmPassword.Text = "Re-type password required";
+            this.ConfirmPassword.UseVisualStyleBackColor = true;
+            // 
+            // RemoteTab
+            // 
+            this.RemoteTab.Controls.Add(this.groupBox7);
+            this.RemoteTab.Location = new System.Drawing.Point(4, 22);
+            this.RemoteTab.Name = "RemoteTab";
+            this.RemoteTab.Padding = new System.Windows.Forms.Padding(3);
+            this.RemoteTab.Size = new System.Drawing.Size(312, 265);
+            this.RemoteTab.TabIndex = 4;
+            this.RemoteTab.Text = "Remote RPC";
+            this.RemoteTab.UseVisualStyleBackColor = true;
+            // 
+            // groupBox7
+            // 
+            this.groupBox7.Controls.Add(this.RemotePassword);
+            this.groupBox7.Controls.Add(this.label10);
+            this.groupBox7.Controls.Add(this.RemoteAddress);
+            this.groupBox7.Controls.Add(this.label11);
+            this.groupBox7.Controls.Add(this.label12);
+            this.groupBox7.Controls.Add(this.RemotePort);
+            this.groupBox7.Location = new System.Drawing.Point(6, 6);
+            this.groupBox7.Name = "groupBox7";
+            this.groupBox7.Size = new System.Drawing.Size(300, 108);
+            this.groupBox7.TabIndex = 10;
+            this.groupBox7.TabStop = false;
+            this.groupBox7.Text = "Remote RPC Connection";
+            // 
+            // RemotePassword
+            // 
+            this.RemotePassword.Location = new System.Drawing.Point(65, 76);
+            this.RemotePassword.Name = "RemotePassword";
+            this.RemotePassword.PasswordChar = '*';
+            this.RemotePassword.Size = new System.Drawing.Size(223, 20);
+            this.RemotePassword.TabIndex = 3;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(6, 79);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(53, 13);
+            this.label10.TabIndex = 5;
+            this.label10.Text = "Password";
+            // 
+            // RemoteAddress
+            // 
+            this.RemoteAddress.Location = new System.Drawing.Point(65, 21);
+            this.RemoteAddress.Name = "RemoteAddress";
+            this.RemoteAddress.Size = new System.Drawing.Size(223, 20);
+            this.RemoteAddress.TabIndex = 0;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(6, 24);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(45, 13);
+            this.label11.TabIndex = 2;
+            this.label11.Text = "Address";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(6, 51);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(26, 13);
+            this.label12.TabIndex = 1;
+            this.label12.Text = "Port";
+            // 
+            // RemotePort
+            // 
+            this.RemotePort.Location = new System.Drawing.Point(65, 48);
+            this.RemotePort.Name = "RemotePort";
+            this.RemotePort.Size = new System.Drawing.Size(223, 20);
+            this.RemotePort.TabIndex = 2;
+            this.RemotePort.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.NumberOnly);
+            // 
+            // groupBox8
+            // 
+            this.groupBox8.Controls.Add(this.NetworkMonitor);
+            this.groupBox8.Location = new System.Drawing.Point(6, 87);
+            this.groupBox8.Name = "groupBox8";
+            this.groupBox8.Size = new System.Drawing.Size(300, 47);
+            this.groupBox8.TabIndex = 9;
+            this.groupBox8.TabStop = false;
+            this.groupBox8.Text = "Network";
+            // 
+            // NetworkMonitor
+            // 
+            this.NetworkMonitor.AutoSize = true;
+            this.NetworkMonitor.Location = new System.Drawing.Point(9, 19);
+            this.NetworkMonitor.Name = "NetworkMonitor";
+            this.NetworkMonitor.Size = new System.Drawing.Size(151, 17);
+            this.NetworkMonitor.TabIndex = 0;
+            this.NetworkMonitor.Text = "Enable network monitoring";
+            this.NetworkMonitor.UseVisualStyleBackColor = true;
+            // 
             // OptionsWindow
             // 
             this.AcceptButton = this.ApplyButton;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(338, 307);
+            this.ClientSize = new System.Drawing.Size(338, 338);
             this.Controls.Add(this.OptionsTabs);
             this.Controls.Add(this.ApplyButton);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
@@ -499,13 +622,18 @@
             this.ConnectivityTab.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
-            this.SecurityTab.ResumeLayout(false);
+            this.MiscTab.ResumeLayout(false);
             this.DefaultsTab.ResumeLayout(false);
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
             this.MobileTab.ResumeLayout(false);
             this.groupBox6.ResumeLayout(false);
             this.groupBox6.PerformLayout();
+            this.RemoteTab.ResumeLayout(false);
+            this.groupBox7.ResumeLayout(false);
+            this.groupBox7.PerformLayout();
+            this.groupBox8.ResumeLayout(false);
+            this.groupBox8.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -541,7 +669,7 @@
         private System.Windows.Forms.TabControl OptionsTabs;
         private System.Windows.Forms.TabPage ConnectivityTab;
         private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.TabPage SecurityTab;
+        private System.Windows.Forms.TabPage MiscTab;
         private System.Windows.Forms.TabPage DefaultsTab;
         private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.TabPage MobileTab;
@@ -551,5 +679,16 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox MobileWalletPort;
         private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.CheckBox ConfirmPassword;
+        private System.Windows.Forms.TabPage RemoteTab;
+        private System.Windows.Forms.GroupBox groupBox7;
+        private System.Windows.Forms.TextBox RemotePassword;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.TextBox RemoteAddress;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.TextBox RemotePort;
+        private System.Windows.Forms.GroupBox groupBox8;
+        private System.Windows.Forms.CheckBox NetworkMonitor;
     }
 }

@@ -16,15 +16,23 @@ namespace Shell_Wallet
         internal PasswordPrompt()
         {
             InitializeComponent();
-            this.AcceptButton = this.Submit;
+            AcceptButton = Submit;
+
+            // Don't include confirmation
+            if (!Config.PasswordConfirmation)
+            {
+                Size = new System.Drawing.Size(300, 126);
+                ConfirmPasswordBox.Visible = false;
+                label2.Visible = false;
+            }
         }
 
         /// <summary>
         /// Submit button was clicked
         /// </summary>
-        private void button1_Click(object sender, EventArgs e)
+        private void SubmitClicked(object sender, EventArgs e)
         {
-            this.DialogResult = DialogResult.OK;
+            DialogResult = DialogResult.OK;
         }
 
         /// <summary>
@@ -35,12 +43,15 @@ namespace Shell_Wallet
             return PasswordBox.Text;
         }
 
-        private void PasswordPrompt_FormClosing(object sender, FormClosingEventArgs e)
+        private void Form_Closing(object sender, FormClosingEventArgs e)
         {
-            if (this.DialogResult == DialogResult.OK && PasswordBox.Text != ConfirmPasswordBox.Text)
+            if (DialogResult == DialogResult.OK)
+            {
+                if (Config.PasswordConfirmation && PasswordBox.Text != ConfirmPasswordBox.Text)
                 {
                     MessageBox.Show("Passwords don't match!", "Error");
                     e.Cancel = true;
+                }
             }
         }
     }

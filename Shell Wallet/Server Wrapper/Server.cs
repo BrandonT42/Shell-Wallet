@@ -45,6 +45,11 @@ namespace RPCWrapper
         public static int CurrencyDecimals = 2;
 
         /// <summary>
+        /// Defines whether or not the network information should be updated internally
+        /// </summary>
+        public static Boolean NetworkMonitor = true;
+
+        /// <summary>
         /// Returns the last server error message, then clears it
         /// </summary>
         public static String Error
@@ -193,6 +198,25 @@ namespace RPCWrapper
             result += (result.Length > 0 ? " " : "")
                 + (enclosedInApo ? "\"" + subResult + "\"" : subResult);
             return result;
+        }
+
+        /// <summary>
+        /// Checks if a path is a local file or an address, outs string without uri elements
+        /// </summary>
+        internal static Boolean IsLocalPath(String Input, out String Path)
+        {
+            if (Input.StartsWith("http"))
+            {
+                Path = Input.Replace("http:", "").Replace("\\", "").Replace("/", "");
+                return false;
+            }
+            else
+            {
+                Path = Input;
+                if (System.Net.IPAddress.TryParse(Input, out System.Net.IPAddress i))
+                    return false;
+                else return new Uri(Input).IsFile;
+            }
         }
         #endregion
     }

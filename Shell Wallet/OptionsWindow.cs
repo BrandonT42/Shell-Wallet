@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RPCWrapper;
+using System;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
@@ -15,26 +16,30 @@ namespace Shell_Wallet
         internal OptionsWindow()
         {
             InitializeComponent();
-            this.AcceptButton = this.ApplyButton;
+            AcceptButton = ApplyButton;
 
-            this.DefaultAddress.Text = Config.DefaultWalletPath;
-            this.ServerPath.Text = Config.ServerPath;
-            this.ServerPort.Text = Config.ServerPort;
-            this.NodeHost.Text = Config.NodeHost;
-            this.NodePort.Text = Config.NodePort;
-            this.AllowBlankPasswords.Checked = Config.AllowBlankPasswords;
-            this.LocalDaemonCheckbox.Checked = Config.LocalDaemon;
-            this.LocalDaemonCheckbox_CheckedChanged(null, null);
-            this.GeneratePassword.Checked = Config.GeneratePassword;
-            this.GeneratePassword_CheckedChanged(null, null);
-            if (Config.GeneratePassword) this.ServerPassword.Text = Config.OriginalServerPassword;
-            else this.ServerPassword.Text = Config.ServerPassword;
-            this.DefaultFee.Text = Config.DefaultFee;
-            this.DefaultMixin.Text = Config.DefaultMixin;
-            this.MobileWalletCheckbox.Checked = Config.EnableMobile;
-            this.MobileWalletPassword.Text = Config.MobilePassword;
-            this.MobileWalletPort.Text = Config.MobilePort;
-
+            DefaultAddress.Text = Config.DefaultWalletPath;
+            ServerPath.Text = Config.ServerPath;
+            ServerPort.Text = Config.ServerPort.ToString();
+            NodeHost.Text = Config.NodeHost;
+            NodePort.Text = Config.NodePort.ToString();
+            AllowBlankPasswords.Checked = Config.AllowBlankPasswords;
+            LocalDaemonCheckbox.Checked = Config.LocalDaemon;
+            LocalDaemonCheckbox_CheckedChanged(null, null);
+            GeneratePassword.Checked = Config.GeneratePassword;
+            GeneratePassword_CheckedChanged(null, null);
+            if (Config.GeneratePassword) ServerPassword.Text = Config.OriginalServerPassword;
+            else ServerPassword.Text = Config.ServerPassword;
+            DefaultFee.Text = Config.DefaultFee;
+            DefaultMixin.Text = Config.DefaultMixin;
+            MobileWalletCheckbox.Checked = Config.EnableMobile;
+            MobileWalletPassword.Text = Config.MobilePassword;
+            MobileWalletPort.Text = Config.MobilePort;
+            ConfirmPassword.Checked = Config.PasswordConfirmation;
+            RemoteAddress.Text = Config.RemotePath;
+            RemotePort.Text = Config.RemotePort.ToString();
+            RemotePassword.Text = Config.RemotePassword;
+            NetworkMonitor.Checked = Config.NetworkMonitor;
         }
 
         /// <summary>
@@ -44,13 +49,11 @@ namespace Shell_Wallet
         {
             if (LocalDaemonCheckbox.Checked)
             {
-                this.NodeHost.ReadOnly = true;
-                this.NodePort.ReadOnly = true;
+                NodeHost.ReadOnly = true;
             }
             else
             {
-                this.NodeHost.ReadOnly = false;
-                this.NodePort.ReadOnly = false;
+                NodeHost.ReadOnly = false;
             }
         }
 
@@ -61,7 +64,7 @@ namespace Shell_Wallet
         {
             if (OpenWalletPath.ShowDialog() == DialogResult.OK)
             {
-                if (OpenWalletPath.CheckFileExists) this.DefaultAddress.Text = OpenWalletPath.FileName;
+                if (OpenWalletPath.CheckFileExists) DefaultAddress.Text = OpenWalletPath.FileName;
                 else MessageBox.Show("Please select a file that exists", "Error!");
             }
         }
@@ -72,7 +75,7 @@ namespace Shell_Wallet
         private void ApplyButton_Click(object sender, EventArgs e)
         {
             // Check if password is blank
-            if (!this.GeneratePassword.Checked && this.ServerPassword.Text.Length < 1)
+            if (!this.GeneratePassword.Checked && ServerPassword.Text.Length < 1)
             {
                 MessageBox.Show("Server password must be entered if one is not being generated", "Error");
                 return;
@@ -84,25 +87,33 @@ namespace Shell_Wallet
                     "Security Notice", MessageBoxButtons.YesNo) == DialogResult.No) return;
 
             // Flush choices to config then save file
-            Config.DefaultWalletPath = this.DefaultAddress.Text;
-            Config.ServerPath = this.ServerPath.Text;
-            Config.ServerPort = this.ServerPort.Text;
-            Config.GeneratePassword = this.GeneratePassword.Checked;
-            if (Config.GeneratePassword) Config.OriginalServerPassword = this.ServerPassword.Text;
-            else Config.ServerPassword = this.ServerPassword.Text;
-            Config.NodeHost = this.NodeHost.Text;
-            Config.NodePort = this.NodePort.Text;
-            Config.AllowBlankPasswords = this.AllowBlankPasswords.Checked;
-            Config.LocalDaemon = this.LocalDaemonCheckbox.Checked;
-            Config.DefaultFee = this.DefaultFee.Text;
-            Config.DefaultMixin = this.DefaultMixin.Text;
-            Config.EnableMobile = this.MobileWalletCheckbox.Checked;
-            Config.MobilePassword = this.MobileWalletPassword.Text;
-            Config.MobilePort = this.MobileWalletPort.Text;
+            Config.DefaultWalletPath = DefaultAddress.Text;
+            Config.ServerPath = ServerPath.Text;
+            Config.ServerPort = int.Parse(this.ServerPort.Text);
+            Config.GeneratePassword = GeneratePassword.Checked;
+            if (Config.GeneratePassword) Config.OriginalServerPassword = ServerPassword.Text;
+            else Config.ServerPassword = ServerPassword.Text;
+            Config.NodeHost = NodeHost.Text;
+            Config.NodePort = int.Parse(this.NodePort.Text);
+            Config.AllowBlankPasswords = AllowBlankPasswords.Checked;
+            Config.LocalDaemon = LocalDaemonCheckbox.Checked;
+            Config.DefaultFee = DefaultFee.Text;
+            Config.DefaultMixin = DefaultMixin.Text;
+            Config.EnableMobile = MobileWalletCheckbox.Checked;
+            Config.MobilePassword = MobileWalletPassword.Text;
+            Config.MobilePort = MobileWalletPort.Text;
+            Config.PasswordConfirmation = ConfirmPassword.Checked;
+            Config.NetworkMonitor = NetworkMonitor.Checked;
+            Config.RemotePath = RemoteAddress.Text;
+            Config.RemotePort = int.Parse(RemotePort.Text);
+            Config.RemotePassword = RemotePassword.Text;
             Config.Save();
 
+            // Update network monitoring
+            Server.NetworkMonitor = Config.NetworkMonitor;
+
             // Close Dialog
-            this.Close();
+            Close();
         }
 
         /// <summary>
@@ -111,7 +122,7 @@ namespace Shell_Wallet
         private void CancelButton_Click(object sender, EventArgs e)
         {
             // Close Dialog
-            this.Close();
+            Close();
         }
 
         /// <summary>
@@ -121,7 +132,7 @@ namespace Shell_Wallet
         {
             if (OpenServerPath.ShowDialog() == DialogResult.OK)
             {
-                if (OpenServerPath.CheckFileExists) this.DefaultAddress.Text = OpenServerPath.FileName;
+                if (OpenServerPath.CheckFileExists) DefaultAddress.Text = OpenServerPath.FileName;
                 else MessageBox.Show("Please select a file that exists", "Error!");
             }
         }
@@ -131,8 +142,8 @@ namespace Shell_Wallet
         /// </summary>
         private void GeneratePassword_CheckedChanged(object sender, EventArgs e)
         {
-            if (GeneratePassword.Checked) this.ServerPassword.ReadOnly = true;
-            else this.ServerPassword.ReadOnly = false;
+            if (GeneratePassword.Checked) ServerPassword.ReadOnly = true;
+            else ServerPassword.ReadOnly = false;
         }
 
         /// <summary>
@@ -140,7 +151,8 @@ namespace Shell_Wallet
         /// </summary>
         private void NumberOnly(object sender, KeyPressEventArgs e)
         {
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))e.Handled = true;
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) &&
+                (sender as TextBox).Text.Length <= 5)e.Handled = true;
         }
 
         /// <summary>
@@ -148,8 +160,15 @@ namespace Shell_Wallet
         /// </summary>
         private void DecimalNumberOnly(object sender, KeyPressEventArgs e)
         {
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.')) e.Handled = true;
-            if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1)) e.Handled = true;
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) &&
+                (e.KeyChar != '.') && (e.KeyChar != ','))
+                e.Handled = true;
+            if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
+                e.Handled = true;
+            if (char.IsDigit(e.KeyChar) && ((sender as TextBox).Text.IndexOf('.') > -1))
+                if ((sender as TextBox).Text.IndexOf('.') < (sender as TextBox).Text.Length - 2 &&
+                    (sender as TextBox).SelectionStart > (sender as TextBox).Text.IndexOf('.'))
+                    e.Handled = true;
         }
 
         /// <summary>

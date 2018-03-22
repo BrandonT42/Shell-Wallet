@@ -16,8 +16,9 @@ namespace RPCWrapper
     public class Wallet
     {
         #region Private and Internal Variables
-        private static String ServerPath, RPCPort, RPCPassword, HostAddress, HostPort, WalletPassword;
-        private static Boolean LocalServer, InternalAlive, InternalFailure;
+        private static String RPCPath, RPCPassword, HostAddress, WalletPassword;
+        private static int RPCPort, HostPort;
+        private static Boolean InternalAlive, InternalFailure;
         private static Process WalletProcess;
         private static JObject Balances = new JObject(), SelectedBalances = new JObject(), Status = new JObject();
         private static String InternalPassword, InternalSelectedAddress;
@@ -33,7 +34,7 @@ namespace RPCWrapper
         {
             get
             {
-                if (InternalAlive && WalletProcess != null && !WalletProcess.HasExited)
+                if (InternalAlive)
                     return true;
                 else return false;
             }
@@ -153,8 +154,8 @@ namespace RPCWrapper
                 if (Balances != null && Balances["availableBalance"] != null)
                 {
                     String s = (String)Balances["availableBalance"];
-                    if (s.Length < Server.CurrencyDecimals + 1) return "0." + s;
-                    else return s.Insert(s.Length - Server.CurrencyDecimals, ".");
+                    double d = Convert.ToDouble(s) / Math.Pow(10, Server.CurrencyDecimals);
+                    return String.Format("{0:N}", d);
                 }
                 else return "0";
             }
@@ -170,8 +171,8 @@ namespace RPCWrapper
                 if (Balances != null && Balances["lockedAmount"] != null)
                 {
                     String s = (String)Balances["lockedAmount"];
-                    if (s.Length < Server.CurrencyDecimals + 1) return "0." + s;
-                    else return s.Insert(s.Length - Server.CurrencyDecimals, ".");
+                    double d = Convert.ToDouble(s) / Math.Pow(10, Server.CurrencyDecimals);
+                    return String.Format("{0:N}", d);
                 }
                 else return "0";
             }
@@ -188,9 +189,8 @@ namespace RPCWrapper
                 if (SelectedBalances != null && SelectedBalances["availableBalance"] != null)
                 {
                     String s = (String)SelectedBalances["availableBalance"];
-                    if (s == null) return "0";
-                    if (s.Length < Server.CurrencyDecimals + 1) return "0." + s;
-                    else return s.Insert(s.Length - Server.CurrencyDecimals, ".");
+                    double d = Convert.ToDouble(s) / Math.Pow(10, Server.CurrencyDecimals);
+                    return String.Format("{0:N}", d);
                 }
                 else return "0";
             }
@@ -206,9 +206,8 @@ namespace RPCWrapper
                 if (SelectedBalances != null && SelectedBalances["lockedAmount"] != null)
                 {
                     String s = (String)SelectedBalances["lockedAmount"];
-                    if (s == null) return "0";
-                    if (s.Length < Server.CurrencyDecimals + 1) return "0." + s;
-                    else return s.Insert(s.Length - Server.CurrencyDecimals, ".");
+                    double d = Convert.ToDouble(s) / Math.Pow(10, Server.CurrencyDecimals);
+                    return String.Format("{0:N}", d);
                 }
                 else return "0";
             }
@@ -359,18 +358,99 @@ namespace RPCWrapper
         }
 
         /// <summary>
+        /// Connects to a remote RPC server to pull information from rather than starting a local one
+        /// </summary>
+        public static Boolean Connect(String ServerPath, int ServerPort, String Password)
+        {
+            // Make sure server isn't running
+            if (Alive)
+            {
+                Server.InternalError = "Wallet server is already connected";
+                return false;
+            }
+
+            // Check if valid address
+            if (ServerPath == "")
+            {
+                Server.InternalError = "Server address can't be blank";
+                return false;
+            }
+            if (Server.IsLocalPath(ServerPath, out ServerPath))
+            {
+                Server.InternalError = "Provided an incorrect server address";
+            }
+
+            // Check if server is running
+            if (!Server.Ping(ServerPath, Convert.ToInt32(ServerPort)))
+            {
+                Server.InternalError = "Could not connect to remote server";
+                return false;
+            }
+
+            // Set local variables
+            RPCPath = ServerPath;
+            RPCPort = ServerPort;
+            RPCPassword = Password;
+
+            // Create a thread to talk to the server
+            WorkerThread = new Thread(delegate ()
+            {
+                // Connect with server
+                Console.WriteLine("Connecting to remote RPC server at {0}:{1} with password {2}", RPCPath, RPCPort, Password);
+                InternalAlive = true;
+
+                // Trigger start event
+                if (OnStart != null)
+                    OnStart.Invoke(new Wallet(), EventArgs.Empty);
+
+                // Main loop
+                while (Alive)
+                {
+                    // Update wallet
+                    Update();
+
+                    // Update network
+                    Network.Update();
+
+                    // Trigger tick event
+                    if (OnTick != null)
+                        OnTick.Invoke(new Wallet(), EventArgs.Empty);
+
+                    // Sleep for the desired refresh rate
+                    try { Thread.Sleep(Server.RefreshRate); }
+                    // Hacky but works to waking a thread
+                    catch (Exception) { }
+                }
+
+                // Trigger stop event
+                if (OnStop != null)
+                    OnStop.Invoke(new Wallet(), EventArgs.Empty);
+
+                // Reset wallet data
+                Reset();
+            })
+            {
+                Name = "Server Thread"
+            };
+            WorkerThread.Start();
+
+            // Success
+            return true;
+        }
+
+        /// <summary>
         /// Starts the RPC server thread and opens a wallet through it
         /// </summary>
-        /// <param name="Path">Local system path to the walletd.exe application</param>
+        /// <param name="ServerPath">Local system path to the walletd.exe application</param>
         /// <param name="WalletPath">Local system path to the wallet being opened</param>
         /// <param name="Password">The password for the wallet being opened</param>
         /// <param name="ServerPassword">The password to open the local RPC server with (use Server.Hash to generate a unique password hash)</param>
         /// <param name="ServerPort">The port to bind the local RPC server to</param>
         /// <param name="Local">Whether or not the daemon is running locally (true) or through a node (false)</param>
-        /// <param name="NodeHost">The address of the remote daemon node, set to null to ignore</param>
-        /// <param name="NodePort">The port in which the server should try to connect to the daemon</param>
-        public static Boolean Open(String Path, String WalletPath, String Password, String ServerPassword = "", String ServerPort = "11911",
-            Boolean Local = false, String NodeHost = "daemon.turtle.link", String NodePort = "11898")
+        /// <param name="DaemonPath">The address of the remote daemon node, set to null to ignore</param>
+        /// <param name="DaemonPort">The port in which the server should try to connect to the daemon</param>
+        public static Boolean Open(String ServerPath, String WalletPath, String Password, String ServerPassword = "", int ServerPort = 11911,
+            String DaemonPath = "daemon.turtle.link", int DaemonPort = 11898)
         {
             // Check if server is already alive
             if (Alive)
@@ -379,33 +459,50 @@ namespace RPCWrapper
                 return false;
             }
 
+            // Make sure path is a local file
+            if (ServerPath == "")
+            {
+                Server.InternalError = "Server path can't be blank";
+                return false;
+            }
+            if (!Server.IsLocalPath(ServerPath, out String s))
+            {
+                Server.InternalError = "Given server path is not a local file";
+                return false;
+            }
+
+            // Make sure server file exists
+            if (!File.Exists(ServerPath))
+            {
+                Server.InternalError = "Given server path does not exist";
+                return false;
+            }
+
             // Assign local variables
-            ServerPath = Path;
+            RPCPath = "127.0.0.1";
             Wallet.Password = Server.EncodeString(Password);
             WalletPassword = Server.EncodeString(Password);
             RPCPassword = Server.EncodeString(ServerPassword);
             RPCPort = ServerPort;
-            LocalServer = Local;
-            if (!LocalServer) HostAddress = NodeHost;
-            else HostAddress = "127.0.0.1";
-            HostPort = NodePort;
+            HostAddress = DaemonPath;
+            HostPort = DaemonPort;
 
             // First check if RPC server port is available
-            if (Server.Ping("127.0.0.1", Convert.ToInt32(RPCPort)))
+            if (Server.Ping(RPCPath, RPCPort))
             {
                 Server.InternalError = "Selected RPC server port is not available";
                 return false;
             }
 
             // Second check if daemon is running
-            if (!Network.Start(LocalServer, HostAddress, HostPort))
+            if (!Network.Start(HostAddress, HostPort))
             {
                 Server.InternalError = "Could not connect to daemon";
                 return false;
             }
 
             // Create a thread to run the server in
-            Thread s = new Thread(delegate ()
+            WorkerThread = new Thread(delegate ()
             {
                 // Create a process for the server to run on
                 using (WalletProcess = new Process())
@@ -424,14 +521,13 @@ namespace RPCWrapper
 
                     // Add flags according to supplied arguments
                     WalletProcess.StartInfo.Arguments = "--server-root \"" + System.IO.Path.GetDirectoryName(ServerPath) + "\"";
-                    if (LocalServer) WalletProcess.StartInfo.Arguments += " --local";
-                    else WalletProcess.StartInfo.Arguments = " --daemon-address " + HostAddress + " --daemon-port " + HostPort;
+                    WalletProcess.StartInfo.Arguments = " --daemon-address " + HostAddress + " --daemon-port " + HostPort;
                     if (RPCPassword != "") WalletProcess.StartInfo.Arguments += " --rpc-password \"" + RPCPassword + "\"";
                     else WalletProcess.StartInfo.Arguments += " --rpc-legacy-security";
                     if (Server.Testnet) WalletProcess.StartInfo.Arguments += " --testnet";
                     WalletProcess.StartInfo.Arguments += " --bind-port " + RPCPort;
                     WalletProcess.StartInfo.Arguments += " --log-level 0 --allow-local-ip";
-                    WalletProcess.StartInfo.Arguments += " -w \"" + Wallet.Path + "\"";
+                    WalletProcess.StartInfo.Arguments += " -w \"" + WalletPath + "\"";
                     if (WalletPassword != "")
                     {
                         WalletProcess.StartInfo.Arguments += " -p \"" + WalletPassword + "\"";
@@ -498,7 +594,7 @@ namespace RPCWrapper
             {
                 Name = "Server Thread"
             };
-            s.Start();
+            WorkerThread.Start();
 
             if (InternalFailure == true)
             {
@@ -511,15 +607,41 @@ namespace RPCWrapper
         /// <summary>
         /// Creates a new wallet container file
         /// </summary>
-        /// <param name="Path">Local system path to the walletd.exe application</param>
+        /// <param name="ServerPath">Local system path to the walletd.exe application</param>
         /// <param name="WalletPath">Local system path to the wallet being created (cannot already exist)</param>
         /// <param name="Password">The password for the wallet being created</param>
         /// <returns>Returns true if successful</returns>
-        public static Boolean Create(String Path, String WalletPath, String Password)
+        public static Boolean Create(String ServerPath, String WalletPath, String Password)
         {
+            // Check if server is already alive
+            if (Alive)
+            {
+                Server.InternalError = "Server already running, could not create wallet";
+                return false;
+            }
+
+            // Make sure path is a local file
+            if (ServerPath == "")
+            {
+                Server.InternalError = "Server path can't be blank";
+                return false;
+            }
+            if (!Server.IsLocalPath(ServerPath, out String st))
+            {
+                Server.InternalError = "Given server path is not a local file";
+                return false;
+            }
+
+            // Make sure server file exists
+            if (!File.Exists(ServerPath))
+            {
+                Server.InternalError = "Given server path does not exist";
+                return false;
+            }
+
             // Assign local variables
-            ServerPath = Path;
-            Wallet.Path = WalletPath;
+            RPCPath = "127.0.0.1";
+            Path = WalletPath;
             if (Password.Length > 0) Wallet.Password = Server.EncodeString(Password);
             WalletPassword = Server.EncodeString(Password);
 
@@ -538,7 +660,7 @@ namespace RPCWrapper
             // Add flags according to supplied arguments
             p.StartInfo.Arguments = "--server-root \"" + System.IO.Path.GetDirectoryName(ServerPath) + "\"";
             p.StartInfo.Arguments += " --log-level 0 -g";
-            p.StartInfo.Arguments += " -w \"" + Wallet.Path + "\"";
+            p.StartInfo.Arguments += " -w \"" + WalletPath + "\"";
             if (WalletPassword != "")
             {
                 p.StartInfo.Arguments += " -p \"" + WalletPassword + "\"";
@@ -558,15 +680,41 @@ namespace RPCWrapper
         /// <summary>
         /// Imports keys into a new wallet container file
         /// </summary>
-        /// <param name="Path">Local system path to the walletd.exe application</param>
+        /// <param name="ServerPath">Local system path to the walletd.exe application</param>
         /// <param name="WalletPath">Local system path to the wallet being created (cannot already exist)</param>
         /// <param name="Password">The password for the wallet being created</param>
         /// <returns>Returns true if successful</returns>
-        public static Boolean Import(String Path, String WalletPath, String Password, String ViewKey, String SpendKey)
+        public static Boolean Import(String ServerPath, String WalletPath, String Password, String ViewKey, String SpendKey)
         {
+            // Check if server is already alive
+            if (Alive)
+            {
+                Server.InternalError = "Server already running, could not import keys";
+                return false;
+            }
+
+            // Make sure path is a local file
+            if (ServerPath == "")
+            {
+                Server.InternalError = "Server path can't be blank";
+                return false;
+            }
+            if (!Server.IsLocalPath(ServerPath, out String st))
+            {
+                Server.InternalError = "Given server path is not a local file";
+                return false;
+            }
+
+            // Make sure server file exists
+            if (!File.Exists(ServerPath))
+            {
+                Server.InternalError = "Given server path does not exist";
+                return false;
+            }
+
             // Assign local variables
-            ServerPath = Path;
-            Wallet.Path = WalletPath;
+            RPCPath = "127.0.0.1";
+            Path = WalletPath;
             if (Password.Length > 0) Wallet.Password = Server.EncodeString(Password);
             WalletPassword = Server.EncodeString(Password);
 
@@ -585,7 +733,7 @@ namespace RPCWrapper
             // Add flags according to supplied arguments
             p.StartInfo.Arguments = "--server-root \"" + System.IO.Path.GetDirectoryName(ServerPath) + "\"";
             p.StartInfo.Arguments += " --log-level 0 -g";
-            p.StartInfo.Arguments += " -w \"" + Wallet.Path + "\"";
+            p.StartInfo.Arguments += " -w \"" + WalletPath + "\"";
             if (WalletPassword != "")
             {
                 p.StartInfo.Arguments += " -p \"" + WalletPassword + "\"";
@@ -607,14 +755,39 @@ namespace RPCWrapper
         /// <summary>
         /// Checks to see if a password is correct by attempting to get an address from the wallet container
         /// </summary>
-        /// <param name="Path">Local system path to the walletd.exe application</param>
+        /// <param name="ServerPath">Local system path to the walletd.exe application</param>
         /// <param name="WalletPath">Local system path to the wallet being opened</param>
         /// <param name="Password">The password for the wallet being opened</param>
         /// <returns>Returns true if password is correct</returns>
-        public static Boolean CheckPassword(String Path, String WalletPath, String Password)
+        public static Boolean CheckPassword(String ServerPath, String WalletPath, String Password)
         {
+            // Check if server is already alive
+            if (Alive)
+            {
+                Server.InternalError = "Server already running, could not check password";
+                return false;
+            }
+
+            // Make sure path is a local file
+            if (ServerPath == "")
+            {
+                Server.InternalError = "Server path can't be blank";
+                return false;
+            }
+            if (!Server.IsLocalPath(ServerPath, out String st))
+            {
+                Server.InternalError = "Given server path is not a local file";
+            }
+
+            // Make sure server file exists
+            if (!File.Exists(ServerPath))
+            {
+                Server.InternalError = "Given server path does not exist";
+                return false;
+            }
+
             // Assign local variables
-            ServerPath = Path;
+            RPCPath = "127.0.0.1";
             Wallet.Path = WalletPath;
             if (Password.Length > 0) Wallet.Password = Server.EncodeString(Password);
             WalletPassword = Server.EncodeString(Password);
@@ -638,7 +811,7 @@ namespace RPCWrapper
             p.StartInfo.Arguments = "--server-root \"" + System.IO.Path.GetDirectoryName(ServerPath) + "\"";
             p.StartInfo.Arguments += " --log-level 1 --rpc-legacy-security";
             p.StartInfo.Arguments += " --address";
-            p.StartInfo.Arguments += " -w \"" + Wallet.Path + "\"";
+            p.StartInfo.Arguments += " -w \"" + WalletPath + "\"";
             if (WalletPassword != "")
             {
                 p.StartInfo.Arguments += " -p \"" + WalletPassword + "\"";
@@ -653,8 +826,14 @@ namespace RPCWrapper
             String Output = p.StandardOutput.ReadToEnd();
 
             // Check if successful
-            if (!Output.ToLower().Contains("password")) return true;
-            else return false;
+            if (Output.ToLower().Contains("password"))
+            {
+                Server.InternalError = "Incorrect password";
+                return false;
+            }
+
+            // Password correct
+            return true;
         }
 
         /// <summary>
@@ -694,12 +873,12 @@ namespace RPCWrapper
             }
 
             // Create a POST request
-            HttpWebRequest r = (HttpWebRequest)WebRequest.Create("http://127.0.0.1:" + RPCPort + "/json_rpc");
+            HttpWebRequest r = (HttpWebRequest)WebRequest.Create("http://" + RPCPath + ":" + RPCPort + "/json_rpc");
             r.ContentType = "application/json-rpc";
             r.Method = "POST";
 
             // Sign credentials
-            r.Credentials = new NetworkCredential("", RPCPassword);
+            //r.Credentials = new NetworkCredential("", RPCPassword);
 
             // Create a JSON object
             JObject j = new JObject();

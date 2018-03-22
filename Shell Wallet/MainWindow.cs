@@ -8,6 +8,7 @@ using System.Windows.Forms;
 using RPCWrapper;
 using System.Threading;
 using System.ComponentModel;
+using System.Text.RegularExpressions;
 
 namespace Shell_Wallet
 {
@@ -44,6 +45,8 @@ namespace Shell_Wallet
         #region Variables
         // Logs console output
         private ConsoleWriter writer;
+
+        private Boolean RemoteServer = false;
         #endregion
 
         #region Event Handlers
@@ -89,6 +92,7 @@ namespace Shell_Wallet
             // Assign server variables
             Server.RefreshRate = Config.RefreshRate;
             Server.NetworkRefreshRate = Config.NetworkRefreshRate;
+            Server.NetworkMonitor = Config.NetworkMonitor;
 
             // Testnet mode
             if (Config.Testnet)
@@ -194,10 +198,13 @@ namespace Shell_Wallet
             // Open password prompt if password isn't provided
             if (Password == null)
             {
-                PasswordPrompt p = new PasswordPrompt();
-                if (p.ShowDialog(this) != DialogResult.OK) return;
-                Password = p.GetResult();
-                p.Dispose();
+                using (PasswordPrompt p = new PasswordPrompt())
+                    if (p.ShowDialog() == DialogResult.OK)
+                    {
+                        Password = p.GetResult();
+                        p.Dispose();
+                    }
+                    else return;
             }
 
             // Change menu elements before running server
@@ -216,9 +223,15 @@ namespace Shell_Wallet
             if (l.ShowDialog() == DialogResult.OK)
             {
                 // Start the server
-                if (!Wallet.Open(Config.ServerPath, Path, Password, Config.ServerPassword, Config.ServerPort,
-                    Config.LocalDaemon, Config.NodeHost, Config.NodePort))
-                    MessageBox.Show("Could not open wallet, error response from server:\r\n" + Server.Error, "Error");
+                if (Config.LocalDaemon)
+                {
+                    if (!Wallet.Open(Config.ServerPath, Path, Password, Config.ServerPassword, Config.ServerPort,
+                      "127.0.0.1", Config.NodePort))
+                        MessageBox.Show("Could not open wallet:\r\n" + Server.Error, "Error");
+                }
+                else if (!Wallet.Open(Config.ServerPath, Path, Password, Config.ServerPassword, Config.ServerPort,
+                    Config.NodeHost, Config.NodePort))
+                    MessageBox.Show("Could not open wallet:\r\n" + Server.Error, "Error");
             }
 
             // Password incorrect
@@ -233,14 +246,33 @@ namespace Shell_Wallet
         {
             #region Update Network
             // Network online
-            if (Network.Alive)
+            if (Network.Alive && Wallet.Alive && !RemoteServer)
             {
                 // Enable and disable elements
                 if (this.StartNetworkMenuOption.Enabled)
                     this.StartNetworkMenuOption.Enabled = false;
-                if (!this.CloseNetworkMenuOption.Enabled && !Wallet.Alive)
+                if (this.CloseNetworkMenuOption.Enabled)
+                    this.CloseNetworkMenuOption.Enabled = false;
+            }
+            else if (Network.Alive)
+            {
+                // Enable and disable elements
+                if (this.StartNetworkMenuOption.Enabled)
+                    this.StartNetworkMenuOption.Enabled = false;
+                if (!this.CloseNetworkMenuOption.Enabled)
                     this.CloseNetworkMenuOption.Enabled = true;
+            }
+            else
+            {
+                // Enable and disable elements
+                if (!this.StartNetworkMenuOption.Enabled)
+                    this.StartNetworkMenuOption.Enabled = true;
+                if (this.CloseNetworkMenuOption.Enabled)
+                    this.CloseNetworkMenuOption.Enabled = false;
+            }
 
+            if (Network.Alive && Config.NetworkMonitor)
+            {
                 // Only do these updates if network tab is selected
                 if (this.WalletTabs.SelectedTab.Text == "Network" || this.TotalBlocks.Text == "0")
                 {
@@ -252,21 +284,14 @@ namespace Shell_Wallet
                     this.Reward.Text = Network.Reward.ToString("N0");
                 }
             }
-
-            // Network offline
             else
             {
-                // Enable and disable elements
-                if (!this.StartNetworkMenuOption.Enabled) this.StartNetworkMenuOption.Enabled = true;
-                if (this.CloseNetworkMenuOption.Enabled) this.CloseNetworkMenuOption.Enabled = false;
-
-                // Only do these updates if network tab is selected
-                if (this.TotalBlocks.Text != "0") this.TotalBlocks.Text = "0";
-                if (this.TotalSupply.Text != "0") this.TotalSupply.Text = "0";
-                if (this.TotalTransactions.Text != "0") this.TotalTransactions.Text = "0";
-                if (this.GlobalHashrate.Text != "0") this.GlobalHashrate.Text = "0";
-                if (this.Difficulty.Text != "0") this.Difficulty.Text = "0";
-                if (this.Reward.Text != "0") this.Reward.Text = "0";
+                if (this.TotalBlocks.Text != "") this.TotalBlocks.Text = "";
+                if (this.TotalSupply.Text != "") this.TotalSupply.Text = "";
+                if (this.TotalTransactions.Text != "") this.TotalTransactions.Text = "";
+                if (this.GlobalHashrate.Text != "") this.GlobalHashrate.Text = "";
+                if (this.Difficulty.Text != "") this.Difficulty.Text = "";
+                if (this.Reward.Text != "") this.Reward.Text = "";
             }
             #endregion
 
@@ -276,9 +301,17 @@ namespace Shell_Wallet
             {
                 // Set window name
                 if (this.Text == "Shell Wallet" && !Config.Testnet)
-                    this.Text = "Shell Wallet - \"" + Wallet.FileName + "\"";
+                {
+                    if (!RemoteServer)
+                        this.Text = "Shell Wallet - \"" + Wallet.FileName + "\"";
+                    else this.Text = "Shell Wallet - \"" + Config.RemotePath + "\"";
+                }
                 else if (this.Text == "Shell Wallet (TESTNET)" && Config.Testnet)
-                    this.Text = "Shell Wallet (TESTNET) - \"" + Wallet.FileName + "\"";
+                {
+                    if (!RemoteServer)
+                        this.Text = "Shell Wallet (TESTNET) - \"" + Wallet.FileName + "\"";
+                    else this.Text = "Shell Wallet (TESTNET) - \"" + Config.RemotePath + "\"";
+                }
 
                 // Enable wallet controls
                 if (!this.CopyAddress.Enabled)
@@ -303,10 +336,10 @@ namespace Shell_Wallet
                     this.ExportPrivateKeysMenuOption.Enabled = true;
                 if (!this.ResyncMenuOption.Enabled)
                     this.ResyncMenuOption.Enabled = true;
+                if (this.ConnectRemoteRPC.Enabled)
+                    this.ConnectRemoteRPC.Enabled = false;
                 if (!this.CloseWalletMenuOption.Enabled)
                     this.CloseWalletMenuOption.Enabled = true;
-                if (this.CloseNetworkMenuOption.Enabled)
-                    this.CloseNetworkMenuOption.Enabled = false;
 
                 // Change address selection
                 if (this.WalletAddresses.DataSource == null &&
@@ -347,6 +380,12 @@ namespace Shell_Wallet
                     this.LockedBalanceBox.Text = Wallet.LockedBalance;
                     this.SelectedBalanceBox.Text = Wallet.SelectedBalance;
                     this.SelectedLockedBalanceBox.Text = Wallet.SelectedLockedBalance;
+                }
+
+                // Update send tab
+                if (!RemoteServer && !SendTransaction.Enabled)
+                {
+                    SendTransaction.Enabled = true;
                 }
             }
 
@@ -392,6 +431,8 @@ namespace Shell_Wallet
                     this.ExportPrivateKeysMenuOption.Enabled = false;
                 if (this.ResyncMenuOption.Enabled)
                     this.ResyncMenuOption.Enabled = false;
+                if (!this.ConnectRemoteRPC.Enabled)
+                    this.ConnectRemoteRPC.Enabled = true;
                 if (this.CloseWalletMenuOption.Enabled)
                     this.CloseWalletMenuOption.Enabled = false;
 
@@ -401,6 +442,10 @@ namespace Shell_Wallet
                 this.SelectedBalanceBox.Text = "";
                 this.SelectedLockedBalanceBox.Text = "";
                 this.HeightStatus.Text = "";
+
+                // Update send tab
+                if (SendTransaction.Enabled)
+                    SendTransaction.Enabled = false;
             }
             #endregion
 
@@ -452,15 +497,27 @@ namespace Shell_Wallet
             #endregion
     
             #region Other Updates
-            if (Wallet.Alive)
+            if (Wallet.Alive && Network.Alive)
             {
                 // Update server status
                 if (this.ServerStatus.ForeColor == Color.Red ||
                     this.ServerStatus.ForeColor == Color.Blue)
                 {
                     this.ServerStatus.ForeColor = Color.Green;
-                    this.ServerStatus.Text = "Server Connected";
                 }
+                if (this.ServerStatus.Text != "Server / Daemon Connected")
+                    this.ServerStatus.Text = "Server / Daemon Connected";
+            }
+            else if (Wallet.Alive && !Network.Alive)
+            {
+                // Update server status
+                if (this.ServerStatus.ForeColor == Color.Red ||
+                    this.ServerStatus.ForeColor == Color.Blue)
+                {
+                    this.ServerStatus.ForeColor = Color.Green;
+                }
+                if (this.ServerStatus.Text != "Server Connected")
+                    this.ServerStatus.Text = "Server Connected";
             }
             else if (Network.Alive)
             {
@@ -468,8 +525,9 @@ namespace Shell_Wallet
                 if (this.ServerStatus.ForeColor == Color.Red)
                 {
                     this.ServerStatus.ForeColor = Color.Blue;
-                    this.ServerStatus.Text = "Daemon Connected";
                 }
+                if (this.ServerStatus.Text != "Daemon Connected")
+                    this.ServerStatus.Text = "Daemon Connected";
             }
             else
             {
@@ -478,8 +536,9 @@ namespace Shell_Wallet
                     this.ServerStatus.ForeColor == Color.Blue)
                 {
                     this.ServerStatus.ForeColor = Color.Red;
-                    this.ServerStatus.Text = "Not Connected";
                 }
+                if (this.ServerStatus.Text != "Not Connected")
+                    this.ServerStatus.Text = "Not Connected";
             }
             #endregion
         }
@@ -487,12 +546,21 @@ namespace Shell_Wallet
         // Makes text boxes number-only
         private void NumberOnly(object semder, KeyPressEventArgs e)
         {
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar)) e.Handled = true;
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) &&
+                (e.KeyChar != ','))
+                e.Handled = true;
         }
         private void DecimalNumberOnly(object sender, KeyPressEventArgs e)
         {
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.')) e.Handled = true;
-            if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1)) e.Handled = true;
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) &&
+                (e.KeyChar != '.') && (e.KeyChar != ','))
+                e.Handled = true;
+            if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
+                e.Handled = true;
+            if (char.IsDigit(e.KeyChar) && ((sender as TextBox).Text.IndexOf('.') > -1))
+                if ((sender as TextBox).Text.IndexOf('.') < (sender as TextBox).Text.Length - 2 &&
+                    (sender as TextBox).SelectionStart > (sender as TextBox).Text.IndexOf('.'))
+                    e.Handled = true;
         }
         #endregion
 
@@ -672,6 +740,21 @@ namespace Shell_Wallet
             }
         }
 
+        // Connect to RPC server selected in menu
+        private void ConnectRPCServer_Click(object sender, EventArgs e)
+        {
+            if (!Wallet.Connect(Config.RemotePath, Config.RemotePort, Config.RemotePassword))
+                MessageBox.Show("Could not connect to RPC server:\r\n" + Server.Error, "Error");
+            else
+            {
+                RemoteServer = true;
+                if (Config.RemoteReminder)
+                {
+                    new RemoteReminder().ShowDialog();
+                }
+            }
+        }
+
         // Close wallet selected in menu
         private void closeWalletToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -688,6 +771,7 @@ namespace Shell_Wallet
             this.ChangeAddress.Text = "";
             this.Mixin.Text = "";
             this.ExtraBox.Text = "";
+            RemoteServer = false;
         }
         #endregion
 
@@ -695,7 +779,7 @@ namespace Shell_Wallet
         // Connect to network selected in menu
         private void startNetworkConnectionToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (!Network.Start(Config.LocalDaemon, Config.NodeHost, Config.NodePort))
+            if (!Network.Start(Config.NodeHost, Config.NodePort))
                 MessageBox.Show("Unable to connect to daemon", "Error");
         }
 
@@ -795,17 +879,21 @@ namespace Shell_Wallet
             // Get transaction variables
             String Address = SendToAddress.Text;
             double Amount = 0;
-            if (AmountToSend.Text.Length > 0) Amount = Convert.ToDouble(AmountToSend.Text);
+            if (AmountToSend.Text.Length > 0) Amount = Convert.ToDouble(AmountToSend.Text.Replace(",", ""));
             double Fee = 0;
             if (this.Fee.Text.Length > 0) Fee = Convert.ToDouble(this.Fee.Text);
             String PaymentID = this.PaymentID.Text;
             if (UnlockTime.Text.Length == 0) UnlockTime.Text = Config.DefaultUnlockTime;
             if (Mixin.Text.Length == 0) Mixin.Text = Config.DefaultMixin;
 
+            if (MessageBox.Show("Would you like to send " + String.Format("{0:N}", Amount) + " with a fee of " +
+                String.Format("{0:N}", Fee) + "?", "Send Transaction", MessageBoxButtons.YesNo) != DialogResult.Yes)
+                return;
+
             // Create transaction
             List<String> AddressList = new List<String>();
             if ((String)SendFromAddress.SelectedItem == "Selected Address") AddressList.Add(Wallet.SelectedAddress);
-            
+
             // Create transfer
             List<Transfer> TransferList = new List<Transfer>();
             Transfer Transfer = new Transfer(Address, Amount * 100);

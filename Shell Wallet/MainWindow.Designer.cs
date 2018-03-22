@@ -42,6 +42,7 @@
             this.ExportPrivateKeysMenuOption = new System.Windows.Forms.ToolStripMenuItem();
             this.ResyncMenuOption = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem6 = new System.Windows.Forms.ToolStripSeparator();
+            this.ConnectRemoteRPC = new System.Windows.Forms.ToolStripMenuItem();
             this.CloseWalletMenuOption = new System.Windows.Forms.ToolStripMenuItem();
             this.NetworkMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.StartNetworkMenuOption = new System.Windows.Forms.ToolStripMenuItem();
@@ -109,6 +110,11 @@
             this.TransactonLogTab = new System.Windows.Forms.TabPage();
             this.TransactionLog = new System.Windows.Forms.DataGridView();
             this.TypeColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.timeStampDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.amountDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.feeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.hashDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.transactionBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.ContactBookTab = new System.Windows.Forms.TabPage();
             this.EditContact = new System.Windows.Forms.Button();
             this.SendToContact = new System.Windows.Forms.Button();
@@ -129,8 +135,18 @@
             this.TransactionPool = new System.Windows.Forms.DataGridView();
             this.AmountColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FeeColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.transactionPoolBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.RecentBlocks = new System.Windows.Forms.DataGridView();
+            this.heightDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.sizeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.hashDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.difficultyDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.transactionsDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.recentBlocksBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.TotalSupply = new System.Windows.Forms.Label();
@@ -150,21 +166,6 @@
             this.ServerStatus = new System.Windows.Forms.Label();
             this.SavePrivateKeys = new System.Windows.Forms.SaveFileDialog();
             this.ToolTip = new System.Windows.Forms.ToolTip(this.components);
-            this.timeStampDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.amountDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.feeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.hashDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.transactionBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.transactionPoolBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.heightDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.sizeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.hashDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.difficultyDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.transactionsDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.recentBlocksBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.MenuStrip.SuspendLayout();
             this.SendTab.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
@@ -177,6 +178,7 @@
             this.WalletTabs.SuspendLayout();
             this.TransactonLogTab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.TransactionLog)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.transactionBindingSource)).BeginInit();
             this.ContactBookTab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.AddressGrid)).BeginInit();
             this.AddressBookMenu.SuspendLayout();
@@ -184,14 +186,13 @@
             this.tableLayoutPanel4.SuspendLayout();
             this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.TransactionPool)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.transactionPoolBindingSource)).BeginInit();
             this.groupBox5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.RecentBlocks)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.recentBlocksBindingSource)).BeginInit();
             this.tableLayoutPanel3.SuspendLayout();
             this.groupBox6.SuspendLayout();
             this.groupBox3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.transactionBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.transactionPoolBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.recentBlocksBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // MenuStrip
@@ -219,6 +220,7 @@
             this.ExportPrivateKeysMenuOption,
             this.ResyncMenuOption,
             this.toolStripMenuItem6,
+            this.ConnectRemoteRPC,
             this.CloseWalletMenuOption});
             this.WalletMenu.Name = "WalletMenu";
             this.WalletMenu.Size = new System.Drawing.Size(52, 20);
@@ -227,65 +229,72 @@
             // OpenWalletMenuOption
             // 
             this.OpenWalletMenuOption.Name = "OpenWalletMenuOption";
-            this.OpenWalletMenuOption.Size = new System.Drawing.Size(173, 22);
+            this.OpenWalletMenuOption.Size = new System.Drawing.Size(193, 22);
             this.OpenWalletMenuOption.Text = "Open Wallet";
             this.OpenWalletMenuOption.Click += new System.EventHandler(this.openWalletToolStripMenuItem_Click);
             // 
             // OpenDefaultMenuOption
             // 
             this.OpenDefaultMenuOption.Name = "OpenDefaultMenuOption";
-            this.OpenDefaultMenuOption.Size = new System.Drawing.Size(173, 22);
+            this.OpenDefaultMenuOption.Size = new System.Drawing.Size(193, 22);
             this.OpenDefaultMenuOption.Text = "Open Default";
             this.OpenDefaultMenuOption.Click += new System.EventHandler(this.openDefaultWalletToolStripMenuItem_Click);
             // 
             // toolStripMenuItem3
             // 
             this.toolStripMenuItem3.Name = "toolStripMenuItem3";
-            this.toolStripMenuItem3.Size = new System.Drawing.Size(170, 6);
+            this.toolStripMenuItem3.Size = new System.Drawing.Size(190, 6);
             // 
             // CreateWalletMenuOption
             // 
             this.CreateWalletMenuOption.Name = "CreateWalletMenuOption";
-            this.CreateWalletMenuOption.Size = new System.Drawing.Size(173, 22);
+            this.CreateWalletMenuOption.Size = new System.Drawing.Size(193, 22);
             this.CreateWalletMenuOption.Text = "Create Wallet";
             this.CreateWalletMenuOption.Click += new System.EventHandler(this.createWalletToolStripMenuItem_Click);
             // 
             // ImportWalletMenuOption
             // 
             this.ImportWalletMenuOption.Name = "ImportWalletMenuOption";
-            this.ImportWalletMenuOption.Size = new System.Drawing.Size(173, 22);
+            this.ImportWalletMenuOption.Size = new System.Drawing.Size(193, 22);
             this.ImportWalletMenuOption.Text = "Import Wallet";
             this.ImportWalletMenuOption.Click += new System.EventHandler(this.importWalletToolStripMenuItem_Click);
             // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(170, 6);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(190, 6);
             // 
             // ExportPrivateKeysMenuOption
             // 
             this.ExportPrivateKeysMenuOption.Name = "ExportPrivateKeysMenuOption";
-            this.ExportPrivateKeysMenuOption.Size = new System.Drawing.Size(173, 22);
+            this.ExportPrivateKeysMenuOption.Size = new System.Drawing.Size(193, 22);
             this.ExportPrivateKeysMenuOption.Text = "Export Private Keys";
             this.ExportPrivateKeysMenuOption.Click += new System.EventHandler(this.viewWalletKeysToolStripMenuItem_Click);
             // 
             // ResyncMenuOption
             // 
             this.ResyncMenuOption.Name = "ResyncMenuOption";
-            this.ResyncMenuOption.Size = new System.Drawing.Size(173, 22);
+            this.ResyncMenuOption.Size = new System.Drawing.Size(193, 22);
             this.ResyncMenuOption.Text = "Resync";
             this.ResyncMenuOption.Click += new System.EventHandler(this.resyncToolStripMenuItem_Click);
             // 
             // toolStripMenuItem6
             // 
             this.toolStripMenuItem6.Name = "toolStripMenuItem6";
-            this.toolStripMenuItem6.Size = new System.Drawing.Size(170, 6);
+            this.toolStripMenuItem6.Size = new System.Drawing.Size(190, 6);
+            // 
+            // ConnectRemoteRPC
+            // 
+            this.ConnectRemoteRPC.Name = "ConnectRemoteRPC";
+            this.ConnectRemoteRPC.Size = new System.Drawing.Size(193, 22);
+            this.ConnectRemoteRPC.Text = "Connect to RPC Server";
+            this.ConnectRemoteRPC.Click += new System.EventHandler(this.ConnectRPCServer_Click);
             // 
             // CloseWalletMenuOption
             // 
             this.CloseWalletMenuOption.Enabled = false;
             this.CloseWalletMenuOption.Name = "CloseWalletMenuOption";
-            this.CloseWalletMenuOption.Size = new System.Drawing.Size(173, 22);
+            this.CloseWalletMenuOption.Size = new System.Drawing.Size(193, 22);
             this.CloseWalletMenuOption.Text = "Close Wallet";
             this.CloseWalletMenuOption.Click += new System.EventHandler(this.closeWalletToolStripMenuItem_Click);
             // 
@@ -577,6 +586,7 @@
             // 
             this.SendTransaction.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.SendTransaction.Enabled = false;
             this.SendTransaction.Location = new System.Drawing.Point(6, 359);
             this.SendTransaction.Name = "SendTransaction";
             this.SendTransaction.Size = new System.Drawing.Size(364, 23);
@@ -774,12 +784,15 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox1.AutoSize = true;
+            this.groupBox1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.groupBox1.Controls.Add(this.SelectedLockedBalanceBox);
             this.groupBox1.Controls.Add(this.label19);
             this.groupBox1.Controls.Add(this.SelectedBalanceBox);
             this.groupBox1.Controls.Add(this.label18);
-            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(3, 3);
             this.groupBox1.Name = "groupBox1";
@@ -790,7 +803,8 @@
             // 
             // SelectedLockedBalanceBox
             // 
-            this.SelectedLockedBalanceBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.SelectedLockedBalanceBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.SelectedLockedBalanceBox.BackColor = System.Drawing.SystemColors.Window;
             this.SelectedLockedBalanceBox.Location = new System.Drawing.Point(6, 71);
@@ -802,6 +816,9 @@
             // 
             // label19
             // 
+            this.label19.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.label19.AutoSize = true;
             this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label19.Location = new System.Drawing.Point(3, 55);
@@ -812,7 +829,8 @@
             // 
             // SelectedBalanceBox
             // 
-            this.SelectedBalanceBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.SelectedBalanceBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.SelectedBalanceBox.BackColor = System.Drawing.SystemColors.Window;
             this.SelectedBalanceBox.Location = new System.Drawing.Point(6, 32);
@@ -825,6 +843,9 @@
             // 
             // label18
             // 
+            this.label18.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.label18.AutoSize = true;
             this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label18.Location = new System.Drawing.Point(3, 16);
@@ -835,12 +856,15 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox2.AutoSize = true;
+            this.groupBox2.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.groupBox2.Controls.Add(this.label2);
             this.groupBox2.Controls.Add(this.label3);
             this.groupBox2.Controls.Add(this.BalanceBox);
             this.groupBox2.Controls.Add(this.LockedBalanceBox);
-            this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox2.Location = new System.Drawing.Point(373, 3);
             this.groupBox2.Name = "groupBox2";
@@ -851,6 +875,9 @@
             // 
             // label2
             // 
+            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(3, 16);
@@ -861,6 +888,9 @@
             // 
             // label3
             // 
+            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(3, 55);
@@ -871,7 +901,8 @@
             // 
             // BalanceBox
             // 
-            this.BalanceBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.BalanceBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.BalanceBox.BackColor = System.Drawing.SystemColors.Window;
             this.BalanceBox.Location = new System.Drawing.Point(6, 32);
@@ -883,7 +914,8 @@
             // 
             // LockedBalanceBox
             // 
-            this.LockedBalanceBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.LockedBalanceBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.LockedBalanceBox.BackColor = System.Drawing.SystemColors.Window;
             this.LockedBalanceBox.Location = new System.Drawing.Point(6, 71);
@@ -932,7 +964,8 @@
             // 
             // SyncPercent
             // 
-            this.SyncPercent.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            this.SyncPercent.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.SyncPercent.Location = new System.Drawing.Point(3, 369);
             this.SyncPercent.Name = "SyncPercent";
@@ -943,7 +976,8 @@
             // 
             // SyncProgress
             // 
-            this.SyncProgress.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            this.SyncProgress.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.SyncProgress.Location = new System.Drawing.Point(6, 387);
             this.SyncProgress.Name = "SyncProgress";
@@ -1042,6 +1076,42 @@
             this.TypeColumn.HeaderText = "Type";
             this.TypeColumn.Name = "TypeColumn";
             this.TypeColumn.ReadOnly = true;
+            // 
+            // timeStampDataGridViewTextBoxColumn
+            // 
+            this.timeStampDataGridViewTextBoxColumn.DataPropertyName = "TimeStamp";
+            this.timeStampDataGridViewTextBoxColumn.FillWeight = 80F;
+            this.timeStampDataGridViewTextBoxColumn.HeaderText = "Date";
+            this.timeStampDataGridViewTextBoxColumn.Name = "timeStampDataGridViewTextBoxColumn";
+            this.timeStampDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // amountDataGridViewTextBoxColumn
+            // 
+            this.amountDataGridViewTextBoxColumn.DataPropertyName = "Amount";
+            this.amountDataGridViewTextBoxColumn.FillWeight = 50F;
+            this.amountDataGridViewTextBoxColumn.HeaderText = "Amount";
+            this.amountDataGridViewTextBoxColumn.Name = "amountDataGridViewTextBoxColumn";
+            this.amountDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // feeDataGridViewTextBoxColumn
+            // 
+            this.feeDataGridViewTextBoxColumn.DataPropertyName = "Fee";
+            this.feeDataGridViewTextBoxColumn.FillWeight = 50F;
+            this.feeDataGridViewTextBoxColumn.HeaderText = "Fee";
+            this.feeDataGridViewTextBoxColumn.Name = "feeDataGridViewTextBoxColumn";
+            this.feeDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // hashDataGridViewTextBoxColumn1
+            // 
+            this.hashDataGridViewTextBoxColumn1.DataPropertyName = "Hash";
+            this.hashDataGridViewTextBoxColumn1.FillWeight = 200F;
+            this.hashDataGridViewTextBoxColumn1.HeaderText = "Hash";
+            this.hashDataGridViewTextBoxColumn1.Name = "hashDataGridViewTextBoxColumn1";
+            this.hashDataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // transactionBindingSource
+            // 
+            this.transactionBindingSource.DataSource = typeof(RPCWrapper.Transaction);
             // 
             // ContactBookTab
             // 
@@ -1285,6 +1355,26 @@
             this.FeeColumn.Name = "FeeColumn";
             this.FeeColumn.ReadOnly = true;
             // 
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.DataPropertyName = "Size";
+            this.dataGridViewTextBoxColumn3.FillWeight = 10F;
+            this.dataGridViewTextBoxColumn3.HeaderText = "Size";
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.dataGridViewTextBoxColumn3.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            this.dataGridViewTextBoxColumn4.DataPropertyName = "Hash";
+            this.dataGridViewTextBoxColumn4.FillWeight = 60F;
+            this.dataGridViewTextBoxColumn4.HeaderText = "Hash";
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            this.dataGridViewTextBoxColumn4.ReadOnly = true;
+            // 
+            // transactionPoolBindingSource
+            // 
+            this.transactionPoolBindingSource.DataSource = typeof(RPCWrapper.RecentBlocks);
+            // 
             // groupBox5
             // 
             this.groupBox5.Controls.Add(this.RecentBlocks);
@@ -1331,6 +1421,58 @@
             this.RecentBlocks.Size = new System.Drawing.Size(728, 174);
             this.RecentBlocks.TabIndex = 0;
             // 
+            // heightDataGridViewTextBoxColumn
+            // 
+            this.heightDataGridViewTextBoxColumn.DataPropertyName = "Height";
+            this.heightDataGridViewTextBoxColumn.FillWeight = 10F;
+            this.heightDataGridViewTextBoxColumn.HeaderText = "Height";
+            this.heightDataGridViewTextBoxColumn.Name = "heightDataGridViewTextBoxColumn";
+            this.heightDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // dateDataGridViewTextBoxColumn
+            // 
+            this.dateDataGridViewTextBoxColumn.DataPropertyName = "Date";
+            this.dateDataGridViewTextBoxColumn.FillWeight = 30F;
+            this.dateDataGridViewTextBoxColumn.HeaderText = "Date";
+            this.dateDataGridViewTextBoxColumn.Name = "dateDataGridViewTextBoxColumn";
+            this.dateDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // sizeDataGridViewTextBoxColumn
+            // 
+            this.sizeDataGridViewTextBoxColumn.DataPropertyName = "Size";
+            this.sizeDataGridViewTextBoxColumn.FillWeight = 10F;
+            this.sizeDataGridViewTextBoxColumn.HeaderText = "Size";
+            this.sizeDataGridViewTextBoxColumn.Name = "sizeDataGridViewTextBoxColumn";
+            this.sizeDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // hashDataGridViewTextBoxColumn
+            // 
+            this.hashDataGridViewTextBoxColumn.DataPropertyName = "Hash";
+            this.hashDataGridViewTextBoxColumn.FillWeight = 50F;
+            this.hashDataGridViewTextBoxColumn.HeaderText = "Hash";
+            this.hashDataGridViewTextBoxColumn.Name = "hashDataGridViewTextBoxColumn";
+            this.hashDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // difficultyDataGridViewTextBoxColumn
+            // 
+            this.difficultyDataGridViewTextBoxColumn.DataPropertyName = "Difficulty";
+            this.difficultyDataGridViewTextBoxColumn.FillWeight = 15F;
+            this.difficultyDataGridViewTextBoxColumn.HeaderText = "Difficulty";
+            this.difficultyDataGridViewTextBoxColumn.Name = "difficultyDataGridViewTextBoxColumn";
+            this.difficultyDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // transactionsDataGridViewTextBoxColumn
+            // 
+            this.transactionsDataGridViewTextBoxColumn.DataPropertyName = "Transactions";
+            this.transactionsDataGridViewTextBoxColumn.FillWeight = 20F;
+            this.transactionsDataGridViewTextBoxColumn.HeaderText = "Transactions";
+            this.transactionsDataGridViewTextBoxColumn.Name = "transactionsDataGridViewTextBoxColumn";
+            this.transactionsDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // recentBlocksBindingSource
+            // 
+            this.recentBlocksBindingSource.DataSource = typeof(RPCWrapper.RecentBlocks);
+            // 
             // tableLayoutPanel3
             // 
             this.tableLayoutPanel3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -1371,9 +1513,8 @@
             this.TotalSupply.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TotalSupply.Location = new System.Drawing.Point(121, 29);
             this.TotalSupply.Name = "TotalSupply";
-            this.TotalSupply.Size = new System.Drawing.Size(13, 13);
+            this.TotalSupply.Size = new System.Drawing.Size(0, 13);
             this.TotalSupply.TabIndex = 5;
-            this.TotalSupply.Text = "0";
             // 
             // TotalTransactions
             // 
@@ -1381,9 +1522,8 @@
             this.TotalTransactions.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TotalTransactions.Location = new System.Drawing.Point(121, 42);
             this.TotalTransactions.Name = "TotalTransactions";
-            this.TotalTransactions.Size = new System.Drawing.Size(13, 13);
+            this.TotalTransactions.Size = new System.Drawing.Size(0, 13);
             this.TotalTransactions.TabIndex = 4;
-            this.TotalTransactions.Text = "0";
             // 
             // TotalBlocks
             // 
@@ -1391,9 +1531,8 @@
             this.TotalBlocks.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TotalBlocks.Location = new System.Drawing.Point(121, 16);
             this.TotalBlocks.Name = "TotalBlocks";
-            this.TotalBlocks.Size = new System.Drawing.Size(13, 13);
+            this.TotalBlocks.Size = new System.Drawing.Size(0, 13);
             this.TotalBlocks.TabIndex = 3;
-            this.TotalBlocks.Text = "0";
             // 
             // label21
             // 
@@ -1448,9 +1587,8 @@
             this.Difficulty.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Difficulty.Location = new System.Drawing.Point(121, 29);
             this.Difficulty.Name = "Difficulty";
-            this.Difficulty.Size = new System.Drawing.Size(13, 13);
+            this.Difficulty.Size = new System.Drawing.Size(0, 13);
             this.Difficulty.TabIndex = 11;
-            this.Difficulty.Text = "0";
             // 
             // Reward
             // 
@@ -1458,9 +1596,8 @@
             this.Reward.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Reward.Location = new System.Drawing.Point(121, 42);
             this.Reward.Name = "Reward";
-            this.Reward.Size = new System.Drawing.Size(13, 13);
+            this.Reward.Size = new System.Drawing.Size(0, 13);
             this.Reward.TabIndex = 10;
-            this.Reward.Text = "0";
             // 
             // GlobalHashrate
             // 
@@ -1468,9 +1605,8 @@
             this.GlobalHashrate.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.GlobalHashrate.Location = new System.Drawing.Point(121, 16);
             this.GlobalHashrate.Name = "GlobalHashrate";
-            this.GlobalHashrate.Size = new System.Drawing.Size(13, 13);
+            this.GlobalHashrate.Size = new System.Drawing.Size(0, 13);
             this.GlobalHashrate.TabIndex = 9;
-            this.GlobalHashrate.Text = "0";
             // 
             // label27
             // 
@@ -1528,118 +1664,9 @@
             this.SavePrivateKeys.FileName = "Keys.txt";
             this.SavePrivateKeys.Filter = "Text Files|*txt";
             // 
-            // timeStampDataGridViewTextBoxColumn
-            // 
-            this.timeStampDataGridViewTextBoxColumn.DataPropertyName = "TimeStamp";
-            this.timeStampDataGridViewTextBoxColumn.FillWeight = 80F;
-            this.timeStampDataGridViewTextBoxColumn.HeaderText = "Date";
-            this.timeStampDataGridViewTextBoxColumn.Name = "timeStampDataGridViewTextBoxColumn";
-            this.timeStampDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // amountDataGridViewTextBoxColumn
-            // 
-            this.amountDataGridViewTextBoxColumn.DataPropertyName = "Amount";
-            this.amountDataGridViewTextBoxColumn.FillWeight = 50F;
-            this.amountDataGridViewTextBoxColumn.HeaderText = "Amount";
-            this.amountDataGridViewTextBoxColumn.Name = "amountDataGridViewTextBoxColumn";
-            this.amountDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // feeDataGridViewTextBoxColumn
-            // 
-            this.feeDataGridViewTextBoxColumn.DataPropertyName = "Fee";
-            this.feeDataGridViewTextBoxColumn.FillWeight = 50F;
-            this.feeDataGridViewTextBoxColumn.HeaderText = "Fee";
-            this.feeDataGridViewTextBoxColumn.Name = "feeDataGridViewTextBoxColumn";
-            this.feeDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // hashDataGridViewTextBoxColumn1
-            // 
-            this.hashDataGridViewTextBoxColumn1.DataPropertyName = "Hash";
-            this.hashDataGridViewTextBoxColumn1.FillWeight = 200F;
-            this.hashDataGridViewTextBoxColumn1.HeaderText = "Hash";
-            this.hashDataGridViewTextBoxColumn1.Name = "hashDataGridViewTextBoxColumn1";
-            this.hashDataGridViewTextBoxColumn1.ReadOnly = true;
-            // 
-            // transactionBindingSource
-            // 
-            this.transactionBindingSource.DataSource = typeof(RPCWrapper.Transaction);
-            // 
-            // dataGridViewTextBoxColumn3
-            // 
-            this.dataGridViewTextBoxColumn3.DataPropertyName = "Size";
-            this.dataGridViewTextBoxColumn3.FillWeight = 10F;
-            this.dataGridViewTextBoxColumn3.HeaderText = "Size";
-            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            this.dataGridViewTextBoxColumn3.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn4
-            // 
-            this.dataGridViewTextBoxColumn4.DataPropertyName = "Hash";
-            this.dataGridViewTextBoxColumn4.FillWeight = 60F;
-            this.dataGridViewTextBoxColumn4.HeaderText = "Hash";
-            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            this.dataGridViewTextBoxColumn4.ReadOnly = true;
-            // 
-            // transactionPoolBindingSource
-            // 
-            this.transactionPoolBindingSource.DataSource = typeof(RPCWrapper.RecentBlocks);
-            // 
-            // heightDataGridViewTextBoxColumn
-            // 
-            this.heightDataGridViewTextBoxColumn.DataPropertyName = "Height";
-            this.heightDataGridViewTextBoxColumn.FillWeight = 10F;
-            this.heightDataGridViewTextBoxColumn.HeaderText = "Height";
-            this.heightDataGridViewTextBoxColumn.Name = "heightDataGridViewTextBoxColumn";
-            this.heightDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // dateDataGridViewTextBoxColumn
-            // 
-            this.dateDataGridViewTextBoxColumn.DataPropertyName = "Date";
-            this.dateDataGridViewTextBoxColumn.FillWeight = 30F;
-            this.dateDataGridViewTextBoxColumn.HeaderText = "Date";
-            this.dateDataGridViewTextBoxColumn.Name = "dateDataGridViewTextBoxColumn";
-            this.dateDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // sizeDataGridViewTextBoxColumn
-            // 
-            this.sizeDataGridViewTextBoxColumn.DataPropertyName = "Size";
-            this.sizeDataGridViewTextBoxColumn.FillWeight = 10F;
-            this.sizeDataGridViewTextBoxColumn.HeaderText = "Size";
-            this.sizeDataGridViewTextBoxColumn.Name = "sizeDataGridViewTextBoxColumn";
-            this.sizeDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // hashDataGridViewTextBoxColumn
-            // 
-            this.hashDataGridViewTextBoxColumn.DataPropertyName = "Hash";
-            this.hashDataGridViewTextBoxColumn.FillWeight = 50F;
-            this.hashDataGridViewTextBoxColumn.HeaderText = "Hash";
-            this.hashDataGridViewTextBoxColumn.Name = "hashDataGridViewTextBoxColumn";
-            this.hashDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // difficultyDataGridViewTextBoxColumn
-            // 
-            this.difficultyDataGridViewTextBoxColumn.DataPropertyName = "Difficulty";
-            this.difficultyDataGridViewTextBoxColumn.FillWeight = 15F;
-            this.difficultyDataGridViewTextBoxColumn.HeaderText = "Difficulty";
-            this.difficultyDataGridViewTextBoxColumn.Name = "difficultyDataGridViewTextBoxColumn";
-            this.difficultyDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // transactionsDataGridViewTextBoxColumn
-            // 
-            this.transactionsDataGridViewTextBoxColumn.DataPropertyName = "Transactions";
-            this.transactionsDataGridViewTextBoxColumn.FillWeight = 20F;
-            this.transactionsDataGridViewTextBoxColumn.HeaderText = "Transactions";
-            this.transactionsDataGridViewTextBoxColumn.Name = "transactionsDataGridViewTextBoxColumn";
-            this.transactionsDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // recentBlocksBindingSource
-            // 
-            this.recentBlocksBindingSource.DataSource = typeof(RPCWrapper.RecentBlocks);
-            // 
             // MainWindow
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(784, 485);
             this.Controls.Add(this.ServerStatus);
@@ -1650,7 +1677,6 @@
             this.MainMenuStrip = this.MenuStrip;
             this.MinimumSize = new System.Drawing.Size(800, 524);
             this.Name = "MainWindow";
-            this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Shell Wallet";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainWindow_FormClosing);
@@ -1673,6 +1699,7 @@
             this.WalletTabs.ResumeLayout(false);
             this.TransactonLogTab.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.TransactionLog)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.transactionBindingSource)).EndInit();
             this.ContactBookTab.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.AddressGrid)).EndInit();
             this.AddressBookMenu.ResumeLayout(false);
@@ -1680,16 +1707,15 @@
             this.tableLayoutPanel4.ResumeLayout(false);
             this.groupBox4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.TransactionPool)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.transactionPoolBindingSource)).EndInit();
             this.groupBox5.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.RecentBlocks)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.recentBlocksBindingSource)).EndInit();
             this.tableLayoutPanel3.ResumeLayout(false);
             this.groupBox6.ResumeLayout(false);
             this.groupBox6.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.transactionBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.transactionPoolBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.recentBlocksBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1830,6 +1856,7 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
+        private System.Windows.Forms.ToolStripMenuItem ConnectRemoteRPC;
     }
 }
 

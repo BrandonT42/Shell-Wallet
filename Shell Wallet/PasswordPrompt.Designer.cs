@@ -62,7 +62,7 @@
             this.Submit.TabIndex = 2;
             this.Submit.Text = "Submit";
             this.Submit.UseVisualStyleBackColor = true;
-            this.Submit.Click += new System.EventHandler(this.button1_Click);
+            this.Submit.Click += new System.EventHandler(this.SubmitClicked);
             // 
             // label2
             // 
@@ -101,7 +101,7 @@
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Enter Password";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.PasswordPrompt_FormClosing);
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form_Closing);
             this.ResumeLayout(false);
             this.PerformLayout();
 

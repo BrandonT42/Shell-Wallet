@@ -21,20 +21,28 @@ namespace Shell_Wallet
                 Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),
                 "Shell Wallet");
 
-        // Local server
+        // Wallet server
         internal static String ServerPath = "";
-        internal static String ServerPort = "11911";
+        internal static int ServerPort = 11911;
         internal static String OriginalServerPassword = "";
         internal static String ServerPassword = "";
+        internal static bool GeneratePassword = true;
+
+        // Remote RPC Server
+        internal static String RemotePath = "127.0.0.1";
+        internal static int RemotePort = 12345;
+        internal static String RemotePassword = "";
+        internal static Boolean RemoteReminder = true;
 
         // Daemon server
         internal static String NodeHost = "";
-        internal static String NodePort = "";
+        internal static int NodePort = 11898;
         internal static bool LocalDaemon = true;
+        internal static bool NetworkMonitor = true;
 
         // Security
-        internal static bool GeneratePassword = true;
         internal static bool AllowBlankPasswords = false;
+        internal static bool PasswordConfirmation = false;
 
         // Defaults
         internal static String DefaultWalletPath = "";
@@ -80,27 +88,39 @@ namespace Shell_Wallet
             using (StreamReader r = new StreamReader(c))
             {
                 JObject conf = JObject.Parse(r.ReadToEnd());
-                ServerPath = (String)conf["serverPath"];
-                ServerPort = (String)conf["serverPort"];
-                GeneratePassword = (Boolean)conf["generatePassword"];
-                AllowBlankPasswords = (Boolean)conf["allowBlankPasswords"];
-                OriginalServerPassword = (String)conf["serverPassword"];
-                if (GeneratePassword)
-                    ServerPassword = Server.Hash;
-                else ServerPassword = (String)conf["serverPassword"];
-                LocalDaemon = (Boolean)conf["localDaemon"];
-                NodeHost = (String)conf["nodeAddress"];
-                NodePort = (String)conf["nodePort"];
-                DefaultWalletPath = (String)conf["defaultWalletPath"];
-                DefaultFee = (String)conf["defaultFee"];
-                DefaultMixin = (String)conf["defaultMixin"];
-                RefreshRate = (int)conf["refreshRate"];
-                NetworkRefreshRate = (int)conf["networkRefreshRate"];
-                GUIRefreshRate = (int)conf["guiRefreshRate"];
-                MobilePort = (String)conf["mobilePort"];
-                MobilePassword = (String)conf["mobilePassword"];
-                EnableMobile = (Boolean)conf["enableMobile"];
+                if (conf["serverPath"] != null) ServerPath = (String)conf["serverPath"];
+                if (conf["serverPort"] != null) ServerPort = (int)conf["serverPort"];
+                if (conf["serverPassword"] != null)
+                {
+                    OriginalServerPassword = (String)conf["serverPassword"];
+                    if (GeneratePassword)
+                        ServerPassword = Server.Hash;
+                    else ServerPassword = (String)conf["serverPassword"];
+                }
+                if (conf["generatePassword"] != null) GeneratePassword = (Boolean)conf["generatePassword"];
+                if (conf["remoteServer"] != null) RemotePath = (String)conf["remoteServer"];
+                if (conf["remotePort"] != null) RemotePort = (int)conf["remotePort"];
+                if (conf["remotePassword"] != null) RemotePassword = (String)conf["remotePassword"];
+                if (conf["remoteReminder"] != null) RemoteReminder = (Boolean)conf["remoteReminder"];
+                if (conf["localDaemon"] != null) LocalDaemon = (Boolean)conf["localDaemon"];
+                if (conf["nodeAddress"] != null) NodeHost = (String)conf["nodeAddress"];
+                if (conf["nodePort"] != null) NodePort = (int)conf["nodePort"];
+                if (conf["networkMonitoring"] != null) NetworkMonitor = (Boolean)conf["networkMonitoring"];
+                if (conf["enableMobile"] != null) EnableMobile = (Boolean)conf["enableMobile"];
+                if (conf["mobilePort"] != null) MobilePort = (String)conf["mobilePort"];
+                if (conf["mobilePassword"] != null) MobilePassword = (String)conf["mobilePassword"];
+                if (conf["allowBlankPasswords"] != null) AllowBlankPasswords = (Boolean)conf["allowBlankPasswords"];
+                if (conf["passwordConfirmation"] != null) PasswordConfirmation = (Boolean)conf["passwordConfirmation"];
+                if (conf["defaultWalletPath"] != null) DefaultWalletPath = (String)conf["defaultWalletPath"];
+                if (conf["defaultFee"] != null) DefaultFee = (String)conf["defaultFee"];
+                if (conf["defaultMixin"] != null) DefaultMixin = (String)conf["defaultMixin"];
+                if (conf["walletRefreshRate"] != null) RefreshRate = (int)conf["walletRefreshRate"];
+                if (conf["networkRefreshRate"] != null) NetworkRefreshRate = (int)conf["networkRefreshRate"];
+                if (conf["guiRefreshRate"] != null) GUIRefreshRate = (int)conf["guiRefreshRate"];
             }
+
+            // Save file in case some values were not found
+            Save();
         }
 
         /// <summary>
@@ -117,19 +137,25 @@ namespace Shell_Wallet
             conf["serverPort"] = ServerPort;
             conf["serverPassword"] = OriginalServerPassword;
             conf["generatePassword"] = GeneratePassword;
-            conf["allowBlankPasswords"] = AllowBlankPasswords;
+            conf["remoteServer"] = RemotePath;
+            conf["remotePort"] = RemotePort;
+            conf["remotePassword"] = RemotePassword;
+            conf["remoteReminder"] = RemoteReminder;
             conf["localDaemon"] = LocalDaemon;
             conf["nodeAddress"] = NodeHost;
             conf["nodePort"] = NodePort;
-            conf["defaultWalletPath"] = DefaultWalletPath;
-            conf["defaultFee"] = DefaultFee;
-            conf["defaultMixin"] = DefaultMixin;
-            conf["refreshRate"] = RefreshRate;
-            conf["networkRefreshRate"] = NetworkRefreshRate;
-            conf["guiRefreshRate"] = GUIRefreshRate;
+            conf["networkMonitoring"] = NetworkMonitor;
             conf["enableMobile"] = EnableMobile;
             conf["mobilePassword"] = MobilePassword;
             conf["mobilePort"] = MobilePort;
+            conf["allowBlankPasswords"] = AllowBlankPasswords;
+            conf["passwordConfirmation"] = PasswordConfirmation;
+            conf["defaultWalletPath"] = DefaultWalletPath;
+            conf["defaultFee"] = DefaultFee;
+            conf["defaultMixin"] = DefaultMixin;
+            conf["walletRefreshRate"] = RefreshRate;
+            conf["networkRefreshRate"] = NetworkRefreshRate;
+            conf["guiRefreshRate"] = GUIRefreshRate;
             File.WriteAllText(c, conf.ToString());
         }
     }
