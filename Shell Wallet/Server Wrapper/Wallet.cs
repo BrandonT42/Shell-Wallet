@@ -859,6 +859,31 @@ namespace RPCWrapper
                 WorkerThread.Interrupt();
             Reset();
         }
+
+        /// <summary>
+        /// Creates a json string containing all keys in the wallet
+        /// </summary>
+        public static String BatchExport()
+        {
+            // Make sure a wallet is open
+            if (!Alive) return "{}";
+
+            // Create a JObject to house the keys
+            JObject Result = new JObject();
+
+            // Add the view key
+            Result["viewKey"] = ViewKey;
+
+            // Create an array and populate it with all secret spend keys
+            JArray SpendKeys = new JArray();
+            foreach (String Address in Addresses)
+            {
+                SpendKeys.Add(GetSpendKeys(Address));
+            }
+
+            // Return result
+            return Result.ToString();
+        }
         #endregion
 
         #region Internal Utilities
