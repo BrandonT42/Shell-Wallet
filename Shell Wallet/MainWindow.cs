@@ -1041,5 +1041,19 @@ namespace Shell_Wallet
             }
         }
         #endregion
+
+        private void MainWindow_DragEnter(object sender, DragEventArgs e)
+        {
+            if (!Wallet.Alive && e.Data.GetDataPresent(DataFormats.FileDrop))
+                e.Effect = DragDropEffects.Copy;
+            else e.Effect = DragDropEffects.None;
+        }
+
+        private void MainWindow_DragDrop(object sender, DragEventArgs e)
+        {
+            if (Wallet.Alive) return;
+            String[] Files = (string[])e.Data.GetData(DataFormats.FileDrop);
+            if (Files.Length == 1 && File.Exists(Files[0])) OpenWallet(Files[0]);
+        }
     }
 }

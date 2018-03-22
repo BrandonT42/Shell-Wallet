@@ -88,35 +88,35 @@ namespace Shell_Wallet
             using (StreamReader r = new StreamReader(c))
             {
                 JObject conf = JObject.Parse(r.ReadToEnd());
-                if (conf["serverPath"] != null) ServerPath = (String)conf["serverPath"];
-                if (conf["serverPort"] != null) ServerPort = (int)conf["serverPort"];
-                if (conf["serverPassword"] != null)
+                if (String.IsNullOrEmpty((String)conf["serverPath"])) ServerPath = (String)conf["serverPath"];
+                if (String.IsNullOrEmpty((String)conf["serverPort"])) ServerPort = (int)conf["serverPort"];
+                if (String.IsNullOrEmpty((String)conf["serverPassword"]))
                 {
                     OriginalServerPassword = (String)conf["serverPassword"];
                     if (GeneratePassword)
                         ServerPassword = Server.Hash;
                     else ServerPassword = (String)conf["serverPassword"];
                 }
-                if (conf["generatePassword"] != null) GeneratePassword = (Boolean)conf["generatePassword"];
-                if (conf["remoteServer"] != null) RemotePath = (String)conf["remoteServer"];
-                if (conf["remotePort"] != null) RemotePort = (int)conf["remotePort"];
-                if (conf["remotePassword"] != null) RemotePassword = (String)conf["remotePassword"];
-                if (conf["remoteReminder"] != null) RemoteReminder = (Boolean)conf["remoteReminder"];
-                if (conf["localDaemon"] != null) LocalDaemon = (Boolean)conf["localDaemon"];
-                if (conf["nodeAddress"] != null) NodeHost = (String)conf["nodeAddress"];
-                if (conf["nodePort"] != null) NodePort = (int)conf["nodePort"];
-                if (conf["networkMonitoring"] != null) NetworkMonitor = (Boolean)conf["networkMonitoring"];
-                if (conf["enableMobile"] != null) EnableMobile = (Boolean)conf["enableMobile"];
-                if (conf["mobilePort"] != null) MobilePort = (String)conf["mobilePort"];
-                if (conf["mobilePassword"] != null) MobilePassword = (String)conf["mobilePassword"];
-                if (conf["allowBlankPasswords"] != null) AllowBlankPasswords = (Boolean)conf["allowBlankPasswords"];
-                if (conf["passwordConfirmation"] != null) PasswordConfirmation = (Boolean)conf["passwordConfirmation"];
-                if (conf["defaultWalletPath"] != null) DefaultWalletPath = (String)conf["defaultWalletPath"];
-                if (conf["defaultFee"] != null) DefaultFee = (String)conf["defaultFee"];
-                if (conf["defaultMixin"] != null) DefaultMixin = (String)conf["defaultMixin"];
-                if (conf["walletRefreshRate"] != null) RefreshRate = (int)conf["walletRefreshRate"];
-                if (conf["networkRefreshRate"] != null) NetworkRefreshRate = (int)conf["networkRefreshRate"];
-                if (conf["guiRefreshRate"] != null) GUIRefreshRate = (int)conf["guiRefreshRate"];
+                if (String.IsNullOrEmpty((String)conf["generatePassword"])) GeneratePassword = (Boolean)conf["generatePassword"];
+                if (String.IsNullOrEmpty((String)conf["remoteServer"])) RemotePath = (String)conf["remoteServer"];
+                if (String.IsNullOrEmpty((String)conf["remotePort"])) RemotePort = (int)conf["remotePort"];
+                if (String.IsNullOrEmpty((String)conf["remotePassword"])) RemotePassword = (String)conf["remotePassword"];
+                if (String.IsNullOrEmpty((String)conf["remoteReminder"])) RemoteReminder = (Boolean)conf["remoteReminder"];
+                if (String.IsNullOrEmpty((String)conf["localDaemon"])) LocalDaemon = (Boolean)conf["localDaemon"];
+                if (String.IsNullOrEmpty((String)conf["nodeAddress"])) NodeHost = (String)conf["nodeAddress"];
+                if (String.IsNullOrEmpty((String)conf["nodePort"])) NodePort = (int)conf["nodePort"];
+                if (String.IsNullOrEmpty((String)conf["networkMonitoring"])) NetworkMonitor = (Boolean)conf["networkMonitoring"];
+                if (String.IsNullOrEmpty((String)conf["enableMobile"])) EnableMobile = (Boolean)conf["enableMobile"];
+                if (String.IsNullOrEmpty((String)conf["mobilePort"])) MobilePort = (String)conf["mobilePort"];
+                if (String.IsNullOrEmpty((String)conf["mobilePassword"])) MobilePassword = (String)conf["mobilePassword"];
+                if (String.IsNullOrEmpty((String)conf["allowBlankPasswords"])) AllowBlankPasswords = (Boolean)conf["allowBlankPasswords"];
+                if (String.IsNullOrEmpty((String)conf["passwordConfirmation"])) PasswordConfirmation = (Boolean)conf["passwordConfirmation"];
+                if (String.IsNullOrEmpty((String)conf["defaultWalletPath"])) DefaultWalletPath = (String)conf["defaultWalletPath"];
+                if (String.IsNullOrEmpty((String)conf["defaultFee"])) DefaultFee = (String)conf["defaultFee"];
+                if (String.IsNullOrEmpty((String)conf["defaultMixin"])) DefaultMixin = (String)conf["defaultMixin"];
+                if (String.IsNullOrEmpty((String)conf["walletRefreshRate"])) RefreshRate = (int)conf["walletRefreshRate"];
+                if (String.IsNullOrEmpty((String)conf["networkRefreshRate"])) NetworkRefreshRate = (int)conf["networkRefreshRate"];
+                if (String.IsNullOrEmpty((String)conf["guiRefreshRate"])) GUIRefreshRate = (int)conf["guiRefreshRate"];
             }
 
             // Save file in case some values were not found
