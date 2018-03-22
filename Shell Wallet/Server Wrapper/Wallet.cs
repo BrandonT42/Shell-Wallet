@@ -315,6 +315,8 @@ namespace RPCWrapper
             SelectedAddress = "";
             Transactions.Clear();
             LastBlockCount = 0;
+            Balances = new JObject();
+            SelectedBalances = new JObject();
         }
 
         /// <summary>

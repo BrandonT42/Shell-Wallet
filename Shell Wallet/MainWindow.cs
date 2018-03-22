@@ -830,7 +830,13 @@ namespace Shell_Wallet
         {
             if (Wallet.Addresses.Count > this.WalletAddresses.SelectedIndex &&
                 this.WalletAddresses.SelectedIndex >= 0)
+            {
                 Wallet.SelectedAddress = Wallet.Addresses[this.WalletAddresses.SelectedIndex];
+
+
+                //Force an update outside of the refresh tick
+                Wallet.Update();
+            }
             //Console.WriteLine("Selected address changed to: {0}", Wallet.SelectedAddress);
         }
 
