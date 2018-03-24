@@ -1004,7 +1004,7 @@
             // 
             // DeleteSelectedAddress
             // 
-            this.DeleteSelectedAddress.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.DeleteSelectedAddress.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.DeleteSelectedAddress.BackColor = System.Drawing.Color.Gainsboro;
             this.DeleteSelectedAddress.Enabled = false;
             this.DeleteSelectedAddress.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -1018,7 +1018,6 @@
             // 
             // CreateNewAddress
             // 
-            this.CreateNewAddress.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.CreateNewAddress.BackColor = System.Drawing.Color.Gainsboro;
             this.CreateNewAddress.Enabled = false;
             this.CreateNewAddress.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -1696,14 +1695,13 @@
             // ServerStatus
             // 
             this.ServerStatus.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.ServerStatus.AutoSize = true;
             this.ServerStatus.ForeColor = System.Drawing.Color.Blue;
-            this.ServerStatus.Location = new System.Drawing.Point(515, 1);
+            this.ServerStatus.Location = new System.Drawing.Point(335, 1);
             this.ServerStatus.Name = "ServerStatus";
-            this.ServerStatus.Size = new System.Drawing.Size(79, 13);
+            this.ServerStatus.Size = new System.Drawing.Size(259, 13);
             this.ServerStatus.TabIndex = 3;
             this.ServerStatus.Text = "Not Connected";
-            this.ServerStatus.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            this.ServerStatus.TextAlign = System.Drawing.ContentAlignment.BottomRight;
             // 
             // SavePrivateKeys
             // 
