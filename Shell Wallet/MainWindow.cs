@@ -45,7 +45,7 @@ namespace Shell_Wallet
         #region Variables
         // Logs console output
         private ConsoleWriter writer;
-
+        private Boolean ShowKeys = false;
         private Boolean RemoteServer = false;
         #endregion
 
@@ -59,6 +59,9 @@ namespace Shell_Wallet
             // Load address book
             AddressBook.Load();
             this.AddressGrid.DataSource = AddressBook.DataSource;
+
+            // Load nicknames
+            Nicknames.Load();
 
             // Set internal font (because designer is stupid and doesn't show fonts on datagridviews
             this.RecentBlocks.Font = this.AddressGrid.Font;
@@ -124,6 +127,7 @@ namespace Shell_Wallet
             Mobile.Stop();
             Config.Save();
             AddressBook.Save();
+            Nicknames.Save();
         }
 
         // Form closing
@@ -229,9 +233,12 @@ namespace Shell_Wallet
                       "127.0.0.1", Config.NodePort))
                         MessageBox.Show("Could not open wallet:\r\n" + Server.Error, "Error");
                 }
-                else if (!Wallet.Open(Config.ServerPath, Path, Password, Config.ServerPassword, Config.ServerPort,
+                else
+                {
+                    if (!Wallet.Open(Config.ServerPath, Path, Password, Config.ServerPassword, Config.ServerPort,
                     Config.NodeHost, Config.NodePort))
-                    MessageBox.Show("Could not open wallet:\r\n" + Server.Error, "Error");
+                        MessageBox.Show("Could not open wallet:\r\n" + Server.Error, "Error");
+                }
             }
 
             // Password incorrect
@@ -322,6 +329,10 @@ namespace Shell_Wallet
                     this.DeleteSelectedAddress.Enabled = true;
                 if (!this.WalletAddresses.Enabled)
                     this.WalletAddresses.Enabled = true;
+                if (!this.ShowKeysButton.Enabled)
+                    this.ShowKeysButton.Enabled = true;
+                if (!this.ChangeNickname.Enabled)
+                    this.ChangeNickname.Enabled = true;
 
                 // Update menu options
                 if (this.OpenWalletMenuOption.Enabled)
@@ -345,6 +356,14 @@ namespace Shell_Wallet
                 if (this.WalletAddresses.DataSource == null &&
                     Wallet.Addresses != null && Wallet.Addresses.Count > 0)
                 {
+                    for (int i = 0; i < Wallet.Addresses.Count; i++)
+                    {
+                        String s = Nicknames.Get(Wallet.Addresses[i]);
+                        if (s != "-")
+                        {
+                            Wallet.Addresses[i] = s;
+                        }
+                    }
                     this.WalletAddresses.DataSource = Wallet.Addresses;
                     this.WalletAddresses.SelectedIndex = 0;
                 }
@@ -353,33 +372,45 @@ namespace Shell_Wallet
                 this.HeightStatus.Text = "Height: " + (Wallet.BlockCount + 1) +
                     " / " + Wallet.KnownBlockCount + " | Peer Count: " +
                     Wallet.PeerCount;
-
-                // Only do these updates if the wallet tab is selected
-                if (this.WalletTabs.SelectedTab.Text == "Wallet")
+                
+                // Update progress bar information if block height sync is behind
+                if (Wallet.BlockCount != 0 && Wallet.KnownBlockCount != 0)
                 {
-                    // Update progress bar information if block height sync is behind
-                    if (Wallet.BlockCount != 0 && Wallet.KnownBlockCount != 0)
+                    int s = Wallet.BlockCount + 1;
+                    int k = Wallet.KnownBlockCount;
+                    var p = (double)s / (double)k * 100;
+                    if ((int)p < 100 && (int)p >= 0)
                     {
-                        int s = Wallet.BlockCount + 1;
-                        int k = Wallet.KnownBlockCount;
-                        var p = (double)s / (double)k * 100;
-                        if ((int)p <= 100 && (int)p >= 0)
-                        {
-                            this.SyncPercent.Text = "Sync Progress: " + (int)p + "%";
-                            this.SyncProgress.Value = (int)p;
-                        }
-                        else
-                        {
-                            this.SyncPercent.Text = "Sync Progress: 0%";
-                            this.SyncProgress.Value = 0;
-                        }
+                        this.SyncPercent.Text = "Sync Progress: " + (int)p + "%";
+                        this.SyncProgress.Value = (int)p;
                     }
+                    else if ((int)p >= 100)
+                    {
+                        this.SyncPercent.Text = "Sync Progress: 100%";
+                    }
+                    else
+                    {
+                        this.SyncPercent.Text = "Sync Progress: 0%";
+                        this.SyncProgress.Value = 0;
+                    }
+                }
 
-                    // Update wallet balances
-                    this.BalanceBox.Text = Wallet.Balance;
-                    this.LockedBalanceBox.Text = Wallet.LockedBalance;
-                    this.SelectedBalanceBox.Text = Wallet.SelectedBalance;
-                    this.SelectedLockedBalanceBox.Text = Wallet.SelectedLockedBalance;
+                // Update wallet balances
+                this.BalanceBox.Text = Wallet.Balance;
+                this.LockedBalanceBox.Text = Wallet.LockedBalance;
+                this.SelectedBalanceBox.Text = Wallet.SelectedBalance;
+                this.SelectedLockedBalanceBox.Text = Wallet.SelectedLockedBalance;
+
+                // Update key display
+                if (ShowKeys)
+                {
+                    PublicSpendKey.Text = Wallet.PublicSpendKey;
+                    PrivateSpendKey.Text = Wallet.PrivateSpendKey;
+                }
+                else if (PrivateSpendKey.Text != "Hidden")
+                {
+                    PublicSpendKey.Text = "Hidden";
+                    PrivateSpendKey.Text = "Hidden";
                 }
 
                 // Update send tab
@@ -405,6 +436,10 @@ namespace Shell_Wallet
                     this.CreateNewAddress.Enabled = false;
                 if (this.DeleteSelectedAddress.Enabled)
                     this.DeleteSelectedAddress.Enabled = false;
+                if (this.ShowKeysButton.Enabled)
+                    this.ShowKeysButton.Enabled = false;
+                if (this.ChangeNickname.Enabled)
+                    this.ChangeNickname.Enabled = false;
                 if (this.WalletAddresses.Enabled)
                 {
                     this.WalletAddresses.DataSource = null;
@@ -437,10 +472,13 @@ namespace Shell_Wallet
                     this.CloseWalletMenuOption.Enabled = false;
 
                 // Reset wallet data
-                this.BalanceBox.Text = "";
-                this.LockedBalanceBox.Text = "";
-                this.SelectedBalanceBox.Text = "";
-                this.SelectedLockedBalanceBox.Text = "";
+                this.BalanceBox.Text = "-";
+                this.LockedBalanceBox.Text = "-";
+                this.SelectedBalanceBox.Text = "-";
+                this.SelectedLockedBalanceBox.Text = "-";
+                this.PublicSpendKey.Text = "-";
+                this.PrivateSpendKey.Text = "-";
+                this.Nickname.Text = "-";
                 this.HeightStatus.Text = "";
 
                 // Update send tab
@@ -809,8 +847,8 @@ namespace Shell_Wallet
         // Options selected in menu
         private void optionsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            OptionsWindow Options = new OptionsWindow();
-            Options.ShowDialog();
+            using (OptionsWindow Options = new OptionsWindow())
+                Options.ShowDialog();
         }
         #endregion
 
@@ -833,11 +871,13 @@ namespace Shell_Wallet
             {
                 Wallet.SelectedAddress = Wallet.Addresses[this.WalletAddresses.SelectedIndex];
 
+                Nickname.Text = Nicknames.Get(Wallet.SelectedAddress);
+                AddressDisplay.Text = Wallet.SelectedAddress;
 
                 //Force an update outside of the refresh tick
                 Wallet.Update();
             }
-            //Console.WriteLine("Selected address changed to: {0}", Wallet.SelectedAddress);
+            Console.WriteLine("Selected address changed to: {0}", Wallet.SelectedAddress);
         }
 
         // Copy wallet address to clipboard
@@ -851,6 +891,14 @@ namespace Shell_Wallet
         private void CreateNewAddress_Click(object sender, EventArgs e)
         {
             Wallet.CreateAddress();
+            for (int i = 0; i < Wallet.Addresses.Count; i++)
+            {
+                String s = Nicknames.Get(Wallet.Addresses[i]);
+                if (s != "-")
+                {
+                    Wallet.Addresses[i] = s;
+                }
+            }
             this.WalletAddresses.DataSource = null;
             this.WalletAddresses.DataSource = Wallet.Addresses;
             if (Wallet.Addresses.Count > 0)
@@ -867,6 +915,14 @@ namespace Shell_Wallet
                 "Are you sure?", MessageBoxButtons.OKCancel, MessageBoxIcon.Exclamation) == DialogResult.OK)
             {
                 Wallet.DeleteSelectedAddress();
+                for (int i = 0; i < Wallet.Addresses.Count; i++)
+                {
+                    String s = Nicknames.Get(Wallet.Addresses[i]);
+                    if (s != "-")
+                    {
+                        Wallet.Addresses[i] = s;
+                    }
+                }
                 this.WalletAddresses.DataSource = null;
                 this.WalletAddresses.DataSource = Wallet.Addresses;
                 if (Wallet.Addresses.Count > 0)
@@ -1054,6 +1110,313 @@ namespace Shell_Wallet
             if (Wallet.Alive) return;
             String[] Files = (string[])e.Data.GetData(DataFormats.FileDrop);
             if (Files.Length == 1 && File.Exists(Files[0])) OpenWallet(Files[0]);
+        }
+
+        private void SendFromAddress_SelectedValueChanged(object sender, EventArgs e)
+        {
+            if (SendFromAddress.SelectedIndex == 0)
+            {
+                ChangeAddressLabel.Font = new Font(ChangeAddressLabel.Font, FontStyle.Bold);
+                ChangeAddressOptional.Visible = false;
+            }
+            else
+            {
+                ChangeAddressLabel.Font = new Font(ChangeAddressLabel.Font, FontStyle.Regular);
+                ChangeAddressOptional.Visible = true;
+            }
+        }
+
+        #region Naigation Buttons
+        // Navigation button hovered
+        private void MenuItemMouseEnter(object sender, EventArgs e)
+        {
+            // Set hover color
+            if (sender is Label)
+                (sender as Label).Parent.BackColor = Config.Theme.NavigationHover;
+            else if (sender is PictureBox)
+                (sender as PictureBox).Parent.BackColor = Config.Theme.NavigationHover;
+            else if (sender is Panel)
+                (sender as Panel).BackColor = Config.Theme.NavigationHover;
+        }
+        private void MenuItemMouseLeave(object sender, EventArgs e)
+        {
+            // Get which button the user stopped overing
+            if (sender is Label)
+            {
+                String Button = (sender as Label).Name.Replace("Label", "");
+                if (Button == "WalletTab")
+                    if (WalletTabs.SelectedIndex == 0) (sender as Label).Parent.BackColor = Config.Theme.NavigationClicked;
+                    else (sender as Label).Parent.BackColor = Config.Theme.NavigationButton;
+                else if (Button == "SendTab")
+                    if (WalletTabs.SelectedIndex == 1) (sender as Label).Parent.BackColor = Config.Theme.NavigationClicked;
+                    else (sender as Label).Parent.BackColor = Config.Theme.NavigationButton;
+                else if (Button == "TransactionLogTab")
+                    if (WalletTabs.SelectedIndex == 2) (sender as Label).Parent.BackColor = Config.Theme.NavigationClicked;
+                    else (sender as Label).Parent.BackColor = Config.Theme.NavigationButton;
+                else if (Button == "AddressBookTab")
+                    if (WalletTabs.SelectedIndex == 3) (sender as Label).Parent.BackColor = Config.Theme.NavigationClicked;
+                    else (sender as Label).Parent.BackColor = Config.Theme.NavigationButton;
+                else if (Button == "NetworkTab")
+                    if (WalletTabs.SelectedIndex == 4) (sender as Label).Parent.BackColor = Config.Theme.NavigationClicked;
+                    else (sender as Label).Parent.BackColor = Config.Theme.NavigationButton;
+                else if (Button == "OptionsTab")
+                    if (WalletTabs.SelectedIndex == 5) (sender as Label).Parent.BackColor = Config.Theme.NavigationClicked;
+                    else (sender as Label).Parent.BackColor = Config.Theme.NavigationButton;
+            }
+            else if (sender is PictureBox)
+            {
+                String Button = (sender as PictureBox).Name.Replace("Icon", "");
+                if (Button == "WalletTab")
+                    if (WalletTabs.SelectedIndex == 0) (sender as PictureBox).Parent.BackColor = Config.Theme.NavigationClicked;
+                    else (sender as PictureBox).Parent.BackColor = Config.Theme.NavigationButton;
+                else if (Button == "SendTab")
+                    if (WalletTabs.SelectedIndex == 1) (sender as PictureBox).Parent.BackColor = Config.Theme.NavigationClicked;
+                    else (sender as PictureBox).Parent.BackColor = Config.Theme.NavigationButton;
+                else if (Button == "TransactionLogTab")
+                    if (WalletTabs.SelectedIndex == 2) (sender as PictureBox).Parent.BackColor = Config.Theme.NavigationClicked;
+                    else (sender as PictureBox).Parent.BackColor = Config.Theme.NavigationButton;
+                else if (Button == "AddressBookTab")
+                    if (WalletTabs.SelectedIndex == 3) (sender as PictureBox).Parent.BackColor = Config.Theme.NavigationClicked;
+                    else (sender as PictureBox).Parent.BackColor = Config.Theme.NavigationButton;
+                else if (Button == "NetworkTab")
+                    if (WalletTabs.SelectedIndex == 4) (sender as PictureBox).Parent.BackColor = Config.Theme.NavigationClicked;
+                    else (sender as PictureBox).Parent.BackColor = Config.Theme.NavigationButton;
+                else if (Button == "OptionsTab")
+                    if (WalletTabs.SelectedIndex == 5) (sender as PictureBox).Parent.BackColor = Config.Theme.NavigationClicked;
+                    else (sender as PictureBox).Parent.BackColor = Config.Theme.NavigationButton;
+            }
+            else if (sender is Panel)
+            {
+                String Button = (sender as Panel).Name.Replace("Button", "");
+                if (Button == "WalletTab")
+                    if (WalletTabs.SelectedIndex == 0) (sender as Panel).BackColor = Config.Theme.NavigationClicked;
+                    else (sender as Panel).BackColor = Config.Theme.NavigationButton;
+                else if (Button == "SendTab")
+                    if (WalletTabs.SelectedIndex == 1) (sender as Panel).BackColor = Config.Theme.NavigationClicked;
+                    else (sender as Panel).BackColor = Config.Theme.NavigationButton;
+                else if (Button == "TransactionLogTab")
+                    if (WalletTabs.SelectedIndex == 2) (sender as Panel).BackColor = Config.Theme.NavigationClicked;
+                    else (sender as Panel).BackColor = Config.Theme.NavigationButton;
+                else if (Button == "AddressBookTab")
+                    if (WalletTabs.SelectedIndex == 3) (sender as Panel).BackColor = Config.Theme.NavigationClicked;
+                    else (sender as Panel).BackColor = Config.Theme.NavigationButton;
+                else if (Button == "NetworkTab")
+                    if (WalletTabs.SelectedIndex == 4) (sender as Panel).BackColor = Config.Theme.NavigationClicked;
+                    else (sender as Panel).BackColor = Config.Theme.NavigationButton;
+                else if (Button == "OptionsTab")
+                    if (WalletTabs.SelectedIndex == 5) (sender as Panel).BackColor = Config.Theme.NavigationClicked;
+                    else (sender as Panel).BackColor = Config.Theme.NavigationButton;
+            }
+        }
+
+        // Navigation button clicked
+        private void MenuItemClicked(object sender, EventArgs e)
+        {
+            // Get which button the user clicked
+            String Button = "";
+            if (sender is Label)
+                Button = (sender as Label).Name.Replace("Label", "");
+            else if (sender is PictureBox)
+                Button = (sender as PictureBox).Name.Replace("Icon", "");
+            else if (sender is Panel)
+                Button = (sender as Panel).Name.Replace("Button", "");
+
+            // Change tab
+            if (Button == "WalletTab")
+                WalletTabs.SelectedIndex = 0;
+            else if (Button == "SendTab")
+                WalletTabs.SelectedIndex = 1;
+            else if (Button == "TransactionLogTab")
+                WalletTabs.SelectedIndex = 2;
+            else if (Button == "AddressBookTab")
+                WalletTabs.SelectedIndex = 3;
+            else if (Button == "NetworkTab")
+                WalletTabs.SelectedIndex = 4;
+            else if (Button == "OptionsTab")
+                //WalletTabs.SelectedIndex = 5;
+                using (OptionsWindow Options = new OptionsWindow())
+                    Options.ShowDialog();
+
+            // Change menu colors
+            if (WalletTabs.SelectedIndex == 0)
+                WalletTabButton.BackColor = Config.Theme.NavigationHover;
+            else WalletTabButton.BackColor = Config.Theme.NavigationButton;
+            if (WalletTabs.SelectedIndex == 1)
+                SendTabButton.BackColor = Config.Theme.NavigationHover;
+            else SendTabButton.BackColor = Config.Theme.NavigationButton;
+            if (WalletTabs.SelectedIndex == 2)
+                TransactionLogTabButton.BackColor = Config.Theme.NavigationHover;
+            else TransactionLogTabButton.BackColor = Config.Theme.NavigationButton;
+            if (WalletTabs.SelectedIndex == 3)
+                AddressBookTabButton.BackColor = Config.Theme.NavigationHover;
+            else AddressBookTabButton.BackColor = Config.Theme.NavigationButton;
+            if (WalletTabs.SelectedIndex == 4)
+                NetworkTabButton.BackColor = Config.Theme.NavigationHover;
+            else NetworkTabButton.BackColor = Config.Theme.NavigationButton;
+            if (WalletTabs.SelectedIndex == 5)
+                OptionsTabButton.BackColor = Config.Theme.NavigationHover;
+            else OptionsTabButton.BackColor = Config.Theme.NavigationButton;
+        }
+        #endregion
+
+        #region UI Themes
+        /*
+        internal void ChangeTheme(Theme T)
+        {
+            // Set theme
+            Config.Theme = T;
+
+            // Set window colors
+            BackColor = Config.Theme.Window;
+            ForeColor = Config.Theme.Text;
+
+            // Set control colors
+            foreach (Control c in Controls)
+            {
+                if (c is Label && c.Name != "ServerStatus")
+                {
+                    c.BackColor = Color.Transparent;
+                    c.ForeColor = Config.Theme.Text;
+                }
+                else if (c is MenuStrip)
+                {
+                    c.BackColor = Config.Theme.Menu;
+                    c.ForeColor = Config.Theme.MenuText;
+                    (c as MenuStrip).Renderer = new MenuRenderer(Config.Theme.MenuHover,
+                        Config.Theme.MenuHover, Config.Theme.MenuHover,
+                        Config.Theme.MenuBorder);
+                }
+                else if (c is ToolStrip)
+                {
+                    c.BackColor = Config.Theme.Menu;
+                    c.ForeColor = Config.Theme.MenuText;
+                }
+                else if (c is Panel)
+                {
+                    if (c.Name == "MenuPanel")
+                    {
+                        c.BackColor = Config.Theme.Navigation;
+                    }
+                    else if (c.Name.IndexOf("DIVIDER") > -1)
+                    {
+                        c.BackColor = Config.Theme.Borders;
+                    }
+                    else
+                    {
+                        c.BackColor = Config.Theme.Window;
+                    }
+                    c.ForeColor = Config.Theme.Text;
+                }
+                else if (c is TableLayoutPanel)
+                {
+                    if (c.Name.IndexOf("TabButton") > -1)
+                    {
+                        c.BackColor = Config.Theme.Navigation;
+                        c.ForeColor = Config.Theme.NavigationText;
+                    }
+                    else
+                    {
+                        c.BackColor = Config.Theme.Window;
+                        c.ForeColor = Config.Theme.Text;
+                    }
+                }
+                else if (c is Button)
+                {
+                    c.BackColor = Config.Theme.Button;
+                    c.ForeColor = Config.Theme.ButtonText;
+                }
+                else if (c is TabPage)
+                {
+                    c.BackColor = Config.Theme.Window;
+                    c.ForeColor = Config.Theme.Text;
+                }
+                }
+            foreach (Control c in WalletTabs.Controls)
+                {
+                    if (c is Label)
+                    {
+                        c.BackColor = Color.Transparent;
+                        c.ForeColor = Config.Theme.Text;
+                    }
+                    else if (c is Panel)
+                    {
+                        c.BackColor = Config.Theme.Window;
+                        c.ForeColor = Config.Theme.Text;
+                    }
+                    else if (c is TableLayoutPanel)
+                    {
+                        c.BackColor = Config.Theme.Window;
+                        c.ForeColor = Config.Theme.Text;
+                    }
+                    else if (c is Button)
+                    {
+                        c.BackColor = Config.Theme.Button;
+                        c.ForeColor = Config.Theme.ButtonText;
+                    }
+                    else if (c is TabPage)
+                    {
+                        c.BackColor = Config.Theme.Window;
+                        c.ForeColor = Config.Theme.Text;
+                    }
+                }
+
+            // Set icons
+            if (Config.Theme.IconSet == 0)
+            {
+                LockedIcon.Image = Properties.Resources.LockedBlack;
+                WalletTabIcon.Image = Properties.Resources.WalletBlack;
+                SendTabIcon.Image = Properties.Resources.SendBlack;
+                TransactionLogTabIcon.Image = Properties.Resources.TransactionLogBlack;
+                AddressBookTabIcon.Image = Properties.Resources.AddressBookBlack;
+                NetworkTabIcon.Image = Properties.Resources.NetworkBlack;
+                OptionsTabIcon.Image = Properties.Resources.OptionsBlack;
+            }
+            else if (Config.Theme.IconSet == 1)
+            {
+                LockedIcon.Image = Properties.Resources.LockedWhite;
+                WalletTabIcon.Image = Properties.Resources.WalletWhite;
+                SendTabIcon.Image = Properties.Resources.SendWhite;
+                TransactionLogTabIcon.Image = Properties.Resources.TransactionLogWhite;
+                AddressBookTabIcon.Image = Properties.Resources.AddressBookWhite;
+                NetworkTabIcon.Image = Properties.Resources.NetworkWhite;
+                OptionsTabIcon.Image = Properties.Resources.OptionsWhite;
+            }
+        }
+        */
+        #endregion
+
+        private void ShowKeysClick(object sender, EventArgs e)
+        {
+            if (ShowKeys)
+            {
+                ShowKeys = false;
+                ShowKeysButton.Text = "Show keys";
+            }
+            else
+            {
+                using (PasswordPrompt p = new PasswordPrompt())
+                {
+                    if (p.ShowDialog() != DialogResult.OK) return;
+                    if (Server.SafeEncrypt(p.GetResult()) == Wallet.Password)
+                    {
+                        ShowKeys = true;
+                        ShowKeysButton.Text = "Hide Keys";
+                    }
+                    else MessageBox.Show("Password incorrect", "Error");
+                }
+            }
+        }
+
+        private void ChangeNickname_Click(object sender, EventArgs e)
+        {
+            using (NicknamePrompt n = new NicknamePrompt())
+            {
+                if (n.ShowDialog() == DialogResult.OK)
+                {
+                    Nicknames.Add(Wallet.SelectedAddress, n.Result);
+                    Nickname.Text = n.Result;
+                }
+            }
         }
     }
 }

@@ -116,6 +116,13 @@
     <Compile Include="MainWindow.Designer.cs">
       <DependentUpon>MainWindow.cs</DependentUpon>
     </Compile>
+    <Compile Include="NicknamePrompt.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NicknamePrompt.Designer.cs">
+      <DependentUpon>NicknamePrompt.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Nicknames.cs" />
     <Compile Include="OptionsWindow.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -146,6 +153,7 @@
     <Compile Include="TransactionInfo.Designer.cs">
       <DependentUpon>TransactionInfo.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI.cs" />
     <Compile Include="Utilities.cs" />
     <Compile Include="Server Wrapper\Server.cs" />
     <EmbeddedResource Include="AboutWindow.resx">
@@ -166,6 +174,9 @@
     <EmbeddedResource Include="MainWindow.resx">
       <DependentUpon>MainWindow.cs</DependentUpon>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NicknamePrompt.resx">
+      <DependentUpon>NicknamePrompt.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="OptionsWindow.resx">
       <DependentUpon>OptionsWindow.cs</DependentUpon>
@@ -211,6 +222,24 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="407289344613810218_6cI_icon.ico" />
+    <None Include="Resources\WalletWhite.png" />
+    <None Include="Resources\TransactionLogWhite.png" />
+    <None Include="Resources\SendWhite.png" />
+    <None Include="Resources\WalletIcon.png" />
+    <None Include="Resources\AddressBookIcon.png" />
+    <None Include="Resources\AddressIcon.png" />
+    <None Include="Resources\AddressBookWhite.png" />
+    <Content Include="Resources\LockedIcon.png" />
+    <None Include="Resources\NetworkIcon.png" />
+    <None Include="Resources\OptionsIcon.png" />
+    <None Include="Resources\LockedWhite.bmp" />
+    <None Include="Resources\LockedWhite.png" />
+    <None Include="Resources\NetworkWhite.png" />
+    <None Include="Resources\OptionsWhite.png" />
+    <Content Include="Resources\SendIcon.png" />
+    <None Include="Resources\SendIcon1.png" />
+    <None Include="Resources\LockedIcon1.png" />
+    <None Include="Resources\407289344613810218.png" />
     <None Include="Resources\2.gif" />
   </ItemGroup>
   <ItemGroup>

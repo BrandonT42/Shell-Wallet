@@ -44,6 +44,7 @@ namespace RPCWrapper
         /// Gets a list of all addresses associated with the wallet
         /// </summary>
         public static List<String> Addresses = new List<string>();
+        private static List<String> InternalAddresses = new List<string>();
 
         /// <summary>
         /// Returns the selected address or the first address in the wallet
@@ -58,7 +59,12 @@ namespace RPCWrapper
             }
             set
             {
-                InternalSelectedAddress = value;
+                try
+                {
+                    String s = InternalAddresses[Addresses.IndexOf(value)];
+                    InternalSelectedAddress = s;
+                }
+                catch (Exception) { InternalSelectedAddress = value; }
             }
         }
 
@@ -311,6 +317,7 @@ namespace RPCWrapper
         /// </summary>
         public static void Reset()
         {
+            InternalAddresses.Clear();
             Addresses.Clear();
             SelectedAddress = "";
             Transactions.Clear();
@@ -974,15 +981,26 @@ namespace RPCWrapper
             if (a["error"] == null)
             {
                 if (a["addresses"] != null && a["addresses"].HasValues)
+                {
+                    InternalAddresses = a["addresses"].ToObject<List<String>>();
                     Addresses = a["addresses"].ToObject<List<String>>();
-                else Addresses = new List<string>();
+                }
+                else
+                {
+                    InternalAddresses = new List<string>();
+                    Addresses = new List<string>();
+                }
             }
-            else Addresses = new List<string>();
+            else
+            {
+                InternalAddresses = new List<string>();
+                Addresses = new List<string>();
+            }
 
             // Update selected address
             if (SelectedAddress == "" && Addresses.Count > 0)
             {
-                SelectedAddress = Addresses[0];
+                SelectedAddress = InternalAddresses[0];
                 Console.WriteLine("Selected address changed to {0}", SelectedAddress);
             }
 
@@ -1196,6 +1214,8 @@ namespace RPCWrapper
             if (ChangeAddress != "") Params["changeAddress"] = ChangeAddress;
             if (Extra != "") Params["extra"] = Extra;
             JObject result = SendRequest("sendTransaction", Params);
+
+            Console.WriteLine("Sending transaction with params:\r\n{0}", Params.ToString());
 
             // Output response
             if (result["error"] == null)

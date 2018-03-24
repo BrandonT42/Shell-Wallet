@@ -58,63 +58,64 @@
             this.NewWalletDialog = new System.Windows.Forms.SaveFileDialog();
             this.OpenServerPath = new System.Windows.Forms.OpenFileDialog();
             this.SendTab = new System.Windows.Forms.TabPage();
-            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.label8 = new System.Windows.Forms.Label();
             this.TransactionOutput = new System.Windows.Forms.TextBox();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.label8 = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
             this.Mixin = new System.Windows.Forms.TextBox();
+            this.UnlockTime = new System.Windows.Forms.TextBox();
             this.ChangeAddress = new System.Windows.Forms.TextBox();
+            this.Fee = new System.Windows.Forms.TextBox();
             this.label17 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.ChangeAddressLabel = new System.Windows.Forms.Label();
+            this.AmountToSend = new System.Windows.Forms.TextBox();
             this.SendFromAddress = new System.Windows.Forms.ComboBox();
+            this.SendToAddress = new System.Windows.Forms.TextBox();
             this.SendTransaction = new System.Windows.Forms.Button();
+            this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
+            this.ExtraBox = new System.Windows.Forms.TextBox();
+            this.ChangeAddressOptional = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.PaymentID = new System.Windows.Forms.TextBox();
-            this.label14 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.ExtraBox = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.SendToAddress = new System.Windows.Forms.TextBox();
-            this.AmountToSend = new System.Windows.Forms.TextBox();
-            this.label9 = new System.Windows.Forms.Label();
-            this.Fee = new System.Windows.Forms.TextBox();
-            this.UnlockTime = new System.Windows.Forms.TextBox();
-            this.label16 = new System.Windows.Forms.Label();
             this.WalletTab = new System.Windows.Forms.TabPage();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.SelectedLockedBalanceBox = new System.Windows.Forms.TextBox();
-            this.label19 = new System.Windows.Forms.Label();
-            this.SelectedBalanceBox = new System.Windows.Forms.TextBox();
+            this.SelectedAddressInfo = new System.Windows.Forms.GroupBox();
+            this.AddressDisplay = new System.Windows.Forms.TextBox();
+            this.label13 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.ChangeNickname = new System.Windows.Forms.Button();
+            this.ShowKeysButton = new System.Windows.Forms.Button();
+            this.CopyAddress = new System.Windows.Forms.Button();
+            this.SelectedBalanceBox = new System.Windows.Forms.TextBox();
+            this.PrivateSpendKey = new System.Windows.Forms.TextBox();
+            this.label19 = new System.Windows.Forms.Label();
+            this.PublicSpendKey = new System.Windows.Forms.TextBox();
+            this.SelectedLockedBalanceBox = new System.Windows.Forms.TextBox();
+            this.label26 = new System.Windows.Forms.Label();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.label25 = new System.Windows.Forms.Label();
+            this.label24 = new System.Windows.Forms.Label();
+            this.Nickname = new System.Windows.Forms.TextBox();
+            this.DeleteSelectedAddress = new System.Windows.Forms.Button();
+            this.CreateNewAddress = new System.Windows.Forms.Button();
+            this.WalletAddresses = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.SyncPercent = new System.Windows.Forms.Label();
+            this.SyncProgress = new System.Windows.Forms.ProgressBar();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.BalanceBox = new System.Windows.Forms.TextBox();
             this.LockedBalanceBox = new System.Windows.Forms.TextBox();
-            this.DeleteSelectedAddress = new System.Windows.Forms.Button();
-            this.CreateNewAddress = new System.Windows.Forms.Button();
-            this.WalletAddresses = new System.Windows.Forms.ComboBox();
-            this.SyncPercent = new System.Windows.Forms.Label();
-            this.SyncProgress = new System.Windows.Forms.ProgressBar();
-            this.CopyAddress = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
             this.WalletTabs = new System.Windows.Forms.TabControl();
             this.TransactonLogTab = new System.Windows.Forms.TabPage();
             this.TransactionLog = new System.Windows.Forms.DataGridView();
             this.TypeColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.timeStampDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.amountDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.feeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.hashDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.transactionBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.ContactBookTab = new System.Windows.Forms.TabPage();
             this.EditContact = new System.Windows.Forms.Button();
             this.SendToContact = new System.Windows.Forms.Button();
@@ -135,18 +136,8 @@
             this.TransactionPool = new System.Windows.Forms.DataGridView();
             this.AmountColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FeeColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.transactionPoolBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.RecentBlocks = new System.Windows.Forms.DataGridView();
-            this.heightDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.sizeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.hashDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.difficultyDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.transactionsDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.recentBlocksBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.TotalSupply = new System.Windows.Forms.Label();
@@ -162,24 +153,67 @@
             this.label27 = new System.Windows.Forms.Label();
             this.label28 = new System.Windows.Forms.Label();
             this.label29 = new System.Windows.Forms.Label();
+            this.BlankTab = new System.Windows.Forms.TabPage();
             this.HeightStatus = new System.Windows.Forms.Label();
             this.ServerStatus = new System.Windows.Forms.Label();
             this.SavePrivateKeys = new System.Windows.Forms.SaveFileDialog();
             this.ToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.OpenImportFile = new System.Windows.Forms.OpenFileDialog();
+            this.MenuPanel = new System.Windows.Forms.Panel();
+            this.panel9 = new System.Windows.Forms.Panel();
+            this.panel8 = new System.Windows.Forms.Panel();
+            this.panel7 = new System.Windows.Forms.Panel();
+            this.panel6 = new System.Windows.Forms.Panel();
+            this.OptionsTabButton = new System.Windows.Forms.TableLayoutPanel();
+            this.OptionsTabIcon = new System.Windows.Forms.PictureBox();
+            this.OptionsTabLabel = new System.Windows.Forms.Label();
+            this.NetworkTabButton = new System.Windows.Forms.TableLayoutPanel();
+            this.NetworkTabIcon = new System.Windows.Forms.PictureBox();
+            this.NetworkTabLabel = new System.Windows.Forms.Label();
+            this.AddressBookTabButton = new System.Windows.Forms.TableLayoutPanel();
+            this.AddressBookTabIcon = new System.Windows.Forms.PictureBox();
+            this.AddressBookTabLabel = new System.Windows.Forms.Label();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.TransactionLogTabButton = new System.Windows.Forms.TableLayoutPanel();
+            this.TransactionLogTabIcon = new System.Windows.Forms.PictureBox();
+            this.TransactionLogTabLabel = new System.Windows.Forms.Label();
+            this.MENUDIVIDER2 = new System.Windows.Forms.Panel();
+            this.MENUDIVIDER1 = new System.Windows.Forms.Panel();
+            this.WalletTabButton = new System.Windows.Forms.TableLayoutPanel();
+            this.WalletTabIcon = new System.Windows.Forms.PictureBox();
+            this.WalletTabLabel = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.LockedIcon = new System.Windows.Forms.PictureBox();
+            this.SendTabButton = new System.Windows.Forms.TableLayoutPanel();
+            this.SendTabIcon = new System.Windows.Forms.PictureBox();
+            this.SendTabLabel = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.MainWindowTable = new System.Windows.Forms.TableLayoutPanel();
+            this.RightSideTable = new System.Windows.Forms.TableLayoutPanel();
+            this.FooterPanel = new System.Windows.Forms.Panel();
+            this.timeStampDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.amountDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.feeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.hashDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.transactionBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.transactionPoolBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.heightDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.sizeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.hashDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.difficultyDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.transactionsDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.recentBlocksBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.MenuStrip.SuspendLayout();
             this.SendTab.SuspendLayout();
-            this.tableLayoutPanel2.SuspendLayout();
-            this.panel2.SuspendLayout();
-            this.panel1.SuspendLayout();
             this.WalletTab.SuspendLayout();
-            this.tableLayoutPanel1.SuspendLayout();
-            this.groupBox1.SuspendLayout();
-            this.groupBox2.SuspendLayout();
+            this.SelectedAddressInfo.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.WalletTabs.SuspendLayout();
             this.TransactonLogTab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.TransactionLog)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.transactionBindingSource)).BeginInit();
             this.ContactBookTab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.AddressGrid)).BeginInit();
             this.AddressBookMenu.SuspendLayout();
@@ -187,13 +221,32 @@
             this.tableLayoutPanel4.SuspendLayout();
             this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.TransactionPool)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.transactionPoolBindingSource)).BeginInit();
             this.groupBox5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.RecentBlocks)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.recentBlocksBindingSource)).BeginInit();
             this.tableLayoutPanel3.SuspendLayout();
             this.groupBox6.SuspendLayout();
             this.groupBox3.SuspendLayout();
+            this.MenuPanel.SuspendLayout();
+            this.OptionsTabButton.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.OptionsTabIcon)).BeginInit();
+            this.NetworkTabButton.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.NetworkTabIcon)).BeginInit();
+            this.AddressBookTabButton.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.AddressBookTabIcon)).BeginInit();
+            this.TransactionLogTabButton.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.TransactionLogTabIcon)).BeginInit();
+            this.WalletTabButton.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.WalletTabIcon)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.LockedIcon)).BeginInit();
+            this.SendTabButton.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.SendTabIcon)).BeginInit();
+            this.MainWindowTable.SuspendLayout();
+            this.RightSideTable.SuspendLayout();
+            this.FooterPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.transactionBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.transactionPoolBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.recentBlocksBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // MenuStrip
@@ -397,113 +450,69 @@
             // 
             // SendTab
             // 
-            this.SendTab.Controls.Add(this.tableLayoutPanel2);
-            this.SendTab.Location = new System.Drawing.Point(4, 22);
+            this.SendTab.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.SendTab.Controls.Add(this.TransactionOutput);
+            this.SendTab.Controls.Add(this.label8);
+            this.SendTab.Controls.Add(this.label20);
+            this.SendTab.Controls.Add(this.label7);
+            this.SendTab.Controls.Add(this.label6);
+            this.SendTab.Controls.Add(this.label16);
+            this.SendTab.Controls.Add(this.Mixin);
+            this.SendTab.Controls.Add(this.UnlockTime);
+            this.SendTab.Controls.Add(this.ChangeAddress);
+            this.SendTab.Controls.Add(this.Fee);
+            this.SendTab.Controls.Add(this.label17);
+            this.SendTab.Controls.Add(this.label9);
+            this.SendTab.Controls.Add(this.ChangeAddressLabel);
+            this.SendTab.Controls.Add(this.AmountToSend);
+            this.SendTab.Controls.Add(this.SendFromAddress);
+            this.SendTab.Controls.Add(this.SendToAddress);
+            this.SendTab.Controls.Add(this.SendTransaction);
+            this.SendTab.Controls.Add(this.label4);
+            this.SendTab.Controls.Add(this.label5);
+            this.SendTab.Controls.Add(this.ExtraBox);
+            this.SendTab.Controls.Add(this.ChangeAddressOptional);
+            this.SendTab.Controls.Add(this.label10);
+            this.SendTab.Controls.Add(this.label11);
+            this.SendTab.Controls.Add(this.label14);
+            this.SendTab.Controls.Add(this.label15);
+            this.SendTab.Controls.Add(this.PaymentID);
+            this.SendTab.ForeColor = System.Drawing.Color.Black;
+            this.SendTab.Location = new System.Drawing.Point(4, 4);
             this.SendTab.Name = "SendTab";
-            this.SendTab.Size = new System.Drawing.Size(752, 404);
+            this.SendTab.Padding = new System.Windows.Forms.Padding(6);
+            this.SendTab.Size = new System.Drawing.Size(595, 426);
             this.SendTab.TabIndex = 2;
             this.SendTab.Text = "Send";
-            this.SendTab.UseVisualStyleBackColor = true;
             // 
-            // tableLayoutPanel2
+            // TransactionOutput
             // 
-            this.tableLayoutPanel2.ColumnCount = 2;
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.Controls.Add(this.panel2, 1, 0);
-            this.tableLayoutPanel2.Controls.Add(this.panel1, 0, 0);
-            this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
-            this.tableLayoutPanel2.RowCount = 1;
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 404F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 404F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 404F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 404F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 404F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 404F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 404F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 404F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 404F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 404F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 404F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(752, 404);
-            this.tableLayoutPanel2.TabIndex = 23;
-            // 
-            // panel2
-            // 
-            this.panel2.Controls.Add(this.label8);
-            this.panel2.Controls.Add(this.TransactionOutput);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(376, 0);
-            this.panel2.Margin = new System.Windows.Forms.Padding(0);
-            this.panel2.Name = "panel2";
-            this.panel2.Padding = new System.Windows.Forms.Padding(3);
-            this.panel2.Size = new System.Drawing.Size(376, 404);
-            this.panel2.TabIndex = 24;
+            this.TransactionOutput.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.TransactionOutput.Location = new System.Drawing.Point(9, 332);
+            this.TransactionOutput.Multiline = true;
+            this.TransactionOutput.Name = "TransactionOutput";
+            this.TransactionOutput.ReadOnly = true;
+            this.TransactionOutput.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.TransactionOutput.Size = new System.Drawing.Size(577, 85);
+            this.TransactionOutput.TabIndex = 10;
             // 
             // label8
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(6, 3);
+            this.label8.Location = new System.Drawing.Point(9, 316);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(45, 13);
             this.label8.TabIndex = 9;
             this.label8.Text = "Output";
             // 
-            // TransactionOutput
-            // 
-            this.TransactionOutput.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.TransactionOutput.Location = new System.Drawing.Point(6, 19);
-            this.TransactionOutput.Multiline = true;
-            this.TransactionOutput.Name = "TransactionOutput";
-            this.TransactionOutput.ReadOnly = true;
-            this.TransactionOutput.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.TransactionOutput.Size = new System.Drawing.Size(364, 363);
-            this.TransactionOutput.TabIndex = 10;
-            // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.label20);
-            this.panel1.Controls.Add(this.label7);
-            this.panel1.Controls.Add(this.label6);
-            this.panel1.Controls.Add(this.Mixin);
-            this.panel1.Controls.Add(this.ChangeAddress);
-            this.panel1.Controls.Add(this.label17);
-            this.panel1.Controls.Add(this.label12);
-            this.panel1.Controls.Add(this.SendFromAddress);
-            this.panel1.Controls.Add(this.SendTransaction);
-            this.panel1.Controls.Add(this.label5);
-            this.panel1.Controls.Add(this.label13);
-            this.panel1.Controls.Add(this.label11);
-            this.panel1.Controls.Add(this.label15);
-            this.panel1.Controls.Add(this.PaymentID);
-            this.panel1.Controls.Add(this.label14);
-            this.panel1.Controls.Add(this.label10);
-            this.panel1.Controls.Add(this.ExtraBox);
-            this.panel1.Controls.Add(this.label4);
-            this.panel1.Controls.Add(this.SendToAddress);
-            this.panel1.Controls.Add(this.AmountToSend);
-            this.panel1.Controls.Add(this.label9);
-            this.panel1.Controls.Add(this.Fee);
-            this.panel1.Controls.Add(this.UnlockTime);
-            this.panel1.Controls.Add(this.label16);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(0);
-            this.panel1.Name = "panel1";
-            this.panel1.Padding = new System.Windows.Forms.Padding(3);
-            this.panel1.Size = new System.Drawing.Size(376, 404);
-            this.panel1.TabIndex = 24;
-            // 
             // label20
             // 
             this.label20.AutoSize = true;
             this.label20.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label20.Location = new System.Drawing.Point(6, 3);
+            this.label20.Location = new System.Drawing.Point(9, 13);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(67, 13);
             this.label20.TabIndex = 22;
@@ -513,7 +522,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label7.Location = new System.Drawing.Point(6, 199);
+            this.label7.Location = new System.Drawing.Point(9, 170);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(62, 13);
             this.label7.TabIndex = 6;
@@ -521,53 +530,98 @@
             // 
             // label6
             // 
+            this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(6, 121);
+            this.label6.Location = new System.Drawing.Point(297, 56);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(28, 13);
             this.label6.TabIndex = 4;
             this.label6.Text = "Fee";
             // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.label16.Location = new System.Drawing.Point(242, 248);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(52, 13);
+            this.label16.TabIndex = 20;
+            this.label16.Text = "(Optional)";
+            // 
             // Mixin
             // 
-            this.Mixin.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.Mixin.Location = new System.Drawing.Point(6, 294);
+            this.Mixin.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.Mixin.Location = new System.Drawing.Point(300, 264);
             this.Mixin.Name = "Mixin";
-            this.Mixin.Size = new System.Drawing.Size(364, 20);
+            this.Mixin.Size = new System.Drawing.Size(286, 20);
             this.Mixin.TabIndex = 7;
             this.Mixin.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.NumberOnly);
+            // 
+            // UnlockTime
+            // 
+            this.UnlockTime.Location = new System.Drawing.Point(9, 264);
+            this.UnlockTime.Name = "UnlockTime";
+            this.UnlockTime.Size = new System.Drawing.Size(285, 20);
+            this.UnlockTime.TabIndex = 5;
+            this.UnlockTime.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.NumberOnly);
             // 
             // ChangeAddress
             // 
             this.ChangeAddress.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.ChangeAddress.Location = new System.Drawing.Point(6, 176);
+            this.ChangeAddress.Location = new System.Drawing.Point(9, 147);
             this.ChangeAddress.Name = "ChangeAddress";
-            this.ChangeAddress.Size = new System.Drawing.Size(364, 20);
+            this.ChangeAddress.Size = new System.Drawing.Size(577, 20);
             this.ChangeAddress.TabIndex = 6;
+            // 
+            // Fee
+            // 
+            this.Fee.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.Fee.Location = new System.Drawing.Point(300, 72);
+            this.Fee.Name = "Fee";
+            this.Fee.Size = new System.Drawing.Size(286, 20);
+            this.Fee.TabIndex = 3;
+            this.Fee.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.DecimalNumberOnly);
             // 
             // label17
             // 
             this.label17.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label17.AutoSize = true;
             this.label17.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label17.Location = new System.Drawing.Point(318, 317);
+            this.label17.Location = new System.Drawing.Point(534, 208);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(52, 13);
             this.label17.TabIndex = 21;
             this.label17.Text = "(Optional)";
             // 
-            // label12
+            // label9
             // 
-            this.label12.AutoSize = true;
-            this.label12.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label12.Location = new System.Drawing.Point(6, 160);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(85, 13);
-            this.label12.TabIndex = 16;
-            this.label12.Text = "Change Address";
+            this.label9.AutoSize = true;
+            this.label9.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.label9.Location = new System.Drawing.Point(9, 209);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(31, 13);
+            this.label9.TabIndex = 11;
+            this.label9.Text = "Extra";
+            // 
+            // ChangeAddressLabel
+            // 
+            this.ChangeAddressLabel.AutoSize = true;
+            this.ChangeAddressLabel.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.ChangeAddressLabel.Location = new System.Drawing.Point(9, 131);
+            this.ChangeAddressLabel.Name = "ChangeAddressLabel";
+            this.ChangeAddressLabel.Size = new System.Drawing.Size(85, 13);
+            this.ChangeAddressLabel.TabIndex = 16;
+            this.ChangeAddressLabel.Text = "Change Address";
+            // 
+            // AmountToSend
+            // 
+            this.AmountToSend.Location = new System.Drawing.Point(9, 72);
+            this.AmountToSend.Name = "AmountToSend";
+            this.AmountToSend.Size = new System.Drawing.Size(285, 20);
+            this.AmountToSend.TabIndex = 2;
+            this.AmountToSend.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.DecimalNumberOnly);
             // 
             // SendFromAddress
             // 
@@ -578,61 +632,112 @@
             this.SendFromAddress.Items.AddRange(new object[] {
             "Entire Wallet Balance",
             "Selected Address"});
-            this.SendFromAddress.Location = new System.Drawing.Point(6, 19);
+            this.SendFromAddress.Location = new System.Drawing.Point(9, 29);
             this.SendFromAddress.Name = "SendFromAddress";
-            this.SendFromAddress.Size = new System.Drawing.Size(364, 21);
+            this.SendFromAddress.Size = new System.Drawing.Size(577, 21);
             this.SendFromAddress.TabIndex = 0;
+            this.SendFromAddress.SelectedValueChanged += new System.EventHandler(this.SendFromAddress_SelectedValueChanged);
+            // 
+            // SendToAddress
+            // 
+            this.SendToAddress.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.SendToAddress.Location = new System.Drawing.Point(9, 108);
+            this.SendToAddress.Name = "SendToAddress";
+            this.SendToAddress.Size = new System.Drawing.Size(577, 20);
+            this.SendToAddress.TabIndex = 1;
             // 
             // SendTransaction
             // 
             this.SendTransaction.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.SendTransaction.Enabled = false;
-            this.SendTransaction.Location = new System.Drawing.Point(6, 359);
+            this.SendTransaction.Location = new System.Drawing.Point(9, 290);
             this.SendTransaction.Name = "SendTransaction";
-            this.SendTransaction.Size = new System.Drawing.Size(364, 23);
+            this.SendTransaction.Size = new System.Drawing.Size(577, 23);
             this.SendTransaction.TabIndex = 9;
             this.SendTransaction.Text = "Send Transaction";
             this.SendTransaction.UseVisualStyleBackColor = true;
             this.SendTransaction.Click += new System.EventHandler(this.SendTransaction_Click);
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(9, 92);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(55, 13);
+            this.label4.TabIndex = 0;
+            this.label4.Text = "Send To";
+            // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(6, 82);
+            this.label5.Location = new System.Drawing.Point(9, 56);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(49, 13);
             this.label5.TabIndex = 2;
             this.label5.Text = "Amount";
             // 
-            // label13
+            // ExtraBox
             // 
-            this.label13.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label13.AutoSize = true;
-            this.label13.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label13.Location = new System.Drawing.Point(318, 160);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(52, 13);
-            this.label13.TabIndex = 17;
-            this.label13.Text = "(Optional)";
+            this.ExtraBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.ExtraBox.Location = new System.Drawing.Point(9, 225);
+            this.ExtraBox.Name = "ExtraBox";
+            this.ExtraBox.Size = new System.Drawing.Size(577, 20);
+            this.ExtraBox.TabIndex = 8;
+            // 
+            // ChangeAddressOptional
+            // 
+            this.ChangeAddressOptional.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.ChangeAddressOptional.AutoSize = true;
+            this.ChangeAddressOptional.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.ChangeAddressOptional.Location = new System.Drawing.Point(534, 130);
+            this.ChangeAddressOptional.Name = "ChangeAddressOptional";
+            this.ChangeAddressOptional.Size = new System.Drawing.Size(52, 13);
+            this.ChangeAddressOptional.TabIndex = 17;
+            this.ChangeAddressOptional.Text = "(Optional)";
+            // 
+            // label10
+            // 
+            this.label10.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label10.AutoSize = true;
+            this.label10.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.label10.Location = new System.Drawing.Point(300, 248);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(31, 13);
+            this.label10.TabIndex = 12;
+            this.label10.Text = "Mixin";
             // 
             // label11
             // 
             this.label11.AutoSize = true;
             this.label11.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label11.Location = new System.Drawing.Point(6, 238);
+            this.label11.Location = new System.Drawing.Point(9, 248);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(67, 13);
             this.label11.TabIndex = 15;
             this.label11.Text = "Unlock Time";
+            // 
+            // label14
+            // 
+            this.label14.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label14.AutoSize = true;
+            this.label14.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.label14.Location = new System.Drawing.Point(534, 248);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(52, 13);
+            this.label14.TabIndex = 18;
+            this.label14.Text = "(Optional)";
             // 
             // label15
             // 
             this.label15.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label15.AutoSize = true;
             this.label15.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label15.Location = new System.Drawing.Point(318, 199);
+            this.label15.Location = new System.Drawing.Point(534, 169);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(52, 13);
             this.label15.TabIndex = 19;
@@ -642,311 +747,288 @@
             // 
             this.PaymentID.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.PaymentID.Location = new System.Drawing.Point(6, 215);
+            this.PaymentID.Location = new System.Drawing.Point(9, 186);
             this.PaymentID.Name = "PaymentID";
-            this.PaymentID.Size = new System.Drawing.Size(364, 20);
+            this.PaymentID.Size = new System.Drawing.Size(577, 20);
             this.PaymentID.TabIndex = 4;
-            // 
-            // label14
-            // 
-            this.label14.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label14.AutoSize = true;
-            this.label14.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label14.Location = new System.Drawing.Point(318, 239);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(52, 13);
-            this.label14.TabIndex = 18;
-            this.label14.Text = "(Optional)";
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label10.Location = new System.Drawing.Point(6, 278);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(31, 13);
-            this.label10.TabIndex = 12;
-            this.label10.Text = "Mixin";
-            // 
-            // ExtraBox
-            // 
-            this.ExtraBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.ExtraBox.Location = new System.Drawing.Point(6, 333);
-            this.ExtraBox.Name = "ExtraBox";
-            this.ExtraBox.Size = new System.Drawing.Size(364, 20);
-            this.ExtraBox.TabIndex = 8;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(6, 43);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(55, 13);
-            this.label4.TabIndex = 0;
-            this.label4.Text = "Send To";
-            // 
-            // SendToAddress
-            // 
-            this.SendToAddress.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.SendToAddress.Location = new System.Drawing.Point(6, 59);
-            this.SendToAddress.Name = "SendToAddress";
-            this.SendToAddress.Size = new System.Drawing.Size(364, 20);
-            this.SendToAddress.TabIndex = 1;
-            // 
-            // AmountToSend
-            // 
-            this.AmountToSend.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.AmountToSend.Location = new System.Drawing.Point(6, 98);
-            this.AmountToSend.Name = "AmountToSend";
-            this.AmountToSend.Size = new System.Drawing.Size(364, 20);
-            this.AmountToSend.TabIndex = 2;
-            this.AmountToSend.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.DecimalNumberOnly);
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label9.Location = new System.Drawing.Point(6, 317);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(31, 13);
-            this.label9.TabIndex = 11;
-            this.label9.Text = "Extra";
-            // 
-            // Fee
-            // 
-            this.Fee.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.Fee.Location = new System.Drawing.Point(6, 137);
-            this.Fee.Name = "Fee";
-            this.Fee.Size = new System.Drawing.Size(364, 20);
-            this.Fee.TabIndex = 3;
-            this.Fee.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.DecimalNumberOnly);
-            // 
-            // UnlockTime
-            // 
-            this.UnlockTime.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.UnlockTime.Location = new System.Drawing.Point(6, 255);
-            this.UnlockTime.Name = "UnlockTime";
-            this.UnlockTime.Size = new System.Drawing.Size(364, 20);
-            this.UnlockTime.TabIndex = 5;
-            this.UnlockTime.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.NumberOnly);
-            // 
-            // label16
-            // 
-            this.label16.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label16.AutoSize = true;
-            this.label16.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label16.Location = new System.Drawing.Point(318, 278);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(52, 13);
-            this.label16.TabIndex = 20;
-            this.label16.Text = "(Optional)";
             // 
             // WalletTab
             // 
-            this.WalletTab.Controls.Add(this.tableLayoutPanel1);
+            this.WalletTab.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.WalletTab.Controls.Add(this.SelectedAddressInfo);
             this.WalletTab.Controls.Add(this.DeleteSelectedAddress);
             this.WalletTab.Controls.Add(this.CreateNewAddress);
             this.WalletTab.Controls.Add(this.WalletAddresses);
-            this.WalletTab.Controls.Add(this.SyncPercent);
-            this.WalletTab.Controls.Add(this.SyncProgress);
-            this.WalletTab.Controls.Add(this.CopyAddress);
             this.WalletTab.Controls.Add(this.label1);
-            this.WalletTab.Location = new System.Drawing.Point(4, 22);
+            this.WalletTab.ForeColor = System.Drawing.Color.Black;
+            this.WalletTab.Location = new System.Drawing.Point(4, 4);
+            this.WalletTab.Margin = new System.Windows.Forms.Padding(0);
             this.WalletTab.Name = "WalletTab";
-            this.WalletTab.Padding = new System.Windows.Forms.Padding(3);
-            this.WalletTab.Size = new System.Drawing.Size(752, 404);
+            this.WalletTab.Padding = new System.Windows.Forms.Padding(6);
+            this.WalletTab.Size = new System.Drawing.Size(595, 426);
             this.WalletTab.TabIndex = 0;
             this.WalletTab.Text = "Wallet";
-            this.WalletTab.UseVisualStyleBackColor = true;
             // 
-            // tableLayoutPanel1
+            // SelectedAddressInfo
             // 
-            this.tableLayoutPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.SelectedAddressInfo.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tableLayoutPanel1.ColumnCount = 2;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Controls.Add(this.groupBox1, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.groupBox2, 1, 0);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(6, 75);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 1;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 291F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(740, 291);
-            this.tableLayoutPanel1.TabIndex = 13;
+            this.SelectedAddressInfo.Controls.Add(this.AddressDisplay);
+            this.SelectedAddressInfo.Controls.Add(this.label13);
+            this.SelectedAddressInfo.Controls.Add(this.label18);
+            this.SelectedAddressInfo.Controls.Add(this.ChangeNickname);
+            this.SelectedAddressInfo.Controls.Add(this.ShowKeysButton);
+            this.SelectedAddressInfo.Controls.Add(this.CopyAddress);
+            this.SelectedAddressInfo.Controls.Add(this.SelectedBalanceBox);
+            this.SelectedAddressInfo.Controls.Add(this.PrivateSpendKey);
+            this.SelectedAddressInfo.Controls.Add(this.label19);
+            this.SelectedAddressInfo.Controls.Add(this.PublicSpendKey);
+            this.SelectedAddressInfo.Controls.Add(this.SelectedLockedBalanceBox);
+            this.SelectedAddressInfo.Controls.Add(this.label26);
+            this.SelectedAddressInfo.Controls.Add(this.pictureBox2);
+            this.SelectedAddressInfo.Controls.Add(this.label25);
+            this.SelectedAddressInfo.Controls.Add(this.label24);
+            this.SelectedAddressInfo.Controls.Add(this.Nickname);
+            this.SelectedAddressInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SelectedAddressInfo.Location = new System.Drawing.Point(9, 91);
+            this.SelectedAddressInfo.Name = "SelectedAddressInfo";
+            this.SelectedAddressInfo.Size = new System.Drawing.Size(577, 326);
+            this.SelectedAddressInfo.TabIndex = 23;
+            this.SelectedAddressInfo.TabStop = false;
+            this.SelectedAddressInfo.Text = "Selected Address Information";
             // 
-            // groupBox1
+            // AddressDisplay
             // 
-            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.AddressDisplay.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox1.AutoSize = true;
-            this.groupBox1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.groupBox1.Controls.Add(this.SelectedLockedBalanceBox);
-            this.groupBox1.Controls.Add(this.label19);
-            this.groupBox1.Controls.Add(this.SelectedBalanceBox);
-            this.groupBox1.Controls.Add(this.label18);
-            this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(3, 3);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(364, 285);
-            this.groupBox1.TabIndex = 9;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Selected Address";
+            this.AddressDisplay.BackColor = System.Drawing.Color.White;
+            this.AddressDisplay.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.AddressDisplay.Location = new System.Drawing.Point(25, 35);
+            this.AddressDisplay.Name = "AddressDisplay";
+            this.AddressDisplay.ReadOnly = true;
+            this.AddressDisplay.Size = new System.Drawing.Size(535, 20);
+            this.AddressDisplay.TabIndex = 24;
             // 
-            // SelectedLockedBalanceBox
+            // label13
             // 
-            this.SelectedLockedBalanceBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.SelectedLockedBalanceBox.BackColor = System.Drawing.SystemColors.Window;
-            this.SelectedLockedBalanceBox.Location = new System.Drawing.Point(6, 71);
-            this.SelectedLockedBalanceBox.Margin = new System.Windows.Forms.Padding(3, 3, 6, 3);
-            this.SelectedLockedBalanceBox.Name = "SelectedLockedBalanceBox";
-            this.SelectedLockedBalanceBox.ReadOnly = true;
-            this.SelectedLockedBalanceBox.Size = new System.Drawing.Size(352, 20);
-            this.SelectedLockedBalanceBox.TabIndex = 5;
-            // 
-            // label19
-            // 
-            this.label19.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label19.AutoSize = true;
-            this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label19.Location = new System.Drawing.Point(3, 55);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(85, 13);
-            this.label19.TabIndex = 4;
-            this.label19.Text = "Locked Balance";
-            // 
-            // SelectedBalanceBox
-            // 
-            this.SelectedBalanceBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.SelectedBalanceBox.BackColor = System.Drawing.SystemColors.Window;
-            this.SelectedBalanceBox.Location = new System.Drawing.Point(6, 32);
-            this.SelectedBalanceBox.Margin = new System.Windows.Forms.Padding(3, 3, 6, 3);
-            this.SelectedBalanceBox.Name = "SelectedBalanceBox";
-            this.SelectedBalanceBox.ReadOnly = true;
-            this.SelectedBalanceBox.Size = new System.Drawing.Size(352, 20);
-            this.SelectedBalanceBox.TabIndex = 3;
-            this.ToolTip.SetToolTip(this.SelectedBalanceBox, "Balance of your selected address");
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.Location = new System.Drawing.Point(22, 19);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(51, 15);
+            this.label13.TabIndex = 23;
+            this.label13.Text = "Address";
             // 
             // label18
             // 
-            this.label18.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.label18.AutoSize = true;
-            this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label18.Location = new System.Drawing.Point(3, 16);
+            this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label18.ForeColor = System.Drawing.Color.Black;
+            this.label18.Location = new System.Drawing.Point(22, 59);
             this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(46, 13);
+            this.label18.Size = new System.Drawing.Size(52, 15);
             this.label18.TabIndex = 2;
             this.label18.Text = "Balance";
             // 
-            // groupBox2
+            // ChangeNickname
             // 
-            this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox2.AutoSize = true;
-            this.groupBox2.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.groupBox2.Controls.Add(this.label2);
-            this.groupBox2.Controls.Add(this.label3);
-            this.groupBox2.Controls.Add(this.BalanceBox);
-            this.groupBox2.Controls.Add(this.LockedBalanceBox);
-            this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox2.Location = new System.Drawing.Point(373, 3);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(364, 285);
-            this.groupBox2.TabIndex = 10;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "All Addresses";
+            this.ChangeNickname.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.ChangeNickname.BackColor = System.Drawing.Color.Gainsboro;
+            this.ChangeNickname.Enabled = false;
+            this.ChangeNickname.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ChangeNickname.Location = new System.Drawing.Point(169, 288);
+            this.ChangeNickname.Margin = new System.Windows.Forms.Padding(3, 6, 3, 3);
+            this.ChangeNickname.Name = "ChangeNickname";
+            this.ChangeNickname.Size = new System.Drawing.Size(150, 32);
+            this.ChangeNickname.TabIndex = 17;
+            this.ChangeNickname.Text = "Change Nicckname";
+            this.ChangeNickname.UseVisualStyleBackColor = false;
+            this.ChangeNickname.Click += new System.EventHandler(this.ChangeNickname_Click);
             // 
-            // label2
+            // ShowKeysButton
             // 
-            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(3, 16);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(46, 13);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "Balance";
+            this.ShowKeysButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.ShowKeysButton.BackColor = System.Drawing.Color.Gainsboro;
+            this.ShowKeysButton.Enabled = false;
+            this.ShowKeysButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ShowKeysButton.Location = new System.Drawing.Point(6, 288);
+            this.ShowKeysButton.Margin = new System.Windows.Forms.Padding(3, 6, 3, 3);
+            this.ShowKeysButton.Name = "ShowKeysButton";
+            this.ShowKeysButton.Size = new System.Drawing.Size(150, 32);
+            this.ShowKeysButton.TabIndex = 22;
+            this.ShowKeysButton.Text = "Show Keys";
+            this.ShowKeysButton.UseVisualStyleBackColor = false;
+            this.ShowKeysButton.Click += new System.EventHandler(this.ShowKeysClick);
             // 
-            // label3
+            // CopyAddress
             // 
-            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(3, 55);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(85, 13);
-            this.label3.TabIndex = 4;
-            this.label3.Text = "Locked Balance";
+            this.CopyAddress.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.CopyAddress.BackColor = System.Drawing.Color.Gainsboro;
+            this.CopyAddress.Enabled = false;
+            this.CopyAddress.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CopyAddress.Location = new System.Drawing.Point(421, 288);
+            this.CopyAddress.Name = "CopyAddress";
+            this.CopyAddress.Size = new System.Drawing.Size(150, 32);
+            this.CopyAddress.TabIndex = 1;
+            this.CopyAddress.Text = "Copy to Clipboard";
+            this.CopyAddress.UseVisualStyleBackColor = false;
+            this.CopyAddress.Click += new System.EventHandler(this.CopyAddress_Click);
             // 
-            // BalanceBox
+            // SelectedBalanceBox
             // 
-            this.BalanceBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.BalanceBox.BackColor = System.Drawing.SystemColors.Window;
-            this.BalanceBox.Location = new System.Drawing.Point(6, 32);
-            this.BalanceBox.Margin = new System.Windows.Forms.Padding(3, 3, 6, 3);
-            this.BalanceBox.Name = "BalanceBox";
-            this.BalanceBox.ReadOnly = true;
-            this.BalanceBox.Size = new System.Drawing.Size(351, 20);
-            this.BalanceBox.TabIndex = 2;
+            this.SelectedBalanceBox.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.SelectedBalanceBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.SelectedBalanceBox.Enabled = false;
+            this.SelectedBalanceBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SelectedBalanceBox.ForeColor = System.Drawing.Color.Black;
+            this.SelectedBalanceBox.Location = new System.Drawing.Point(25, 75);
+            this.SelectedBalanceBox.Margin = new System.Windows.Forms.Padding(3, 3, 6, 3);
+            this.SelectedBalanceBox.Name = "SelectedBalanceBox";
+            this.SelectedBalanceBox.ReadOnly = true;
+            this.SelectedBalanceBox.Size = new System.Drawing.Size(150, 16);
+            this.SelectedBalanceBox.TabIndex = 3;
+            this.SelectedBalanceBox.Text = "-";
+            this.ToolTip.SetToolTip(this.SelectedBalanceBox, "Balance of your selected address");
             // 
-            // LockedBalanceBox
+            // PrivateSpendKey
             // 
-            this.LockedBalanceBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.LockedBalanceBox.BackColor = System.Drawing.SystemColors.Window;
-            this.LockedBalanceBox.Location = new System.Drawing.Point(6, 71);
-            this.LockedBalanceBox.Margin = new System.Windows.Forms.Padding(3, 3, 6, 3);
-            this.LockedBalanceBox.Name = "LockedBalanceBox";
-            this.LockedBalanceBox.ReadOnly = true;
-            this.LockedBalanceBox.Size = new System.Drawing.Size(351, 20);
-            this.LockedBalanceBox.TabIndex = 3;
+            this.PrivateSpendKey.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.PrivateSpendKey.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.PrivateSpendKey.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.PrivateSpendKey.ForeColor = System.Drawing.Color.Black;
+            this.PrivateSpendKey.Location = new System.Drawing.Point(25, 195);
+            this.PrivateSpendKey.Margin = new System.Windows.Forms.Padding(3, 3, 30, 3);
+            this.PrivateSpendKey.Name = "PrivateSpendKey";
+            this.PrivateSpendKey.ReadOnly = true;
+            this.PrivateSpendKey.Size = new System.Drawing.Size(535, 16);
+            this.PrivateSpendKey.TabIndex = 21;
+            this.PrivateSpendKey.Text = "-";
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label19.ForeColor = System.Drawing.Color.Black;
+            this.label19.Location = new System.Drawing.Point(22, 99);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(95, 15);
+            this.label19.TabIndex = 4;
+            this.label19.Text = "Locked Balance";
+            // 
+            // PublicSpendKey
+            // 
+            this.PublicSpendKey.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.PublicSpendKey.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.PublicSpendKey.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.PublicSpendKey.ForeColor = System.Drawing.Color.Black;
+            this.PublicSpendKey.Location = new System.Drawing.Point(25, 155);
+            this.PublicSpendKey.Margin = new System.Windows.Forms.Padding(3, 3, 30, 3);
+            this.PublicSpendKey.Name = "PublicSpendKey";
+            this.PublicSpendKey.ReadOnly = true;
+            this.PublicSpendKey.Size = new System.Drawing.Size(535, 16);
+            this.PublicSpendKey.TabIndex = 20;
+            this.PublicSpendKey.Text = "-";
+            // 
+            // SelectedLockedBalanceBox
+            // 
+            this.SelectedLockedBalanceBox.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.SelectedLockedBalanceBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.SelectedLockedBalanceBox.Enabled = false;
+            this.SelectedLockedBalanceBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SelectedLockedBalanceBox.ForeColor = System.Drawing.Color.Black;
+            this.SelectedLockedBalanceBox.Location = new System.Drawing.Point(25, 115);
+            this.SelectedLockedBalanceBox.Margin = new System.Windows.Forms.Padding(3, 3, 6, 3);
+            this.SelectedLockedBalanceBox.Name = "SelectedLockedBalanceBox";
+            this.SelectedLockedBalanceBox.ReadOnly = true;
+            this.SelectedLockedBalanceBox.Size = new System.Drawing.Size(150, 16);
+            this.SelectedLockedBalanceBox.TabIndex = 5;
+            this.SelectedLockedBalanceBox.Text = "-";
+            // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label26.ForeColor = System.Drawing.Color.Black;
+            this.label26.Location = new System.Drawing.Point(22, 139);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(103, 15);
+            this.label26.TabIndex = 19;
+            this.label26.Text = "Public Spend Key";
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = global::Shell_Wallet.Properties.Resources.LockedBlack;
+            this.pictureBox2.Location = new System.Drawing.Point(6, 115);
+            this.pictureBox2.Margin = new System.Windows.Forms.Padding(3, 3, 0, 3);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(16, 16);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox2.TabIndex = 14;
+            this.pictureBox2.TabStop = false;
+            // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label25.ForeColor = System.Drawing.Color.Black;
+            this.label25.Location = new System.Drawing.Point(22, 179);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(106, 15);
+            this.label25.TabIndex = 18;
+            this.label25.Text = "Private Spend Key";
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label24.ForeColor = System.Drawing.Color.Black;
+            this.label24.Location = new System.Drawing.Point(264, 74);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(63, 15);
+            this.label24.TabIndex = 15;
+            this.label24.Text = "Nickname";
+            // 
+            // Nickname
+            // 
+            this.Nickname.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.Nickname.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.Nickname.Enabled = false;
+            this.Nickname.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Nickname.Location = new System.Drawing.Point(267, 90);
+            this.Nickname.Name = "Nickname";
+            this.Nickname.ReadOnly = true;
+            this.Nickname.Size = new System.Drawing.Size(293, 16);
+            this.Nickname.TabIndex = 16;
+            this.Nickname.Text = "-";
             // 
             // DeleteSelectedAddress
             // 
+            this.DeleteSelectedAddress.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.DeleteSelectedAddress.BackColor = System.Drawing.Color.Gainsboro;
             this.DeleteSelectedAddress.Enabled = false;
-            this.DeleteSelectedAddress.Location = new System.Drawing.Point(162, 46);
+            this.DeleteSelectedAddress.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DeleteSelectedAddress.Location = new System.Drawing.Point(436, 53);
             this.DeleteSelectedAddress.Name = "DeleteSelectedAddress";
-            this.DeleteSelectedAddress.Size = new System.Drawing.Size(150, 23);
+            this.DeleteSelectedAddress.Size = new System.Drawing.Size(150, 32);
             this.DeleteSelectedAddress.TabIndex = 12;
-            this.DeleteSelectedAddress.Text = "Delete Selected Address";
-            this.DeleteSelectedAddress.UseVisualStyleBackColor = true;
+            this.DeleteSelectedAddress.Text = "Delete This Address";
+            this.DeleteSelectedAddress.UseVisualStyleBackColor = false;
             this.DeleteSelectedAddress.Click += new System.EventHandler(this.DeleteSelectedAddress_Click);
             // 
             // CreateNewAddress
             // 
+            this.CreateNewAddress.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.CreateNewAddress.BackColor = System.Drawing.Color.Gainsboro;
             this.CreateNewAddress.Enabled = false;
-            this.CreateNewAddress.Location = new System.Drawing.Point(6, 46);
+            this.CreateNewAddress.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CreateNewAddress.Location = new System.Drawing.Point(9, 53);
             this.CreateNewAddress.Name = "CreateNewAddress";
-            this.CreateNewAddress.Size = new System.Drawing.Size(150, 23);
+            this.CreateNewAddress.Size = new System.Drawing.Size(150, 32);
             this.CreateNewAddress.TabIndex = 11;
             this.CreateNewAddress.Text = "Create New Address";
             this.ToolTip.SetToolTip(this.CreateNewAddress, "Create a new address");
-            this.CreateNewAddress.UseVisualStyleBackColor = true;
+            this.CreateNewAddress.UseVisualStyleBackColor = false;
             this.CreateNewAddress.Click += new System.EventHandler(this.CreateNewAddress_Click);
             // 
             // WalletAddresses
@@ -956,21 +1038,36 @@
             this.WalletAddresses.BackColor = System.Drawing.Color.White;
             this.WalletAddresses.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.WalletAddresses.Enabled = false;
+            this.WalletAddresses.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.WalletAddresses.FormattingEnabled = true;
-            this.WalletAddresses.Location = new System.Drawing.Point(6, 19);
+            this.WalletAddresses.Location = new System.Drawing.Point(9, 26);
             this.WalletAddresses.Name = "WalletAddresses";
-            this.WalletAddresses.Size = new System.Drawing.Size(740, 21);
+            this.WalletAddresses.Size = new System.Drawing.Size(577, 21);
             this.WalletAddresses.TabIndex = 0;
             this.ToolTip.SetToolTip(this.WalletAddresses, "Displays all of your addresses");
             this.WalletAddresses.SelectedIndexChanged += new System.EventHandler(this.WalletAddresses_SelectedIndexChanged);
+            // 
+            // label1
+            // 
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(9, 6);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(123, 17);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Your Addresses";
             // 
             // SyncPercent
             // 
             this.SyncPercent.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.SyncPercent.Location = new System.Drawing.Point(3, 369);
+            this.SyncPercent.ForeColor = System.Drawing.Color.DarkGray;
+            this.SyncPercent.Location = new System.Drawing.Point(5, 423);
             this.SyncPercent.Name = "SyncPercent";
-            this.SyncPercent.Size = new System.Drawing.Size(743, 13);
+            this.SyncPercent.Size = new System.Drawing.Size(160, 13);
             this.SyncPercent.TabIndex = 8;
             this.SyncPercent.Text = "Waiting to sync";
             this.SyncPercent.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -979,64 +1076,103 @@
             // 
             this.SyncProgress.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.SyncProgress.Location = new System.Drawing.Point(6, 387);
+            this.SyncProgress.Location = new System.Drawing.Point(5, 439);
             this.SyncProgress.Name = "SyncProgress";
-            this.SyncProgress.Size = new System.Drawing.Size(740, 10);
+            this.SyncProgress.Size = new System.Drawing.Size(159, 10);
             this.SyncProgress.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
             this.SyncProgress.TabIndex = 7;
             // 
-            // CopyAddress
+            // label2
             // 
-            this.CopyAddress.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.CopyAddress.Enabled = false;
-            this.CopyAddress.Location = new System.Drawing.Point(596, 46);
-            this.CopyAddress.Name = "CopyAddress";
-            this.CopyAddress.Size = new System.Drawing.Size(150, 23);
-            this.CopyAddress.TabIndex = 1;
-            this.CopyAddress.Text = "Copy Address to Clipboard";
-            this.CopyAddress.UseVisualStyleBackColor = true;
-            this.CopyAddress.Click += new System.EventHandler(this.CopyAddress_Click);
-            // 
-            // label1
-            // 
-            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(6, 3);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(134, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Your Public Addresses";
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.DarkGray;
+            this.label2.Location = new System.Drawing.Point(21, 41);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(53, 13);
+            this.label2.TabIndex = 2;
+            this.label2.Text = "Balance";
+            // 
+            // label3
+            // 
+            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.DarkGray;
+            this.label3.Location = new System.Drawing.Point(21, 81);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(99, 13);
+            this.label3.TabIndex = 4;
+            this.label3.Text = "Locked Balance";
+            // 
+            // BalanceBox
+            // 
+            this.BalanceBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.BalanceBox.BackColor = System.Drawing.Color.White;
+            this.BalanceBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.BalanceBox.Enabled = false;
+            this.BalanceBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BalanceBox.ForeColor = System.Drawing.Color.Black;
+            this.BalanceBox.Location = new System.Drawing.Point(24, 57);
+            this.BalanceBox.Margin = new System.Windows.Forms.Padding(3, 3, 6, 3);
+            this.BalanceBox.Name = "BalanceBox";
+            this.BalanceBox.ReadOnly = true;
+            this.BalanceBox.Size = new System.Drawing.Size(139, 16);
+            this.BalanceBox.TabIndex = 2;
+            this.BalanceBox.Text = "0.00";
+            // 
+            // LockedBalanceBox
+            // 
+            this.LockedBalanceBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.LockedBalanceBox.BackColor = System.Drawing.Color.White;
+            this.LockedBalanceBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.LockedBalanceBox.Enabled = false;
+            this.LockedBalanceBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LockedBalanceBox.ForeColor = System.Drawing.Color.Black;
+            this.LockedBalanceBox.Location = new System.Drawing.Point(24, 97);
+            this.LockedBalanceBox.Margin = new System.Windows.Forms.Padding(3, 3, 6, 3);
+            this.LockedBalanceBox.Name = "LockedBalanceBox";
+            this.LockedBalanceBox.ReadOnly = true;
+            this.LockedBalanceBox.Size = new System.Drawing.Size(139, 16);
+            this.LockedBalanceBox.TabIndex = 3;
+            this.LockedBalanceBox.Text = "0.00";
             // 
             // WalletTabs
             // 
-            this.WalletTabs.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.WalletTabs.Alignment = System.Windows.Forms.TabAlignment.Bottom;
             this.WalletTabs.Controls.Add(this.WalletTab);
             this.WalletTabs.Controls.Add(this.SendTab);
             this.WalletTabs.Controls.Add(this.TransactonLogTab);
             this.WalletTabs.Controls.Add(this.ContactBookTab);
             this.WalletTabs.Controls.Add(this.NetworkTab);
-            this.WalletTabs.Location = new System.Drawing.Point(12, 27);
+            this.WalletTabs.Controls.Add(this.BlankTab);
+            this.WalletTabs.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.WalletTabs.ItemSize = new System.Drawing.Size(0, 1);
+            this.WalletTabs.Location = new System.Drawing.Point(0, 0);
+            this.WalletTabs.Margin = new System.Windows.Forms.Padding(0);
+            this.WalletTabs.Multiline = true;
             this.WalletTabs.Name = "WalletTabs";
             this.WalletTabs.SelectedIndex = 0;
-            this.WalletTabs.Size = new System.Drawing.Size(760, 430);
+            this.WalletTabs.Size = new System.Drawing.Size(603, 435);
             this.WalletTabs.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.WalletTabs.TabIndex = 1;
             // 
             // TransactonLogTab
             // 
+            this.TransactonLogTab.BackColor = System.Drawing.Color.WhiteSmoke;
             this.TransactonLogTab.Controls.Add(this.TransactionLog);
-            this.TransactonLogTab.Location = new System.Drawing.Point(4, 22);
+            this.TransactonLogTab.ForeColor = System.Drawing.Color.Black;
+            this.TransactonLogTab.Location = new System.Drawing.Point(4, 4);
             this.TransactonLogTab.Name = "TransactonLogTab";
             this.TransactonLogTab.Padding = new System.Windows.Forms.Padding(3);
-            this.TransactonLogTab.Size = new System.Drawing.Size(752, 404);
+            this.TransactonLogTab.Size = new System.Drawing.Size(595, 426);
             this.TransactonLogTab.TabIndex = 6;
             this.TransactonLogTab.Text = "Transaction Log";
-            this.TransactonLogTab.UseVisualStyleBackColor = true;
             // 
             // TransactionLog
             // 
@@ -1046,6 +1182,7 @@
             this.TransactionLog.AutoGenerateColumns = false;
             this.TransactionLog.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.TransactionLog.BackgroundColor = System.Drawing.SystemColors.Control;
+            this.TransactionLog.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.TransactionLog.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.TransactionLog.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.TypeColumn,
@@ -1065,7 +1202,7 @@
             this.TransactionLog.ShowCellToolTips = false;
             this.TransactionLog.ShowEditingIcon = false;
             this.TransactionLog.ShowRowErrors = false;
-            this.TransactionLog.Size = new System.Drawing.Size(746, 398);
+            this.TransactionLog.Size = new System.Drawing.Size(589, 420);
             this.TransactionLog.TabIndex = 0;
             this.TransactionLog.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.TransactionLog_CellDoubleClick);
             // 
@@ -1077,61 +1214,26 @@
             this.TypeColumn.Name = "TypeColumn";
             this.TypeColumn.ReadOnly = true;
             // 
-            // timeStampDataGridViewTextBoxColumn
-            // 
-            this.timeStampDataGridViewTextBoxColumn.DataPropertyName = "TimeStamp";
-            this.timeStampDataGridViewTextBoxColumn.FillWeight = 80F;
-            this.timeStampDataGridViewTextBoxColumn.HeaderText = "Date";
-            this.timeStampDataGridViewTextBoxColumn.Name = "timeStampDataGridViewTextBoxColumn";
-            this.timeStampDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // amountDataGridViewTextBoxColumn
-            // 
-            this.amountDataGridViewTextBoxColumn.DataPropertyName = "Amount";
-            this.amountDataGridViewTextBoxColumn.FillWeight = 50F;
-            this.amountDataGridViewTextBoxColumn.HeaderText = "Amount";
-            this.amountDataGridViewTextBoxColumn.Name = "amountDataGridViewTextBoxColumn";
-            this.amountDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // feeDataGridViewTextBoxColumn
-            // 
-            this.feeDataGridViewTextBoxColumn.DataPropertyName = "Fee";
-            this.feeDataGridViewTextBoxColumn.FillWeight = 50F;
-            this.feeDataGridViewTextBoxColumn.HeaderText = "Fee";
-            this.feeDataGridViewTextBoxColumn.Name = "feeDataGridViewTextBoxColumn";
-            this.feeDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // hashDataGridViewTextBoxColumn1
-            // 
-            this.hashDataGridViewTextBoxColumn1.DataPropertyName = "Hash";
-            this.hashDataGridViewTextBoxColumn1.FillWeight = 200F;
-            this.hashDataGridViewTextBoxColumn1.HeaderText = "Hash";
-            this.hashDataGridViewTextBoxColumn1.Name = "hashDataGridViewTextBoxColumn1";
-            this.hashDataGridViewTextBoxColumn1.ReadOnly = true;
-            // 
-            // transactionBindingSource
-            // 
-            this.transactionBindingSource.DataSource = typeof(RPCWrapper.Transaction);
-            // 
             // ContactBookTab
             // 
+            this.ContactBookTab.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ContactBookTab.Controls.Add(this.EditContact);
             this.ContactBookTab.Controls.Add(this.SendToContact);
             this.ContactBookTab.Controls.Add(this.RemoveContact);
             this.ContactBookTab.Controls.Add(this.AddContact);
             this.ContactBookTab.Controls.Add(this.AddressGrid);
-            this.ContactBookTab.Location = new System.Drawing.Point(4, 22);
+            this.ContactBookTab.ForeColor = System.Drawing.Color.Black;
+            this.ContactBookTab.Location = new System.Drawing.Point(4, 4);
             this.ContactBookTab.Name = "ContactBookTab";
             this.ContactBookTab.Padding = new System.Windows.Forms.Padding(3);
-            this.ContactBookTab.Size = new System.Drawing.Size(752, 404);
+            this.ContactBookTab.Size = new System.Drawing.Size(595, 426);
             this.ContactBookTab.TabIndex = 4;
             this.ContactBookTab.Text = "Address Book";
-            this.ContactBookTab.UseVisualStyleBackColor = true;
             // 
             // EditContact
             // 
             this.EditContact.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.EditContact.Location = new System.Drawing.Point(218, 375);
+            this.EditContact.Location = new System.Drawing.Point(218, 397);
             this.EditContact.Name = "EditContact";
             this.EditContact.Size = new System.Drawing.Size(100, 23);
             this.EditContact.TabIndex = 5;
@@ -1142,7 +1244,7 @@
             // SendToContact
             // 
             this.SendToContact.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.SendToContact.Location = new System.Drawing.Point(606, 375);
+            this.SendToContact.Location = new System.Drawing.Point(449, 397);
             this.SendToContact.Name = "SendToContact";
             this.SendToContact.Size = new System.Drawing.Size(140, 23);
             this.SendToContact.TabIndex = 3;
@@ -1153,7 +1255,7 @@
             // RemoveContact
             // 
             this.RemoveContact.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.RemoveContact.Location = new System.Drawing.Point(112, 375);
+            this.RemoveContact.Location = new System.Drawing.Point(112, 397);
             this.RemoveContact.Name = "RemoveContact";
             this.RemoveContact.Size = new System.Drawing.Size(100, 23);
             this.RemoveContact.TabIndex = 2;
@@ -1164,7 +1266,7 @@
             // AddContact
             // 
             this.AddContact.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.AddContact.Location = new System.Drawing.Point(6, 375);
+            this.AddContact.Location = new System.Drawing.Point(6, 397);
             this.AddContact.Name = "AddContact";
             this.AddContact.Size = new System.Drawing.Size(100, 23);
             this.AddContact.TabIndex = 1;
@@ -1182,6 +1284,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.AddressGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.AddressGrid.BackgroundColor = System.Drawing.SystemColors.Control;
+            this.AddressGrid.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.AddressGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.AddressGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.NameColumn,
@@ -1200,7 +1303,7 @@
             this.AddressGrid.ShowCellToolTips = false;
             this.AddressGrid.ShowEditingIcon = false;
             this.AddressGrid.ShowRowErrors = false;
-            this.AddressGrid.Size = new System.Drawing.Size(740, 363);
+            this.AddressGrid.Size = new System.Drawing.Size(583, 385);
             this.AddressGrid.TabIndex = 0;
             this.AddressGrid.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.AddressGrid_CellMouseDoubleClick);
             this.AddressGrid.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.AddressGrid_CellMouseClick);
@@ -1268,15 +1371,16 @@
             // 
             // NetworkTab
             // 
+            this.NetworkTab.BackColor = System.Drawing.Color.WhiteSmoke;
             this.NetworkTab.Controls.Add(this.tableLayoutPanel4);
             this.NetworkTab.Controls.Add(this.tableLayoutPanel3);
-            this.NetworkTab.Location = new System.Drawing.Point(4, 22);
+            this.NetworkTab.ForeColor = System.Drawing.Color.Black;
+            this.NetworkTab.Location = new System.Drawing.Point(4, 4);
             this.NetworkTab.Name = "NetworkTab";
             this.NetworkTab.Padding = new System.Windows.Forms.Padding(3);
-            this.NetworkTab.Size = new System.Drawing.Size(752, 404);
+            this.NetworkTab.Size = new System.Drawing.Size(595, 426);
             this.NetworkTab.TabIndex = 5;
             this.NetworkTab.Text = "Network";
-            this.NetworkTab.UseVisualStyleBackColor = true;
             // 
             // tableLayoutPanel4
             // 
@@ -1292,7 +1396,7 @@
             this.tableLayoutPanel4.RowCount = 2;
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 37.5F));
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 62.5F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(740, 318);
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(583, 340);
             this.tableLayoutPanel4.TabIndex = 6;
             // 
             // groupBox4
@@ -1302,7 +1406,7 @@
             this.groupBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox4.Location = new System.Drawing.Point(3, 3);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(734, 113);
+            this.groupBox4.Size = new System.Drawing.Size(577, 121);
             this.groupBox4.TabIndex = 1;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Transaction Pool";
@@ -1316,6 +1420,7 @@
             this.TransactionPool.AutoGenerateColumns = false;
             this.TransactionPool.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.TransactionPool.BackgroundColor = System.Drawing.SystemColors.Control;
+            this.TransactionPool.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.TransactionPool.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.TransactionPool.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.AmountColumn,
@@ -1336,7 +1441,7 @@
             this.TransactionPool.ShowCellToolTips = false;
             this.TransactionPool.ShowEditingIcon = false;
             this.TransactionPool.ShowRowErrors = false;
-            this.TransactionPool.Size = new System.Drawing.Size(728, 94);
+            this.TransactionPool.Size = new System.Drawing.Size(571, 102);
             this.TransactionPool.TabIndex = 1;
             // 
             // AmountColumn
@@ -1355,34 +1460,14 @@
             this.FeeColumn.Name = "FeeColumn";
             this.FeeColumn.ReadOnly = true;
             // 
-            // dataGridViewTextBoxColumn3
-            // 
-            this.dataGridViewTextBoxColumn3.DataPropertyName = "Size";
-            this.dataGridViewTextBoxColumn3.FillWeight = 10F;
-            this.dataGridViewTextBoxColumn3.HeaderText = "Size";
-            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            this.dataGridViewTextBoxColumn3.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn4
-            // 
-            this.dataGridViewTextBoxColumn4.DataPropertyName = "Hash";
-            this.dataGridViewTextBoxColumn4.FillWeight = 60F;
-            this.dataGridViewTextBoxColumn4.HeaderText = "Hash";
-            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            this.dataGridViewTextBoxColumn4.ReadOnly = true;
-            // 
-            // transactionPoolBindingSource
-            // 
-            this.transactionPoolBindingSource.DataSource = typeof(RPCWrapper.RecentBlocks);
-            // 
             // groupBox5
             // 
             this.groupBox5.Controls.Add(this.RecentBlocks);
             this.groupBox5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox5.Location = new System.Drawing.Point(3, 122);
+            this.groupBox5.Location = new System.Drawing.Point(3, 130);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(734, 193);
+            this.groupBox5.Size = new System.Drawing.Size(577, 207);
             this.groupBox5.TabIndex = 2;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Recent Blocks";
@@ -1396,6 +1481,7 @@
             this.RecentBlocks.AutoGenerateColumns = false;
             this.RecentBlocks.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.RecentBlocks.BackgroundColor = System.Drawing.SystemColors.Control;
+            this.RecentBlocks.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.RecentBlocks.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.RecentBlocks.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.heightDataGridViewTextBoxColumn,
@@ -1418,60 +1504,8 @@
             this.RecentBlocks.ShowCellToolTips = false;
             this.RecentBlocks.ShowEditingIcon = false;
             this.RecentBlocks.ShowRowErrors = false;
-            this.RecentBlocks.Size = new System.Drawing.Size(728, 174);
+            this.RecentBlocks.Size = new System.Drawing.Size(571, 188);
             this.RecentBlocks.TabIndex = 0;
-            // 
-            // heightDataGridViewTextBoxColumn
-            // 
-            this.heightDataGridViewTextBoxColumn.DataPropertyName = "Height";
-            this.heightDataGridViewTextBoxColumn.FillWeight = 10F;
-            this.heightDataGridViewTextBoxColumn.HeaderText = "Height";
-            this.heightDataGridViewTextBoxColumn.Name = "heightDataGridViewTextBoxColumn";
-            this.heightDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // dateDataGridViewTextBoxColumn
-            // 
-            this.dateDataGridViewTextBoxColumn.DataPropertyName = "Date";
-            this.dateDataGridViewTextBoxColumn.FillWeight = 30F;
-            this.dateDataGridViewTextBoxColumn.HeaderText = "Date";
-            this.dateDataGridViewTextBoxColumn.Name = "dateDataGridViewTextBoxColumn";
-            this.dateDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // sizeDataGridViewTextBoxColumn
-            // 
-            this.sizeDataGridViewTextBoxColumn.DataPropertyName = "Size";
-            this.sizeDataGridViewTextBoxColumn.FillWeight = 10F;
-            this.sizeDataGridViewTextBoxColumn.HeaderText = "Size";
-            this.sizeDataGridViewTextBoxColumn.Name = "sizeDataGridViewTextBoxColumn";
-            this.sizeDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // hashDataGridViewTextBoxColumn
-            // 
-            this.hashDataGridViewTextBoxColumn.DataPropertyName = "Hash";
-            this.hashDataGridViewTextBoxColumn.FillWeight = 50F;
-            this.hashDataGridViewTextBoxColumn.HeaderText = "Hash";
-            this.hashDataGridViewTextBoxColumn.Name = "hashDataGridViewTextBoxColumn";
-            this.hashDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // difficultyDataGridViewTextBoxColumn
-            // 
-            this.difficultyDataGridViewTextBoxColumn.DataPropertyName = "Difficulty";
-            this.difficultyDataGridViewTextBoxColumn.FillWeight = 15F;
-            this.difficultyDataGridViewTextBoxColumn.HeaderText = "Difficulty";
-            this.difficultyDataGridViewTextBoxColumn.Name = "difficultyDataGridViewTextBoxColumn";
-            this.difficultyDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // transactionsDataGridViewTextBoxColumn
-            // 
-            this.transactionsDataGridViewTextBoxColumn.DataPropertyName = "Transactions";
-            this.transactionsDataGridViewTextBoxColumn.FillWeight = 20F;
-            this.transactionsDataGridViewTextBoxColumn.HeaderText = "Transactions";
-            this.transactionsDataGridViewTextBoxColumn.Name = "transactionsDataGridViewTextBoxColumn";
-            this.transactionsDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // recentBlocksBindingSource
-            // 
-            this.recentBlocksBindingSource.DataSource = typeof(RPCWrapper.RecentBlocks);
             // 
             // tableLayoutPanel3
             // 
@@ -1487,7 +1521,7 @@
             this.tableLayoutPanel3.RowCount = 1;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 68F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(740, 68);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(583, 68);
             this.tableLayoutPanel3.TabIndex = 5;
             // 
             // groupBox6
@@ -1502,7 +1536,7 @@
             this.groupBox6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox6.Location = new System.Drawing.Point(3, 3);
             this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(364, 62);
+            this.groupBox6.Size = new System.Drawing.Size(285, 62);
             this.groupBox6.TabIndex = 3;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Statistics";
@@ -1574,9 +1608,9 @@
             this.groupBox3.Controls.Add(this.label29);
             this.groupBox3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox3.Location = new System.Drawing.Point(373, 3);
+            this.groupBox3.Location = new System.Drawing.Point(294, 3);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(364, 62);
+            this.groupBox3.Size = new System.Drawing.Size(286, 62);
             this.groupBox3.TabIndex = 4;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Network";
@@ -1638,22 +1672,35 @@
             this.label29.TabIndex = 7;
             this.label29.Text = "Current Reward:";
             // 
+            // BlankTab
+            // 
+            this.BlankTab.Location = new System.Drawing.Point(4, 4);
+            this.BlankTab.Name = "BlankTab";
+            this.BlankTab.Padding = new System.Windows.Forms.Padding(3);
+            this.BlankTab.Size = new System.Drawing.Size(595, 426);
+            this.BlankTab.TabIndex = 7;
+            this.BlankTab.Text = "Options";
+            this.BlankTab.UseVisualStyleBackColor = true;
+            // 
             // HeightStatus
             // 
             this.HeightStatus.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.HeightStatus.AutoSize = true;
-            this.HeightStatus.Location = new System.Drawing.Point(13, 460);
+            this.HeightStatus.ForeColor = System.Drawing.Color.DarkGray;
+            this.HeightStatus.Location = new System.Drawing.Point(3, 1);
             this.HeightStatus.Name = "HeightStatus";
-            this.HeightStatus.Size = new System.Drawing.Size(0, 13);
+            this.HeightStatus.Size = new System.Drawing.Size(22, 13);
             this.HeightStatus.TabIndex = 2;
+            this.HeightStatus.Text = "-----";
             // 
             // ServerStatus
             // 
             this.ServerStatus.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.ServerStatus.AutoSize = true;
             this.ServerStatus.ForeColor = System.Drawing.Color.Blue;
-            this.ServerStatus.Location = new System.Drawing.Point(502, 460);
+            this.ServerStatus.Location = new System.Drawing.Point(515, 1);
             this.ServerStatus.Name = "ServerStatus";
-            this.ServerStatus.Size = new System.Drawing.Size(266, 23);
+            this.ServerStatus.Size = new System.Drawing.Size(79, 13);
             this.ServerStatus.TabIndex = 3;
             this.ServerStatus.Text = "Not Connected";
             this.ServerStatus.TextAlign = System.Drawing.ContentAlignment.TopRight;
@@ -1664,14 +1711,605 @@
             this.SavePrivateKeys.FileName = "Keys.txt";
             this.SavePrivateKeys.Filter = "Text Files|*txt";
             // 
+            // MenuPanel
+            // 
+            this.MenuPanel.BackColor = System.Drawing.Color.White;
+            this.MenuPanel.Controls.Add(this.panel9);
+            this.MenuPanel.Controls.Add(this.panel8);
+            this.MenuPanel.Controls.Add(this.panel7);
+            this.MenuPanel.Controls.Add(this.SyncPercent);
+            this.MenuPanel.Controls.Add(this.panel6);
+            this.MenuPanel.Controls.Add(this.SyncProgress);
+            this.MenuPanel.Controls.Add(this.OptionsTabButton);
+            this.MenuPanel.Controls.Add(this.NetworkTabButton);
+            this.MenuPanel.Controls.Add(this.AddressBookTabButton);
+            this.MenuPanel.Controls.Add(this.panel5);
+            this.MenuPanel.Controls.Add(this.TransactionLogTabButton);
+            this.MenuPanel.Controls.Add(this.MENUDIVIDER2);
+            this.MenuPanel.Controls.Add(this.MENUDIVIDER1);
+            this.MenuPanel.Controls.Add(this.WalletTabButton);
+            this.MenuPanel.Controls.Add(this.pictureBox1);
+            this.MenuPanel.Controls.Add(this.LockedIcon);
+            this.MenuPanel.Controls.Add(this.SendTabButton);
+            this.MenuPanel.Controls.Add(this.label12);
+            this.MenuPanel.Controls.Add(this.label2);
+            this.MenuPanel.Controls.Add(this.label3);
+            this.MenuPanel.Controls.Add(this.BalanceBox);
+            this.MenuPanel.Controls.Add(this.LockedBalanceBox);
+            this.MenuPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.MenuPanel.Location = new System.Drawing.Point(3, 3);
+            this.MenuPanel.Name = "MenuPanel";
+            this.MenuPanel.Size = new System.Drawing.Size(169, 455);
+            this.MenuPanel.TabIndex = 25;
+            // 
+            // panel9
+            // 
+            this.panel9.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel9.BackColor = System.Drawing.Color.DarkGray;
+            this.panel9.Location = new System.Drawing.Point(0, 310);
+            this.panel9.Name = "panel9";
+            this.panel9.Size = new System.Drawing.Size(169, 1);
+            this.panel9.TabIndex = 40;
+            // 
+            // panel8
+            // 
+            this.panel8.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel8.BackColor = System.Drawing.Color.DarkGray;
+            this.panel8.Location = new System.Drawing.Point(0, 278);
+            this.panel8.Name = "panel8";
+            this.panel8.Size = new System.Drawing.Size(169, 1);
+            this.panel8.TabIndex = 39;
+            // 
+            // panel7
+            // 
+            this.panel7.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel7.BackColor = System.Drawing.Color.DarkGray;
+            this.panel7.Location = new System.Drawing.Point(0, 247);
+            this.panel7.Name = "panel7";
+            this.panel7.Size = new System.Drawing.Size(169, 1);
+            this.panel7.TabIndex = 38;
+            // 
+            // panel6
+            // 
+            this.panel6.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel6.BackColor = System.Drawing.Color.DarkGray;
+            this.panel6.Location = new System.Drawing.Point(0, 216);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(169, 1);
+            this.panel6.TabIndex = 37;
+            // 
+            // OptionsTabButton
+            // 
+            this.OptionsTabButton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.OptionsTabButton.BackColor = System.Drawing.Color.White;
+            this.OptionsTabButton.ColumnCount = 2;
+            this.OptionsTabButton.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.OptionsTabButton.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 32F));
+            this.OptionsTabButton.Controls.Add(this.OptionsTabIcon, 1, 0);
+            this.OptionsTabButton.Controls.Add(this.OptionsTabLabel, 0, 0);
+            this.OptionsTabButton.Location = new System.Drawing.Point(0, 279);
+            this.OptionsTabButton.Margin = new System.Windows.Forms.Padding(0);
+            this.OptionsTabButton.Name = "OptionsTabButton";
+            this.OptionsTabButton.RowCount = 1;
+            this.OptionsTabButton.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.OptionsTabButton.Size = new System.Drawing.Size(169, 30);
+            this.OptionsTabButton.TabIndex = 36;
+            this.OptionsTabButton.Click += new System.EventHandler(this.MenuItemClicked);
+            this.OptionsTabButton.MouseEnter += new System.EventHandler(this.MenuItemMouseEnter);
+            this.OptionsTabButton.MouseLeave += new System.EventHandler(this.MenuItemMouseLeave);
+            // 
+            // OptionsTabIcon
+            // 
+            this.OptionsTabIcon.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.OptionsTabIcon.Image = global::Shell_Wallet.Properties.Resources.OptionsBlack;
+            this.OptionsTabIcon.Location = new System.Drawing.Point(140, 3);
+            this.OptionsTabIcon.Name = "OptionsTabIcon";
+            this.OptionsTabIcon.Size = new System.Drawing.Size(26, 24);
+            this.OptionsTabIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.OptionsTabIcon.TabIndex = 0;
+            this.OptionsTabIcon.TabStop = false;
+            this.OptionsTabIcon.Click += new System.EventHandler(this.MenuItemClicked);
+            this.OptionsTabIcon.MouseEnter += new System.EventHandler(this.MenuItemMouseEnter);
+            this.OptionsTabIcon.MouseLeave += new System.EventHandler(this.MenuItemMouseLeave);
+            // 
+            // OptionsTabLabel
+            // 
+            this.OptionsTabLabel.BackColor = System.Drawing.Color.Transparent;
+            this.OptionsTabLabel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.OptionsTabLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.OptionsTabLabel.Location = new System.Drawing.Point(3, 0);
+            this.OptionsTabLabel.Name = "OptionsTabLabel";
+            this.OptionsTabLabel.Padding = new System.Windows.Forms.Padding(6, 0, 0, 0);
+            this.OptionsTabLabel.Size = new System.Drawing.Size(131, 30);
+            this.OptionsTabLabel.TabIndex = 1;
+            this.OptionsTabLabel.Text = "Options";
+            this.OptionsTabLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.OptionsTabLabel.Click += new System.EventHandler(this.MenuItemClicked);
+            this.OptionsTabLabel.MouseEnter += new System.EventHandler(this.MenuItemMouseEnter);
+            this.OptionsTabLabel.MouseLeave += new System.EventHandler(this.MenuItemMouseLeave);
+            // 
+            // NetworkTabButton
+            // 
+            this.NetworkTabButton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.NetworkTabButton.BackColor = System.Drawing.Color.White;
+            this.NetworkTabButton.ColumnCount = 2;
+            this.NetworkTabButton.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.NetworkTabButton.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 32F));
+            this.NetworkTabButton.Controls.Add(this.NetworkTabIcon, 1, 0);
+            this.NetworkTabButton.Controls.Add(this.NetworkTabLabel, 0, 0);
+            this.NetworkTabButton.Location = new System.Drawing.Point(0, 248);
+            this.NetworkTabButton.Margin = new System.Windows.Forms.Padding(0);
+            this.NetworkTabButton.Name = "NetworkTabButton";
+            this.NetworkTabButton.RowCount = 1;
+            this.NetworkTabButton.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.NetworkTabButton.Size = new System.Drawing.Size(169, 30);
+            this.NetworkTabButton.TabIndex = 35;
+            this.NetworkTabButton.Click += new System.EventHandler(this.MenuItemClicked);
+            this.NetworkTabButton.MouseEnter += new System.EventHandler(this.MenuItemMouseEnter);
+            this.NetworkTabButton.MouseLeave += new System.EventHandler(this.MenuItemMouseLeave);
+            // 
+            // NetworkTabIcon
+            // 
+            this.NetworkTabIcon.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.NetworkTabIcon.Image = global::Shell_Wallet.Properties.Resources.NetworkBlack;
+            this.NetworkTabIcon.Location = new System.Drawing.Point(140, 3);
+            this.NetworkTabIcon.Name = "NetworkTabIcon";
+            this.NetworkTabIcon.Size = new System.Drawing.Size(26, 24);
+            this.NetworkTabIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.NetworkTabIcon.TabIndex = 0;
+            this.NetworkTabIcon.TabStop = false;
+            this.NetworkTabIcon.Click += new System.EventHandler(this.MenuItemClicked);
+            this.NetworkTabIcon.MouseEnter += new System.EventHandler(this.MenuItemMouseEnter);
+            this.NetworkTabIcon.MouseLeave += new System.EventHandler(this.MenuItemMouseLeave);
+            // 
+            // NetworkTabLabel
+            // 
+            this.NetworkTabLabel.BackColor = System.Drawing.Color.Transparent;
+            this.NetworkTabLabel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.NetworkTabLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.NetworkTabLabel.Location = new System.Drawing.Point(3, 0);
+            this.NetworkTabLabel.Name = "NetworkTabLabel";
+            this.NetworkTabLabel.Padding = new System.Windows.Forms.Padding(6, 0, 0, 0);
+            this.NetworkTabLabel.Size = new System.Drawing.Size(131, 30);
+            this.NetworkTabLabel.TabIndex = 1;
+            this.NetworkTabLabel.Text = "Network";
+            this.NetworkTabLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.NetworkTabLabel.Click += new System.EventHandler(this.MenuItemClicked);
+            this.NetworkTabLabel.MouseEnter += new System.EventHandler(this.MenuItemMouseEnter);
+            this.NetworkTabLabel.MouseLeave += new System.EventHandler(this.MenuItemMouseLeave);
+            // 
+            // AddressBookTabButton
+            // 
+            this.AddressBookTabButton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.AddressBookTabButton.BackColor = System.Drawing.Color.White;
+            this.AddressBookTabButton.ColumnCount = 2;
+            this.AddressBookTabButton.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.AddressBookTabButton.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 32F));
+            this.AddressBookTabButton.Controls.Add(this.AddressBookTabIcon, 1, 0);
+            this.AddressBookTabButton.Controls.Add(this.AddressBookTabLabel, 0, 0);
+            this.AddressBookTabButton.Location = new System.Drawing.Point(0, 217);
+            this.AddressBookTabButton.Margin = new System.Windows.Forms.Padding(0);
+            this.AddressBookTabButton.Name = "AddressBookTabButton";
+            this.AddressBookTabButton.RowCount = 1;
+            this.AddressBookTabButton.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.AddressBookTabButton.Size = new System.Drawing.Size(169, 30);
+            this.AddressBookTabButton.TabIndex = 34;
+            this.AddressBookTabButton.Click += new System.EventHandler(this.MenuItemClicked);
+            this.AddressBookTabButton.MouseEnter += new System.EventHandler(this.MenuItemMouseEnter);
+            this.AddressBookTabButton.MouseLeave += new System.EventHandler(this.MenuItemMouseLeave);
+            // 
+            // AddressBookTabIcon
+            // 
+            this.AddressBookTabIcon.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.AddressBookTabIcon.Image = global::Shell_Wallet.Properties.Resources.AddressBookBlack;
+            this.AddressBookTabIcon.Location = new System.Drawing.Point(140, 3);
+            this.AddressBookTabIcon.Name = "AddressBookTabIcon";
+            this.AddressBookTabIcon.Size = new System.Drawing.Size(26, 24);
+            this.AddressBookTabIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.AddressBookTabIcon.TabIndex = 0;
+            this.AddressBookTabIcon.TabStop = false;
+            this.AddressBookTabIcon.Click += new System.EventHandler(this.MenuItemClicked);
+            this.AddressBookTabIcon.MouseEnter += new System.EventHandler(this.MenuItemMouseEnter);
+            this.AddressBookTabIcon.MouseLeave += new System.EventHandler(this.MenuItemMouseLeave);
+            // 
+            // AddressBookTabLabel
+            // 
+            this.AddressBookTabLabel.BackColor = System.Drawing.Color.Transparent;
+            this.AddressBookTabLabel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.AddressBookTabLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.AddressBookTabLabel.Location = new System.Drawing.Point(3, 0);
+            this.AddressBookTabLabel.Name = "AddressBookTabLabel";
+            this.AddressBookTabLabel.Padding = new System.Windows.Forms.Padding(6, 0, 0, 0);
+            this.AddressBookTabLabel.Size = new System.Drawing.Size(131, 30);
+            this.AddressBookTabLabel.TabIndex = 1;
+            this.AddressBookTabLabel.Text = "Address Book";
+            this.AddressBookTabLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.AddressBookTabLabel.Click += new System.EventHandler(this.MenuItemClicked);
+            this.AddressBookTabLabel.MouseEnter += new System.EventHandler(this.MenuItemMouseEnter);
+            this.AddressBookTabLabel.MouseLeave += new System.EventHandler(this.MenuItemMouseLeave);
+            // 
+            // panel5
+            // 
+            this.panel5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel5.BackColor = System.Drawing.Color.DarkGray;
+            this.panel5.Location = new System.Drawing.Point(0, 185);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(169, 1);
+            this.panel5.TabIndex = 33;
+            // 
+            // TransactionLogTabButton
+            // 
+            this.TransactionLogTabButton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.TransactionLogTabButton.BackColor = System.Drawing.Color.White;
+            this.TransactionLogTabButton.ColumnCount = 2;
+            this.TransactionLogTabButton.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.TransactionLogTabButton.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 32F));
+            this.TransactionLogTabButton.Controls.Add(this.TransactionLogTabIcon, 1, 0);
+            this.TransactionLogTabButton.Controls.Add(this.TransactionLogTabLabel, 0, 0);
+            this.TransactionLogTabButton.Location = new System.Drawing.Point(0, 186);
+            this.TransactionLogTabButton.Margin = new System.Windows.Forms.Padding(0);
+            this.TransactionLogTabButton.Name = "TransactionLogTabButton";
+            this.TransactionLogTabButton.RowCount = 1;
+            this.TransactionLogTabButton.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.TransactionLogTabButton.Size = new System.Drawing.Size(169, 30);
+            this.TransactionLogTabButton.TabIndex = 32;
+            this.TransactionLogTabButton.Click += new System.EventHandler(this.MenuItemClicked);
+            this.TransactionLogTabButton.MouseEnter += new System.EventHandler(this.MenuItemMouseEnter);
+            this.TransactionLogTabButton.MouseLeave += new System.EventHandler(this.MenuItemMouseLeave);
+            // 
+            // TransactionLogTabIcon
+            // 
+            this.TransactionLogTabIcon.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.TransactionLogTabIcon.Image = global::Shell_Wallet.Properties.Resources.TransactionLogBlack;
+            this.TransactionLogTabIcon.Location = new System.Drawing.Point(140, 3);
+            this.TransactionLogTabIcon.Name = "TransactionLogTabIcon";
+            this.TransactionLogTabIcon.Size = new System.Drawing.Size(26, 24);
+            this.TransactionLogTabIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.TransactionLogTabIcon.TabIndex = 0;
+            this.TransactionLogTabIcon.TabStop = false;
+            this.TransactionLogTabIcon.Click += new System.EventHandler(this.MenuItemClicked);
+            this.TransactionLogTabIcon.MouseEnter += new System.EventHandler(this.MenuItemMouseEnter);
+            this.TransactionLogTabIcon.MouseLeave += new System.EventHandler(this.MenuItemMouseLeave);
+            // 
+            // TransactionLogTabLabel
+            // 
+            this.TransactionLogTabLabel.BackColor = System.Drawing.Color.Transparent;
+            this.TransactionLogTabLabel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.TransactionLogTabLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TransactionLogTabLabel.Location = new System.Drawing.Point(3, 0);
+            this.TransactionLogTabLabel.Name = "TransactionLogTabLabel";
+            this.TransactionLogTabLabel.Padding = new System.Windows.Forms.Padding(6, 0, 0, 0);
+            this.TransactionLogTabLabel.Size = new System.Drawing.Size(131, 30);
+            this.TransactionLogTabLabel.TabIndex = 1;
+            this.TransactionLogTabLabel.Text = "Transaction Log";
+            this.TransactionLogTabLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.TransactionLogTabLabel.Click += new System.EventHandler(this.MenuItemClicked);
+            this.TransactionLogTabLabel.MouseEnter += new System.EventHandler(this.MenuItemMouseEnter);
+            this.TransactionLogTabLabel.MouseLeave += new System.EventHandler(this.MenuItemMouseLeave);
+            // 
+            // MENUDIVIDER2
+            // 
+            this.MENUDIVIDER2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.MENUDIVIDER2.BackColor = System.Drawing.Color.DarkGray;
+            this.MENUDIVIDER2.Location = new System.Drawing.Point(0, 154);
+            this.MENUDIVIDER2.Name = "MENUDIVIDER2";
+            this.MENUDIVIDER2.Size = new System.Drawing.Size(169, 1);
+            this.MENUDIVIDER2.TabIndex = 31;
+            // 
+            // MENUDIVIDER1
+            // 
+            this.MENUDIVIDER1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.MENUDIVIDER1.BackColor = System.Drawing.Color.DarkGray;
+            this.MENUDIVIDER1.Location = new System.Drawing.Point(0, 123);
+            this.MENUDIVIDER1.Name = "MENUDIVIDER1";
+            this.MENUDIVIDER1.Size = new System.Drawing.Size(169, 1);
+            this.MENUDIVIDER1.TabIndex = 30;
+            // 
+            // WalletTabButton
+            // 
+            this.WalletTabButton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.WalletTabButton.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.WalletTabButton.ColumnCount = 2;
+            this.WalletTabButton.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.WalletTabButton.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 32F));
+            this.WalletTabButton.Controls.Add(this.WalletTabIcon, 1, 0);
+            this.WalletTabButton.Controls.Add(this.WalletTabLabel, 0, 0);
+            this.WalletTabButton.Location = new System.Drawing.Point(0, 124);
+            this.WalletTabButton.Margin = new System.Windows.Forms.Padding(0);
+            this.WalletTabButton.Name = "WalletTabButton";
+            this.WalletTabButton.RowCount = 1;
+            this.WalletTabButton.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.WalletTabButton.Size = new System.Drawing.Size(169, 30);
+            this.WalletTabButton.TabIndex = 29;
+            this.WalletTabButton.Click += new System.EventHandler(this.MenuItemClicked);
+            this.WalletTabButton.MouseEnter += new System.EventHandler(this.MenuItemMouseEnter);
+            this.WalletTabButton.MouseLeave += new System.EventHandler(this.MenuItemMouseLeave);
+            // 
+            // WalletTabIcon
+            // 
+            this.WalletTabIcon.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.WalletTabIcon.Image = global::Shell_Wallet.Properties.Resources.WalletBlack;
+            this.WalletTabIcon.Location = new System.Drawing.Point(140, 3);
+            this.WalletTabIcon.Name = "WalletTabIcon";
+            this.WalletTabIcon.Size = new System.Drawing.Size(26, 24);
+            this.WalletTabIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.WalletTabIcon.TabIndex = 0;
+            this.WalletTabIcon.TabStop = false;
+            this.WalletTabIcon.Click += new System.EventHandler(this.MenuItemClicked);
+            this.WalletTabIcon.MouseEnter += new System.EventHandler(this.MenuItemMouseEnter);
+            this.WalletTabIcon.MouseLeave += new System.EventHandler(this.MenuItemMouseLeave);
+            // 
+            // WalletTabLabel
+            // 
+            this.WalletTabLabel.BackColor = System.Drawing.Color.Transparent;
+            this.WalletTabLabel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.WalletTabLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.WalletTabLabel.Location = new System.Drawing.Point(3, 0);
+            this.WalletTabLabel.Name = "WalletTabLabel";
+            this.WalletTabLabel.Padding = new System.Windows.Forms.Padding(6, 0, 0, 0);
+            this.WalletTabLabel.Size = new System.Drawing.Size(131, 30);
+            this.WalletTabLabel.TabIndex = 1;
+            this.WalletTabLabel.Text = "Wallet";
+            this.WalletTabLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.WalletTabLabel.Click += new System.EventHandler(this.MenuItemClicked);
+            this.WalletTabLabel.MouseEnter += new System.EventHandler(this.MenuItemMouseEnter);
+            this.WalletTabLabel.MouseLeave += new System.EventHandler(this.MenuItemMouseLeave);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBox1.Image = global::Shell_Wallet.Properties.Resources.TurtlecoinLogo;
+            this.pictureBox1.Location = new System.Drawing.Point(24, 6);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(24, 24);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 28;
+            this.pictureBox1.TabStop = false;
+            // 
+            // LockedIcon
+            // 
+            this.LockedIcon.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.LockedIcon.Image = global::Shell_Wallet.Properties.Resources.LockedBlack;
+            this.LockedIcon.Location = new System.Drawing.Point(6, 97);
+            this.LockedIcon.Margin = new System.Windows.Forms.Padding(3, 3, 0, 3);
+            this.LockedIcon.Name = "LockedIcon";
+            this.LockedIcon.Size = new System.Drawing.Size(16, 16);
+            this.LockedIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.LockedIcon.TabIndex = 5;
+            this.LockedIcon.TabStop = false;
+            // 
+            // SendTabButton
+            // 
+            this.SendTabButton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.SendTabButton.BackColor = System.Drawing.Color.White;
+            this.SendTabButton.ColumnCount = 2;
+            this.SendTabButton.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.SendTabButton.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 32F));
+            this.SendTabButton.Controls.Add(this.SendTabIcon, 1, 0);
+            this.SendTabButton.Controls.Add(this.SendTabLabel, 0, 0);
+            this.SendTabButton.Location = new System.Drawing.Point(0, 155);
+            this.SendTabButton.Margin = new System.Windows.Forms.Padding(0);
+            this.SendTabButton.Name = "SendTabButton";
+            this.SendTabButton.RowCount = 1;
+            this.SendTabButton.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.SendTabButton.Size = new System.Drawing.Size(169, 30);
+            this.SendTabButton.TabIndex = 6;
+            this.SendTabButton.Click += new System.EventHandler(this.MenuItemClicked);
+            // 
+            // SendTabIcon
+            // 
+            this.SendTabIcon.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.SendTabIcon.Image = ((System.Drawing.Image)(resources.GetObject("SendTabIcon.Image")));
+            this.SendTabIcon.Location = new System.Drawing.Point(140, 3);
+            this.SendTabIcon.Name = "SendTabIcon";
+            this.SendTabIcon.Size = new System.Drawing.Size(26, 24);
+            this.SendTabIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.SendTabIcon.TabIndex = 0;
+            this.SendTabIcon.TabStop = false;
+            this.SendTabIcon.Click += new System.EventHandler(this.MenuItemClicked);
+            this.SendTabIcon.MouseEnter += new System.EventHandler(this.MenuItemMouseEnter);
+            this.SendTabIcon.MouseLeave += new System.EventHandler(this.MenuItemMouseLeave);
+            // 
+            // SendTabLabel
+            // 
+            this.SendTabLabel.BackColor = System.Drawing.Color.Transparent;
+            this.SendTabLabel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.SendTabLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SendTabLabel.Location = new System.Drawing.Point(3, 0);
+            this.SendTabLabel.Name = "SendTabLabel";
+            this.SendTabLabel.Padding = new System.Windows.Forms.Padding(6, 0, 0, 0);
+            this.SendTabLabel.Size = new System.Drawing.Size(131, 30);
+            this.SendTabLabel.TabIndex = 1;
+            this.SendTabLabel.Text = "Send";
+            this.SendTabLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.SendTabLabel.Click += new System.EventHandler(this.MenuItemClicked);
+            this.SendTabLabel.MouseEnter += new System.EventHandler(this.MenuItemMouseEnter);
+            this.SendTabLabel.MouseLeave += new System.EventHandler(this.MenuItemMouseLeave);
+            // 
+            // label12
+            // 
+            this.label12.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.Location = new System.Drawing.Point(51, 6);
+            this.label12.Margin = new System.Windows.Forms.Padding(0);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(100, 24);
+            this.label12.TabIndex = 27;
+            this.label12.Text = "Turtlecoin";
+            this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // MainWindowTable
+            // 
+            this.MainWindowTable.ColumnCount = 2;
+            this.MainWindowTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 175F));
+            this.MainWindowTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.MainWindowTable.Controls.Add(this.RightSideTable, 1, 0);
+            this.MainWindowTable.Controls.Add(this.MenuPanel, 0, 0);
+            this.MainWindowTable.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.MainWindowTable.Location = new System.Drawing.Point(0, 24);
+            this.MainWindowTable.Name = "MainWindowTable";
+            this.MainWindowTable.RowCount = 1;
+            this.MainWindowTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.MainWindowTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.MainWindowTable.Size = new System.Drawing.Size(784, 461);
+            this.MainWindowTable.TabIndex = 26;
+            // 
+            // RightSideTable
+            // 
+            this.RightSideTable.ColumnCount = 1;
+            this.RightSideTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.RightSideTable.Controls.Add(this.FooterPanel, 0, 1);
+            this.RightSideTable.Controls.Add(this.WalletTabs, 0, 0);
+            this.RightSideTable.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.RightSideTable.Location = new System.Drawing.Point(178, 3);
+            this.RightSideTable.Name = "RightSideTable";
+            this.RightSideTable.RowCount = 2;
+            this.RightSideTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.RightSideTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.RightSideTable.Size = new System.Drawing.Size(603, 455);
+            this.RightSideTable.TabIndex = 27;
+            // 
+            // FooterPanel
+            // 
+            this.FooterPanel.Controls.Add(this.HeightStatus);
+            this.FooterPanel.Controls.Add(this.ServerStatus);
+            this.FooterPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.FooterPanel.Location = new System.Drawing.Point(3, 438);
+            this.FooterPanel.Name = "FooterPanel";
+            this.FooterPanel.Size = new System.Drawing.Size(597, 14);
+            this.FooterPanel.TabIndex = 28;
+            // 
+            // timeStampDataGridViewTextBoxColumn
+            // 
+            this.timeStampDataGridViewTextBoxColumn.DataPropertyName = "TimeStamp";
+            this.timeStampDataGridViewTextBoxColumn.FillWeight = 80F;
+            this.timeStampDataGridViewTextBoxColumn.HeaderText = "Date";
+            this.timeStampDataGridViewTextBoxColumn.Name = "timeStampDataGridViewTextBoxColumn";
+            this.timeStampDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // amountDataGridViewTextBoxColumn
+            // 
+            this.amountDataGridViewTextBoxColumn.DataPropertyName = "Amount";
+            this.amountDataGridViewTextBoxColumn.FillWeight = 50F;
+            this.amountDataGridViewTextBoxColumn.HeaderText = "Amount";
+            this.amountDataGridViewTextBoxColumn.Name = "amountDataGridViewTextBoxColumn";
+            this.amountDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // feeDataGridViewTextBoxColumn
+            // 
+            this.feeDataGridViewTextBoxColumn.DataPropertyName = "Fee";
+            this.feeDataGridViewTextBoxColumn.FillWeight = 50F;
+            this.feeDataGridViewTextBoxColumn.HeaderText = "Fee";
+            this.feeDataGridViewTextBoxColumn.Name = "feeDataGridViewTextBoxColumn";
+            this.feeDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // hashDataGridViewTextBoxColumn1
+            // 
+            this.hashDataGridViewTextBoxColumn1.DataPropertyName = "Hash";
+            this.hashDataGridViewTextBoxColumn1.FillWeight = 200F;
+            this.hashDataGridViewTextBoxColumn1.HeaderText = "Hash";
+            this.hashDataGridViewTextBoxColumn1.Name = "hashDataGridViewTextBoxColumn1";
+            this.hashDataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // transactionBindingSource
+            // 
+            this.transactionBindingSource.DataSource = typeof(RPCWrapper.Transaction);
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.DataPropertyName = "Size";
+            this.dataGridViewTextBoxColumn3.FillWeight = 10F;
+            this.dataGridViewTextBoxColumn3.HeaderText = "Size";
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.dataGridViewTextBoxColumn3.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            this.dataGridViewTextBoxColumn4.DataPropertyName = "Hash";
+            this.dataGridViewTextBoxColumn4.FillWeight = 60F;
+            this.dataGridViewTextBoxColumn4.HeaderText = "Hash";
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            this.dataGridViewTextBoxColumn4.ReadOnly = true;
+            // 
+            // transactionPoolBindingSource
+            // 
+            this.transactionPoolBindingSource.DataSource = typeof(RPCWrapper.RecentBlocks);
+            // 
+            // heightDataGridViewTextBoxColumn
+            // 
+            this.heightDataGridViewTextBoxColumn.DataPropertyName = "Height";
+            this.heightDataGridViewTextBoxColumn.FillWeight = 10F;
+            this.heightDataGridViewTextBoxColumn.HeaderText = "Height";
+            this.heightDataGridViewTextBoxColumn.Name = "heightDataGridViewTextBoxColumn";
+            this.heightDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // dateDataGridViewTextBoxColumn
+            // 
+            this.dateDataGridViewTextBoxColumn.DataPropertyName = "Date";
+            this.dateDataGridViewTextBoxColumn.FillWeight = 30F;
+            this.dateDataGridViewTextBoxColumn.HeaderText = "Date";
+            this.dateDataGridViewTextBoxColumn.Name = "dateDataGridViewTextBoxColumn";
+            this.dateDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // sizeDataGridViewTextBoxColumn
+            // 
+            this.sizeDataGridViewTextBoxColumn.DataPropertyName = "Size";
+            this.sizeDataGridViewTextBoxColumn.FillWeight = 10F;
+            this.sizeDataGridViewTextBoxColumn.HeaderText = "Size";
+            this.sizeDataGridViewTextBoxColumn.Name = "sizeDataGridViewTextBoxColumn";
+            this.sizeDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // hashDataGridViewTextBoxColumn
+            // 
+            this.hashDataGridViewTextBoxColumn.DataPropertyName = "Hash";
+            this.hashDataGridViewTextBoxColumn.FillWeight = 50F;
+            this.hashDataGridViewTextBoxColumn.HeaderText = "Hash";
+            this.hashDataGridViewTextBoxColumn.Name = "hashDataGridViewTextBoxColumn";
+            this.hashDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // difficultyDataGridViewTextBoxColumn
+            // 
+            this.difficultyDataGridViewTextBoxColumn.DataPropertyName = "Difficulty";
+            this.difficultyDataGridViewTextBoxColumn.FillWeight = 15F;
+            this.difficultyDataGridViewTextBoxColumn.HeaderText = "Difficulty";
+            this.difficultyDataGridViewTextBoxColumn.Name = "difficultyDataGridViewTextBoxColumn";
+            this.difficultyDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // transactionsDataGridViewTextBoxColumn
+            // 
+            this.transactionsDataGridViewTextBoxColumn.DataPropertyName = "Transactions";
+            this.transactionsDataGridViewTextBoxColumn.FillWeight = 20F;
+            this.transactionsDataGridViewTextBoxColumn.HeaderText = "Transactions";
+            this.transactionsDataGridViewTextBoxColumn.Name = "transactionsDataGridViewTextBoxColumn";
+            this.transactionsDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // recentBlocksBindingSource
+            // 
+            this.recentBlocksBindingSource.DataSource = typeof(RPCWrapper.RecentBlocks);
+            // 
             // MainWindow
             // 
+            this.AllowDrop = true;
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.BackColor = System.Drawing.SystemColors.Control;
+            this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ClientSize = new System.Drawing.Size(784, 485);
-            this.Controls.Add(this.ServerStatus);
-            this.Controls.Add(this.HeightStatus);
-            this.Controls.Add(this.WalletTabs);
+            this.Controls.Add(this.MainWindowTable);
             this.Controls.Add(this.MenuStrip);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.MenuStrip;
@@ -1685,23 +2323,15 @@
             this.MenuStrip.ResumeLayout(false);
             this.MenuStrip.PerformLayout();
             this.SendTab.ResumeLayout(false);
-            this.tableLayoutPanel2.ResumeLayout(false);
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
+            this.SendTab.PerformLayout();
             this.WalletTab.ResumeLayout(false);
             this.WalletTab.PerformLayout();
-            this.tableLayoutPanel1.ResumeLayout(false);
-            this.tableLayoutPanel1.PerformLayout();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
+            this.SelectedAddressInfo.ResumeLayout(false);
+            this.SelectedAddressInfo.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.WalletTabs.ResumeLayout(false);
             this.TransactonLogTab.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.TransactionLog)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.transactionBindingSource)).EndInit();
             this.ContactBookTab.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.AddressGrid)).EndInit();
             this.AddressBookMenu.ResumeLayout(false);
@@ -1709,15 +2339,36 @@
             this.tableLayoutPanel4.ResumeLayout(false);
             this.groupBox4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.TransactionPool)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.transactionPoolBindingSource)).EndInit();
             this.groupBox5.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.RecentBlocks)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.recentBlocksBindingSource)).EndInit();
             this.tableLayoutPanel3.ResumeLayout(false);
             this.groupBox6.ResumeLayout(false);
             this.groupBox6.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
+            this.MenuPanel.ResumeLayout(false);
+            this.MenuPanel.PerformLayout();
+            this.OptionsTabButton.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.OptionsTabIcon)).EndInit();
+            this.NetworkTabButton.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.NetworkTabIcon)).EndInit();
+            this.AddressBookTabButton.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.AddressBookTabIcon)).EndInit();
+            this.TransactionLogTabButton.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.TransactionLogTabIcon)).EndInit();
+            this.WalletTabButton.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.WalletTabIcon)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.LockedIcon)).EndInit();
+            this.SendTabButton.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.SendTabIcon)).EndInit();
+            this.MainWindowTable.ResumeLayout(false);
+            this.RightSideTable.ResumeLayout(false);
+            this.FooterPanel.ResumeLayout(false);
+            this.FooterPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.transactionBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.transactionPoolBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.recentBlocksBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1764,7 +2415,7 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox ChangeAddress;
         private System.Windows.Forms.TextBox UnlockTime;
-        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label ChangeAddressLabel;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.ProgressBar SyncProgress;
         private System.Windows.Forms.Label SyncPercent;
@@ -1780,9 +2431,7 @@
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Label ChangeAddressOptional;
         private System.Windows.Forms.TextBox SelectedLockedBalanceBox;
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.TextBox SelectedBalanceBox;
@@ -1852,14 +2501,55 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn amountDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn feeDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn hashDataGridViewTextBoxColumn1;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
-        private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
         private System.Windows.Forms.ToolStripMenuItem ConnectRemoteRPC;
         private System.Windows.Forms.OpenFileDialog OpenImportFile;
+        private System.Windows.Forms.Panel MenuPanel;
+        private System.Windows.Forms.PictureBox LockedIcon;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.TableLayoutPanel SendTabButton;
+        private System.Windows.Forms.PictureBox SendTabIcon;
+        private System.Windows.Forms.Label SendTabLabel;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.TableLayoutPanel WalletTabButton;
+        private System.Windows.Forms.PictureBox WalletTabIcon;
+        private System.Windows.Forms.Label WalletTabLabel;
+        private System.Windows.Forms.Panel MENUDIVIDER1;
+        private System.Windows.Forms.Panel panel5;
+        private System.Windows.Forms.TableLayoutPanel TransactionLogTabButton;
+        private System.Windows.Forms.PictureBox TransactionLogTabIcon;
+        private System.Windows.Forms.Label TransactionLogTabLabel;
+        private System.Windows.Forms.Panel MENUDIVIDER2;
+        private System.Windows.Forms.TabPage BlankTab;
+        private System.Windows.Forms.Panel panel9;
+        private System.Windows.Forms.Panel panel8;
+        private System.Windows.Forms.Panel panel7;
+        private System.Windows.Forms.Panel panel6;
+        private System.Windows.Forms.TableLayoutPanel OptionsTabButton;
+        private System.Windows.Forms.PictureBox OptionsTabIcon;
+        private System.Windows.Forms.Label OptionsTabLabel;
+        private System.Windows.Forms.TableLayoutPanel NetworkTabButton;
+        private System.Windows.Forms.PictureBox NetworkTabIcon;
+        private System.Windows.Forms.Label NetworkTabLabel;
+        private System.Windows.Forms.TableLayoutPanel AddressBookTabButton;
+        private System.Windows.Forms.PictureBox AddressBookTabIcon;
+        private System.Windows.Forms.Label AddressBookTabLabel;
+        private System.Windows.Forms.TableLayoutPanel MainWindowTable;
+        private System.Windows.Forms.TableLayoutPanel RightSideTable;
+        private System.Windows.Forms.Panel FooterPanel;
+        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.Button ChangeNickname;
+        private System.Windows.Forms.TextBox Nickname;
+        private System.Windows.Forms.Label label24;
+        private System.Windows.Forms.Button ShowKeysButton;
+        private System.Windows.Forms.TextBox PrivateSpendKey;
+        private System.Windows.Forms.TextBox PublicSpendKey;
+        private System.Windows.Forms.Label label26;
+        private System.Windows.Forms.Label label25;
+        private System.Windows.Forms.GroupBox SelectedAddressInfo;
+        private System.Windows.Forms.TextBox AddressDisplay;
+        private System.Windows.Forms.Label label13;
     }
 }
 

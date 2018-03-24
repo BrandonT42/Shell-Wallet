@@ -2,6 +2,7 @@
 using System;
 using System.IO;
 using RPCWrapper;
+using System.Drawing;
 
 namespace Shell_Wallet
 {
@@ -14,6 +15,7 @@ namespace Shell_Wallet
         // File names and paths
         internal const String ConfigFile = "Config.json";
         internal const String AddressBookFile = "Addresses.json";
+        internal const String NicknamesFile = "Nicknames.json";
         internal const String LogFile = "Log.log";
         internal const String PasswordRegex = "[^x21-x7ExA2-xA7xBF-xFF~!#$%&*()\\-+{}|,./]";
         internal static String CurrentDirectory = Directory.GetCurrentDirectory();
@@ -64,6 +66,10 @@ namespace Shell_Wallet
         internal static String MobilePort = "11999";
         internal static String MobilePassword = "";
         internal static bool EnableMobile = false;
+        #endregion
+
+        #region Themes
+        internal static Theme Theme = Theme.Basic;
         #endregion
 
         /// <summary>
@@ -158,5 +164,66 @@ namespace Shell_Wallet
             conf["guiRefreshRate"] = GUIRefreshRate;
             File.WriteAllText(c, conf.ToString());
         }
+    }
+    
+    internal class Theme
+    {
+        internal Color Window, Borders, Text,
+            Menu, MenuText, MenuHover, MenuBorder,
+            Navigation, NavigationText, NavigationButton, NavigationHover, NavigationClicked,
+            Button, ButtonText, ButtonClicked, ButtonHover;
+
+        /// <summary>
+        /// 0 = black, 1 = white
+        /// </summary>
+        internal int IconSet;
+
+        internal static Theme Basic = new Theme()
+        {
+            Window = Color.White,
+            Borders = Color.Gainsboro,
+            Text = Color.Black,
+            IconSet = 0,
+
+            Menu = Color.WhiteSmoke,
+            MenuText = Color.Black,
+            MenuHover = Color.AliceBlue,
+            MenuBorder = Color.Blue,
+
+            Navigation = Color.White,
+            NavigationText = Color.Black,
+            NavigationButton = Color.White,
+            NavigationClicked = Color.WhiteSmoke,
+            NavigationHover = Color.Gainsboro,
+
+            Button = Color.White,
+            ButtonText = Color.Black,
+            ButtonClicked = Color.Gainsboro,
+            ButtonHover = Color.WhiteSmoke
+        };
+
+        internal static Theme Turtle = new Theme()
+        {
+            Window = Color.FromArgb(33, 33, 33),
+            Borders = Color.Black,
+            Text = Color.White,
+            IconSet = 1,
+
+            Menu = Color.FromArgb(47, 47, 47),
+            MenuText = Color.White,
+            MenuHover = Color.FromArgb(46, 204, 113),
+            MenuBorder = Color.Green,
+
+            Navigation = Color.FromArgb(47, 47, 47),
+            NavigationText = Color.White,
+            NavigationButton = Color.FromArgb(47, 47, 47),
+            NavigationClicked = Color.FromArgb(46, 204, 113),
+            NavigationHover = Color.FromArgb(46, 204, 113),
+
+            Button = Color.White,
+            ButtonText = Color.Black,
+            ButtonClicked = Color.Gainsboro,
+            ButtonHover = Color.WhiteSmoke
+        };
     }
 }
