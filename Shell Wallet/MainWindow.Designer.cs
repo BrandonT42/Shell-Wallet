@@ -50,61 +50,82 @@
             this.mobileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.startMobileServerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.stopMobileServerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.OptionsMenu = new System.Windows.Forms.ToolStripMenuItem();
-            this.OptionsMenuOption = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
-            this.AboutMenuOption = new System.Windows.Forms.ToolStripMenuItem();
             this.OpenWalletDialog = new System.Windows.Forms.OpenFileDialog();
             this.NewWalletDialog = new System.Windows.Forms.SaveFileDialog();
             this.OpenServerPath = new System.Windows.Forms.OpenFileDialog();
             this.SendTab = new System.Windows.Forms.TabPage();
+            this.SendTabScrollPanel = new System.Windows.Forms.Panel();
+            this.SendTabLayout = new System.Windows.Forms.TableLayoutPanel();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.SendOutputLabel = new System.Windows.Forms.Label();
             this.TransactionOutput = new System.Windows.Forms.TextBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label20 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label16 = new System.Windows.Forms.Label();
-            this.Mixin = new System.Windows.Forms.TextBox();
-            this.UnlockTime = new System.Windows.Forms.TextBox();
-            this.ChangeAddress = new System.Windows.Forms.TextBox();
-            this.Fee = new System.Windows.Forms.TextBox();
-            this.label17 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.ChangeAddressLabel = new System.Windows.Forms.Label();
-            this.AmountToSend = new System.Windows.Forms.TextBox();
-            this.SendFromAddress = new System.Windows.Forms.ComboBox();
-            this.SendToAddress = new System.Windows.Forms.TextBox();
             this.SendTransaction = new System.Windows.Forms.Button();
-            this.label4 = new System.Windows.Forms.Label();
+            this.QuickSendPanel = new System.Windows.Forms.Panel();
+            this.AmountFeeTable = new System.Windows.Forms.TableLayoutPanel();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.label5 = new System.Windows.Forms.Label();
-            this.ExtraBox = new System.Windows.Forms.TextBox();
+            this.TextBoxSizer2 = new System.Windows.Forms.Panel();
+            this.AmountToSend = new System.Windows.Forms.TextBox();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.label6 = new System.Windows.Forms.Label();
+            this.TextBoxSizer3 = new System.Windows.Forms.Panel();
+            this.Fee = new System.Windows.Forms.TextBox();
+            this.label30 = new System.Windows.Forms.Label();
+            this.ChangeAddressLabel = new System.Windows.Forms.Label();
+            this.ShowAdvancedSendLabel = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.TextBoxSizer4 = new System.Windows.Forms.Panel();
+            this.ChangeAddress = new System.Windows.Forms.TextBox();
             this.ChangeAddressOptional = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
+            this.TextBoxSizer1 = new System.Windows.Forms.Panel();
+            this.SendToAddress = new System.Windows.Forms.TextBox();
+            this.label20 = new System.Windows.Forms.Label();
+            this.ComboBoxSizer1 = new System.Windows.Forms.Panel();
+            this.SendFromAddress = new System.Windows.Forms.ComboBox();
+            this.AdvancedSendPanel = new System.Windows.Forms.Panel();
+            this.UnlockTimeMixinTable = new System.Windows.Forms.TableLayoutPanel();
+            this.panel4 = new System.Windows.Forms.Panel();
             this.label11 = new System.Windows.Forms.Label();
+            this.TextBoxSizer7 = new System.Windows.Forms.Panel();
+            this.UnlockTime = new System.Windows.Forms.TextBox();
+            this.label16 = new System.Windows.Forms.Label();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.label10 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
-            this.label15 = new System.Windows.Forms.Label();
+            this.TextBoxSizer8 = new System.Windows.Forms.Panel();
+            this.Mixin = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
+            this.TextBoxSizer6 = new System.Windows.Forms.Panel();
+            this.ExtraBox = new System.Windows.Forms.TextBox();
+            this.TextBoxSizer5 = new System.Windows.Forms.Panel();
             this.PaymentID = new System.Windows.Forms.TextBox();
+            this.label15 = new System.Windows.Forms.Label();
             this.WalletTab = new System.Windows.Forms.TabPage();
-            this.SelectedAddressInfo = new System.Windows.Forms.GroupBox();
-            this.AddressDisplay = new System.Windows.Forms.TextBox();
-            this.label13 = new System.Windows.Forms.Label();
-            this.label18 = new System.Windows.Forms.Label();
+            this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.ChangeNickname = new System.Windows.Forms.Button();
-            this.ShowKeysButton = new System.Windows.Forms.Button();
-            this.CopyAddress = new System.Windows.Forms.Button();
-            this.SelectedBalanceBox = new System.Windows.Forms.TextBox();
             this.PrivateSpendKey = new System.Windows.Forms.TextBox();
-            this.label19 = new System.Windows.Forms.Label();
-            this.PublicSpendKey = new System.Windows.Forms.TextBox();
-            this.SelectedLockedBalanceBox = new System.Windows.Forms.TextBox();
-            this.label26 = new System.Windows.Forms.Label();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.CopyAddress = new System.Windows.Forms.Button();
+            this.ShowKeysButton = new System.Windows.Forms.Button();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label18 = new System.Windows.Forms.Label();
+            this.TextBoxSizer9 = new System.Windows.Forms.Panel();
+            this.AddressDisplay = new System.Windows.Forms.TextBox();
+            this.ComboBoxSizer2 = new System.Windows.Forms.Panel();
+            this.WalletAddresses = new System.Windows.Forms.ComboBox();
             this.label25 = new System.Windows.Forms.Label();
+            this.PublicSpendKey = new System.Windows.Forms.TextBox();
+            this.label19 = new System.Windows.Forms.Label();
+            this.label26 = new System.Windows.Forms.Label();
+            this.SelectedLockedBalanceBox = new System.Windows.Forms.TextBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.label24 = new System.Windows.Forms.Label();
             this.Nickname = new System.Windows.Forms.TextBox();
+            this.SelectedBalanceBox = new System.Windows.Forms.TextBox();
+            this.label13 = new System.Windows.Forms.Label();
             this.DeleteSelectedAddress = new System.Windows.Forms.Button();
             this.CreateNewAddress = new System.Windows.Forms.Button();
-            this.WalletAddresses = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.SyncPercent = new System.Windows.Forms.Label();
             this.SyncProgress = new System.Windows.Forms.ProgressBar();
@@ -158,12 +179,6 @@
             this.ServerStatus = new System.Windows.Forms.Label();
             this.SavePrivateKeys = new System.Windows.Forms.SaveFileDialog();
             this.ToolTip = new System.Windows.Forms.ToolTip(this.components);
-            this.OpenImportFile = new System.Windows.Forms.OpenFileDialog();
-            this.MenuPanel = new System.Windows.Forms.Panel();
-            this.panel9 = new System.Windows.Forms.Panel();
-            this.panel8 = new System.Windows.Forms.Panel();
-            this.panel7 = new System.Windows.Forms.Panel();
-            this.panel6 = new System.Windows.Forms.Panel();
             this.OptionsTabButton = new System.Windows.Forms.TableLayoutPanel();
             this.OptionsTabIcon = new System.Windows.Forms.PictureBox();
             this.OptionsTabLabel = new System.Windows.Forms.Label();
@@ -173,24 +188,32 @@
             this.AddressBookTabButton = new System.Windows.Forms.TableLayoutPanel();
             this.AddressBookTabIcon = new System.Windows.Forms.PictureBox();
             this.AddressBookTabLabel = new System.Windows.Forms.Label();
-            this.panel5 = new System.Windows.Forms.Panel();
             this.TransactionLogTabButton = new System.Windows.Forms.TableLayoutPanel();
             this.TransactionLogTabIcon = new System.Windows.Forms.PictureBox();
             this.TransactionLogTabLabel = new System.Windows.Forms.Label();
-            this.MENUDIVIDER2 = new System.Windows.Forms.Panel();
-            this.MENUDIVIDER1 = new System.Windows.Forms.Panel();
             this.WalletTabButton = new System.Windows.Forms.TableLayoutPanel();
             this.WalletTabIcon = new System.Windows.Forms.PictureBox();
             this.WalletTabLabel = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.LockedIcon = new System.Windows.Forms.PictureBox();
             this.SendTabButton = new System.Windows.Forms.TableLayoutPanel();
             this.SendTabIcon = new System.Windows.Forms.PictureBox();
             this.SendTabLabel = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
+            this.HeaderLabel = new System.Windows.Forms.Label();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.HeaderLogo = new System.Windows.Forms.PictureBox();
+            this.LockedIcon = new System.Windows.Forms.PictureBox();
+            this.OpenImportFile = new System.Windows.Forms.OpenFileDialog();
+            this.MenuPanel = new System.Windows.Forms.Panel();
+            this.MENUDIVIDER6 = new System.Windows.Forms.Panel();
+            this.MENUDIVIDER5 = new System.Windows.Forms.Panel();
+            this.MENUDIVIDER4 = new System.Windows.Forms.Panel();
+            this.MENUDIVIDER7 = new System.Windows.Forms.Panel();
+            this.MENUDIVIDER3 = new System.Windows.Forms.Panel();
+            this.MENUDIVIDER2 = new System.Windows.Forms.Panel();
+            this.MENUDIVIDER1 = new System.Windows.Forms.Panel();
             this.MainWindowTable = new System.Windows.Forms.TableLayoutPanel();
             this.RightSideTable = new System.Windows.Forms.TableLayoutPanel();
             this.FooterPanel = new System.Windows.Forms.Panel();
+            this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.timeStampDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.amountDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.feeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -208,8 +231,30 @@
             this.recentBlocksBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.MenuStrip.SuspendLayout();
             this.SendTab.SuspendLayout();
+            this.SendTabScrollPanel.SuspendLayout();
+            this.SendTabLayout.SuspendLayout();
+            this.panel1.SuspendLayout();
+            this.QuickSendPanel.SuspendLayout();
+            this.AmountFeeTable.SuspendLayout();
+            this.panel2.SuspendLayout();
+            this.TextBoxSizer2.SuspendLayout();
+            this.panel3.SuspendLayout();
+            this.TextBoxSizer3.SuspendLayout();
+            this.TextBoxSizer4.SuspendLayout();
+            this.TextBoxSizer1.SuspendLayout();
+            this.ComboBoxSizer1.SuspendLayout();
+            this.AdvancedSendPanel.SuspendLayout();
+            this.UnlockTimeMixinTable.SuspendLayout();
+            this.panel4.SuspendLayout();
+            this.TextBoxSizer7.SuspendLayout();
+            this.panel5.SuspendLayout();
+            this.TextBoxSizer8.SuspendLayout();
+            this.TextBoxSizer6.SuspendLayout();
+            this.TextBoxSizer5.SuspendLayout();
             this.WalletTab.SuspendLayout();
-            this.SelectedAddressInfo.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
+            this.TextBoxSizer9.SuspendLayout();
+            this.ComboBoxSizer2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.WalletTabs.SuspendLayout();
             this.TransactonLogTab.SuspendLayout();
@@ -226,7 +271,6 @@
             this.tableLayoutPanel3.SuspendLayout();
             this.groupBox6.SuspendLayout();
             this.groupBox3.SuspendLayout();
-            this.MenuPanel.SuspendLayout();
             this.OptionsTabButton.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.OptionsTabIcon)).BeginInit();
             this.NetworkTabButton.SuspendLayout();
@@ -237,10 +281,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.TransactionLogTabIcon)).BeginInit();
             this.WalletTabButton.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.WalletTabIcon)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.LockedIcon)).BeginInit();
             this.SendTabButton.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.SendTabIcon)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.HeaderLogo)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.LockedIcon)).BeginInit();
+            this.MenuPanel.SuspendLayout();
             this.MainWindowTable.SuspendLayout();
             this.RightSideTable.SuspendLayout();
             this.FooterPanel.SuspendLayout();
@@ -255,7 +301,7 @@
             this.WalletMenu,
             this.NetworkMenu,
             this.mobileToolStripMenuItem,
-            this.OptionsMenu});
+            this.aboutToolStripMenuItem});
             this.MenuStrip.Location = new System.Drawing.Point(0, 0);
             this.MenuStrip.Name = "MenuStrip";
             this.MenuStrip.Size = new System.Drawing.Size(784, 24);
@@ -402,35 +448,6 @@
             this.stopMobileServerToolStripMenuItem.Text = "Stop Mobile Server";
             this.stopMobileServerToolStripMenuItem.Click += new System.EventHandler(this.stopMobileServerToolStripMenuItem_Click);
             // 
-            // OptionsMenu
-            // 
-            this.OptionsMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.OptionsMenuOption,
-            this.toolStripMenuItem2,
-            this.AboutMenuOption});
-            this.OptionsMenu.Name = "OptionsMenu";
-            this.OptionsMenu.Size = new System.Drawing.Size(61, 20);
-            this.OptionsMenu.Text = "Options";
-            // 
-            // OptionsMenuOption
-            // 
-            this.OptionsMenuOption.Name = "OptionsMenuOption";
-            this.OptionsMenuOption.Size = new System.Drawing.Size(116, 22);
-            this.OptionsMenuOption.Text = "Options";
-            this.OptionsMenuOption.Click += new System.EventHandler(this.optionsToolStripMenuItem_Click);
-            // 
-            // toolStripMenuItem2
-            // 
-            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(113, 6);
-            // 
-            // AboutMenuOption
-            // 
-            this.AboutMenuOption.Name = "AboutMenuOption";
-            this.AboutMenuOption.Size = new System.Drawing.Size(116, 22);
-            this.AboutMenuOption.Text = "About";
-            this.AboutMenuOption.Click += new System.EventHandler(this.aboutShellWalletToolStripMenuItem_Click);
-            // 
             // OpenWalletDialog
             // 
             this.OpenWalletDialog.FileName = "Wallet";
@@ -451,385 +468,634 @@
             // SendTab
             // 
             this.SendTab.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.SendTab.Controls.Add(this.TransactionOutput);
-            this.SendTab.Controls.Add(this.label8);
-            this.SendTab.Controls.Add(this.label20);
-            this.SendTab.Controls.Add(this.label7);
-            this.SendTab.Controls.Add(this.label6);
-            this.SendTab.Controls.Add(this.label16);
-            this.SendTab.Controls.Add(this.Mixin);
-            this.SendTab.Controls.Add(this.UnlockTime);
-            this.SendTab.Controls.Add(this.ChangeAddress);
-            this.SendTab.Controls.Add(this.Fee);
-            this.SendTab.Controls.Add(this.label17);
-            this.SendTab.Controls.Add(this.label9);
-            this.SendTab.Controls.Add(this.ChangeAddressLabel);
-            this.SendTab.Controls.Add(this.AmountToSend);
-            this.SendTab.Controls.Add(this.SendFromAddress);
-            this.SendTab.Controls.Add(this.SendToAddress);
-            this.SendTab.Controls.Add(this.SendTransaction);
-            this.SendTab.Controls.Add(this.label4);
-            this.SendTab.Controls.Add(this.label5);
-            this.SendTab.Controls.Add(this.ExtraBox);
-            this.SendTab.Controls.Add(this.ChangeAddressOptional);
-            this.SendTab.Controls.Add(this.label10);
-            this.SendTab.Controls.Add(this.label11);
-            this.SendTab.Controls.Add(this.label14);
-            this.SendTab.Controls.Add(this.label15);
-            this.SendTab.Controls.Add(this.PaymentID);
+            this.SendTab.Controls.Add(this.SendTabScrollPanel);
             this.SendTab.ForeColor = System.Drawing.Color.Black;
             this.SendTab.Location = new System.Drawing.Point(4, 4);
             this.SendTab.Name = "SendTab";
             this.SendTab.Padding = new System.Windows.Forms.Padding(6);
-            this.SendTab.Size = new System.Drawing.Size(595, 426);
+            this.SendTab.Size = new System.Drawing.Size(601, 432);
             this.SendTab.TabIndex = 2;
             this.SendTab.Text = "Send";
             // 
+            // SendTabScrollPanel
+            // 
+            this.SendTabScrollPanel.AutoScroll = true;
+            this.SendTabScrollPanel.Controls.Add(this.SendTabLayout);
+            this.SendTabScrollPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.SendTabScrollPanel.Location = new System.Drawing.Point(6, 6);
+            this.SendTabScrollPanel.Margin = new System.Windows.Forms.Padding(0);
+            this.SendTabScrollPanel.Name = "SendTabScrollPanel";
+            this.SendTabScrollPanel.Size = new System.Drawing.Size(589, 420);
+            this.SendTabScrollPanel.TabIndex = 23;
+            // 
+            // SendTabLayout
+            // 
+            this.SendTabLayout.ColumnCount = 1;
+            this.SendTabLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.SendTabLayout.Controls.Add(this.panel1, 0, 2);
+            this.SendTabLayout.Controls.Add(this.QuickSendPanel, 0, 0);
+            this.SendTabLayout.Controls.Add(this.AdvancedSendPanel, 0, 1);
+            this.SendTabLayout.Dock = System.Windows.Forms.DockStyle.Top;
+            this.SendTabLayout.Location = new System.Drawing.Point(0, 0);
+            this.SendTabLayout.Margin = new System.Windows.Forms.Padding(0);
+            this.SendTabLayout.Name = "SendTabLayout";
+            this.SendTabLayout.RowCount = 3;
+            this.SendTabLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 260F));
+            this.SendTabLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 159F));
+            this.SendTabLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.SendTabLayout.Size = new System.Drawing.Size(572, 575);
+            this.SendTabLayout.TabIndex = 36;
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.SendOutputLabel);
+            this.panel1.Controls.Add(this.TransactionOutput);
+            this.panel1.Controls.Add(this.SendTransaction);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Location = new System.Drawing.Point(3, 422);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(566, 150);
+            this.panel1.TabIndex = 37;
+            // 
+            // SendOutputLabel
+            // 
+            this.SendOutputLabel.AutoSize = true;
+            this.SendOutputLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SendOutputLabel.Location = new System.Drawing.Point(3, 21);
+            this.SendOutputLabel.Name = "SendOutputLabel";
+            this.SendOutputLabel.Size = new System.Drawing.Size(57, 17);
+            this.SendOutputLabel.TabIndex = 34;
+            this.SendOutputLabel.Text = "Output";
+            // 
             // TransactionOutput
             // 
-            this.TransactionOutput.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.TransactionOutput.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.TransactionOutput.Location = new System.Drawing.Point(9, 332);
+            this.TransactionOutput.Location = new System.Drawing.Point(6, 38);
             this.TransactionOutput.Multiline = true;
             this.TransactionOutput.Name = "TransactionOutput";
             this.TransactionOutput.ReadOnly = true;
             this.TransactionOutput.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.TransactionOutput.Size = new System.Drawing.Size(577, 85);
+            this.TransactionOutput.Size = new System.Drawing.Size(557, 100);
             this.TransactionOutput.TabIndex = 10;
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(9, 316);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(45, 13);
-            this.label8.TabIndex = 9;
-            this.label8.Text = "Output";
-            // 
-            // label20
-            // 
-            this.label20.AutoSize = true;
-            this.label20.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label20.Location = new System.Drawing.Point(9, 13);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(67, 13);
-            this.label20.TabIndex = 22;
-            this.label20.Text = "Send From";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label7.Location = new System.Drawing.Point(9, 170);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(62, 13);
-            this.label7.TabIndex = 6;
-            this.label7.Text = "Payment ID";
-            // 
-            // label6
-            // 
-            this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(297, 56);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(28, 13);
-            this.label6.TabIndex = 4;
-            this.label6.Text = "Fee";
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label16.Location = new System.Drawing.Point(242, 248);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(52, 13);
-            this.label16.TabIndex = 20;
-            this.label16.Text = "(Optional)";
-            // 
-            // Mixin
-            // 
-            this.Mixin.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.Mixin.Location = new System.Drawing.Point(300, 264);
-            this.Mixin.Name = "Mixin";
-            this.Mixin.Size = new System.Drawing.Size(286, 20);
-            this.Mixin.TabIndex = 7;
-            this.Mixin.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.NumberOnly);
-            // 
-            // UnlockTime
-            // 
-            this.UnlockTime.Location = new System.Drawing.Point(9, 264);
-            this.UnlockTime.Name = "UnlockTime";
-            this.UnlockTime.Size = new System.Drawing.Size(285, 20);
-            this.UnlockTime.TabIndex = 5;
-            this.UnlockTime.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.NumberOnly);
-            // 
-            // ChangeAddress
-            // 
-            this.ChangeAddress.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.ChangeAddress.Location = new System.Drawing.Point(9, 147);
-            this.ChangeAddress.Name = "ChangeAddress";
-            this.ChangeAddress.Size = new System.Drawing.Size(577, 20);
-            this.ChangeAddress.TabIndex = 6;
-            // 
-            // Fee
-            // 
-            this.Fee.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.Fee.Location = new System.Drawing.Point(300, 72);
-            this.Fee.Name = "Fee";
-            this.Fee.Size = new System.Drawing.Size(286, 20);
-            this.Fee.TabIndex = 3;
-            this.Fee.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.DecimalNumberOnly);
-            // 
-            // label17
-            // 
-            this.label17.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label17.AutoSize = true;
-            this.label17.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label17.Location = new System.Drawing.Point(534, 208);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(52, 13);
-            this.label17.TabIndex = 21;
-            this.label17.Text = "(Optional)";
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label9.Location = new System.Drawing.Point(9, 209);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(31, 13);
-            this.label9.TabIndex = 11;
-            this.label9.Text = "Extra";
-            // 
-            // ChangeAddressLabel
-            // 
-            this.ChangeAddressLabel.AutoSize = true;
-            this.ChangeAddressLabel.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.ChangeAddressLabel.Location = new System.Drawing.Point(9, 131);
-            this.ChangeAddressLabel.Name = "ChangeAddressLabel";
-            this.ChangeAddressLabel.Size = new System.Drawing.Size(85, 13);
-            this.ChangeAddressLabel.TabIndex = 16;
-            this.ChangeAddressLabel.Text = "Change Address";
-            // 
-            // AmountToSend
-            // 
-            this.AmountToSend.Location = new System.Drawing.Point(9, 72);
-            this.AmountToSend.Name = "AmountToSend";
-            this.AmountToSend.Size = new System.Drawing.Size(285, 20);
-            this.AmountToSend.TabIndex = 2;
-            this.AmountToSend.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.DecimalNumberOnly);
-            // 
-            // SendFromAddress
-            // 
-            this.SendFromAddress.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.SendFromAddress.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.SendFromAddress.FormattingEnabled = true;
-            this.SendFromAddress.Items.AddRange(new object[] {
-            "Entire Wallet Balance",
-            "Selected Address"});
-            this.SendFromAddress.Location = new System.Drawing.Point(9, 29);
-            this.SendFromAddress.Name = "SendFromAddress";
-            this.SendFromAddress.Size = new System.Drawing.Size(577, 21);
-            this.SendFromAddress.TabIndex = 0;
-            this.SendFromAddress.SelectedValueChanged += new System.EventHandler(this.SendFromAddress_SelectedValueChanged);
-            // 
-            // SendToAddress
-            // 
-            this.SendToAddress.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.SendToAddress.Location = new System.Drawing.Point(9, 108);
-            this.SendToAddress.Name = "SendToAddress";
-            this.SendToAddress.Size = new System.Drawing.Size(577, 20);
-            this.SendToAddress.TabIndex = 1;
             // 
             // SendTransaction
             // 
-            this.SendTransaction.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.SendTransaction.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.SendTransaction.Enabled = false;
-            this.SendTransaction.Location = new System.Drawing.Point(9, 290);
+            this.SendTransaction.Location = new System.Drawing.Point(413, 0);
             this.SendTransaction.Name = "SendTransaction";
-            this.SendTransaction.Size = new System.Drawing.Size(577, 23);
+            this.SendTransaction.Size = new System.Drawing.Size(150, 32);
             this.SendTransaction.TabIndex = 9;
             this.SendTransaction.Text = "Send Transaction";
             this.SendTransaction.UseVisualStyleBackColor = true;
             this.SendTransaction.Click += new System.EventHandler(this.SendTransaction_Click);
             // 
-            // label4
+            // QuickSendPanel
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(9, 92);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(55, 13);
-            this.label4.TabIndex = 0;
-            this.label4.Text = "Send To";
+            this.QuickSendPanel.Controls.Add(this.AmountFeeTable);
+            this.QuickSendPanel.Controls.Add(this.label30);
+            this.QuickSendPanel.Controls.Add(this.ChangeAddressLabel);
+            this.QuickSendPanel.Controls.Add(this.ShowAdvancedSendLabel);
+            this.QuickSendPanel.Controls.Add(this.label4);
+            this.QuickSendPanel.Controls.Add(this.TextBoxSizer4);
+            this.QuickSendPanel.Controls.Add(this.ChangeAddressOptional);
+            this.QuickSendPanel.Controls.Add(this.TextBoxSizer1);
+            this.QuickSendPanel.Controls.Add(this.label20);
+            this.QuickSendPanel.Controls.Add(this.ComboBoxSizer1);
+            this.QuickSendPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.QuickSendPanel.Location = new System.Drawing.Point(0, 0);
+            this.QuickSendPanel.Margin = new System.Windows.Forms.Padding(0);
+            this.QuickSendPanel.Name = "QuickSendPanel";
+            this.QuickSendPanel.Size = new System.Drawing.Size(572, 260);
+            this.QuickSendPanel.TabIndex = 0;
+            // 
+            // AmountFeeTable
+            // 
+            this.AmountFeeTable.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.AmountFeeTable.ColumnCount = 2;
+            this.AmountFeeTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.AmountFeeTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.AmountFeeTable.Controls.Add(this.panel2, 0, 0);
+            this.AmountFeeTable.Controls.Add(this.panel3, 1, 0);
+            this.AmountFeeTable.Location = new System.Drawing.Point(6, 129);
+            this.AmountFeeTable.Name = "AmountFeeTable";
+            this.AmountFeeTable.RowCount = 1;
+            this.AmountFeeTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.AmountFeeTable.Size = new System.Drawing.Size(560, 48);
+            this.AmountFeeTable.TabIndex = 42;
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.label5);
+            this.panel2.Controls.Add(this.TextBoxSizer2);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel2.Location = new System.Drawing.Point(0, 0);
+            this.panel2.Margin = new System.Windows.Forms.Padding(0);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(280, 48);
+            this.panel2.TabIndex = 0;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(9, 56);
+            this.label5.Location = new System.Drawing.Point(0, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(49, 13);
             this.label5.TabIndex = 2;
             this.label5.Text = "Amount";
             // 
-            // ExtraBox
+            // TextBoxSizer2
             // 
-            this.ExtraBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.TextBoxSizer2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.ExtraBox.Location = new System.Drawing.Point(9, 225);
-            this.ExtraBox.Name = "ExtraBox";
-            this.ExtraBox.Size = new System.Drawing.Size(577, 20);
-            this.ExtraBox.TabIndex = 8;
+            this.TextBoxSizer2.BackColor = System.Drawing.Color.White;
+            this.TextBoxSizer2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.TextBoxSizer2.Controls.Add(this.AmountToSend);
+            this.TextBoxSizer2.Location = new System.Drawing.Point(0, 16);
+            this.TextBoxSizer2.Name = "TextBoxSizer2";
+            this.TextBoxSizer2.Size = new System.Drawing.Size(277, 32);
+            this.TextBoxSizer2.TabIndex = 26;
+            // 
+            // AmountToSend
+            // 
+            this.AmountToSend.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.AmountToSend.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.AmountToSend.Location = new System.Drawing.Point(6, 9);
+            this.AmountToSend.Name = "AmountToSend";
+            this.AmountToSend.Size = new System.Drawing.Size(263, 13);
+            this.AmountToSend.TabIndex = 2;
+            this.AmountToSend.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.DecimalNumberOnly);
+            // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.label6);
+            this.panel3.Controls.Add(this.TextBoxSizer3);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel3.Location = new System.Drawing.Point(280, 0);
+            this.panel3.Margin = new System.Windows.Forms.Padding(0);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(280, 48);
+            this.panel3.TabIndex = 1;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(0, 0);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(28, 13);
+            this.label6.TabIndex = 4;
+            this.label6.Text = "Fee";
+            // 
+            // TextBoxSizer3
+            // 
+            this.TextBoxSizer3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.TextBoxSizer3.BackColor = System.Drawing.Color.White;
+            this.TextBoxSizer3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.TextBoxSizer3.Controls.Add(this.Fee);
+            this.TextBoxSizer3.Location = new System.Drawing.Point(3, 16);
+            this.TextBoxSizer3.Name = "TextBoxSizer3";
+            this.TextBoxSizer3.Size = new System.Drawing.Size(277, 32);
+            this.TextBoxSizer3.TabIndex = 27;
+            // 
+            // Fee
+            // 
+            this.Fee.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.Fee.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.Fee.Location = new System.Drawing.Point(6, 9);
+            this.Fee.Name = "Fee";
+            this.Fee.Size = new System.Drawing.Size(263, 13);
+            this.Fee.TabIndex = 3;
+            this.Fee.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.DecimalNumberOnly);
+            // 
+            // label30
+            // 
+            this.label30.AutoSize = true;
+            this.label30.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label30.Location = new System.Drawing.Point(3, 3);
+            this.label30.Name = "label30";
+            this.label30.Size = new System.Drawing.Size(91, 17);
+            this.label30.TabIndex = 23;
+            this.label30.Text = "Quick Send";
+            // 
+            // ChangeAddressLabel
+            // 
+            this.ChangeAddressLabel.AutoSize = true;
+            this.ChangeAddressLabel.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.ChangeAddressLabel.Location = new System.Drawing.Point(3, 181);
+            this.ChangeAddressLabel.Name = "ChangeAddressLabel";
+            this.ChangeAddressLabel.Size = new System.Drawing.Size(85, 13);
+            this.ChangeAddressLabel.TabIndex = 16;
+            this.ChangeAddressLabel.Text = "Change Address";
+            // 
+            // ShowAdvancedSendLabel
+            // 
+            this.ShowAdvancedSendLabel.AutoSize = true;
+            this.ShowAdvancedSendLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ShowAdvancedSendLabel.ForeColor = System.Drawing.Color.Black;
+            this.ShowAdvancedSendLabel.Location = new System.Drawing.Point(3, 236);
+            this.ShowAdvancedSendLabel.Name = "ShowAdvancedSendLabel";
+            this.ShowAdvancedSendLabel.Size = new System.Drawing.Size(138, 17);
+            this.ShowAdvancedSendLabel.TabIndex = 29;
+            this.ShowAdvancedSendLabel.Text = "(+Hide Advanced)";
+            this.ShowAdvancedSendLabel.Click += new System.EventHandler(this.ShowHideAdvancedSend);
+            this.ShowAdvancedSendLabel.MouseEnter += new System.EventHandler(this.label31_MouseEnter);
+            this.ShowAdvancedSendLabel.MouseLeave += new System.EventHandler(this.label31_MouseLeave);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(3, 78);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(55, 13);
+            this.label4.TabIndex = 0;
+            this.label4.Text = "Send To";
+            // 
+            // TextBoxSizer4
+            // 
+            this.TextBoxSizer4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.TextBoxSizer4.BackColor = System.Drawing.Color.White;
+            this.TextBoxSizer4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.TextBoxSizer4.Controls.Add(this.ChangeAddress);
+            this.TextBoxSizer4.Location = new System.Drawing.Point(6, 196);
+            this.TextBoxSizer4.Name = "TextBoxSizer4";
+            this.TextBoxSizer4.Size = new System.Drawing.Size(560, 32);
+            this.TextBoxSizer4.TabIndex = 28;
+            // 
+            // ChangeAddress
+            // 
+            this.ChangeAddress.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.ChangeAddress.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.ChangeAddress.Location = new System.Drawing.Point(6, 9);
+            this.ChangeAddress.Name = "ChangeAddress";
+            this.ChangeAddress.Size = new System.Drawing.Size(546, 13);
+            this.ChangeAddress.TabIndex = 6;
             // 
             // ChangeAddressOptional
             // 
             this.ChangeAddressOptional.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.ChangeAddressOptional.AutoSize = true;
             this.ChangeAddressOptional.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.ChangeAddressOptional.Location = new System.Drawing.Point(534, 130);
+            this.ChangeAddressOptional.Location = new System.Drawing.Point(514, 181);
             this.ChangeAddressOptional.Name = "ChangeAddressOptional";
             this.ChangeAddressOptional.Size = new System.Drawing.Size(52, 13);
             this.ChangeAddressOptional.TabIndex = 17;
             this.ChangeAddressOptional.Text = "(Optional)";
             // 
-            // label10
+            // TextBoxSizer1
             // 
-            this.label10.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label10.AutoSize = true;
-            this.label10.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label10.Location = new System.Drawing.Point(300, 248);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(31, 13);
-            this.label10.TabIndex = 12;
-            this.label10.Text = "Mixin";
+            this.TextBoxSizer1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.TextBoxSizer1.BackColor = System.Drawing.Color.White;
+            this.TextBoxSizer1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.TextBoxSizer1.Controls.Add(this.SendToAddress);
+            this.TextBoxSizer1.Location = new System.Drawing.Point(6, 94);
+            this.TextBoxSizer1.Name = "TextBoxSizer1";
+            this.TextBoxSizer1.Size = new System.Drawing.Size(560, 32);
+            this.TextBoxSizer1.TabIndex = 25;
+            // 
+            // SendToAddress
+            // 
+            this.SendToAddress.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.SendToAddress.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.SendToAddress.Location = new System.Drawing.Point(6, 9);
+            this.SendToAddress.Name = "SendToAddress";
+            this.SendToAddress.Size = new System.Drawing.Size(546, 13);
+            this.SendToAddress.TabIndex = 1;
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label20.Location = new System.Drawing.Point(3, 27);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(67, 13);
+            this.label20.TabIndex = 22;
+            this.label20.Text = "Send From";
+            // 
+            // ComboBoxSizer1
+            // 
+            this.ComboBoxSizer1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.ComboBoxSizer1.BackColor = System.Drawing.Color.White;
+            this.ComboBoxSizer1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.ComboBoxSizer1.Controls.Add(this.SendFromAddress);
+            this.ComboBoxSizer1.Location = new System.Drawing.Point(6, 43);
+            this.ComboBoxSizer1.Name = "ComboBoxSizer1";
+            this.ComboBoxSizer1.Size = new System.Drawing.Size(560, 32);
+            this.ComboBoxSizer1.TabIndex = 24;
+            // 
+            // SendFromAddress
+            // 
+            this.SendFromAddress.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.SendFromAddress.BackColor = System.Drawing.Color.White;
+            this.SendFromAddress.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.SendFromAddress.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.SendFromAddress.FormattingEnabled = true;
+            this.SendFromAddress.Items.AddRange(new object[] {
+            "Entire Wallet Balance",
+            "Selected Address"});
+            this.SendFromAddress.Location = new System.Drawing.Point(6, 5);
+            this.SendFromAddress.Margin = new System.Windows.Forms.Padding(0, 5, 0, 6);
+            this.SendFromAddress.Name = "SendFromAddress";
+            this.SendFromAddress.Size = new System.Drawing.Size(546, 21);
+            this.SendFromAddress.TabIndex = 0;
+            this.SendFromAddress.SelectedValueChanged += new System.EventHandler(this.SendFromAddress_SelectedValueChanged);
+            // 
+            // AdvancedSendPanel
+            // 
+            this.AdvancedSendPanel.Controls.Add(this.UnlockTimeMixinTable);
+            this.AdvancedSendPanel.Controls.Add(this.label7);
+            this.AdvancedSendPanel.Controls.Add(this.label9);
+            this.AdvancedSendPanel.Controls.Add(this.label17);
+            this.AdvancedSendPanel.Controls.Add(this.TextBoxSizer6);
+            this.AdvancedSendPanel.Controls.Add(this.TextBoxSizer5);
+            this.AdvancedSendPanel.Controls.Add(this.label15);
+            this.AdvancedSendPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.AdvancedSendPanel.Location = new System.Drawing.Point(0, 260);
+            this.AdvancedSendPanel.Margin = new System.Windows.Forms.Padding(0);
+            this.AdvancedSendPanel.Name = "AdvancedSendPanel";
+            this.AdvancedSendPanel.Size = new System.Drawing.Size(572, 159);
+            this.AdvancedSendPanel.TabIndex = 35;
+            // 
+            // UnlockTimeMixinTable
+            // 
+            this.UnlockTimeMixinTable.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.UnlockTimeMixinTable.ColumnCount = 2;
+            this.UnlockTimeMixinTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.UnlockTimeMixinTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.UnlockTimeMixinTable.Controls.Add(this.panel4, 0, 0);
+            this.UnlockTimeMixinTable.Controls.Add(this.panel5, 1, 0);
+            this.UnlockTimeMixinTable.Location = new System.Drawing.Point(6, 105);
+            this.UnlockTimeMixinTable.Name = "UnlockTimeMixinTable";
+            this.UnlockTimeMixinTable.RowCount = 1;
+            this.UnlockTimeMixinTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.UnlockTimeMixinTable.Size = new System.Drawing.Size(560, 48);
+            this.UnlockTimeMixinTable.TabIndex = 42;
+            // 
+            // panel4
+            // 
+            this.panel4.Controls.Add(this.label11);
+            this.panel4.Controls.Add(this.TextBoxSizer7);
+            this.panel4.Controls.Add(this.label16);
+            this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel4.Location = new System.Drawing.Point(0, 0);
+            this.panel4.Margin = new System.Windows.Forms.Padding(0);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(280, 48);
+            this.panel4.TabIndex = 0;
             // 
             // label11
             // 
             this.label11.AutoSize = true;
             this.label11.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label11.Location = new System.Drawing.Point(9, 248);
+            this.label11.Location = new System.Drawing.Point(0, 0);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(67, 13);
             this.label11.TabIndex = 15;
             this.label11.Text = "Unlock Time";
+            // 
+            // TextBoxSizer7
+            // 
+            this.TextBoxSizer7.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.TextBoxSizer7.BackColor = System.Drawing.Color.White;
+            this.TextBoxSizer7.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.TextBoxSizer7.Controls.Add(this.UnlockTime);
+            this.TextBoxSizer7.Location = new System.Drawing.Point(0, 16);
+            this.TextBoxSizer7.Name = "TextBoxSizer7";
+            this.TextBoxSizer7.Size = new System.Drawing.Size(277, 32);
+            this.TextBoxSizer7.TabIndex = 32;
+            // 
+            // UnlockTime
+            // 
+            this.UnlockTime.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.UnlockTime.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.UnlockTime.Location = new System.Drawing.Point(6, 9);
+            this.UnlockTime.Name = "UnlockTime";
+            this.UnlockTime.Size = new System.Drawing.Size(263, 13);
+            this.UnlockTime.TabIndex = 5;
+            this.UnlockTime.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.NumberOnly);
+            // 
+            // label16
+            // 
+            this.label16.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label16.AutoSize = true;
+            this.label16.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.label16.Location = new System.Drawing.Point(228, 0);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(52, 13);
+            this.label16.TabIndex = 20;
+            this.label16.Text = "(Optional)";
+            // 
+            // panel5
+            // 
+            this.panel5.Controls.Add(this.label10);
+            this.panel5.Controls.Add(this.label14);
+            this.panel5.Controls.Add(this.TextBoxSizer8);
+            this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel5.Location = new System.Drawing.Point(280, 0);
+            this.panel5.Margin = new System.Windows.Forms.Padding(0);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(280, 48);
+            this.panel5.TabIndex = 1;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.label10.Location = new System.Drawing.Point(0, 0);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(31, 13);
+            this.label10.TabIndex = 12;
+            this.label10.Text = "Mixin";
             // 
             // label14
             // 
             this.label14.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label14.AutoSize = true;
             this.label14.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label14.Location = new System.Drawing.Point(534, 248);
+            this.label14.Location = new System.Drawing.Point(228, 0);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(52, 13);
             this.label14.TabIndex = 18;
             this.label14.Text = "(Optional)";
+            // 
+            // TextBoxSizer8
+            // 
+            this.TextBoxSizer8.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.TextBoxSizer8.BackColor = System.Drawing.Color.White;
+            this.TextBoxSizer8.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.TextBoxSizer8.Controls.Add(this.Mixin);
+            this.TextBoxSizer8.Location = new System.Drawing.Point(3, 16);
+            this.TextBoxSizer8.Name = "TextBoxSizer8";
+            this.TextBoxSizer8.Size = new System.Drawing.Size(277, 32);
+            this.TextBoxSizer8.TabIndex = 33;
+            // 
+            // Mixin
+            // 
+            this.Mixin.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.Mixin.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.Mixin.Location = new System.Drawing.Point(6, 9);
+            this.Mixin.Name = "Mixin";
+            this.Mixin.Size = new System.Drawing.Size(263, 13);
+            this.Mixin.TabIndex = 7;
+            this.Mixin.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.NumberOnly);
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.label7.Location = new System.Drawing.Point(3, 3);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(62, 13);
+            this.label7.TabIndex = 6;
+            this.label7.Text = "Payment ID";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.label9.Location = new System.Drawing.Point(3, 54);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(31, 13);
+            this.label9.TabIndex = 11;
+            this.label9.Text = "Extra";
+            // 
+            // label17
+            // 
+            this.label17.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label17.AutoSize = true;
+            this.label17.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.label17.Location = new System.Drawing.Point(514, 54);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(52, 13);
+            this.label17.TabIndex = 21;
+            this.label17.Text = "(Optional)";
+            // 
+            // TextBoxSizer6
+            // 
+            this.TextBoxSizer6.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.TextBoxSizer6.BackColor = System.Drawing.Color.White;
+            this.TextBoxSizer6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.TextBoxSizer6.Controls.Add(this.ExtraBox);
+            this.TextBoxSizer6.Location = new System.Drawing.Point(6, 70);
+            this.TextBoxSizer6.Name = "TextBoxSizer6";
+            this.TextBoxSizer6.Size = new System.Drawing.Size(560, 32);
+            this.TextBoxSizer6.TabIndex = 31;
+            // 
+            // ExtraBox
+            // 
+            this.ExtraBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.ExtraBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.ExtraBox.Location = new System.Drawing.Point(6, 9);
+            this.ExtraBox.Name = "ExtraBox";
+            this.ExtraBox.Size = new System.Drawing.Size(546, 13);
+            this.ExtraBox.TabIndex = 8;
+            // 
+            // TextBoxSizer5
+            // 
+            this.TextBoxSizer5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.TextBoxSizer5.BackColor = System.Drawing.Color.White;
+            this.TextBoxSizer5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.TextBoxSizer5.Controls.Add(this.PaymentID);
+            this.TextBoxSizer5.Location = new System.Drawing.Point(6, 19);
+            this.TextBoxSizer5.Name = "TextBoxSizer5";
+            this.TextBoxSizer5.Size = new System.Drawing.Size(560, 32);
+            this.TextBoxSizer5.TabIndex = 30;
+            // 
+            // PaymentID
+            // 
+            this.PaymentID.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.PaymentID.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.PaymentID.Location = new System.Drawing.Point(6, 9);
+            this.PaymentID.Name = "PaymentID";
+            this.PaymentID.Size = new System.Drawing.Size(546, 13);
+            this.PaymentID.TabIndex = 4;
             // 
             // label15
             // 
             this.label15.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label15.AutoSize = true;
             this.label15.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label15.Location = new System.Drawing.Point(534, 169);
+            this.label15.Location = new System.Drawing.Point(514, 3);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(52, 13);
             this.label15.TabIndex = 19;
             this.label15.Text = "(Optional)";
             // 
-            // PaymentID
-            // 
-            this.PaymentID.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.PaymentID.Location = new System.Drawing.Point(9, 186);
-            this.PaymentID.Name = "PaymentID";
-            this.PaymentID.Size = new System.Drawing.Size(577, 20);
-            this.PaymentID.TabIndex = 4;
-            // 
             // WalletTab
             // 
             this.WalletTab.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.WalletTab.Controls.Add(this.SelectedAddressInfo);
+            this.WalletTab.Controls.Add(this.pictureBox4);
+            this.WalletTab.Controls.Add(this.ChangeNickname);
+            this.WalletTab.Controls.Add(this.PrivateSpendKey);
+            this.WalletTab.Controls.Add(this.CopyAddress);
+            this.WalletTab.Controls.Add(this.ShowKeysButton);
+            this.WalletTab.Controls.Add(this.label8);
+            this.WalletTab.Controls.Add(this.label18);
+            this.WalletTab.Controls.Add(this.TextBoxSizer9);
+            this.WalletTab.Controls.Add(this.ComboBoxSizer2);
+            this.WalletTab.Controls.Add(this.label25);
+            this.WalletTab.Controls.Add(this.PublicSpendKey);
+            this.WalletTab.Controls.Add(this.label19);
+            this.WalletTab.Controls.Add(this.label26);
+            this.WalletTab.Controls.Add(this.SelectedLockedBalanceBox);
+            this.WalletTab.Controls.Add(this.pictureBox2);
+            this.WalletTab.Controls.Add(this.label24);
+            this.WalletTab.Controls.Add(this.Nickname);
+            this.WalletTab.Controls.Add(this.SelectedBalanceBox);
+            this.WalletTab.Controls.Add(this.label13);
             this.WalletTab.Controls.Add(this.DeleteSelectedAddress);
             this.WalletTab.Controls.Add(this.CreateNewAddress);
-            this.WalletTab.Controls.Add(this.WalletAddresses);
             this.WalletTab.Controls.Add(this.label1);
             this.WalletTab.ForeColor = System.Drawing.Color.Black;
             this.WalletTab.Location = new System.Drawing.Point(4, 4);
             this.WalletTab.Margin = new System.Windows.Forms.Padding(0);
             this.WalletTab.Name = "WalletTab";
             this.WalletTab.Padding = new System.Windows.Forms.Padding(6);
-            this.WalletTab.Size = new System.Drawing.Size(595, 426);
+            this.WalletTab.Size = new System.Drawing.Size(601, 432);
             this.WalletTab.TabIndex = 0;
             this.WalletTab.Text = "Wallet";
             // 
-            // SelectedAddressInfo
+            // pictureBox4
             // 
-            this.SelectedAddressInfo.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.SelectedAddressInfo.Controls.Add(this.AddressDisplay);
-            this.SelectedAddressInfo.Controls.Add(this.label13);
-            this.SelectedAddressInfo.Controls.Add(this.label18);
-            this.SelectedAddressInfo.Controls.Add(this.ChangeNickname);
-            this.SelectedAddressInfo.Controls.Add(this.ShowKeysButton);
-            this.SelectedAddressInfo.Controls.Add(this.CopyAddress);
-            this.SelectedAddressInfo.Controls.Add(this.SelectedBalanceBox);
-            this.SelectedAddressInfo.Controls.Add(this.PrivateSpendKey);
-            this.SelectedAddressInfo.Controls.Add(this.label19);
-            this.SelectedAddressInfo.Controls.Add(this.PublicSpendKey);
-            this.SelectedAddressInfo.Controls.Add(this.SelectedLockedBalanceBox);
-            this.SelectedAddressInfo.Controls.Add(this.label26);
-            this.SelectedAddressInfo.Controls.Add(this.pictureBox2);
-            this.SelectedAddressInfo.Controls.Add(this.label25);
-            this.SelectedAddressInfo.Controls.Add(this.label24);
-            this.SelectedAddressInfo.Controls.Add(this.Nickname);
-            this.SelectedAddressInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SelectedAddressInfo.Location = new System.Drawing.Point(9, 91);
-            this.SelectedAddressInfo.Name = "SelectedAddressInfo";
-            this.SelectedAddressInfo.Size = new System.Drawing.Size(577, 326);
-            this.SelectedAddressInfo.TabIndex = 23;
-            this.SelectedAddressInfo.TabStop = false;
-            this.SelectedAddressInfo.Text = "Selected Address Information";
-            // 
-            // AddressDisplay
-            // 
-            this.AddressDisplay.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.AddressDisplay.BackColor = System.Drawing.Color.White;
-            this.AddressDisplay.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.AddressDisplay.Location = new System.Drawing.Point(25, 35);
-            this.AddressDisplay.Name = "AddressDisplay";
-            this.AddressDisplay.ReadOnly = true;
-            this.AddressDisplay.Size = new System.Drawing.Size(535, 20);
-            this.AddressDisplay.TabIndex = 24;
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(22, 19);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(51, 15);
-            this.label13.TabIndex = 23;
-            this.label13.Text = "Address";
-            // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label18.ForeColor = System.Drawing.Color.Black;
-            this.label18.Location = new System.Drawing.Point(22, 59);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(52, 15);
-            this.label18.TabIndex = 2;
-            this.label18.Text = "Balance";
+            this.pictureBox4.Image = global::Shell_Wallet.Properties.Resources.ShellBlack;
+            this.pictureBox4.Location = new System.Drawing.Point(9, 188);
+            this.pictureBox4.Margin = new System.Windows.Forms.Padding(3, 3, 0, 3);
+            this.pictureBox4.Name = "pictureBox4";
+            this.pictureBox4.Size = new System.Drawing.Size(16, 16);
+            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox4.TabIndex = 26;
+            this.pictureBox4.TabStop = false;
             // 
             // ChangeNickname
             // 
@@ -837,59 +1103,15 @@
             this.ChangeNickname.BackColor = System.Drawing.Color.Gainsboro;
             this.ChangeNickname.Enabled = false;
             this.ChangeNickname.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ChangeNickname.Location = new System.Drawing.Point(169, 288);
+            this.ChangeNickname.Location = new System.Drawing.Point(165, 391);
             this.ChangeNickname.Margin = new System.Windows.Forms.Padding(3, 6, 3, 3);
             this.ChangeNickname.Name = "ChangeNickname";
             this.ChangeNickname.Size = new System.Drawing.Size(150, 32);
             this.ChangeNickname.TabIndex = 17;
             this.ChangeNickname.Text = "Change Nicckname";
+            this.ToolTip.SetToolTip(this.ChangeNickname, "Change the nickname for this address");
             this.ChangeNickname.UseVisualStyleBackColor = false;
             this.ChangeNickname.Click += new System.EventHandler(this.ChangeNickname_Click);
-            // 
-            // ShowKeysButton
-            // 
-            this.ShowKeysButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.ShowKeysButton.BackColor = System.Drawing.Color.Gainsboro;
-            this.ShowKeysButton.Enabled = false;
-            this.ShowKeysButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ShowKeysButton.Location = new System.Drawing.Point(6, 288);
-            this.ShowKeysButton.Margin = new System.Windows.Forms.Padding(3, 6, 3, 3);
-            this.ShowKeysButton.Name = "ShowKeysButton";
-            this.ShowKeysButton.Size = new System.Drawing.Size(150, 32);
-            this.ShowKeysButton.TabIndex = 22;
-            this.ShowKeysButton.Text = "Show Keys";
-            this.ShowKeysButton.UseVisualStyleBackColor = false;
-            this.ShowKeysButton.Click += new System.EventHandler(this.ShowKeysClick);
-            // 
-            // CopyAddress
-            // 
-            this.CopyAddress.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.CopyAddress.BackColor = System.Drawing.Color.Gainsboro;
-            this.CopyAddress.Enabled = false;
-            this.CopyAddress.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CopyAddress.Location = new System.Drawing.Point(421, 288);
-            this.CopyAddress.Name = "CopyAddress";
-            this.CopyAddress.Size = new System.Drawing.Size(150, 32);
-            this.CopyAddress.TabIndex = 1;
-            this.CopyAddress.Text = "Copy to Clipboard";
-            this.CopyAddress.UseVisualStyleBackColor = false;
-            this.CopyAddress.Click += new System.EventHandler(this.CopyAddress_Click);
-            // 
-            // SelectedBalanceBox
-            // 
-            this.SelectedBalanceBox.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.SelectedBalanceBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.SelectedBalanceBox.Enabled = false;
-            this.SelectedBalanceBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SelectedBalanceBox.ForeColor = System.Drawing.Color.Black;
-            this.SelectedBalanceBox.Location = new System.Drawing.Point(25, 75);
-            this.SelectedBalanceBox.Margin = new System.Windows.Forms.Padding(3, 3, 6, 3);
-            this.SelectedBalanceBox.Name = "SelectedBalanceBox";
-            this.SelectedBalanceBox.ReadOnly = true;
-            this.SelectedBalanceBox.Size = new System.Drawing.Size(150, 16);
-            this.SelectedBalanceBox.TabIndex = 3;
-            this.SelectedBalanceBox.Text = "-";
-            this.ToolTip.SetToolTip(this.SelectedBalanceBox, "Balance of your selected address");
             // 
             // PrivateSpendKey
             // 
@@ -897,7 +1119,7 @@
             this.PrivateSpendKey.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.PrivateSpendKey.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.PrivateSpendKey.ForeColor = System.Drawing.Color.Black;
-            this.PrivateSpendKey.Location = new System.Drawing.Point(25, 195);
+            this.PrivateSpendKey.Location = new System.Drawing.Point(6, 336);
             this.PrivateSpendKey.Margin = new System.Windows.Forms.Padding(3, 3, 30, 3);
             this.PrivateSpendKey.Name = "PrivateSpendKey";
             this.PrivateSpendKey.ReadOnly = true;
@@ -905,16 +1127,127 @@
             this.PrivateSpendKey.TabIndex = 21;
             this.PrivateSpendKey.Text = "-";
             // 
-            // label19
+            // CopyAddress
             // 
-            this.label19.AutoSize = true;
-            this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label19.ForeColor = System.Drawing.Color.Black;
-            this.label19.Location = new System.Drawing.Point(22, 99);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(95, 15);
-            this.label19.TabIndex = 4;
-            this.label19.Text = "Locked Balance";
+            this.CopyAddress.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.CopyAddress.BackColor = System.Drawing.Color.Gainsboro;
+            this.CopyAddress.Enabled = false;
+            this.CopyAddress.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CopyAddress.Image = global::Shell_Wallet.Properties.Resources.Clipboard;
+            this.CopyAddress.Location = new System.Drawing.Point(560, 133);
+            this.CopyAddress.Name = "CopyAddress";
+            this.CopyAddress.Size = new System.Drawing.Size(32, 32);
+            this.CopyAddress.TabIndex = 1;
+            this.ToolTip.SetToolTip(this.CopyAddress, "Copy this address to your clipboard");
+            this.CopyAddress.UseVisualStyleBackColor = false;
+            this.CopyAddress.Click += new System.EventHandler(this.CopyAddress_Click);
+            // 
+            // ShowKeysButton
+            // 
+            this.ShowKeysButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.ShowKeysButton.BackColor = System.Drawing.Color.Gainsboro;
+            this.ShowKeysButton.Enabled = false;
+            this.ShowKeysButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ShowKeysButton.Location = new System.Drawing.Point(9, 391);
+            this.ShowKeysButton.Margin = new System.Windows.Forms.Padding(3, 6, 3, 3);
+            this.ShowKeysButton.Name = "ShowKeysButton";
+            this.ShowKeysButton.Size = new System.Drawing.Size(150, 32);
+            this.ShowKeysButton.TabIndex = 22;
+            this.ShowKeysButton.Text = "Show Keys";
+            this.ToolTip.SetToolTip(this.ShowKeysButton, "Show or hide your spend keys");
+            this.ShowKeysButton.UseVisualStyleBackColor = false;
+            this.ShowKeysButton.Click += new System.EventHandler(this.ShowKeysClick);
+            // 
+            // label8
+            // 
+            this.label8.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(9, 99);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(221, 17);
+            this.label8.TabIndex = 25;
+            this.label8.Text = "Selected Address Information";
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label18.ForeColor = System.Drawing.Color.Black;
+            this.label18.Location = new System.Drawing.Point(6, 170);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(52, 15);
+            this.label18.TabIndex = 2;
+            this.label18.Text = "Balance";
+            // 
+            // TextBoxSizer9
+            // 
+            this.TextBoxSizer9.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.TextBoxSizer9.BackColor = System.Drawing.Color.White;
+            this.TextBoxSizer9.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.TextBoxSizer9.Controls.Add(this.AddressDisplay);
+            this.TextBoxSizer9.Location = new System.Drawing.Point(9, 134);
+            this.TextBoxSizer9.Name = "TextBoxSizer9";
+            this.TextBoxSizer9.Size = new System.Drawing.Size(545, 32);
+            this.TextBoxSizer9.TabIndex = 25;
+            // 
+            // AddressDisplay
+            // 
+            this.AddressDisplay.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.AddressDisplay.BackColor = System.Drawing.Color.White;
+            this.AddressDisplay.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.AddressDisplay.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.AddressDisplay.Location = new System.Drawing.Point(6, 9);
+            this.AddressDisplay.Name = "AddressDisplay";
+            this.AddressDisplay.ReadOnly = true;
+            this.AddressDisplay.Size = new System.Drawing.Size(531, 13);
+            this.AddressDisplay.TabIndex = 24;
+            this.ToolTip.SetToolTip(this.AddressDisplay, "Selected address");
+            // 
+            // ComboBoxSizer2
+            // 
+            this.ComboBoxSizer2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.ComboBoxSizer2.BackColor = System.Drawing.Color.White;
+            this.ComboBoxSizer2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.ComboBoxSizer2.Controls.Add(this.WalletAddresses);
+            this.ComboBoxSizer2.Location = new System.Drawing.Point(9, 26);
+            this.ComboBoxSizer2.Name = "ComboBoxSizer2";
+            this.ComboBoxSizer2.Size = new System.Drawing.Size(583, 32);
+            this.ComboBoxSizer2.TabIndex = 24;
+            // 
+            // WalletAddresses
+            // 
+            this.WalletAddresses.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.WalletAddresses.BackColor = System.Drawing.Color.White;
+            this.WalletAddresses.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.WalletAddresses.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.WalletAddresses.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.WalletAddresses.FormattingEnabled = true;
+            this.WalletAddresses.Location = new System.Drawing.Point(6, 4);
+            this.WalletAddresses.Name = "WalletAddresses";
+            this.WalletAddresses.Size = new System.Drawing.Size(569, 24);
+            this.WalletAddresses.TabIndex = 0;
+            this.ToolTip.SetToolTip(this.WalletAddresses, "Displays all of your addresses");
+            this.WalletAddresses.SelectedIndexChanged += new System.EventHandler(this.WalletAddresses_SelectedIndexChanged);
+            // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label25.ForeColor = System.Drawing.Color.Black;
+            this.label25.Location = new System.Drawing.Point(6, 318);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(106, 15);
+            this.label25.TabIndex = 18;
+            this.label25.Text = "Private Spend Key";
             // 
             // PublicSpendKey
             // 
@@ -922,13 +1255,35 @@
             this.PublicSpendKey.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.PublicSpendKey.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.PublicSpendKey.ForeColor = System.Drawing.Color.Black;
-            this.PublicSpendKey.Location = new System.Drawing.Point(25, 155);
+            this.PublicSpendKey.Location = new System.Drawing.Point(9, 299);
             this.PublicSpendKey.Margin = new System.Windows.Forms.Padding(3, 3, 30, 3);
             this.PublicSpendKey.Name = "PublicSpendKey";
             this.PublicSpendKey.ReadOnly = true;
             this.PublicSpendKey.Size = new System.Drawing.Size(535, 16);
             this.PublicSpendKey.TabIndex = 20;
             this.PublicSpendKey.Text = "-";
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label19.ForeColor = System.Drawing.Color.Black;
+            this.label19.Location = new System.Drawing.Point(6, 207);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(95, 15);
+            this.label19.TabIndex = 4;
+            this.label19.Text = "Locked Balance";
+            // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label26.ForeColor = System.Drawing.Color.Black;
+            this.label26.Location = new System.Drawing.Point(6, 283);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(103, 15);
+            this.label26.TabIndex = 19;
+            this.label26.Text = "Public Spend Key";
             // 
             // SelectedLockedBalanceBox
             // 
@@ -937,7 +1292,7 @@
             this.SelectedLockedBalanceBox.Enabled = false;
             this.SelectedLockedBalanceBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SelectedLockedBalanceBox.ForeColor = System.Drawing.Color.Black;
-            this.SelectedLockedBalanceBox.Location = new System.Drawing.Point(25, 115);
+            this.SelectedLockedBalanceBox.Location = new System.Drawing.Point(28, 227);
             this.SelectedLockedBalanceBox.Margin = new System.Windows.Forms.Padding(3, 3, 6, 3);
             this.SelectedLockedBalanceBox.Name = "SelectedLockedBalanceBox";
             this.SelectedLockedBalanceBox.ReadOnly = true;
@@ -945,21 +1300,10 @@
             this.SelectedLockedBalanceBox.TabIndex = 5;
             this.SelectedLockedBalanceBox.Text = "-";
             // 
-            // label26
-            // 
-            this.label26.AutoSize = true;
-            this.label26.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label26.ForeColor = System.Drawing.Color.Black;
-            this.label26.Location = new System.Drawing.Point(22, 139);
-            this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(103, 15);
-            this.label26.TabIndex = 19;
-            this.label26.Text = "Public Spend Key";
-            // 
             // pictureBox2
             // 
             this.pictureBox2.Image = global::Shell_Wallet.Properties.Resources.LockedBlack;
-            this.pictureBox2.Location = new System.Drawing.Point(6, 115);
+            this.pictureBox2.Location = new System.Drawing.Point(9, 227);
             this.pictureBox2.Margin = new System.Windows.Forms.Padding(3, 3, 0, 3);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(16, 16);
@@ -967,23 +1311,12 @@
             this.pictureBox2.TabIndex = 14;
             this.pictureBox2.TabStop = false;
             // 
-            // label25
-            // 
-            this.label25.AutoSize = true;
-            this.label25.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label25.ForeColor = System.Drawing.Color.Black;
-            this.label25.Location = new System.Drawing.Point(22, 179);
-            this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(106, 15);
-            this.label25.TabIndex = 18;
-            this.label25.Text = "Private Spend Key";
-            // 
             // label24
             // 
             this.label24.AutoSize = true;
             this.label24.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label24.ForeColor = System.Drawing.Color.Black;
-            this.label24.Location = new System.Drawing.Point(264, 74);
+            this.label24.Location = new System.Drawing.Point(6, 246);
             this.label24.Name = "label24";
             this.label24.Size = new System.Drawing.Size(63, 15);
             this.label24.TabIndex = 15;
@@ -995,12 +1328,38 @@
             this.Nickname.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.Nickname.Enabled = false;
             this.Nickname.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Nickname.Location = new System.Drawing.Point(267, 90);
+            this.Nickname.Location = new System.Drawing.Point(9, 264);
             this.Nickname.Name = "Nickname";
             this.Nickname.ReadOnly = true;
-            this.Nickname.Size = new System.Drawing.Size(293, 16);
+            this.Nickname.Size = new System.Drawing.Size(468, 16);
             this.Nickname.TabIndex = 16;
             this.Nickname.Text = "-";
+            // 
+            // SelectedBalanceBox
+            // 
+            this.SelectedBalanceBox.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.SelectedBalanceBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.SelectedBalanceBox.Enabled = false;
+            this.SelectedBalanceBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SelectedBalanceBox.ForeColor = System.Drawing.Color.Black;
+            this.SelectedBalanceBox.Location = new System.Drawing.Point(28, 188);
+            this.SelectedBalanceBox.Margin = new System.Windows.Forms.Padding(3, 3, 6, 3);
+            this.SelectedBalanceBox.Name = "SelectedBalanceBox";
+            this.SelectedBalanceBox.ReadOnly = true;
+            this.SelectedBalanceBox.Size = new System.Drawing.Size(150, 16);
+            this.SelectedBalanceBox.TabIndex = 3;
+            this.SelectedBalanceBox.Text = "-";
+            this.ToolTip.SetToolTip(this.SelectedBalanceBox, "Balance of your selected address");
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.Location = new System.Drawing.Point(6, 116);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(51, 15);
+            this.label13.TabIndex = 23;
+            this.label13.Text = "Address";
             // 
             // DeleteSelectedAddress
             // 
@@ -1008,11 +1367,12 @@
             this.DeleteSelectedAddress.BackColor = System.Drawing.Color.Gainsboro;
             this.DeleteSelectedAddress.Enabled = false;
             this.DeleteSelectedAddress.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.DeleteSelectedAddress.Location = new System.Drawing.Point(436, 53);
+            this.DeleteSelectedAddress.Location = new System.Drawing.Point(442, 64);
             this.DeleteSelectedAddress.Name = "DeleteSelectedAddress";
             this.DeleteSelectedAddress.Size = new System.Drawing.Size(150, 32);
             this.DeleteSelectedAddress.TabIndex = 12;
             this.DeleteSelectedAddress.Text = "Delete This Address";
+            this.ToolTip.SetToolTip(this.DeleteSelectedAddress, "Delete this address from your wallet");
             this.DeleteSelectedAddress.UseVisualStyleBackColor = false;
             this.DeleteSelectedAddress.Click += new System.EventHandler(this.DeleteSelectedAddress_Click);
             // 
@@ -1021,30 +1381,14 @@
             this.CreateNewAddress.BackColor = System.Drawing.Color.Gainsboro;
             this.CreateNewAddress.Enabled = false;
             this.CreateNewAddress.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CreateNewAddress.Location = new System.Drawing.Point(9, 53);
+            this.CreateNewAddress.Location = new System.Drawing.Point(9, 64);
             this.CreateNewAddress.Name = "CreateNewAddress";
             this.CreateNewAddress.Size = new System.Drawing.Size(150, 32);
             this.CreateNewAddress.TabIndex = 11;
             this.CreateNewAddress.Text = "Create New Address";
-            this.ToolTip.SetToolTip(this.CreateNewAddress, "Create a new address");
+            this.ToolTip.SetToolTip(this.CreateNewAddress, "Create a new address within your wallet");
             this.CreateNewAddress.UseVisualStyleBackColor = false;
             this.CreateNewAddress.Click += new System.EventHandler(this.CreateNewAddress_Click);
-            // 
-            // WalletAddresses
-            // 
-            this.WalletAddresses.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.WalletAddresses.BackColor = System.Drawing.Color.White;
-            this.WalletAddresses.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.WalletAddresses.Enabled = false;
-            this.WalletAddresses.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.WalletAddresses.FormattingEnabled = true;
-            this.WalletAddresses.Location = new System.Drawing.Point(9, 26);
-            this.WalletAddresses.Name = "WalletAddresses";
-            this.WalletAddresses.Size = new System.Drawing.Size(577, 21);
-            this.WalletAddresses.TabIndex = 0;
-            this.ToolTip.SetToolTip(this.WalletAddresses, "Displays all of your addresses");
-            this.WalletAddresses.SelectedIndexChanged += new System.EventHandler(this.WalletAddresses_SelectedIndexChanged);
             // 
             // label1
             // 
@@ -1123,6 +1467,7 @@
             this.BalanceBox.Size = new System.Drawing.Size(139, 16);
             this.BalanceBox.TabIndex = 2;
             this.BalanceBox.Text = "0.00";
+            this.ToolTip.SetToolTip(this.BalanceBox, "Your overall wallet balance across all addresses");
             // 
             // LockedBalanceBox
             // 
@@ -1140,6 +1485,7 @@
             this.LockedBalanceBox.Size = new System.Drawing.Size(139, 16);
             this.LockedBalanceBox.TabIndex = 3;
             this.LockedBalanceBox.Text = "0.00";
+            this.ToolTip.SetToolTip(this.LockedBalanceBox, "Your overall locked balance across all addresses");
             // 
             // WalletTabs
             // 
@@ -1157,7 +1503,7 @@
             this.WalletTabs.Multiline = true;
             this.WalletTabs.Name = "WalletTabs";
             this.WalletTabs.SelectedIndex = 0;
-            this.WalletTabs.Size = new System.Drawing.Size(603, 435);
+            this.WalletTabs.Size = new System.Drawing.Size(609, 441);
             this.WalletTabs.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.WalletTabs.TabIndex = 1;
             // 
@@ -1169,7 +1515,7 @@
             this.TransactonLogTab.Location = new System.Drawing.Point(4, 4);
             this.TransactonLogTab.Name = "TransactonLogTab";
             this.TransactonLogTab.Padding = new System.Windows.Forms.Padding(3);
-            this.TransactonLogTab.Size = new System.Drawing.Size(595, 426);
+            this.TransactonLogTab.Size = new System.Drawing.Size(601, 432);
             this.TransactonLogTab.TabIndex = 6;
             this.TransactonLogTab.Text = "Transaction Log";
             // 
@@ -1180,7 +1526,7 @@
             this.TransactionLog.AllowUserToResizeRows = false;
             this.TransactionLog.AutoGenerateColumns = false;
             this.TransactionLog.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.TransactionLog.BackgroundColor = System.Drawing.SystemColors.Control;
+            this.TransactionLog.BackgroundColor = System.Drawing.Color.WhiteSmoke;
             this.TransactionLog.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.TransactionLog.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.TransactionLog.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -1201,7 +1547,7 @@
             this.TransactionLog.ShowCellToolTips = false;
             this.TransactionLog.ShowEditingIcon = false;
             this.TransactionLog.ShowRowErrors = false;
-            this.TransactionLog.Size = new System.Drawing.Size(589, 420);
+            this.TransactionLog.Size = new System.Drawing.Size(595, 426);
             this.TransactionLog.TabIndex = 0;
             this.TransactionLog.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.TransactionLog_CellDoubleClick);
             // 
@@ -1225,16 +1571,16 @@
             this.ContactBookTab.Location = new System.Drawing.Point(4, 4);
             this.ContactBookTab.Name = "ContactBookTab";
             this.ContactBookTab.Padding = new System.Windows.Forms.Padding(3);
-            this.ContactBookTab.Size = new System.Drawing.Size(595, 426);
+            this.ContactBookTab.Size = new System.Drawing.Size(601, 432);
             this.ContactBookTab.TabIndex = 4;
             this.ContactBookTab.Text = "Address Book";
             // 
             // EditContact
             // 
             this.EditContact.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.EditContact.Location = new System.Drawing.Point(218, 397);
+            this.EditContact.Location = new System.Drawing.Point(304, 394);
             this.EditContact.Name = "EditContact";
-            this.EditContact.Size = new System.Drawing.Size(100, 23);
+            this.EditContact.Size = new System.Drawing.Size(143, 32);
             this.EditContact.TabIndex = 5;
             this.EditContact.Text = "Edit";
             this.EditContact.UseVisualStyleBackColor = true;
@@ -1242,10 +1588,10 @@
             // 
             // SendToContact
             // 
-            this.SendToContact.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.SendToContact.Location = new System.Drawing.Point(449, 397);
+            this.SendToContact.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.SendToContact.Location = new System.Drawing.Point(453, 394);
             this.SendToContact.Name = "SendToContact";
-            this.SendToContact.Size = new System.Drawing.Size(140, 23);
+            this.SendToContact.Size = new System.Drawing.Size(142, 32);
             this.SendToContact.TabIndex = 3;
             this.SendToContact.Text = "Send Transaction";
             this.SendToContact.UseVisualStyleBackColor = true;
@@ -1254,9 +1600,9 @@
             // RemoveContact
             // 
             this.RemoveContact.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.RemoveContact.Location = new System.Drawing.Point(112, 397);
+            this.RemoveContact.Location = new System.Drawing.Point(155, 394);
             this.RemoveContact.Name = "RemoveContact";
-            this.RemoveContact.Size = new System.Drawing.Size(100, 23);
+            this.RemoveContact.Size = new System.Drawing.Size(143, 32);
             this.RemoveContact.TabIndex = 2;
             this.RemoveContact.Text = "Remove";
             this.RemoveContact.UseVisualStyleBackColor = true;
@@ -1265,9 +1611,9 @@
             // AddContact
             // 
             this.AddContact.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.AddContact.Location = new System.Drawing.Point(6, 397);
+            this.AddContact.Location = new System.Drawing.Point(6, 394);
             this.AddContact.Name = "AddContact";
-            this.AddContact.Size = new System.Drawing.Size(100, 23);
+            this.AddContact.Size = new System.Drawing.Size(143, 32);
             this.AddContact.TabIndex = 1;
             this.AddContact.Text = "Add";
             this.AddContact.UseVisualStyleBackColor = true;
@@ -1282,7 +1628,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.AddressGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.AddressGrid.BackgroundColor = System.Drawing.SystemColors.Control;
+            this.AddressGrid.BackgroundColor = System.Drawing.Color.WhiteSmoke;
             this.AddressGrid.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.AddressGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.AddressGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -1291,7 +1637,7 @@
             this.PaymentIDColumn});
             this.AddressGrid.ContextMenuStrip = this.AddressBookMenu;
             this.AddressGrid.GridColor = System.Drawing.SystemColors.ActiveCaption;
-            this.AddressGrid.Location = new System.Drawing.Point(6, 6);
+            this.AddressGrid.Location = new System.Drawing.Point(3, 3);
             this.AddressGrid.MultiSelect = false;
             this.AddressGrid.Name = "AddressGrid";
             this.AddressGrid.ReadOnly = true;
@@ -1302,7 +1648,7 @@
             this.AddressGrid.ShowCellToolTips = false;
             this.AddressGrid.ShowEditingIcon = false;
             this.AddressGrid.ShowRowErrors = false;
-            this.AddressGrid.Size = new System.Drawing.Size(583, 385);
+            this.AddressGrid.Size = new System.Drawing.Size(595, 385);
             this.AddressGrid.TabIndex = 0;
             this.AddressGrid.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.AddressGrid_CellMouseDoubleClick);
             this.AddressGrid.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.AddressGrid_CellMouseClick);
@@ -1340,31 +1686,31 @@
             this.AddressBookMenu.Name = "AddressBookMenu";
             this.AddressBookMenu.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
             this.AddressBookMenu.ShowImageMargin = false;
-            this.AddressBookMenu.Size = new System.Drawing.Size(92, 76);
+            this.AddressBookMenu.Size = new System.Drawing.Size(123, 76);
             // 
             // AddressMenuCopyAddress
             // 
             this.AddressMenuCopyAddress.Name = "AddressMenuCopyAddress";
-            this.AddressMenuCopyAddress.Size = new System.Drawing.Size(91, 22);
-            this.AddressMenuCopyAddress.Text = "Copy";
+            this.AddressMenuCopyAddress.Size = new System.Drawing.Size(122, 22);
+            this.AddressMenuCopyAddress.Text = "Copy Address";
             this.AddressMenuCopyAddress.Click += new System.EventHandler(this.AddressMenuCopyAddress_Click);
             // 
             // AddressMenuEditAddress
             // 
             this.AddressMenuEditAddress.Name = "AddressMenuEditAddress";
-            this.AddressMenuEditAddress.Size = new System.Drawing.Size(91, 22);
+            this.AddressMenuEditAddress.Size = new System.Drawing.Size(122, 22);
             this.AddressMenuEditAddress.Text = "Edit";
             this.AddressMenuEditAddress.Click += new System.EventHandler(this.EditContact_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(88, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(119, 6);
             // 
             // AddressMenuSendTo
             // 
             this.AddressMenuSendTo.Name = "AddressMenuSendTo";
-            this.AddressMenuSendTo.Size = new System.Drawing.Size(91, 22);
+            this.AddressMenuSendTo.Size = new System.Drawing.Size(122, 22);
             this.AddressMenuSendTo.Text = "Send To";
             this.AddressMenuSendTo.Click += new System.EventHandler(this.SendToContact_Click);
             // 
@@ -1377,7 +1723,7 @@
             this.NetworkTab.Location = new System.Drawing.Point(4, 4);
             this.NetworkTab.Name = "NetworkTab";
             this.NetworkTab.Padding = new System.Windows.Forms.Padding(3);
-            this.NetworkTab.Size = new System.Drawing.Size(595, 426);
+            this.NetworkTab.Size = new System.Drawing.Size(601, 432);
             this.NetworkTab.TabIndex = 5;
             this.NetworkTab.Text = "Network";
             // 
@@ -1395,7 +1741,7 @@
             this.tableLayoutPanel4.RowCount = 2;
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 37.5F));
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 62.5F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(583, 340);
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(589, 346);
             this.tableLayoutPanel4.TabIndex = 6;
             // 
             // groupBox4
@@ -1405,7 +1751,7 @@
             this.groupBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox4.Location = new System.Drawing.Point(3, 3);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(577, 121);
+            this.groupBox4.Size = new System.Drawing.Size(583, 123);
             this.groupBox4.TabIndex = 1;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Transaction Pool";
@@ -1440,7 +1786,7 @@
             this.TransactionPool.ShowCellToolTips = false;
             this.TransactionPool.ShowEditingIcon = false;
             this.TransactionPool.ShowRowErrors = false;
-            this.TransactionPool.Size = new System.Drawing.Size(571, 102);
+            this.TransactionPool.Size = new System.Drawing.Size(577, 104);
             this.TransactionPool.TabIndex = 1;
             // 
             // AmountColumn
@@ -1464,9 +1810,9 @@
             this.groupBox5.Controls.Add(this.RecentBlocks);
             this.groupBox5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox5.Location = new System.Drawing.Point(3, 130);
+            this.groupBox5.Location = new System.Drawing.Point(3, 132);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(577, 207);
+            this.groupBox5.Size = new System.Drawing.Size(583, 211);
             this.groupBox5.TabIndex = 2;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Recent Blocks";
@@ -1503,7 +1849,7 @@
             this.RecentBlocks.ShowCellToolTips = false;
             this.RecentBlocks.ShowEditingIcon = false;
             this.RecentBlocks.ShowRowErrors = false;
-            this.RecentBlocks.Size = new System.Drawing.Size(571, 188);
+            this.RecentBlocks.Size = new System.Drawing.Size(577, 192);
             this.RecentBlocks.TabIndex = 0;
             // 
             // tableLayoutPanel3
@@ -1520,7 +1866,7 @@
             this.tableLayoutPanel3.RowCount = 1;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 68F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(583, 68);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(589, 68);
             this.tableLayoutPanel3.TabIndex = 5;
             // 
             // groupBox6
@@ -1535,7 +1881,7 @@
             this.groupBox6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox6.Location = new System.Drawing.Point(3, 3);
             this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(285, 62);
+            this.groupBox6.Size = new System.Drawing.Size(288, 62);
             this.groupBox6.TabIndex = 3;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Statistics";
@@ -1607,9 +1953,9 @@
             this.groupBox3.Controls.Add(this.label29);
             this.groupBox3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox3.Location = new System.Drawing.Point(294, 3);
+            this.groupBox3.Location = new System.Drawing.Point(297, 3);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(286, 62);
+            this.groupBox3.Size = new System.Drawing.Size(289, 62);
             this.groupBox3.TabIndex = 4;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Network";
@@ -1676,7 +2022,7 @@
             this.BlankTab.Location = new System.Drawing.Point(4, 4);
             this.BlankTab.Name = "BlankTab";
             this.BlankTab.Padding = new System.Windows.Forms.Padding(3);
-            this.BlankTab.Size = new System.Drawing.Size(595, 426);
+            this.BlankTab.Size = new System.Drawing.Size(601, 432);
             this.BlankTab.TabIndex = 7;
             this.BlankTab.Text = "Options";
             this.BlankTab.UseVisualStyleBackColor = true;
@@ -1696,7 +2042,7 @@
             // 
             this.ServerStatus.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.ServerStatus.ForeColor = System.Drawing.Color.Blue;
-            this.ServerStatus.Location = new System.Drawing.Point(335, 1);
+            this.ServerStatus.Location = new System.Drawing.Point(341, 1);
             this.ServerStatus.Name = "ServerStatus";
             this.ServerStatus.Size = new System.Drawing.Size(259, 13);
             this.ServerStatus.TabIndex = 3;
@@ -1708,77 +2054,6 @@
             this.SavePrivateKeys.DefaultExt = "txt";
             this.SavePrivateKeys.FileName = "Keys.txt";
             this.SavePrivateKeys.Filter = "Text Files|*txt";
-            // 
-            // MenuPanel
-            // 
-            this.MenuPanel.BackColor = System.Drawing.Color.White;
-            this.MenuPanel.Controls.Add(this.panel9);
-            this.MenuPanel.Controls.Add(this.panel8);
-            this.MenuPanel.Controls.Add(this.panel7);
-            this.MenuPanel.Controls.Add(this.SyncPercent);
-            this.MenuPanel.Controls.Add(this.panel6);
-            this.MenuPanel.Controls.Add(this.SyncProgress);
-            this.MenuPanel.Controls.Add(this.OptionsTabButton);
-            this.MenuPanel.Controls.Add(this.NetworkTabButton);
-            this.MenuPanel.Controls.Add(this.AddressBookTabButton);
-            this.MenuPanel.Controls.Add(this.panel5);
-            this.MenuPanel.Controls.Add(this.TransactionLogTabButton);
-            this.MenuPanel.Controls.Add(this.MENUDIVIDER2);
-            this.MenuPanel.Controls.Add(this.MENUDIVIDER1);
-            this.MenuPanel.Controls.Add(this.WalletTabButton);
-            this.MenuPanel.Controls.Add(this.pictureBox1);
-            this.MenuPanel.Controls.Add(this.LockedIcon);
-            this.MenuPanel.Controls.Add(this.SendTabButton);
-            this.MenuPanel.Controls.Add(this.label12);
-            this.MenuPanel.Controls.Add(this.label2);
-            this.MenuPanel.Controls.Add(this.label3);
-            this.MenuPanel.Controls.Add(this.BalanceBox);
-            this.MenuPanel.Controls.Add(this.LockedBalanceBox);
-            this.MenuPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.MenuPanel.Location = new System.Drawing.Point(3, 3);
-            this.MenuPanel.Name = "MenuPanel";
-            this.MenuPanel.Size = new System.Drawing.Size(169, 455);
-            this.MenuPanel.TabIndex = 25;
-            // 
-            // panel9
-            // 
-            this.panel9.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel9.BackColor = System.Drawing.Color.DarkGray;
-            this.panel9.Location = new System.Drawing.Point(0, 310);
-            this.panel9.Name = "panel9";
-            this.panel9.Size = new System.Drawing.Size(169, 1);
-            this.panel9.TabIndex = 40;
-            // 
-            // panel8
-            // 
-            this.panel8.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel8.BackColor = System.Drawing.Color.DarkGray;
-            this.panel8.Location = new System.Drawing.Point(0, 278);
-            this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(169, 1);
-            this.panel8.TabIndex = 39;
-            // 
-            // panel7
-            // 
-            this.panel7.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel7.BackColor = System.Drawing.Color.DarkGray;
-            this.panel7.Location = new System.Drawing.Point(0, 247);
-            this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(169, 1);
-            this.panel7.TabIndex = 38;
-            // 
-            // panel6
-            // 
-            this.panel6.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel6.BackColor = System.Drawing.Color.DarkGray;
-            this.panel6.Location = new System.Drawing.Point(0, 216);
-            this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(169, 1);
-            this.panel6.TabIndex = 37;
             // 
             // OptionsTabButton
             // 
@@ -1797,6 +2072,7 @@
             this.OptionsTabButton.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.OptionsTabButton.Size = new System.Drawing.Size(169, 30);
             this.OptionsTabButton.TabIndex = 36;
+            this.ToolTip.SetToolTip(this.OptionsTabButton, "Open options menu");
             this.OptionsTabButton.Click += new System.EventHandler(this.MenuItemClicked);
             this.OptionsTabButton.MouseEnter += new System.EventHandler(this.MenuItemMouseEnter);
             this.OptionsTabButton.MouseLeave += new System.EventHandler(this.MenuItemMouseLeave);
@@ -1811,6 +2087,7 @@
             this.OptionsTabIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.OptionsTabIcon.TabIndex = 0;
             this.OptionsTabIcon.TabStop = false;
+            this.ToolTip.SetToolTip(this.OptionsTabIcon, "Open options menu");
             this.OptionsTabIcon.Click += new System.EventHandler(this.MenuItemClicked);
             this.OptionsTabIcon.MouseEnter += new System.EventHandler(this.MenuItemMouseEnter);
             this.OptionsTabIcon.MouseLeave += new System.EventHandler(this.MenuItemMouseLeave);
@@ -1827,6 +2104,7 @@
             this.OptionsTabLabel.TabIndex = 1;
             this.OptionsTabLabel.Text = "Options";
             this.OptionsTabLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.ToolTip.SetToolTip(this.OptionsTabLabel, "Open options menu");
             this.OptionsTabLabel.Click += new System.EventHandler(this.MenuItemClicked);
             this.OptionsTabLabel.MouseEnter += new System.EventHandler(this.MenuItemMouseEnter);
             this.OptionsTabLabel.MouseLeave += new System.EventHandler(this.MenuItemMouseLeave);
@@ -1848,6 +2126,7 @@
             this.NetworkTabButton.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.NetworkTabButton.Size = new System.Drawing.Size(169, 30);
             this.NetworkTabButton.TabIndex = 35;
+            this.ToolTip.SetToolTip(this.NetworkTabButton, "Switch to network tab");
             this.NetworkTabButton.Click += new System.EventHandler(this.MenuItemClicked);
             this.NetworkTabButton.MouseEnter += new System.EventHandler(this.MenuItemMouseEnter);
             this.NetworkTabButton.MouseLeave += new System.EventHandler(this.MenuItemMouseLeave);
@@ -1862,6 +2141,7 @@
             this.NetworkTabIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.NetworkTabIcon.TabIndex = 0;
             this.NetworkTabIcon.TabStop = false;
+            this.ToolTip.SetToolTip(this.NetworkTabIcon, "Switch to network tab");
             this.NetworkTabIcon.Click += new System.EventHandler(this.MenuItemClicked);
             this.NetworkTabIcon.MouseEnter += new System.EventHandler(this.MenuItemMouseEnter);
             this.NetworkTabIcon.MouseLeave += new System.EventHandler(this.MenuItemMouseLeave);
@@ -1878,6 +2158,7 @@
             this.NetworkTabLabel.TabIndex = 1;
             this.NetworkTabLabel.Text = "Network";
             this.NetworkTabLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.ToolTip.SetToolTip(this.NetworkTabLabel, "Switch to network tab");
             this.NetworkTabLabel.Click += new System.EventHandler(this.MenuItemClicked);
             this.NetworkTabLabel.MouseEnter += new System.EventHandler(this.MenuItemMouseEnter);
             this.NetworkTabLabel.MouseLeave += new System.EventHandler(this.MenuItemMouseLeave);
@@ -1899,6 +2180,7 @@
             this.AddressBookTabButton.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.AddressBookTabButton.Size = new System.Drawing.Size(169, 30);
             this.AddressBookTabButton.TabIndex = 34;
+            this.ToolTip.SetToolTip(this.AddressBookTabButton, "Switch to address book tab");
             this.AddressBookTabButton.Click += new System.EventHandler(this.MenuItemClicked);
             this.AddressBookTabButton.MouseEnter += new System.EventHandler(this.MenuItemMouseEnter);
             this.AddressBookTabButton.MouseLeave += new System.EventHandler(this.MenuItemMouseLeave);
@@ -1913,6 +2195,7 @@
             this.AddressBookTabIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.AddressBookTabIcon.TabIndex = 0;
             this.AddressBookTabIcon.TabStop = false;
+            this.ToolTip.SetToolTip(this.AddressBookTabIcon, "Switch to address book tab");
             this.AddressBookTabIcon.Click += new System.EventHandler(this.MenuItemClicked);
             this.AddressBookTabIcon.MouseEnter += new System.EventHandler(this.MenuItemMouseEnter);
             this.AddressBookTabIcon.MouseLeave += new System.EventHandler(this.MenuItemMouseLeave);
@@ -1929,19 +2212,10 @@
             this.AddressBookTabLabel.TabIndex = 1;
             this.AddressBookTabLabel.Text = "Address Book";
             this.AddressBookTabLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.ToolTip.SetToolTip(this.AddressBookTabLabel, "Switch to address book tab");
             this.AddressBookTabLabel.Click += new System.EventHandler(this.MenuItemClicked);
             this.AddressBookTabLabel.MouseEnter += new System.EventHandler(this.MenuItemMouseEnter);
             this.AddressBookTabLabel.MouseLeave += new System.EventHandler(this.MenuItemMouseLeave);
-            // 
-            // panel5
-            // 
-            this.panel5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel5.BackColor = System.Drawing.Color.DarkGray;
-            this.panel5.Location = new System.Drawing.Point(0, 185);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(169, 1);
-            this.panel5.TabIndex = 33;
             // 
             // TransactionLogTabButton
             // 
@@ -1960,6 +2234,7 @@
             this.TransactionLogTabButton.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.TransactionLogTabButton.Size = new System.Drawing.Size(169, 30);
             this.TransactionLogTabButton.TabIndex = 32;
+            this.ToolTip.SetToolTip(this.TransactionLogTabButton, "Switch to transaction log tab");
             this.TransactionLogTabButton.Click += new System.EventHandler(this.MenuItemClicked);
             this.TransactionLogTabButton.MouseEnter += new System.EventHandler(this.MenuItemMouseEnter);
             this.TransactionLogTabButton.MouseLeave += new System.EventHandler(this.MenuItemMouseLeave);
@@ -1974,6 +2249,7 @@
             this.TransactionLogTabIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.TransactionLogTabIcon.TabIndex = 0;
             this.TransactionLogTabIcon.TabStop = false;
+            this.ToolTip.SetToolTip(this.TransactionLogTabIcon, "Switch to transaction log tab");
             this.TransactionLogTabIcon.Click += new System.EventHandler(this.MenuItemClicked);
             this.TransactionLogTabIcon.MouseEnter += new System.EventHandler(this.MenuItemMouseEnter);
             this.TransactionLogTabIcon.MouseLeave += new System.EventHandler(this.MenuItemMouseLeave);
@@ -1990,9 +2266,253 @@
             this.TransactionLogTabLabel.TabIndex = 1;
             this.TransactionLogTabLabel.Text = "Transaction Log";
             this.TransactionLogTabLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.ToolTip.SetToolTip(this.TransactionLogTabLabel, "Switch to transaction log tab");
             this.TransactionLogTabLabel.Click += new System.EventHandler(this.MenuItemClicked);
             this.TransactionLogTabLabel.MouseEnter += new System.EventHandler(this.MenuItemMouseEnter);
             this.TransactionLogTabLabel.MouseLeave += new System.EventHandler(this.MenuItemMouseLeave);
+            // 
+            // WalletTabButton
+            // 
+            this.WalletTabButton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.WalletTabButton.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.WalletTabButton.ColumnCount = 2;
+            this.WalletTabButton.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.WalletTabButton.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 32F));
+            this.WalletTabButton.Controls.Add(this.WalletTabIcon, 1, 0);
+            this.WalletTabButton.Controls.Add(this.WalletTabLabel, 0, 0);
+            this.WalletTabButton.Location = new System.Drawing.Point(0, 124);
+            this.WalletTabButton.Margin = new System.Windows.Forms.Padding(0);
+            this.WalletTabButton.Name = "WalletTabButton";
+            this.WalletTabButton.RowCount = 1;
+            this.WalletTabButton.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.WalletTabButton.Size = new System.Drawing.Size(169, 30);
+            this.WalletTabButton.TabIndex = 29;
+            this.ToolTip.SetToolTip(this.WalletTabButton, "Switch to wallet tab");
+            this.WalletTabButton.Click += new System.EventHandler(this.MenuItemClicked);
+            this.WalletTabButton.MouseEnter += new System.EventHandler(this.MenuItemMouseEnter);
+            this.WalletTabButton.MouseLeave += new System.EventHandler(this.MenuItemMouseLeave);
+            // 
+            // WalletTabIcon
+            // 
+            this.WalletTabIcon.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.WalletTabIcon.Image = global::Shell_Wallet.Properties.Resources.WalletBlack;
+            this.WalletTabIcon.Location = new System.Drawing.Point(140, 3);
+            this.WalletTabIcon.Name = "WalletTabIcon";
+            this.WalletTabIcon.Size = new System.Drawing.Size(26, 24);
+            this.WalletTabIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.WalletTabIcon.TabIndex = 0;
+            this.WalletTabIcon.TabStop = false;
+            this.ToolTip.SetToolTip(this.WalletTabIcon, "Switch to wallet tab");
+            this.WalletTabIcon.Click += new System.EventHandler(this.MenuItemClicked);
+            this.WalletTabIcon.MouseEnter += new System.EventHandler(this.MenuItemMouseEnter);
+            this.WalletTabIcon.MouseLeave += new System.EventHandler(this.MenuItemMouseLeave);
+            // 
+            // WalletTabLabel
+            // 
+            this.WalletTabLabel.BackColor = System.Drawing.Color.Transparent;
+            this.WalletTabLabel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.WalletTabLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.WalletTabLabel.Location = new System.Drawing.Point(3, 0);
+            this.WalletTabLabel.Name = "WalletTabLabel";
+            this.WalletTabLabel.Padding = new System.Windows.Forms.Padding(6, 0, 0, 0);
+            this.WalletTabLabel.Size = new System.Drawing.Size(131, 30);
+            this.WalletTabLabel.TabIndex = 1;
+            this.WalletTabLabel.Text = "Wallet";
+            this.WalletTabLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.ToolTip.SetToolTip(this.WalletTabLabel, "Switch to wallet tab");
+            this.WalletTabLabel.Click += new System.EventHandler(this.MenuItemClicked);
+            this.WalletTabLabel.MouseEnter += new System.EventHandler(this.MenuItemMouseEnter);
+            this.WalletTabLabel.MouseLeave += new System.EventHandler(this.MenuItemMouseLeave);
+            // 
+            // SendTabButton
+            // 
+            this.SendTabButton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.SendTabButton.BackColor = System.Drawing.Color.White;
+            this.SendTabButton.ColumnCount = 2;
+            this.SendTabButton.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.SendTabButton.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 32F));
+            this.SendTabButton.Controls.Add(this.SendTabIcon, 1, 0);
+            this.SendTabButton.Controls.Add(this.SendTabLabel, 0, 0);
+            this.SendTabButton.Location = new System.Drawing.Point(0, 155);
+            this.SendTabButton.Margin = new System.Windows.Forms.Padding(0);
+            this.SendTabButton.Name = "SendTabButton";
+            this.SendTabButton.RowCount = 1;
+            this.SendTabButton.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.SendTabButton.Size = new System.Drawing.Size(169, 30);
+            this.SendTabButton.TabIndex = 6;
+            this.ToolTip.SetToolTip(this.SendTabButton, "Switch to send tab");
+            this.SendTabButton.Click += new System.EventHandler(this.MenuItemClicked);
+            // 
+            // SendTabIcon
+            // 
+            this.SendTabIcon.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.SendTabIcon.Image = ((System.Drawing.Image)(resources.GetObject("SendTabIcon.Image")));
+            this.SendTabIcon.Location = new System.Drawing.Point(140, 3);
+            this.SendTabIcon.Name = "SendTabIcon";
+            this.SendTabIcon.Size = new System.Drawing.Size(26, 24);
+            this.SendTabIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.SendTabIcon.TabIndex = 0;
+            this.SendTabIcon.TabStop = false;
+            this.ToolTip.SetToolTip(this.SendTabIcon, "Switch to send tab");
+            this.SendTabIcon.Click += new System.EventHandler(this.MenuItemClicked);
+            this.SendTabIcon.MouseEnter += new System.EventHandler(this.MenuItemMouseEnter);
+            this.SendTabIcon.MouseLeave += new System.EventHandler(this.MenuItemMouseLeave);
+            // 
+            // SendTabLabel
+            // 
+            this.SendTabLabel.BackColor = System.Drawing.Color.Transparent;
+            this.SendTabLabel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.SendTabLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SendTabLabel.Location = new System.Drawing.Point(3, 0);
+            this.SendTabLabel.Name = "SendTabLabel";
+            this.SendTabLabel.Padding = new System.Windows.Forms.Padding(6, 0, 0, 0);
+            this.SendTabLabel.Size = new System.Drawing.Size(131, 30);
+            this.SendTabLabel.TabIndex = 1;
+            this.SendTabLabel.Text = "Send";
+            this.SendTabLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.ToolTip.SetToolTip(this.SendTabLabel, "Switch to send tab");
+            this.SendTabLabel.Click += new System.EventHandler(this.MenuItemClicked);
+            this.SendTabLabel.MouseEnter += new System.EventHandler(this.MenuItemMouseEnter);
+            this.SendTabLabel.MouseLeave += new System.EventHandler(this.MenuItemMouseLeave);
+            // 
+            // HeaderLabel
+            // 
+            this.HeaderLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.HeaderLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.HeaderLabel.Location = new System.Drawing.Point(51, 6);
+            this.HeaderLabel.Margin = new System.Windows.Forms.Padding(0);
+            this.HeaderLabel.Name = "HeaderLabel";
+            this.HeaderLabel.Size = new System.Drawing.Size(100, 24);
+            this.HeaderLabel.TabIndex = 27;
+            this.HeaderLabel.Text = "Turtlecoin";
+            this.HeaderLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.ToolTip.SetToolTip(this.HeaderLabel, "What the shell?");
+            // 
+            // pictureBox3
+            // 
+            this.pictureBox3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBox3.Image = global::Shell_Wallet.Properties.Resources.ShellBlack;
+            this.pictureBox3.Location = new System.Drawing.Point(5, 57);
+            this.pictureBox3.Margin = new System.Windows.Forms.Padding(3, 3, 0, 3);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(16, 16);
+            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox3.TabIndex = 41;
+            this.pictureBox3.TabStop = false;
+            this.ToolTip.SetToolTip(this.pictureBox3, "Your overall wallet balance across all addresses");
+            // 
+            // HeaderLogo
+            // 
+            this.HeaderLogo.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.HeaderLogo.Image = global::Shell_Wallet.Properties.Resources.TurtlecoinLogo;
+            this.HeaderLogo.Location = new System.Drawing.Point(24, 6);
+            this.HeaderLogo.Name = "HeaderLogo";
+            this.HeaderLogo.Size = new System.Drawing.Size(24, 24);
+            this.HeaderLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.HeaderLogo.TabIndex = 28;
+            this.HeaderLogo.TabStop = false;
+            this.ToolTip.SetToolTip(this.HeaderLogo, "Turtles are nature\'s mobile homes");
+            // 
+            // LockedIcon
+            // 
+            this.LockedIcon.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.LockedIcon.Image = global::Shell_Wallet.Properties.Resources.LockedBlack;
+            this.LockedIcon.Location = new System.Drawing.Point(6, 97);
+            this.LockedIcon.Margin = new System.Windows.Forms.Padding(3, 3, 0, 3);
+            this.LockedIcon.Name = "LockedIcon";
+            this.LockedIcon.Size = new System.Drawing.Size(16, 16);
+            this.LockedIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.LockedIcon.TabIndex = 5;
+            this.LockedIcon.TabStop = false;
+            this.ToolTip.SetToolTip(this.LockedIcon, "Your overall locked balance across all addresses");
+            // 
+            // MenuPanel
+            // 
+            this.MenuPanel.BackColor = System.Drawing.Color.White;
+            this.MenuPanel.Controls.Add(this.pictureBox3);
+            this.MenuPanel.Controls.Add(this.MENUDIVIDER6);
+            this.MenuPanel.Controls.Add(this.MENUDIVIDER5);
+            this.MenuPanel.Controls.Add(this.MENUDIVIDER4);
+            this.MenuPanel.Controls.Add(this.SyncPercent);
+            this.MenuPanel.Controls.Add(this.MENUDIVIDER7);
+            this.MenuPanel.Controls.Add(this.SyncProgress);
+            this.MenuPanel.Controls.Add(this.OptionsTabButton);
+            this.MenuPanel.Controls.Add(this.NetworkTabButton);
+            this.MenuPanel.Controls.Add(this.AddressBookTabButton);
+            this.MenuPanel.Controls.Add(this.MENUDIVIDER3);
+            this.MenuPanel.Controls.Add(this.TransactionLogTabButton);
+            this.MenuPanel.Controls.Add(this.MENUDIVIDER2);
+            this.MenuPanel.Controls.Add(this.MENUDIVIDER1);
+            this.MenuPanel.Controls.Add(this.WalletTabButton);
+            this.MenuPanel.Controls.Add(this.HeaderLogo);
+            this.MenuPanel.Controls.Add(this.LockedIcon);
+            this.MenuPanel.Controls.Add(this.SendTabButton);
+            this.MenuPanel.Controls.Add(this.HeaderLabel);
+            this.MenuPanel.Controls.Add(this.label2);
+            this.MenuPanel.Controls.Add(this.label3);
+            this.MenuPanel.Controls.Add(this.BalanceBox);
+            this.MenuPanel.Controls.Add(this.LockedBalanceBox);
+            this.MenuPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.MenuPanel.Location = new System.Drawing.Point(3, 3);
+            this.MenuPanel.Name = "MenuPanel";
+            this.MenuPanel.Size = new System.Drawing.Size(169, 455);
+            this.MenuPanel.TabIndex = 25;
+            // 
+            // MENUDIVIDER6
+            // 
+            this.MENUDIVIDER6.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.MENUDIVIDER6.BackColor = System.Drawing.Color.DarkGray;
+            this.MENUDIVIDER6.Location = new System.Drawing.Point(0, 310);
+            this.MENUDIVIDER6.Name = "MENUDIVIDER6";
+            this.MENUDIVIDER6.Size = new System.Drawing.Size(169, 1);
+            this.MENUDIVIDER6.TabIndex = 40;
+            // 
+            // MENUDIVIDER5
+            // 
+            this.MENUDIVIDER5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.MENUDIVIDER5.BackColor = System.Drawing.Color.DarkGray;
+            this.MENUDIVIDER5.Location = new System.Drawing.Point(0, 278);
+            this.MENUDIVIDER5.Name = "MENUDIVIDER5";
+            this.MENUDIVIDER5.Size = new System.Drawing.Size(169, 1);
+            this.MENUDIVIDER5.TabIndex = 39;
+            // 
+            // MENUDIVIDER4
+            // 
+            this.MENUDIVIDER4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.MENUDIVIDER4.BackColor = System.Drawing.Color.DarkGray;
+            this.MENUDIVIDER4.Location = new System.Drawing.Point(0, 247);
+            this.MENUDIVIDER4.Name = "MENUDIVIDER4";
+            this.MENUDIVIDER4.Size = new System.Drawing.Size(169, 1);
+            this.MENUDIVIDER4.TabIndex = 38;
+            // 
+            // MENUDIVIDER7
+            // 
+            this.MENUDIVIDER7.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.MENUDIVIDER7.BackColor = System.Drawing.Color.DarkGray;
+            this.MENUDIVIDER7.Location = new System.Drawing.Point(0, 216);
+            this.MENUDIVIDER7.Name = "MENUDIVIDER7";
+            this.MENUDIVIDER7.Size = new System.Drawing.Size(169, 1);
+            this.MENUDIVIDER7.TabIndex = 37;
+            // 
+            // MENUDIVIDER3
+            // 
+            this.MENUDIVIDER3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.MENUDIVIDER3.BackColor = System.Drawing.Color.DarkGray;
+            this.MENUDIVIDER3.Location = new System.Drawing.Point(0, 185);
+            this.MENUDIVIDER3.Name = "MENUDIVIDER3";
+            this.MENUDIVIDER3.Size = new System.Drawing.Size(169, 1);
+            this.MENUDIVIDER3.TabIndex = 33;
             // 
             // MENUDIVIDER2
             // 
@@ -2013,144 +2533,6 @@
             this.MENUDIVIDER1.Name = "MENUDIVIDER1";
             this.MENUDIVIDER1.Size = new System.Drawing.Size(169, 1);
             this.MENUDIVIDER1.TabIndex = 30;
-            // 
-            // WalletTabButton
-            // 
-            this.WalletTabButton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.WalletTabButton.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.WalletTabButton.ColumnCount = 2;
-            this.WalletTabButton.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.WalletTabButton.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 32F));
-            this.WalletTabButton.Controls.Add(this.WalletTabIcon, 1, 0);
-            this.WalletTabButton.Controls.Add(this.WalletTabLabel, 0, 0);
-            this.WalletTabButton.Location = new System.Drawing.Point(0, 124);
-            this.WalletTabButton.Margin = new System.Windows.Forms.Padding(0);
-            this.WalletTabButton.Name = "WalletTabButton";
-            this.WalletTabButton.RowCount = 1;
-            this.WalletTabButton.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.WalletTabButton.Size = new System.Drawing.Size(169, 30);
-            this.WalletTabButton.TabIndex = 29;
-            this.WalletTabButton.Click += new System.EventHandler(this.MenuItemClicked);
-            this.WalletTabButton.MouseEnter += new System.EventHandler(this.MenuItemMouseEnter);
-            this.WalletTabButton.MouseLeave += new System.EventHandler(this.MenuItemMouseLeave);
-            // 
-            // WalletTabIcon
-            // 
-            this.WalletTabIcon.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.WalletTabIcon.Image = global::Shell_Wallet.Properties.Resources.WalletBlack;
-            this.WalletTabIcon.Location = new System.Drawing.Point(140, 3);
-            this.WalletTabIcon.Name = "WalletTabIcon";
-            this.WalletTabIcon.Size = new System.Drawing.Size(26, 24);
-            this.WalletTabIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.WalletTabIcon.TabIndex = 0;
-            this.WalletTabIcon.TabStop = false;
-            this.WalletTabIcon.Click += new System.EventHandler(this.MenuItemClicked);
-            this.WalletTabIcon.MouseEnter += new System.EventHandler(this.MenuItemMouseEnter);
-            this.WalletTabIcon.MouseLeave += new System.EventHandler(this.MenuItemMouseLeave);
-            // 
-            // WalletTabLabel
-            // 
-            this.WalletTabLabel.BackColor = System.Drawing.Color.Transparent;
-            this.WalletTabLabel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.WalletTabLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.WalletTabLabel.Location = new System.Drawing.Point(3, 0);
-            this.WalletTabLabel.Name = "WalletTabLabel";
-            this.WalletTabLabel.Padding = new System.Windows.Forms.Padding(6, 0, 0, 0);
-            this.WalletTabLabel.Size = new System.Drawing.Size(131, 30);
-            this.WalletTabLabel.TabIndex = 1;
-            this.WalletTabLabel.Text = "Wallet";
-            this.WalletTabLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.WalletTabLabel.Click += new System.EventHandler(this.MenuItemClicked);
-            this.WalletTabLabel.MouseEnter += new System.EventHandler(this.MenuItemMouseEnter);
-            this.WalletTabLabel.MouseLeave += new System.EventHandler(this.MenuItemMouseLeave);
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBox1.Image = global::Shell_Wallet.Properties.Resources.TurtlecoinLogo;
-            this.pictureBox1.Location = new System.Drawing.Point(24, 6);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(24, 24);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 28;
-            this.pictureBox1.TabStop = false;
-            // 
-            // LockedIcon
-            // 
-            this.LockedIcon.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.LockedIcon.Image = global::Shell_Wallet.Properties.Resources.LockedBlack;
-            this.LockedIcon.Location = new System.Drawing.Point(6, 97);
-            this.LockedIcon.Margin = new System.Windows.Forms.Padding(3, 3, 0, 3);
-            this.LockedIcon.Name = "LockedIcon";
-            this.LockedIcon.Size = new System.Drawing.Size(16, 16);
-            this.LockedIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.LockedIcon.TabIndex = 5;
-            this.LockedIcon.TabStop = false;
-            // 
-            // SendTabButton
-            // 
-            this.SendTabButton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.SendTabButton.BackColor = System.Drawing.Color.White;
-            this.SendTabButton.ColumnCount = 2;
-            this.SendTabButton.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.SendTabButton.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 32F));
-            this.SendTabButton.Controls.Add(this.SendTabIcon, 1, 0);
-            this.SendTabButton.Controls.Add(this.SendTabLabel, 0, 0);
-            this.SendTabButton.Location = new System.Drawing.Point(0, 155);
-            this.SendTabButton.Margin = new System.Windows.Forms.Padding(0);
-            this.SendTabButton.Name = "SendTabButton";
-            this.SendTabButton.RowCount = 1;
-            this.SendTabButton.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.SendTabButton.Size = new System.Drawing.Size(169, 30);
-            this.SendTabButton.TabIndex = 6;
-            this.SendTabButton.Click += new System.EventHandler(this.MenuItemClicked);
-            // 
-            // SendTabIcon
-            // 
-            this.SendTabIcon.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.SendTabIcon.Image = ((System.Drawing.Image)(resources.GetObject("SendTabIcon.Image")));
-            this.SendTabIcon.Location = new System.Drawing.Point(140, 3);
-            this.SendTabIcon.Name = "SendTabIcon";
-            this.SendTabIcon.Size = new System.Drawing.Size(26, 24);
-            this.SendTabIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.SendTabIcon.TabIndex = 0;
-            this.SendTabIcon.TabStop = false;
-            this.SendTabIcon.Click += new System.EventHandler(this.MenuItemClicked);
-            this.SendTabIcon.MouseEnter += new System.EventHandler(this.MenuItemMouseEnter);
-            this.SendTabIcon.MouseLeave += new System.EventHandler(this.MenuItemMouseLeave);
-            // 
-            // SendTabLabel
-            // 
-            this.SendTabLabel.BackColor = System.Drawing.Color.Transparent;
-            this.SendTabLabel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.SendTabLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SendTabLabel.Location = new System.Drawing.Point(3, 0);
-            this.SendTabLabel.Name = "SendTabLabel";
-            this.SendTabLabel.Padding = new System.Windows.Forms.Padding(6, 0, 0, 0);
-            this.SendTabLabel.Size = new System.Drawing.Size(131, 30);
-            this.SendTabLabel.TabIndex = 1;
-            this.SendTabLabel.Text = "Send";
-            this.SendTabLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.SendTabLabel.Click += new System.EventHandler(this.MenuItemClicked);
-            this.SendTabLabel.MouseEnter += new System.EventHandler(this.MenuItemMouseEnter);
-            this.SendTabLabel.MouseLeave += new System.EventHandler(this.MenuItemMouseLeave);
-            // 
-            // label12
-            // 
-            this.label12.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(51, 6);
-            this.label12.Margin = new System.Windows.Forms.Padding(0);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(100, 24);
-            this.label12.TabIndex = 27;
-            this.label12.Text = "Turtlecoin";
-            this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // MainWindowTable
             // 
@@ -2175,12 +2557,13 @@
             this.RightSideTable.Controls.Add(this.FooterPanel, 0, 1);
             this.RightSideTable.Controls.Add(this.WalletTabs, 0, 0);
             this.RightSideTable.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.RightSideTable.Location = new System.Drawing.Point(178, 3);
+            this.RightSideTable.Location = new System.Drawing.Point(175, 0);
+            this.RightSideTable.Margin = new System.Windows.Forms.Padding(0);
             this.RightSideTable.Name = "RightSideTable";
             this.RightSideTable.RowCount = 2;
             this.RightSideTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.RightSideTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.RightSideTable.Size = new System.Drawing.Size(603, 455);
+            this.RightSideTable.Size = new System.Drawing.Size(609, 461);
             this.RightSideTable.TabIndex = 27;
             // 
             // FooterPanel
@@ -2188,10 +2571,17 @@
             this.FooterPanel.Controls.Add(this.HeightStatus);
             this.FooterPanel.Controls.Add(this.ServerStatus);
             this.FooterPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.FooterPanel.Location = new System.Drawing.Point(3, 438);
+            this.FooterPanel.Location = new System.Drawing.Point(3, 444);
             this.FooterPanel.Name = "FooterPanel";
-            this.FooterPanel.Size = new System.Drawing.Size(597, 14);
+            this.FooterPanel.Size = new System.Drawing.Size(603, 14);
             this.FooterPanel.TabIndex = 28;
+            // 
+            // aboutToolStripMenuItem
+            // 
+            this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(52, 20);
+            this.aboutToolStripMenuItem.Text = "About";
+            this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutShellWalletToolStripMenuItem_Click);
             // 
             // timeStampDataGridViewTextBoxColumn
             // 
@@ -2321,11 +2711,47 @@
             this.MenuStrip.ResumeLayout(false);
             this.MenuStrip.PerformLayout();
             this.SendTab.ResumeLayout(false);
-            this.SendTab.PerformLayout();
+            this.SendTabScrollPanel.ResumeLayout(false);
+            this.SendTabLayout.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
+            this.QuickSendPanel.ResumeLayout(false);
+            this.QuickSendPanel.PerformLayout();
+            this.AmountFeeTable.ResumeLayout(false);
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
+            this.TextBoxSizer2.ResumeLayout(false);
+            this.TextBoxSizer2.PerformLayout();
+            this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
+            this.TextBoxSizer3.ResumeLayout(false);
+            this.TextBoxSizer3.PerformLayout();
+            this.TextBoxSizer4.ResumeLayout(false);
+            this.TextBoxSizer4.PerformLayout();
+            this.TextBoxSizer1.ResumeLayout(false);
+            this.TextBoxSizer1.PerformLayout();
+            this.ComboBoxSizer1.ResumeLayout(false);
+            this.AdvancedSendPanel.ResumeLayout(false);
+            this.AdvancedSendPanel.PerformLayout();
+            this.UnlockTimeMixinTable.ResumeLayout(false);
+            this.panel4.ResumeLayout(false);
+            this.panel4.PerformLayout();
+            this.TextBoxSizer7.ResumeLayout(false);
+            this.TextBoxSizer7.PerformLayout();
+            this.panel5.ResumeLayout(false);
+            this.panel5.PerformLayout();
+            this.TextBoxSizer8.ResumeLayout(false);
+            this.TextBoxSizer8.PerformLayout();
+            this.TextBoxSizer6.ResumeLayout(false);
+            this.TextBoxSizer6.PerformLayout();
+            this.TextBoxSizer5.ResumeLayout(false);
+            this.TextBoxSizer5.PerformLayout();
             this.WalletTab.ResumeLayout(false);
             this.WalletTab.PerformLayout();
-            this.SelectedAddressInfo.ResumeLayout(false);
-            this.SelectedAddressInfo.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
+            this.TextBoxSizer9.ResumeLayout(false);
+            this.TextBoxSizer9.PerformLayout();
+            this.ComboBoxSizer2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.WalletTabs.ResumeLayout(false);
             this.TransactonLogTab.ResumeLayout(false);
@@ -2344,8 +2770,6 @@
             this.groupBox6.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
-            this.MenuPanel.ResumeLayout(false);
-            this.MenuPanel.PerformLayout();
             this.OptionsTabButton.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.OptionsTabIcon)).EndInit();
             this.NetworkTabButton.ResumeLayout(false);
@@ -2356,10 +2780,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.TransactionLogTabIcon)).EndInit();
             this.WalletTabButton.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.WalletTabIcon)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.LockedIcon)).EndInit();
             this.SendTabButton.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.SendTabIcon)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.HeaderLogo)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.LockedIcon)).EndInit();
+            this.MenuPanel.ResumeLayout(false);
+            this.MenuPanel.PerformLayout();
             this.MainWindowTable.ResumeLayout(false);
             this.RightSideTable.ResumeLayout(false);
             this.FooterPanel.ResumeLayout(false);
@@ -2403,7 +2830,6 @@
         private System.Windows.Forms.TextBox SendToAddress;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox TransactionOutput;
-        private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TabPage ContactBookTab;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem3;
         private System.Windows.Forms.Button CopyAddress;
@@ -2418,11 +2844,9 @@
         private System.Windows.Forms.ProgressBar SyncProgress;
         private System.Windows.Forms.Label SyncPercent;
         private System.Windows.Forms.DataGridView AddressGrid;
-        private System.Windows.Forms.ToolStripMenuItem OptionsMenu;
         private System.Windows.Forms.Button SendToContact;
         private System.Windows.Forms.Button RemoveContact;
         private System.Windows.Forms.Button AddContact;
-        private System.Windows.Forms.ToolStripMenuItem OptionsMenuOption;
         private System.Windows.Forms.Button EditContact;
         private System.Windows.Forms.ComboBox WalletAddresses;
         private System.Windows.Forms.Label label17;
@@ -2483,11 +2907,9 @@
         private System.Windows.Forms.ToolStripMenuItem StartNetworkMenuOption;
         private System.Windows.Forms.ToolStripMenuItem ExportPrivateKeysMenuOption;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem6;
-        private System.Windows.Forms.ToolStripMenuItem AboutMenuOption;
         private System.Windows.Forms.ToolStripMenuItem CloseNetworkMenuOption;
         private System.Windows.Forms.BindingSource recentBlocksBindingSource;
         private System.Windows.Forms.ToolStripMenuItem ResyncMenuOption;
-        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem2;
         private System.Windows.Forms.ToolStripMenuItem mobileToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem startMobileServerToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem stopMobileServerToolStripMenuItem;
@@ -2505,25 +2927,25 @@
         private System.Windows.Forms.OpenFileDialog OpenImportFile;
         private System.Windows.Forms.Panel MenuPanel;
         private System.Windows.Forms.PictureBox LockedIcon;
-        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label HeaderLabel;
         private System.Windows.Forms.TableLayoutPanel SendTabButton;
         private System.Windows.Forms.PictureBox SendTabIcon;
         private System.Windows.Forms.Label SendTabLabel;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox HeaderLogo;
         private System.Windows.Forms.TableLayoutPanel WalletTabButton;
         private System.Windows.Forms.PictureBox WalletTabIcon;
         private System.Windows.Forms.Label WalletTabLabel;
         private System.Windows.Forms.Panel MENUDIVIDER1;
-        private System.Windows.Forms.Panel panel5;
+        private System.Windows.Forms.Panel MENUDIVIDER3;
         private System.Windows.Forms.TableLayoutPanel TransactionLogTabButton;
         private System.Windows.Forms.PictureBox TransactionLogTabIcon;
         private System.Windows.Forms.Label TransactionLogTabLabel;
         private System.Windows.Forms.Panel MENUDIVIDER2;
         private System.Windows.Forms.TabPage BlankTab;
-        private System.Windows.Forms.Panel panel9;
-        private System.Windows.Forms.Panel panel8;
-        private System.Windows.Forms.Panel panel7;
-        private System.Windows.Forms.Panel panel6;
+        private System.Windows.Forms.Panel MENUDIVIDER6;
+        private System.Windows.Forms.Panel MENUDIVIDER5;
+        private System.Windows.Forms.Panel MENUDIVIDER4;
+        private System.Windows.Forms.Panel MENUDIVIDER7;
         private System.Windows.Forms.TableLayoutPanel OptionsTabButton;
         private System.Windows.Forms.PictureBox OptionsTabIcon;
         private System.Windows.Forms.Label OptionsTabLabel;
@@ -2537,7 +2959,6 @@
         private System.Windows.Forms.TableLayoutPanel RightSideTable;
         private System.Windows.Forms.Panel FooterPanel;
         private System.Windows.Forms.PictureBox pictureBox2;
-        private System.Windows.Forms.Button ChangeNickname;
         private System.Windows.Forms.TextBox Nickname;
         private System.Windows.Forms.Label label24;
         private System.Windows.Forms.Button ShowKeysButton;
@@ -2545,9 +2966,38 @@
         private System.Windows.Forms.TextBox PublicSpendKey;
         private System.Windows.Forms.Label label26;
         private System.Windows.Forms.Label label25;
-        private System.Windows.Forms.GroupBox SelectedAddressInfo;
         private System.Windows.Forms.TextBox AddressDisplay;
         private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Panel SendTabScrollPanel;
+        private System.Windows.Forms.Label label30;
+        private System.Windows.Forms.Label SendOutputLabel;
+        private System.Windows.Forms.Panel TextBoxSizer8;
+        private System.Windows.Forms.Panel TextBoxSizer7;
+        private System.Windows.Forms.Panel TextBoxSizer6;
+        private System.Windows.Forms.Panel TextBoxSizer5;
+        private System.Windows.Forms.Label ShowAdvancedSendLabel;
+        private System.Windows.Forms.Panel TextBoxSizer4;
+        private System.Windows.Forms.Panel TextBoxSizer3;
+        private System.Windows.Forms.Panel TextBoxSizer2;
+        private System.Windows.Forms.Panel TextBoxSizer1;
+        private System.Windows.Forms.Panel ComboBoxSizer1;
+        private System.Windows.Forms.Panel AdvancedSendPanel;
+        private System.Windows.Forms.Panel ComboBoxSizer2;
+        private System.Windows.Forms.Panel TextBoxSizer9;
+        private System.Windows.Forms.Button ChangeNickname;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.PictureBox pictureBox3;
+        private System.Windows.Forms.PictureBox pictureBox4;
+        private System.Windows.Forms.TableLayoutPanel SendTabLayout;
+        private System.Windows.Forms.Panel QuickSendPanel;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.TableLayoutPanel AmountFeeTable;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.TableLayoutPanel UnlockTimeMixinTable;
+        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.Panel panel5;
+        private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
     }
 }
 

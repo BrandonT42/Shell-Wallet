@@ -70,6 +70,7 @@ namespace Shell_Wallet
             // Set a few element defaults
             this.SendFromAddress.SelectedIndex = 0;
             this.Fee.Text = Config.DefaultFee;
+            ShowHideAdvancedSend(null, null);
 
             // Ask the user to open simplewallet's path if it's not chosen in the config file
             if (!File.Exists(Config.ServerPath))
@@ -327,8 +328,8 @@ namespace Shell_Wallet
                     this.CreateNewAddress.Enabled = true;
                 if (!this.DeleteSelectedAddress.Enabled)
                     this.DeleteSelectedAddress.Enabled = true;
-                if (!this.WalletAddresses.Enabled)
-                    this.WalletAddresses.Enabled = true;
+                //if (!this.WalletAddresses.Enabled)
+                //    this.WalletAddresses.Enabled = true;
                 if (!this.ShowKeysButton.Enabled)
                     this.ShowKeysButton.Enabled = true;
                 if (!this.ChangeNickname.Enabled)
@@ -444,7 +445,7 @@ namespace Shell_Wallet
                 {
                     this.WalletAddresses.DataSource = null;
                     this.WalletAddresses.SelectedText = "";
-                    this.WalletAddresses.Enabled = false;
+                    //this.WalletAddresses.Enabled = false;
                 }
                 this.SyncPercent.Text = "Waiting to sync";
                 this.SyncProgress.Value = 0;
@@ -884,7 +885,7 @@ namespace Shell_Wallet
         private void CopyAddress_Click(object sender, EventArgs e)
         {
             // Copy selected address to clipboard
-            Clipboard.SetText((String)this.WalletAddresses.SelectedValue);
+            Clipboard.SetText(Wallet.SelectedAddress);
         }
 
         // Create a new address
@@ -1089,8 +1090,6 @@ namespace Shell_Wallet
             {
                 // Get selected address from address book
                 Contact c = AddressBook.DataSource[this.AddressGrid.SelectedRows[0].Index];
-                if (c.Address != null) this.SendToAddress.Text = c.Address;
-                if (c.PaymentID != null) this.PaymentID.Text = c.PaymentID;
 
                 // Copy to clipboard
                 Clipboard.SetText(c.Address);
@@ -1416,6 +1415,47 @@ namespace Shell_Wallet
                     Nicknames.Add(Wallet.SelectedAddress, n.Result);
                     Nickname.Text = n.Result;
                 }
+            }
+        }
+
+        private void label31_MouseEnter(object sender, EventArgs e)
+        {
+            (sender as Label).ForeColor = Color.DimGray;
+        }
+
+        private void label31_MouseLeave(object sender, EventArgs e)
+        {
+            (sender as Label).ForeColor = Color.Black;
+        }
+
+        private Boolean ShowAdvancedSend = true;
+        private void ShowHideAdvancedSend(object sender, EventArgs e)
+        {
+            if (ShowAdvancedSend)
+            {
+                ShowAdvancedSend = false;
+                /*
+                AdvancedSendPanel.Visible = false;
+                SendTransaction.Location = new Point(SendTransaction.Location.X, 235 - SendTabScrollPanel.VerticalScroll.Value);
+                SendOutputLabel.Location = new Point(3, 255 - SendTabScrollPanel.VerticalScroll.Value);
+                TransactionOutput.Location = new Point(6, 275 - SendTabScrollPanel.VerticalScroll.Value);
+                */
+                SendTabLayout.RowStyles[1].Height = 0;
+                SendTabLayout.Height = SendTabLayout.Height - 159;
+                ShowAdvancedSendLabel.Text = "(+Show Advanced)";
+            }
+            else
+            {
+                ShowAdvancedSend = true;
+                /*
+                AdvancedSendPanel.Visible = true;
+                SendTransaction.Location = new Point(SendTransaction.Location.X, 412 - SendTabScrollPanel.VerticalScroll.Value);
+                SendOutputLabel.Location = new Point(3, 430 - SendTabScrollPanel.VerticalScroll.Value);
+                TransactionOutput.Location = new Point(6, 450 - SendTabScrollPanel.VerticalScroll.Value);
+                */
+                SendTabLayout.RowStyles[1].Height = 159;
+                SendTabLayout.Height = SendTabLayout.Height + 159;
+                ShowAdvancedSendLabel.Text = "(-Hide Advanced)";
             }
         }
     }

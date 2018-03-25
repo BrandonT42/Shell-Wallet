@@ -83,6 +83,16 @@ namespace Shell_Wallet.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Clipboard {
+            get {
+                object obj = ResourceManager.GetObject("Clipboard", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap LoadingIcon {
             get {
                 object obj = ResourceManager.GetObject("LoadingIcon", resourceCulture);
@@ -166,6 +176,16 @@ namespace Shell_Wallet.Properties {
         internal static System.Drawing.Bitmap SendWhite {
             get {
                 object obj = ResourceManager.GetObject("SendWhite", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ShellBlack {
+            get {
+                object obj = ResourceManager.GetObject("ShellBlack", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

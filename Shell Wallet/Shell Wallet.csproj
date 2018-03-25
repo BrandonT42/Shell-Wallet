@@ -222,6 +222,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="407289344613810218_6cI_icon.ico" />
+    <None Include="Resources\ShellBlack.png" />
     <None Include="Resources\WalletWhite.png" />
     <None Include="Resources\TransactionLogWhite.png" />
     <None Include="Resources\SendWhite.png" />
@@ -229,6 +230,7 @@
     <None Include="Resources\AddressBookIcon.png" />
     <None Include="Resources\AddressIcon.png" />
     <None Include="Resources\AddressBookWhite.png" />
+    <None Include="Resources\Clipboard.png" />
     <Content Include="Resources\LockedIcon.png" />
     <None Include="Resources\NetworkIcon.png" />
     <None Include="Resources\OptionsIcon.png" />
