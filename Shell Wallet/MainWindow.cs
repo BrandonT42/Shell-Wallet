@@ -468,6 +468,7 @@ namespace Shell_Wallet
                 }
                 this.SyncPercent.Text = "Waiting to sync";
                 this.SyncProgress.Value = 0;
+                if (this.ShowKeys) ShowKeys = false;
 
                 // Update menu options
                 if (!this.OpenWalletMenuOption.Enabled)
@@ -772,10 +773,7 @@ namespace Shell_Wallet
                 {
                     if (!File.Exists(SavePrivateKeys.FileName))
                         File.Create(SavePrivateKeys.FileName).Dispose();
-                    File.WriteAllText(SavePrivateKeys.FileName,
-                        "Keep these keys private, anyone who has access to them has access to your wallet!\r\n\r\n" +
-                        "View Key: " + Wallet.ViewKey + "\r\npublic Spend Key: " + Wallet.PublicSpendKey +
-                        "\r\nPrivate Spend Key: " + Wallet.PrivateSpendKey);
+                    File.WriteAllText(SavePrivateKeys.FileName, Wallet.BatchExport());
                     Process.Start(SavePrivateKeys.FileName);
                 }
             }

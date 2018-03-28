@@ -890,10 +890,11 @@ namespace RPCWrapper
 
             // Create an array and populate it with all secret spend keys
             JArray SpendKeys = new JArray();
-            foreach (String Address in Addresses)
+            foreach (String Address in InternalAddresses)
             {
                 SpendKeys.Add(GetSpendKeys(Address));
             }
+            Result["spendKeys"] = SpendKeys;
 
             // Return result
             return Result.ToString();

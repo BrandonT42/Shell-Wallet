@@ -368,7 +368,7 @@
             // 
             this.ExportPrivateKeysMenuOption.Name = "ExportPrivateKeysMenuOption";
             this.ExportPrivateKeysMenuOption.Size = new System.Drawing.Size(193, 22);
-            this.ExportPrivateKeysMenuOption.Text = "Export Private Keys";
+            this.ExportPrivateKeysMenuOption.Text = "Export All Keys";
             this.ExportPrivateKeysMenuOption.Click += new System.EventHandler(this.viewWalletKeysToolStripMenuItem_Click);
             // 
             // ResyncMenuOption
