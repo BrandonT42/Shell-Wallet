@@ -2,9 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Shell_Wallet
 {
@@ -48,7 +45,7 @@ namespace Shell_Wallet
             File.WriteAllText(Path.Combine(Config.DataPath, Config.NicknamesFile), j.ToString());
         }
 
-        internal static void Add(String Address, String Nickname)
+        internal static void Set(String Address, String Nickname)
         {
             if (!Addresses.ContainsKey(Address)) Addresses.Add(Address, Nickname);
             else

@@ -79,10 +79,8 @@ namespace Shell_Wallet
         /// </summary>
         internal static void Save()
         {
-            String s = JsonConvert.SerializeObject(DataSource);
-            String p = Path.Combine(Path.Combine(
-                Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),
-                "Shell Wallet"), Config.AddressBookFile);
+            String s = JsonConvert.SerializeObject(DataSource, Formatting.Indented);
+            String p = Path.Combine(Config.DataPath, Config.AddressBookFile);
             File.WriteAllText(p, s);
         }
     }

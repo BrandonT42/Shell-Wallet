@@ -357,6 +357,7 @@ namespace Shell_Wallet
                 if (this.WalletAddresses.DataSource == null &&
                     Wallet.Addresses != null && Wallet.Addresses.Count > 0)
                 {
+                    // Update wallet tab
                     for (int i = 0; i < Wallet.Addresses.Count; i++)
                     {
                         String s = Nicknames.Get(Wallet.Addresses[i]);
@@ -367,6 +368,17 @@ namespace Shell_Wallet
                     }
                     this.WalletAddresses.DataSource = Wallet.Addresses;
                     this.WalletAddresses.SelectedIndex = 0;
+
+                    // Update send tab
+                    SendFromAddress.Items.Clear();
+                    SendFromAddress.Items.Add("Entire Balance");
+                    for (int i = 0; i < Wallet.Addresses.Count; i++)
+                    {
+                        String s = Nicknames.Get(Wallet.Addresses[i]);
+                        if (s == "-") s = Wallet.Addresses[i];
+                        SendFromAddress.Items.Add(s);
+                    }
+                    SendFromAddress.SelectedIndex = 0;
                 }
 
                 // Update wallet status
@@ -441,11 +453,18 @@ namespace Shell_Wallet
                     this.ShowKeysButton.Enabled = false;
                 if (this.ChangeNickname.Enabled)
                     this.ChangeNickname.Enabled = false;
-                if (this.WalletAddresses.Enabled)
+                if (this.WalletAddresses.Enabled && WalletAddresses.DataSource != null)
                 {
+                    // Update wallet tab
                     this.WalletAddresses.DataSource = null;
                     this.WalletAddresses.SelectedText = "";
+                    this.AddressDisplay.Text = "";
                     //this.WalletAddresses.Enabled = false;
+
+                    // Update send tab
+                    SendFromAddress.Items.Clear();
+                    SendFromAddress.Items.Add("Entire Balance");
+                    SendFromAddress.SelectedIndex = 0;
                 }
                 this.SyncPercent.Text = "Waiting to sync";
                 this.SyncProgress.Value = 0;
@@ -891,6 +910,7 @@ namespace Shell_Wallet
         // Create a new address
         private void CreateNewAddress_Click(object sender, EventArgs e)
         {
+            // Update on wallet tab
             Wallet.CreateAddress();
             for (int i = 0; i < Wallet.Addresses.Count; i++)
             {
@@ -904,6 +924,17 @@ namespace Shell_Wallet
             this.WalletAddresses.DataSource = Wallet.Addresses;
             if (Wallet.Addresses.Count > 0)
                 this.WalletAddresses.SelectedIndex = Wallet.Addresses.Count - 1;
+
+            // Update on send tab
+            SendFromAddress.Items.Clear();
+            SendFromAddress.Items.Add("Entire Balance");
+            for (int i = 0; i < Wallet.Addresses.Count; i++)
+            {
+                String s = Nicknames.Get(Wallet.Addresses[i]);
+                if (s == "-") s = Wallet.Addresses[i];
+                SendFromAddress.Items.Add(s);
+            }
+            SendFromAddress.SelectedIndex = 0;
         }
 
         // Delete the selected address
@@ -915,6 +946,7 @@ namespace Shell_Wallet
                 " balance and " + Wallet.SelectedLockedBalance + " locked balance.\r\n\r\n" + Wallet.SelectedAddress,
                 "Are you sure?", MessageBoxButtons.OKCancel, MessageBoxIcon.Exclamation) == DialogResult.OK)
             {
+                // Update wallet tab
                 Wallet.DeleteSelectedAddress();
                 for (int i = 0; i < Wallet.Addresses.Count; i++)
                 {
@@ -928,6 +960,17 @@ namespace Shell_Wallet
                 this.WalletAddresses.DataSource = Wallet.Addresses;
                 if (Wallet.Addresses.Count > 0)
                     this.WalletAddresses.SelectedIndex = 0;
+
+                // Update on send tab
+                SendFromAddress.Items.Clear();
+                SendFromAddress.Items.Add("Entire Balance");
+                for (int i = 0; i < Wallet.Addresses.Count; i++)
+                {
+                    String s = Nicknames.Get(Wallet.Addresses[i]);
+                    if (s == "-") s = Wallet.Addresses[i];
+                    SendFromAddress.Items.Add(s);
+                }
+                SendFromAddress.SelectedIndex = 0;
             }
         }
         #endregion
@@ -955,7 +998,11 @@ namespace Shell_Wallet
 
             // Create transaction
             List<String> AddressList = new List<String>();
-            if ((String)SendFromAddress.SelectedItem == "Selected Address") AddressList.Add(Wallet.SelectedAddress);
+            if (SendFromAddress.SelectedIndex != 0 &&
+                (SendFromAddress.Items.Count -1) <= Wallet.Addresses.Count)
+            {
+                AddressList.Add(Wallet.Addresses[SendFromAddress.SelectedIndex - 1]);
+            }
 
             // Create transfer
             List<Transfer> TransferList = new List<Transfer>();
@@ -983,9 +1030,9 @@ namespace Shell_Wallet
 
                 // Print transaction information
                 this.TransactionOutput.Text += "Transaction Information:\r\n";
-                if ((String)this.SendFromAddress.SelectedItem == "Selected Address")
-                    this.TransactionOutput.Text += "Sent From: " + Wallet.SelectedAddress + "\r\n";
-                else this.TransactionOutput.Text += "Sent From: Entire Balance\r\n";
+                if (this.SendFromAddress.SelectedIndex == 0)
+                    this.TransactionOutput.Text += "Sent From: Entire Balance\r\n";
+                else this.TransactionOutput.Text += "Sent From: " + AddressList[0] + "\r\n";
                 this.TransactionOutput.Text += "Sent To: " + Address + "\r\n";
                 this.TransactionOutput.Text += "Amount: " + Amount + "\r\n";
                 this.TransactionOutput.Text += "Fee: " + Fee + "\r\n";
@@ -1412,8 +1459,34 @@ namespace Shell_Wallet
             {
                 if (n.ShowDialog() == DialogResult.OK)
                 {
-                    Nicknames.Add(Wallet.SelectedAddress, n.Result);
+                    // Change nickname
+                    Nicknames.Set(Wallet.SelectedAddress, n.Result);
                     Nickname.Text = n.Result;
+
+                    // Update wallet tab
+                    for (int i = 0; i < Wallet.Addresses.Count; i++)
+                    {
+                        String s = Nicknames.Get(Wallet.Addresses[i]);
+                        if (s != "-")
+                        {
+                            Wallet.Addresses[i] = s;
+                        }
+                    }
+                    int x = WalletAddresses.SelectedIndex;
+                    this.WalletAddresses.DataSource = null;
+                    this.WalletAddresses.DataSource = Wallet.Addresses;
+                    this.WalletAddresses.SelectedIndex = x;
+
+                    // Update send tab
+                    SendFromAddress.Items.Clear();
+                    SendFromAddress.Items.Add("Entire Balance");
+                    for (int i = 0; i < Wallet.Addresses.Count; i++)
+                    {
+                        String s = Nicknames.Get(Wallet.Addresses[i]);
+                        if (s == "-") s = Wallet.Addresses[i];
+                        SendFromAddress.Items.Add(s);
+                    }
+                    SendFromAddress.SelectedIndex = 0;
                 }
             }
         }
@@ -1457,6 +1530,24 @@ namespace Shell_Wallet
                 SendTabLayout.Height = SendTabLayout.Height + 159;
                 ShowAdvancedSendLabel.Text = "(-Hide Advanced)";
             }
+        }
+
+        private void SendFromAddress_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            /*
+            if (SendFromAddress.SelectedIndex >= 1 &&
+                Wallet.Addresses.Count > (SendFromAddress.SelectedIndex -1))
+            {
+                Wallet.SelectedAddress = Wallet.Addresses[SendFromAddress.SelectedIndex - 1];
+
+                Nickname.Text = Nicknames.Get(Wallet.SelectedAddress);
+                AddressDisplay.Text = Wallet.SelectedAddress;
+
+                //Force an update outside of the refresh tick
+                Wallet.Update();
+            }
+            Console.WriteLine("Selected address changed to: {0}", Wallet.SelectedAddress);
+            */
         }
     }
 }

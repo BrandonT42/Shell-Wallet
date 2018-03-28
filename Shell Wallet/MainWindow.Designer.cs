@@ -50,6 +50,7 @@
             this.mobileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.startMobileServerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.stopMobileServerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.OpenWalletDialog = new System.Windows.Forms.OpenFileDialog();
             this.NewWalletDialog = new System.Windows.Forms.SaveFileDialog();
             this.OpenServerPath = new System.Windows.Forms.OpenFileDialog();
@@ -137,6 +138,11 @@
             this.TransactonLogTab = new System.Windows.Forms.TabPage();
             this.TransactionLog = new System.Windows.Forms.DataGridView();
             this.TypeColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.timeStampDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.amountDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.feeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.hashDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.transactionBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.ContactBookTab = new System.Windows.Forms.TabPage();
             this.EditContact = new System.Windows.Forms.Button();
             this.SendToContact = new System.Windows.Forms.Button();
@@ -157,8 +163,18 @@
             this.TransactionPool = new System.Windows.Forms.DataGridView();
             this.AmountColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FeeColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.transactionPoolBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.RecentBlocks = new System.Windows.Forms.DataGridView();
+            this.heightDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.sizeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.hashDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.difficultyDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.transactionsDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.recentBlocksBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.TotalSupply = new System.Windows.Forms.Label();
@@ -213,22 +229,6 @@
             this.MainWindowTable = new System.Windows.Forms.TableLayoutPanel();
             this.RightSideTable = new System.Windows.Forms.TableLayoutPanel();
             this.FooterPanel = new System.Windows.Forms.Panel();
-            this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.timeStampDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.amountDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.feeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.hashDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.transactionBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.transactionPoolBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.heightDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.sizeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.hashDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.difficultyDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.transactionsDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.recentBlocksBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.MenuStrip.SuspendLayout();
             this.SendTab.SuspendLayout();
             this.SendTabScrollPanel.SuspendLayout();
@@ -259,6 +259,7 @@
             this.WalletTabs.SuspendLayout();
             this.TransactonLogTab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.TransactionLog)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.transactionBindingSource)).BeginInit();
             this.ContactBookTab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.AddressGrid)).BeginInit();
             this.AddressBookMenu.SuspendLayout();
@@ -266,8 +267,10 @@
             this.tableLayoutPanel4.SuspendLayout();
             this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.TransactionPool)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.transactionPoolBindingSource)).BeginInit();
             this.groupBox5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.RecentBlocks)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.recentBlocksBindingSource)).BeginInit();
             this.tableLayoutPanel3.SuspendLayout();
             this.groupBox6.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -290,9 +293,6 @@
             this.MainWindowTable.SuspendLayout();
             this.RightSideTable.SuspendLayout();
             this.FooterPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.transactionBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.transactionPoolBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.recentBlocksBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // MenuStrip
@@ -447,6 +447,13 @@
             this.stopMobileServerToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
             this.stopMobileServerToolStripMenuItem.Text = "Stop Mobile Server";
             this.stopMobileServerToolStripMenuItem.Click += new System.EventHandler(this.stopMobileServerToolStripMenuItem_Click);
+            // 
+            // aboutToolStripMenuItem
+            // 
+            this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(52, 20);
+            this.aboutToolStripMenuItem.Text = "About";
+            this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutShellWalletToolStripMenuItem_Click);
             // 
             // OpenWalletDialog
             // 
@@ -807,15 +814,16 @@
             this.SendFromAddress.BackColor = System.Drawing.Color.White;
             this.SendFromAddress.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.SendFromAddress.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.SendFromAddress.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SendFromAddress.FormattingEnabled = true;
             this.SendFromAddress.Items.AddRange(new object[] {
-            "Entire Wallet Balance",
-            "Selected Address"});
-            this.SendFromAddress.Location = new System.Drawing.Point(6, 5);
+            "Entire Balance"});
+            this.SendFromAddress.Location = new System.Drawing.Point(6, 3);
             this.SendFromAddress.Margin = new System.Windows.Forms.Padding(0, 5, 0, 6);
             this.SendFromAddress.Name = "SendFromAddress";
-            this.SendFromAddress.Size = new System.Drawing.Size(546, 21);
+            this.SendFromAddress.Size = new System.Drawing.Size(546, 24);
             this.SendFromAddress.TabIndex = 0;
+            this.SendFromAddress.SelectedIndexChanged += new System.EventHandler(this.SendFromAddress_SelectedIndexChanged);
             this.SendFromAddress.SelectedValueChanged += new System.EventHandler(this.SendFromAddress_SelectedValueChanged);
             // 
             // AdvancedSendPanel
@@ -1231,7 +1239,7 @@
             this.WalletAddresses.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.WalletAddresses.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.WalletAddresses.FormattingEnabled = true;
-            this.WalletAddresses.Location = new System.Drawing.Point(6, 4);
+            this.WalletAddresses.Location = new System.Drawing.Point(6, 3);
             this.WalletAddresses.Name = "WalletAddresses";
             this.WalletAddresses.Size = new System.Drawing.Size(569, 24);
             this.WalletAddresses.TabIndex = 0;
@@ -1559,6 +1567,42 @@
             this.TypeColumn.Name = "TypeColumn";
             this.TypeColumn.ReadOnly = true;
             // 
+            // timeStampDataGridViewTextBoxColumn
+            // 
+            this.timeStampDataGridViewTextBoxColumn.DataPropertyName = "TimeStamp";
+            this.timeStampDataGridViewTextBoxColumn.FillWeight = 80F;
+            this.timeStampDataGridViewTextBoxColumn.HeaderText = "Date";
+            this.timeStampDataGridViewTextBoxColumn.Name = "timeStampDataGridViewTextBoxColumn";
+            this.timeStampDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // amountDataGridViewTextBoxColumn
+            // 
+            this.amountDataGridViewTextBoxColumn.DataPropertyName = "Amount";
+            this.amountDataGridViewTextBoxColumn.FillWeight = 50F;
+            this.amountDataGridViewTextBoxColumn.HeaderText = "Amount";
+            this.amountDataGridViewTextBoxColumn.Name = "amountDataGridViewTextBoxColumn";
+            this.amountDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // feeDataGridViewTextBoxColumn
+            // 
+            this.feeDataGridViewTextBoxColumn.DataPropertyName = "Fee";
+            this.feeDataGridViewTextBoxColumn.FillWeight = 50F;
+            this.feeDataGridViewTextBoxColumn.HeaderText = "Fee";
+            this.feeDataGridViewTextBoxColumn.Name = "feeDataGridViewTextBoxColumn";
+            this.feeDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // hashDataGridViewTextBoxColumn1
+            // 
+            this.hashDataGridViewTextBoxColumn1.DataPropertyName = "Hash";
+            this.hashDataGridViewTextBoxColumn1.FillWeight = 200F;
+            this.hashDataGridViewTextBoxColumn1.HeaderText = "Hash";
+            this.hashDataGridViewTextBoxColumn1.Name = "hashDataGridViewTextBoxColumn1";
+            this.hashDataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // transactionBindingSource
+            // 
+            this.transactionBindingSource.DataSource = typeof(RPCWrapper.Transaction);
+            // 
             // ContactBookTab
             // 
             this.ContactBookTab.BackColor = System.Drawing.Color.WhiteSmoke;
@@ -1805,6 +1849,26 @@
             this.FeeColumn.Name = "FeeColumn";
             this.FeeColumn.ReadOnly = true;
             // 
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.DataPropertyName = "Size";
+            this.dataGridViewTextBoxColumn3.FillWeight = 10F;
+            this.dataGridViewTextBoxColumn3.HeaderText = "Size";
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.dataGridViewTextBoxColumn3.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            this.dataGridViewTextBoxColumn4.DataPropertyName = "Hash";
+            this.dataGridViewTextBoxColumn4.FillWeight = 60F;
+            this.dataGridViewTextBoxColumn4.HeaderText = "Hash";
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            this.dataGridViewTextBoxColumn4.ReadOnly = true;
+            // 
+            // transactionPoolBindingSource
+            // 
+            this.transactionPoolBindingSource.DataSource = typeof(RPCWrapper.RecentBlocks);
+            // 
             // groupBox5
             // 
             this.groupBox5.Controls.Add(this.RecentBlocks);
@@ -1851,6 +1915,58 @@
             this.RecentBlocks.ShowRowErrors = false;
             this.RecentBlocks.Size = new System.Drawing.Size(577, 192);
             this.RecentBlocks.TabIndex = 0;
+            // 
+            // heightDataGridViewTextBoxColumn
+            // 
+            this.heightDataGridViewTextBoxColumn.DataPropertyName = "Height";
+            this.heightDataGridViewTextBoxColumn.FillWeight = 10F;
+            this.heightDataGridViewTextBoxColumn.HeaderText = "Height";
+            this.heightDataGridViewTextBoxColumn.Name = "heightDataGridViewTextBoxColumn";
+            this.heightDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // dateDataGridViewTextBoxColumn
+            // 
+            this.dateDataGridViewTextBoxColumn.DataPropertyName = "Date";
+            this.dateDataGridViewTextBoxColumn.FillWeight = 30F;
+            this.dateDataGridViewTextBoxColumn.HeaderText = "Date";
+            this.dateDataGridViewTextBoxColumn.Name = "dateDataGridViewTextBoxColumn";
+            this.dateDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // sizeDataGridViewTextBoxColumn
+            // 
+            this.sizeDataGridViewTextBoxColumn.DataPropertyName = "Size";
+            this.sizeDataGridViewTextBoxColumn.FillWeight = 10F;
+            this.sizeDataGridViewTextBoxColumn.HeaderText = "Size";
+            this.sizeDataGridViewTextBoxColumn.Name = "sizeDataGridViewTextBoxColumn";
+            this.sizeDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // hashDataGridViewTextBoxColumn
+            // 
+            this.hashDataGridViewTextBoxColumn.DataPropertyName = "Hash";
+            this.hashDataGridViewTextBoxColumn.FillWeight = 50F;
+            this.hashDataGridViewTextBoxColumn.HeaderText = "Hash";
+            this.hashDataGridViewTextBoxColumn.Name = "hashDataGridViewTextBoxColumn";
+            this.hashDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // difficultyDataGridViewTextBoxColumn
+            // 
+            this.difficultyDataGridViewTextBoxColumn.DataPropertyName = "Difficulty";
+            this.difficultyDataGridViewTextBoxColumn.FillWeight = 15F;
+            this.difficultyDataGridViewTextBoxColumn.HeaderText = "Difficulty";
+            this.difficultyDataGridViewTextBoxColumn.Name = "difficultyDataGridViewTextBoxColumn";
+            this.difficultyDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // transactionsDataGridViewTextBoxColumn
+            // 
+            this.transactionsDataGridViewTextBoxColumn.DataPropertyName = "Transactions";
+            this.transactionsDataGridViewTextBoxColumn.FillWeight = 20F;
+            this.transactionsDataGridViewTextBoxColumn.HeaderText = "Transactions";
+            this.transactionsDataGridViewTextBoxColumn.Name = "transactionsDataGridViewTextBoxColumn";
+            this.transactionsDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // recentBlocksBindingSource
+            // 
+            this.recentBlocksBindingSource.DataSource = typeof(RPCWrapper.RecentBlocks);
             // 
             // tableLayoutPanel3
             // 
@@ -2576,121 +2692,6 @@
             this.FooterPanel.Size = new System.Drawing.Size(603, 14);
             this.FooterPanel.TabIndex = 28;
             // 
-            // aboutToolStripMenuItem
-            // 
-            this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(52, 20);
-            this.aboutToolStripMenuItem.Text = "About";
-            this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutShellWalletToolStripMenuItem_Click);
-            // 
-            // timeStampDataGridViewTextBoxColumn
-            // 
-            this.timeStampDataGridViewTextBoxColumn.DataPropertyName = "TimeStamp";
-            this.timeStampDataGridViewTextBoxColumn.FillWeight = 80F;
-            this.timeStampDataGridViewTextBoxColumn.HeaderText = "Date";
-            this.timeStampDataGridViewTextBoxColumn.Name = "timeStampDataGridViewTextBoxColumn";
-            this.timeStampDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // amountDataGridViewTextBoxColumn
-            // 
-            this.amountDataGridViewTextBoxColumn.DataPropertyName = "Amount";
-            this.amountDataGridViewTextBoxColumn.FillWeight = 50F;
-            this.amountDataGridViewTextBoxColumn.HeaderText = "Amount";
-            this.amountDataGridViewTextBoxColumn.Name = "amountDataGridViewTextBoxColumn";
-            this.amountDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // feeDataGridViewTextBoxColumn
-            // 
-            this.feeDataGridViewTextBoxColumn.DataPropertyName = "Fee";
-            this.feeDataGridViewTextBoxColumn.FillWeight = 50F;
-            this.feeDataGridViewTextBoxColumn.HeaderText = "Fee";
-            this.feeDataGridViewTextBoxColumn.Name = "feeDataGridViewTextBoxColumn";
-            this.feeDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // hashDataGridViewTextBoxColumn1
-            // 
-            this.hashDataGridViewTextBoxColumn1.DataPropertyName = "Hash";
-            this.hashDataGridViewTextBoxColumn1.FillWeight = 200F;
-            this.hashDataGridViewTextBoxColumn1.HeaderText = "Hash";
-            this.hashDataGridViewTextBoxColumn1.Name = "hashDataGridViewTextBoxColumn1";
-            this.hashDataGridViewTextBoxColumn1.ReadOnly = true;
-            // 
-            // transactionBindingSource
-            // 
-            this.transactionBindingSource.DataSource = typeof(RPCWrapper.Transaction);
-            // 
-            // dataGridViewTextBoxColumn3
-            // 
-            this.dataGridViewTextBoxColumn3.DataPropertyName = "Size";
-            this.dataGridViewTextBoxColumn3.FillWeight = 10F;
-            this.dataGridViewTextBoxColumn3.HeaderText = "Size";
-            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            this.dataGridViewTextBoxColumn3.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn4
-            // 
-            this.dataGridViewTextBoxColumn4.DataPropertyName = "Hash";
-            this.dataGridViewTextBoxColumn4.FillWeight = 60F;
-            this.dataGridViewTextBoxColumn4.HeaderText = "Hash";
-            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            this.dataGridViewTextBoxColumn4.ReadOnly = true;
-            // 
-            // transactionPoolBindingSource
-            // 
-            this.transactionPoolBindingSource.DataSource = typeof(RPCWrapper.RecentBlocks);
-            // 
-            // heightDataGridViewTextBoxColumn
-            // 
-            this.heightDataGridViewTextBoxColumn.DataPropertyName = "Height";
-            this.heightDataGridViewTextBoxColumn.FillWeight = 10F;
-            this.heightDataGridViewTextBoxColumn.HeaderText = "Height";
-            this.heightDataGridViewTextBoxColumn.Name = "heightDataGridViewTextBoxColumn";
-            this.heightDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // dateDataGridViewTextBoxColumn
-            // 
-            this.dateDataGridViewTextBoxColumn.DataPropertyName = "Date";
-            this.dateDataGridViewTextBoxColumn.FillWeight = 30F;
-            this.dateDataGridViewTextBoxColumn.HeaderText = "Date";
-            this.dateDataGridViewTextBoxColumn.Name = "dateDataGridViewTextBoxColumn";
-            this.dateDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // sizeDataGridViewTextBoxColumn
-            // 
-            this.sizeDataGridViewTextBoxColumn.DataPropertyName = "Size";
-            this.sizeDataGridViewTextBoxColumn.FillWeight = 10F;
-            this.sizeDataGridViewTextBoxColumn.HeaderText = "Size";
-            this.sizeDataGridViewTextBoxColumn.Name = "sizeDataGridViewTextBoxColumn";
-            this.sizeDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // hashDataGridViewTextBoxColumn
-            // 
-            this.hashDataGridViewTextBoxColumn.DataPropertyName = "Hash";
-            this.hashDataGridViewTextBoxColumn.FillWeight = 50F;
-            this.hashDataGridViewTextBoxColumn.HeaderText = "Hash";
-            this.hashDataGridViewTextBoxColumn.Name = "hashDataGridViewTextBoxColumn";
-            this.hashDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // difficultyDataGridViewTextBoxColumn
-            // 
-            this.difficultyDataGridViewTextBoxColumn.DataPropertyName = "Difficulty";
-            this.difficultyDataGridViewTextBoxColumn.FillWeight = 15F;
-            this.difficultyDataGridViewTextBoxColumn.HeaderText = "Difficulty";
-            this.difficultyDataGridViewTextBoxColumn.Name = "difficultyDataGridViewTextBoxColumn";
-            this.difficultyDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // transactionsDataGridViewTextBoxColumn
-            // 
-            this.transactionsDataGridViewTextBoxColumn.DataPropertyName = "Transactions";
-            this.transactionsDataGridViewTextBoxColumn.FillWeight = 20F;
-            this.transactionsDataGridViewTextBoxColumn.HeaderText = "Transactions";
-            this.transactionsDataGridViewTextBoxColumn.Name = "transactionsDataGridViewTextBoxColumn";
-            this.transactionsDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // recentBlocksBindingSource
-            // 
-            this.recentBlocksBindingSource.DataSource = typeof(RPCWrapper.RecentBlocks);
-            // 
             // MainWindow
             // 
             this.AllowDrop = true;
@@ -2699,6 +2700,7 @@
             this.ClientSize = new System.Drawing.Size(784, 485);
             this.Controls.Add(this.MainWindowTable);
             this.Controls.Add(this.MenuStrip);
+            this.DoubleBuffered = true;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.MenuStrip;
             this.MinimumSize = new System.Drawing.Size(800, 524);
@@ -2756,6 +2758,7 @@
             this.WalletTabs.ResumeLayout(false);
             this.TransactonLogTab.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.TransactionLog)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.transactionBindingSource)).EndInit();
             this.ContactBookTab.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.AddressGrid)).EndInit();
             this.AddressBookMenu.ResumeLayout(false);
@@ -2763,8 +2766,10 @@
             this.tableLayoutPanel4.ResumeLayout(false);
             this.groupBox4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.TransactionPool)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.transactionPoolBindingSource)).EndInit();
             this.groupBox5.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.RecentBlocks)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.recentBlocksBindingSource)).EndInit();
             this.tableLayoutPanel3.ResumeLayout(false);
             this.groupBox6.ResumeLayout(false);
             this.groupBox6.PerformLayout();
@@ -2791,9 +2796,6 @@
             this.RightSideTable.ResumeLayout(false);
             this.FooterPanel.ResumeLayout(false);
             this.FooterPanel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.transactionBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.transactionPoolBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.recentBlocksBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
