@@ -1,6 +1,5 @@
 # Shell-Wallet
-Shell wallet is an RPC based client wallet application built for use on the Turtlecoin (TRTL) network.
-Built using C# and window forms.
+Shell wallet is an RPC client based wallet application built to provide Windows users with an easy to use, straight forward way of accessing their funds on the Turtlecoin (TRTL) network.
 
 # IMPORTANT
 Please know that Shell Wallet is currently in BETA stages and you should NOT use it to access your main wallet or any important funds. Keep in mind that this application is still being actively developed, and as such, there WILL be bugs, and many features will be added, changed, or even removed entirely.
@@ -8,7 +7,7 @@ Please know that Shell Wallet is currently in BETA stages and you should NOT use
 # Donwload
 See above warning.
 
-Beta Version 0.6.4 : [Shell-Wallet-6.4.0.7z](https://github.com/BrandonT42/Shell-Wallet/raw/master/Binaries/Shell-Wallet-0.6.4.7z)
+[Shell-Wallet-6.4.0.7z](https://github.com/BrandonT42/Shell-Wallet/raw/master/Binaries/Shell-Wallet-0.6.4.7z)
 
 # Getting started
 
